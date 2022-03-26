@@ -3,14 +3,14 @@ Kontynuacja projektu trzeciego - front strony
 
 ## Praca z projektem
 
--Pobierz repo
--Stwórz plik .env w folderze server i wklej do niego dane z Trello.
--Wpisz w terminalu komendy:    
-    git submodule sync
-    git submodule init
-    git submodule update --force
-    yarn
--By odpalić apkę wpisz yarn dev
+-Pobierz repo <br>
+-Stwórz plik .env w folderze server i wklej do niego dane z Trello. <br>
+-Wpisz w terminalu komendy:   <br> 
+git submodule sync <br>
+git submodule init <br>
+git submodule update --force <br>
+yarn <br>
+-By odpalić apkę wpisz: yarn dev <br>
     
 
 ### Branch Name
