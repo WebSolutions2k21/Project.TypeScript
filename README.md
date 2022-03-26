@@ -1,50 +1,59 @@
-git submodule sync
+# CodersCamp2021.Project.TypeScript
+Kontynuacja projektu trzeciego - front strony
+
+## Praca z projektem
+
+1.Pobierz repo
+2. Stwórz plik .env w folderze server i wklej do niego dane z Trello.
+3. Wpisz w terminalu komendy: 
+    git submodule sync
     git submodule init
     git submodule update --force
+    yarn
+ 4. By odpalić apkę wpisz yarn dev
+    
 
-# Getting Started with Create React App
+### Branch Name
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Używamy kebab-case do nazywania branchy
 
-## Available Scripts
+```sh
+more-gray-shades
+support-dark-theme
+button-component
+itp.
+```
 
-In the project directory, you can run:
+### Commit Message
 
-### `yarn start`
+Przyjmujemy poniższy format commit message
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+<type>: <commit_message>
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Commit Message Type
 
-### `yarn test`
+- **build**: Zmiana która afektuje budowanie projektu lub zależności zewnętrzne
+- **docs**: Zmiana w dokumentacji bądź dodatkowych materiałach
+- **feature**: Wprowadzenie nowej funkcjonalności
+- **bugfix**: Naprawienie błędu
+- **refactor**: Zmiana w projekcie, która nic nie naprawia, ani nie dodaje
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Zasady Commit Message
 
-### `yarn build`
+- używaj imperatywnej formy czasu teraźniejszego: "change", nie "changed" lub "changes"
+- nie zaczynaj wielką literą
+- nie dodawaj kropki na końcu zdania
+- używaj języka angielskiego
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pull Request
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Pracujemy na gałęziach w metodologii `branch per feature`. Staramy się tworzyć małe PR. W opisie PR powinno być dokładnie opisane co on zmienia. Każdy PR musi być zaakceptowany przez przynajmniej jedną inną osobę.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### .env
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Stwórz plik .env w folderze server i wklej do niego dane z Trello.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
