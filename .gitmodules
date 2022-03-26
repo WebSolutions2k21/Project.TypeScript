@@ -1,0 +1,3 @@
+[submodule "server"]
+	path = server
+	url = https://github.com/WebSolutions2k21/CodersCamp2021.Project.Node.git
