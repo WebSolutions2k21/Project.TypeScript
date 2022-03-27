@@ -1,7 +1,10 @@
 import React from "react";
 
 import { RegistrationForm } from './components/Registration'
+import Footer from "./components/footer";
 import { useTranslation, Trans } from "react-i18next";
+import { useState } from "react";
+import { Suspense } from "react";
 
 const lngs = {
   en: { nativeName: "English" },
@@ -10,6 +13,7 @@ const lngs = {
 
 function App() {
   const { t, i18n } = useTranslation();
+  const [count, setCounter] = useState(0);
   return (
     <div>
       hello!
@@ -22,7 +26,10 @@ function App() {
                 fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
               }}
               type="submit"
-              onClick={() => i18n.changeLanguage(lng)}
+              onClick={() => {
+                i18n.changeLanguage(lng);
+                setCounter(count + 1);
+              }}
             >
               {lng}
             </button>
@@ -31,9 +38,17 @@ function App() {
           <Trans i18nKey={"description.part1"}>
             Edit <code>src/App.tsx</code> and save to reload.
           </Trans>
+        <i>{t("counter", { count })}</i>
           {t("description.part2")}
+      <Footer t={t} />
     </div>
   );
 }
 
-export default App;
+export default function WrappedApp() {
+  return (
+    <Suspense fallback="...is loading">
+      <App />
+    </Suspense>
+  );
+}

@@ -1,10 +1,13 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import Backend from "i18next-http-backend";
+import { DateTime } from "luxon";
 
 i18n
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
+  .use(Backend)
   .use(LanguageDetector)
   // pass the i18n instance to react-i18next.
   .use(initReactI18next)
@@ -16,24 +19,12 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    resources: {
-      en: {
-        translation: {
-          description: {
-            part1: "Edit <1>src/App.js</1> and save to reload.",
-            part2: "Learn React",
-          },
-        },
-      },
-      pl: {
-        translation: {
-          description: {
-            part1: "Ändere <1>src/App.js</1> und speichere um neu zu laden.",
-            part2: "Lerne React",
-          },
-        },
-      },
-    },
   });
+
+i18n.services.formatter.add("DATE_HUGE", (value, lng, options) => {
+  return DateTime.fromJSDate(value)
+    .setLocale(lng)
+    .toLocaleString(DateTime.DATE_HUGE);
+});
 
 export default i18n;
