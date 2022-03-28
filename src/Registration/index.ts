@@ -1,1 +1,0 @@
-import { RegistrationForm } from './RegistrationForm';
