@@ -1,7 +1,7 @@
-import { useState, Suspense } from "react";
+import Footer from "components/Footer";
 import { RegistrationForm } from './components/Registration'
+import { useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
-import Footer from "./components/footer";
 
 const lngs = {
   en: { nativeName: "English" },
@@ -36,16 +36,11 @@ function App() {
             Edit <code>src/App.tsx</code> and save to reload.
           </Trans>
         <i>{t("counter", { count })}</i>
+        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           {t("description.part2")}
       <Footer t={t} />
     </div>
   );
 }
 
-export default function WrappedApp() {
-  return (
-    <Suspense fallback="...is loading">
-      <App />
-    </Suspense>
-  );
-}
+export default App;
