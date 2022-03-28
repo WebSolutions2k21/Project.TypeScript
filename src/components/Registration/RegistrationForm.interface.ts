@@ -1,4 +1,4 @@
-interface IRegistrationForm {
+export default interface IRegistrationForm {
   userName: string;
   firstName?: string;
   lastName?: string;
@@ -6,5 +6,3 @@ interface IRegistrationForm {
   password: string;
   confirmPassword: string;
 }
-
-export default IRegistrationForm;
