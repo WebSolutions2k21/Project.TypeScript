@@ -38,7 +38,7 @@ function App() {
         <i>{t("counter", { count })}</i>
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           {t("description.part2")}
-      <Footer t={t} />
+      <Footer />
     </div>
   );
 }
