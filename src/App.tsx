@@ -1,10 +1,7 @@
-import React from "react";
-
+import { useState, Suspense } from "react";
 import { RegistrationForm } from './components/Registration'
-import Footer from "./components/footer";
 import { useTranslation, Trans } from "react-i18next";
-import { useState } from "react";
-import { Suspense } from "react";
+import Footer from "./components/footer";
 
 const lngs = {
   en: { nativeName: "English" },
