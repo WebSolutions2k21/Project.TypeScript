@@ -1,4 +1,4 @@
-interface RegistrationFormInterface {
+interface IRegistrationForm {
   userName: string;
   firstName?: string;
   lastName?: string;
@@ -7,4 +7,4 @@ interface RegistrationFormInterface {
   confirmPassword: string;
 }
 
-export default RegistrationFormInterface;
+export default IRegistrationForm;

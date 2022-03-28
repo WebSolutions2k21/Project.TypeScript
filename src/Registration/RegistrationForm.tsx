@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 
-import RegistrationFormInterface from '../interfaces/RegistrationForm.interface';
+import IRegistrationForm from './RegistrationForm.interface';
 
 
 const registrationValidation = (values:any) => {
@@ -14,7 +14,7 @@ export const RegistrationForm = () => {
     <Formik
     initialValues={{ userName: '', firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }}
     validate={registrationValidation}
-    onSubmit={(values, { setSubmitting }: FormikHelpers<RegistrationFormInterface>) => {
+    onSubmit={(values, { setSubmitting }: FormikHelpers<IRegistrationForm>) => {
       setTimeout(() => {
         console.log(JSON.stringify(values, null, 2));
         setSubmitting(false);
@@ -24,27 +24,27 @@ export const RegistrationForm = () => {
     {({ isSubmitting }) => (
       <Form>
         <label htmlFor="userName">user name</label>
-        <Field type="text" name="userName" placeholder="Type your user name"/>
+        <Field type="text" name="userName" placeholder=""/>
         <ErrorMessage name="userName" component="div" />
 
         <label htmlFor="firstName">first name</label>
-        <Field type="text" name="firstName" placeholder="Type your first name"/>
+        <Field type="text" name="firstName" placeholder=""/>
         <ErrorMessage name="firstName" component="div" />
 
-        <label htmlFor="firstName">last name</label>
-        <Field type="text" name="lastName" placeholder="Type your last name"/>
+        <label htmlFor="lastName">last name</label>
+        <Field type="text" name="lastName" placeholder=""/>
         <ErrorMessage name="lastName" component="div" />
 
         <label htmlFor="email">email</label>
-        <Field type="email" name="email" placeholder="Type your email" />
+        <Field type="email" name="email" placeholder="" />
         <ErrorMessage name="email" component="div"/>
 
         <label htmlFor="password">password</label>
-        <Field type="password" name="password" placeholder="Type your password"/>
+        <Field type="password" name="password" placeholder=""/>
         <ErrorMessage name="password" component="div" />
 
         <label htmlFor="confirmPassword">confirm password</label>
-        <Field type="password" name="confirmPassword" placeholder="Type your confirm password"/>
+        <Field type="password" name="confirmPassword" placeholder=""/>
         <ErrorMessage name="confirmPassword" component="div" />
 
         <button type="submit" disabled={isSubmitting}>
