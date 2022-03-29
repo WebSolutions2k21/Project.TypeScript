@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [users, setUsers] = useState({ users: [] });
+
+  // Exemple check that axios works
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios('http://localhost:5000/users');
+
+      setUsers(result.data);
+    };
+    fetchData();
+  }, []);
+  console.log('users', users);
+
+  return <div>Test axios</div>;
 }
 
 export default App;
