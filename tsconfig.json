@@ -13,13 +13,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "baseUrl": "src",
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
+    "jsx": "react"
   },
-  "include": [
-      "src",
-    "Registration/RegistrationForm.tsx"
-    ]
+  "include": ["src", "Registration/RegistrationForm.tsx"]
 }
