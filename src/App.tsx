@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 
+import { RegistrationForm } from './components/Registration'
+
 function App() {
+
   const [users, setUsers] = useState({ users: [] });
 
   // Exemple check that axios works
@@ -16,7 +19,13 @@ function App() {
   }, []);
   console.log('users', users);
 
-  return <div>Test axios</div>;
+  return (
+    <div>
+      hello!
+      <RegistrationForm />
+    </div>
+  );
+
 }
 
 export default App;
