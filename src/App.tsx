@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { RegistrationForm } from './components/Registration'
+import { RegistrationForm } from "./components/Registration";
+import Footer from "components/Footer";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
     <div>
       hello!
       <RegistrationForm />
+      <Footer />
     </div>
   );
 

@@ -1,0 +1,15 @@
+{
+  "description": {
+    "part1": "Edytuj <1>src/App.js</1> i zapisz by ponownie wczytać.",
+    "part2": "Ucz się React'a"
+  },
+  "counter_one": "Język zmieniony tylko raz",
+  "counter_few": "Zmieniony jezyk juz {{count}} razy",
+  "counter_many": "Zmieniony jezyk juz {{count}} razy",
+  "footer": {
+    "date": "Dzisiaj jest {{date, DATE_HUGE}}",
+    "date_morning": "Dzień dobry! Dzisiaj jest {{date, DATE_HUGE}} | Miłego dnia!",
+    "date_afternoon": "Witaj! Dzisiaj jest {{date, DATE_HUGE}}",
+    "date_evening": "Dobry wieczór! Dzisiaj jest {{date, DATE_HUGE}}"
+  }
+}
