@@ -1,4 +1,9 @@
 {
+  "navbar": {
+    "home": "Start",
+    "aboutus": "O Nas",
+    "contact": "Kontakt"
+  },
   "description": {
     "part1": "Edytuj <1>src/App.js</1> i zapisz by ponownie wczytać.",
     "part2": "Ucz się React'a"
