@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
+import { Spin as Hamburger } from "hamburger-react";
 import {
   NavbarContainer,
   LeftContainer,
@@ -29,12 +30,8 @@ function Navbar() {
             <NavbarLink>{t("navbar.home")}</NavbarLink>
             <NavbarLink>{t("navbar.contact")}</NavbarLink>
             <NavbarLink>{t("navbar.aboutus")}</NavbarLink>
-            <OpenLinksButton
-              onClick={() => {
-                setExtendNavbar((curr) => !curr);
-              }}
-            >
-              {extendNavbar ? <>&#10005;</> : <>&#8801;</>}
+            <OpenLinksButton>
+              <Hamburger toggled={extendNavbar} toggle={setExtendNavbar} />
             </OpenLinksButton>
           </NavbarLinkContainer>
         </RightContainer>
