@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { RegistrationForm } from "./components/Registration";
 import Footer from "components/Footer";
+import Login from 'components/Login/Login';
 
 function App() {
 
@@ -21,7 +22,8 @@ function App() {
 
   return (
     <div>
-      hello!
+      hello
+      <Login/>
       <RegistrationForm />
       <Footer />
     </div>
