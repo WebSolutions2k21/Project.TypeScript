@@ -1,23 +1,19 @@
 import React from 'react';
 import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik';
-import { Label, Int, IntAll, Btn } from "./registration.style";
 
+import { Label, Int, IntAll, Btn, StyledInlineErrorMessage } from "./registration.style";
 import IRegistrationForm from './RegistrationForm.interface';
 import { TextInput } from '../Inputs/TextInput';
 import text from '../../utils/text.png'
 import password from '../../utils/password.png'
+import { SignupSchema } from './validate';
 
-
-const registrationValidation = (values:any) => {
-  const errors = {};
-  return errors;
-}
 
 export const RegistrationForm = () => {
   return (
     <Formik
       initialValues={{ userName: '', firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }}
-      validate={registrationValidation}
+      validationSchema={SignupSchema}
       onSubmit={(values, { setSubmitting }: FormikHelpers<IRegistrationForm>) => {
         setTimeout(() => {
           console.log(JSON.stringify(values, null, 2));
@@ -35,7 +31,7 @@ export const RegistrationForm = () => {
               <label htmlFor="userName">user name</label>
             </Label>
             <Field type="text" name="userName" placeholder="Type your user name" as={TextInput} />
-            <ErrorMessage name="userName" component="div"/>
+            <ErrorMessage name="userName" component={StyledInlineErrorMessage}/>
           </Int>
         </IntAll>
 
@@ -46,7 +42,7 @@ export const RegistrationForm = () => {
               <label htmlFor="firstName">first name</label>
             </Label>
             <Field type="text" name="firstName" placeholder="Type your first name" as={TextInput} />
-            <ErrorMessage name="firstName" component="div" />
+            <ErrorMessage name="firstName" component={StyledInlineErrorMessage} />
           </Int>
         </IntAll>
 
@@ -57,7 +53,7 @@ export const RegistrationForm = () => {
               <label htmlFor="lastName">last name</label>
             </Label>
             <Field type="text" name="lastName" placeholder="Type your last name" as={TextInput} />
-            <ErrorMessage name="lastName" component="div" />
+            <ErrorMessage name="lastName" component={StyledInlineErrorMessage} />
             </Int>
           </IntAll>
 
@@ -68,7 +64,7 @@ export const RegistrationForm = () => {
               <label htmlFor="email">email</label>
             </Label>
             <Field type="email" name="email" placeholder="Type your email" as={TextInput} />
-            <ErrorMessage name="email" component="div"/>
+            <ErrorMessage name="email" component={StyledInlineErrorMessage} />
           </Int>
         </IntAll>
 
@@ -79,7 +75,7 @@ export const RegistrationForm = () => {
               <label htmlFor="password">password</label>
             </Label>
             <Field type="password" name="password" placeholder="Type your password" as={TextInput} />
-            <ErrorMessage name="password" component="div" />
+            <ErrorMessage name="password" component={StyledInlineErrorMessage} />
           </Int>
         </IntAll>
 
@@ -90,7 +86,7 @@ export const RegistrationForm = () => {
               <label htmlFor="confirmPassword">confirm password</label>
             </Label>
             <Field type="password" name="confirmPassword" placeholder="Type your password" as={TextInput} />
-            <ErrorMessage name="confirmPassword" component="div" />
+            <ErrorMessage name="confirmPassword" component={StyledInlineErrorMessage} />
           </Int>
         </IntAll>
 

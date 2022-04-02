@@ -34,3 +34,9 @@ export const Btn = styled.div`
     font-size: 20px;
   }
 `;
+
+export const StyledInlineErrorMessage = styled.div`
+  color: red;
+  display: block;
+  margin-top: -18px;
+`;

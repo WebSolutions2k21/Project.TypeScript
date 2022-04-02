@@ -9,9 +9,9 @@ export const InputContainer = styled.div`
     padding: 12px 3px 5px 15px;
     font-size: 14px;
     width: 300px
-}
+  }
 
 & ::placeholder {
   text-align:right;
-}
+  }
 `;
