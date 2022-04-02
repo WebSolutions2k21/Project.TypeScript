@@ -21,7 +21,6 @@ function App() {
 
   return (
     <div>
-      hello!
       <RegistrationForm />
       <Footer />
     </div>
