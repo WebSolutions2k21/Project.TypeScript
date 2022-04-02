@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import {login} from '../../services/auth.service'
+import { Button } from "components/styles/Button.styled";
 
 const Login = () => {
     const initialValues: {
@@ -39,7 +40,7 @@ const Login = () => {
         <Field type="text" name="email" placeholder="email"/>
         <label htmlFor="password">password</label>
         <Field type="text" name="password" placeholder="password"/>
-        <button type='submit' disabled={!formik.isValid}> Submit</button>
+        <Button type='submit' disabled={!formik.isValid}> Submit</Button>
         </Form>
     }
 }
