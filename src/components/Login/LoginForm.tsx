@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
-import { login } from "../../services/auth.service";
 
+import AuthService from "../../services/auth.service";
 import { Button, Label, Input, StyledInlineErrorMessage, IconPassword, IconText } from "components/styles";
 
 const Login = () => {
@@ -14,15 +14,21 @@ const Login = () => {
     password: "",
   };
 
+  //this button will be remove (only test )
+  const logOut = () => {
+    AuthService.logout();
+  };
+
   const validationSchema = Yup.object({
     email: Yup.string().email("Invalid email format").required("Email is required"),
-    password: Yup.string().min(5).required("Required"),
+    password: Yup.string().min(5).required("Password is required"),
   });
 
   const onSubmit = (formValue: { email: string; password: string }) => {
     const { email, password } = formValue;
-    login(email, password).then(() => {
-      alert("You are login");
+    AuthService.login(email, password).then(() => {
+      // alert("You are login");
+      window.location.reload();
     });
   };
 
@@ -40,8 +46,7 @@ const Login = () => {
                 autoCapitalize="off"
                 autoCorrect="off"
                 autoComplete="email"
-                placeholder="your email"
-
+                placeholder="Type your email"
               />
               <ErrorMessage name="email">
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
@@ -50,7 +55,7 @@ const Login = () => {
             <Label htmlFor="password">
               <IconPassword />
               Password
-              <Input type="text" name="password" placeholder="your password" />
+              <Input type="text" name="password" placeholder="Type your password" />
               <ErrorMessage name="password">
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
               </ErrorMessage>
@@ -58,10 +63,12 @@ const Login = () => {
 
             <Button type="submit" disabled={!formValue.isValid}>
               Login
-            </Button>
+            </Button> 
           </Form>
         );
       }}
+
+   
     </Formik>
   );
 };
