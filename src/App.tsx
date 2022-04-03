@@ -1,36 +1,32 @@
-import React from 'react';
-import {ThemeProvider} from 'styled-components'
+import React from "react";
 
-import { RegistrationForm } from "./components/Registration";
+import { ThemeProvider } from "styled-components";
+import { RegistrationForm } from "./components";
 import Footer from "components/Footer";
-import Login from 'components/Login/Login';
-import GlobalStyles from 'components/styles/Global';
-import Header from 'components/Header';
-
+import GlobalStyles from "components/styles/Global";
+import Header from "components/Header";
+import Login from "components/Login/LoginForm";
 
 export const theme = {
   colors: {
-    header: '#ebfbff',
-    body: '#fff',
-    footer: '#003333',
+    header: "#ebfbff",
+    body: "#fff",
+    footer: "#003333",
   },
-  mobile: '768px',
-}
-
+  mobile: "768px",
+};
 
 function App() {
-
   return (
-    <ThemeProvider theme = {theme}>
-      <GlobalStyles/>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <Header />
-      hello
-      <Login/>
-      <RegistrationForm />
-      <Footer />
+      
+      <Login />
+      {/* <RegistrationForm />
+      <Footer /> */}
     </ThemeProvider>
   );
-
 }
 
 export default App;

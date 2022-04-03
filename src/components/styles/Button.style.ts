@@ -11,6 +11,6 @@ background-color: #D9248F;
   color: ${({ color }) => color || '#FFFFFF'};
   &:hover {
     opacity: 0.9;
-    transform: scale(0.98);
+  
   }
   `
