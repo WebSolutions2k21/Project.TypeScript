@@ -20,11 +20,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-
-
       <Login />
-      {/* <RegistrationForm />
-      <Footer /> */}
+      <RegistrationForm />
+      <Footer />
     </ThemeProvider>
   );
 }
