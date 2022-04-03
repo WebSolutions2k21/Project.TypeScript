@@ -3,7 +3,7 @@ import { Formik, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 
 import AuthService from "../../services/auth.service";
-import { Button, Label, Input, StyledInlineErrorMessage, IconPassword, IconText } from "components/styles";
+import { Button, Label, Input, StyledInlineErrorMessage, IconPassword, IconText, FormGroup } from "components/styles";
 
 const Login = () => {
   const initialValues: {
@@ -37,6 +37,7 @@ const Login = () => {
       {(formValue) => {
         return (
           <Form>
+            <FormGroup>
             <Label htmlFor="email">
               <IconText />
               Email
@@ -63,7 +64,7 @@ const Login = () => {
 
             <Button type="submit" disabled={!formValue.isValid}>
               Login
-            </Button> 
+            </Button> </FormGroup>
           </Form>
         );
       }}

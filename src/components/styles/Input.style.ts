@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { Field } from "formik";
 
 export const Input = styled(Field)`
-  margin: 5px 15px;
+  margin: 5px auto;
   border-style: none none solid none;
   outline: none;
-  padding: 12px 3px 5px 15px;
+  padding: 10px;
   font-size: 14px;
   width: 95%;
 
