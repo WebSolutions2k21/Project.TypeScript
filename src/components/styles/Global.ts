@@ -19,13 +19,6 @@ body {
   flex-direction: row;
   justify-content: center;
 }
-p {
-  opacity: 0.6;
-  line-height: 1.5;
-}
-img {
-  max-width: 100%;
-}
 `
 
 export default GlobalStyles;

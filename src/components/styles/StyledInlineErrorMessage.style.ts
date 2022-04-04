@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledInlineErrorMessage = styled.div`
   color: #d9248f;
-  display: block;
-  margin: 0 15px 10px 5px;
+  align-self: flex-start;
+  margin: 10px auto 5px 70px;
   font-size: 12px;
 `;
