@@ -28,7 +28,7 @@ const Login = () => {
     const { email, password } = formValue;
     AuthService.login(email, password).then(() => {
       // alert("You are login");
-      window.location.reload();
+      // window.location.reload();
     });
   };
 
@@ -55,13 +55,14 @@ const Login = () => {
             </Label>
             <Label htmlFor="password">
               <IconPassword />
-              Password
+              Password     
+             </Label>
+
               <Input type="text" name="password" placeholder="Type your password" />
               <ErrorMessage name="password">
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
               </ErrorMessage>
-            </Label>
-
+      
             <Button type="submit" disabled={!formValue.isValid}>
               Login
             </Button> </FormGroup>

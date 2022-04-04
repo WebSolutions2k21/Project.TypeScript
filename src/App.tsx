@@ -21,8 +21,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Login />
-      <RegistrationForm />
-      <Footer />
+       {/* <RegistrationForm /> */}
+      {/* <Footer />  */}
     </ThemeProvider>
   );
 }
