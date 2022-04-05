@@ -2,23 +2,22 @@ import { createGlobalStyle } from 'styled-components'
 
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Ubuntu:wght@300&display=swap');
 * {
   box-sizing: border-box;
-}
-body {
-  background-color: 'fff';
-  color: hsl(192, 100%, 9%);
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.15em;
+  padding: 0;
   margin: 0;
 }
-p {
-  opacity: 0.6;
-  line-height: 1.5;
-}
-img {
-  max-width: 100%;
+body {
+  background: linear-gradient(180deg, rgba(164, 205, 215, 0) 0%, #3C789E 100%);
+  background-repeat: no-repeat;
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 1.15em;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 `
 

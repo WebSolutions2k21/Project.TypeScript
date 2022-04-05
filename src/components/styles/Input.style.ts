@@ -2,16 +2,18 @@ import styled from "styled-components";
 import { Field } from "formik";
 
 export const Input = styled(Field)`
-  margin: 5px auto;
+  border: 1px solid #ffffff;
   border-style: none none solid none;
+  background: none;
   outline: none;
-  padding: 10px;
   font-size: 14px;
-  width: 95%;
+  width: 235px;
+  height: 30px;
+  padding: 10px 0;
+  color: #ffffff;
 
-  &:focus,
-  &:active {
-    box-shadow: rgb(210, 213, 217) 0px 0px 2px 1px, rgb(227, 230, 232) 0px 0px 0px 3px;
-    outline: none;
+  &::placeholder {
+    color: #ffffff;
+    text-align: right;
   }
 `;
