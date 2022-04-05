@@ -1,19 +1,24 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
+import * as Yup from "yup";
 
 import IRegistrationForm from './RegistrationForm.interface';
+import { Button, Label, Input, StyledInlineErrorMessage, IconPassword, IconText, FormGroup } from "components/styles";
+import { SignupSchema } from './validate';
 
-
-const registrationValidation = (values:any) => {
-  const errors = {};
-  return errors;
-}
 
 export const RegistrationForm = () => {
   return (
     <Formik
-    initialValues={{ userName: '', firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }}
-    validate={registrationValidation}
+    initialValues={{ 
+      userName: '', 
+      firstName: '', 
+      lastName: '', 
+      email: '', 
+      password: '', 
+      confirmPassword: '' 
+    }}
+    validationSchema={SignupSchema}
     onSubmit={(values, { setSubmitting }: FormikHelpers<IRegistrationForm>) => {
       setTimeout(() => {
         console.log(JSON.stringify(values, null, 2));
@@ -23,33 +28,102 @@ export const RegistrationForm = () => {
   >
     {({ isSubmitting }) => (
       <Form>
-        <label htmlFor="userName">user name</label>
-        <Field type="text" name="userName" placeholder=""/>
-        <ErrorMessage name="userName" component="div" />
+        <FormGroup>
+            <Label htmlFor="userName">
+              <IconText />
+              user name
+              <Input
+                type="text"
+                name="userName"
+                autoCapitalize="off"
+                autoCorrect="off"                
+                placeholder="Type your user name"
+                />
+                <ErrorMessage name="userName">
+                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                </ErrorMessage>
+            </Label>
 
-        <label htmlFor="firstName">first name</label>
-        <Field type="text" name="firstName" placeholder=""/>
-        <ErrorMessage name="firstName" component="div" />
+            <Label htmlFor="firstName">
+              <IconText />
+              first name
+              <Input
+                type="text"
+                name="firstName"
+                autoCapitalize="off"
+                autoCorrect="off"                
+                placeholder="Type your first name"
+                />
+                <ErrorMessage name="firstName">
+                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                </ErrorMessage>
+            </Label>
 
-        <label htmlFor="lastName">last name</label>
-        <Field type="text" name="lastName" placeholder=""/>
-        <ErrorMessage name="lastName" component="div" />
+            <Label htmlFor="lastName">
+              <IconText />
+              last name
+              <Input
+                type="text"
+                name="lastName"
+                autoCapitalize="off"
+                autoCorrect="off"                
+                placeholder="Type your last name"
+                />
+                <ErrorMessage name="lastName">
+                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                </ErrorMessage>
+            </Label>
 
-        <label htmlFor="email">email</label>
-        <Field type="email" name="email" placeholder="" />
-        <ErrorMessage name="email" component="div"/>
+            <Label htmlFor="email">
+              <IconText />
+              email
+              <Input
+                type="email"
+                name="email"
+                autoCapitalize="off"
+                autoCorrect="off"
+                autoComplete="email"                
+                placeholder="Type your email"
+                />
+                <ErrorMessage name="email">
+                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                </ErrorMessage>
+            </Label>
 
-        <label htmlFor="password">password</label>
-        <Field type="password" name="password" placeholder=""/>
-        <ErrorMessage name="password" component="div" />
+            <Label htmlFor="password">
+              <IconPassword /> 
+              password
+              <Input
+                type="password"
+                name="password"
+                autoCapitalize="off"
+                autoCorrect="off"              
+                placeholder="Type your password"
+                />
+                <ErrorMessage name="password">
+                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                </ErrorMessage>
+            </Label>
 
-        <label htmlFor="confirmPassword">confirm password</label>
-        <Field type="password" name="confirmPassword" placeholder=""/>
-        <ErrorMessage name="confirmPassword" component="div" />
+            <Label htmlFor="confirmPassword">
+              <IconPassword /> 
+              confirm password
+              <Input
+                type="password"
+                name="confirmPassword"
+                autoCapitalize="off"
+                autoCorrect="off"              
+                placeholder="Type your password"
+                />
+                <ErrorMessage name="confirmPassword">
+                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                </ErrorMessage>
+            </Label>
 
-        <button type="submit" disabled={isSubmitting}>
-          Submit
-        </button>
+          <Button type="submit" disabled={isSubmitting}>
+            Submit
+          </Button>
+        </FormGroup>
       </Form>
     )}
   </Formik>
