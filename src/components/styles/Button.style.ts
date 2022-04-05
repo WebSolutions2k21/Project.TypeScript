@@ -10,6 +10,7 @@ export const Button = styled.button`
   font-size: 20px;
   line-height: 24px;
   text-align: center;
+  cursor: pointer;
   color: ${({ color }) => color || "#FFFFFF"};
   &:hover {
     opacity: 0.9;

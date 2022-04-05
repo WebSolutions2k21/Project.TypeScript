@@ -4,4 +4,4 @@ export * from "./Input.style";
 export * from "./Icon.style";
 export * from "./FormGroup.style";
 export * from "./StyledInlineErrorMessage.style";
-
+export * from "./Foot.style";

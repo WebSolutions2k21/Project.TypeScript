@@ -1,10 +1,10 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
-import * as Yup from "yup";
+import { Formik, Form, ErrorMessage, FormikHelpers } from 'formik';
 
 import IRegistrationForm from './RegistrationForm.interface';
-import { Button, Label, Input, StyledInlineErrorMessage, IconPassword, IconText, FormGroup } from "components/styles";
 import { SignupSchema } from './validate';
+import { Button, Label, Input, StyledInlineErrorMessageReg, IconPassword, IconText, FormGroup, Line, Foot } from "components/styles";
+import { LogoPageSmall } from "components/styles/LogoPage.style";
 
 
 export const RegistrationForm = () => {
@@ -29,6 +29,7 @@ export const RegistrationForm = () => {
     {({ isSubmitting }) => (
       <Form>
         <FormGroup>
+        <LogoPageSmall />
             <Label htmlFor="userName">
               <IconText />
               user name
@@ -40,7 +41,7 @@ export const RegistrationForm = () => {
                 placeholder="Type your user name"
                 />
                 <ErrorMessage name="userName">
-                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
                 </ErrorMessage>
             </Label>
 
@@ -55,7 +56,7 @@ export const RegistrationForm = () => {
                 placeholder="Type your first name"
                 />
                 <ErrorMessage name="firstName">
-                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
                 </ErrorMessage>
             </Label>
 
@@ -70,7 +71,7 @@ export const RegistrationForm = () => {
                 placeholder="Type your last name"
                 />
                 <ErrorMessage name="lastName">
-                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
                 </ErrorMessage>
             </Label>
 
@@ -81,12 +82,11 @@ export const RegistrationForm = () => {
                 type="email"
                 name="email"
                 autoCapitalize="off"
-                autoCorrect="off"
-                autoComplete="email"                
+                autoCorrect="off"               
                 placeholder="Type your email"
                 />
                 <ErrorMessage name="email">
-                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
                 </ErrorMessage>
             </Label>
 
@@ -101,7 +101,7 @@ export const RegistrationForm = () => {
                 placeholder="Type your password"
                 />
                 <ErrorMessage name="password">
-                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
                 </ErrorMessage>
             </Label>
 
@@ -116,13 +116,20 @@ export const RegistrationForm = () => {
                 placeholder="Type your password"
                 />
                 <ErrorMessage name="confirmPassword">
-                  {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
                 </ErrorMessage>
             </Label>
 
           <Button type="submit" disabled={isSubmitting}>
             Submit
           </Button>
+
+          <Foot>
+            <a href="">Login Page</a>
+            <Line />
+            <a href="">Home Page</a>
+          </Foot>
+          
         </FormGroup>
       </Form>
     )}
