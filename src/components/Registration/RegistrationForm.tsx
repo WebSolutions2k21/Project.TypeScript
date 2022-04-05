@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage, FormikHelpers } from 'formik';
+import { useTranslation } from "react-i18next";
 
 import IRegistrationForm from './RegistrationForm.interface';
 import { SignupSchema } from './validate';
@@ -8,6 +9,8 @@ import { LogoPageSmall } from "components/styles/LogoPage.style";
 
 
 export const RegistrationForm = () => {
+  const { t } = useTranslation();
+
   return (
     <Formik
     initialValues={{ 
@@ -32,13 +35,13 @@ export const RegistrationForm = () => {
         <LogoPageSmall />
             <Label htmlFor="userName">
               <IconText />
-              user name
+              {t("registration.userName.name")}
               <Input
                 type="text"
                 name="userName"
                 autoCapitalize="off"
                 autoCorrect="off"                
-                placeholder="Type your user name"
+                placeholder={t("registration.userName.placeholder")}
                 />
                 <ErrorMessage name="userName">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
@@ -47,13 +50,13 @@ export const RegistrationForm = () => {
 
             <Label htmlFor="firstName">
               <IconText />
-              first name
+              {t("registration.firstName.name")}
               <Input
                 type="text"
                 name="firstName"
                 autoCapitalize="off"
                 autoCorrect="off"                
-                placeholder="Type your first name"
+                placeholder={t("registration.firstName.placeholder")}
                 />
                 <ErrorMessage name="firstName">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
@@ -62,13 +65,13 @@ export const RegistrationForm = () => {
 
             <Label htmlFor="lastName">
               <IconText />
-              last name
+              {t("registration.lastName.name")}
               <Input
                 type="text"
                 name="lastName"
                 autoCapitalize="off"
                 autoCorrect="off"                
-                placeholder="Type your last name"
+                placeholder={t("registration.lastName.placeholder")}
                 />
                 <ErrorMessage name="lastName">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
@@ -77,13 +80,13 @@ export const RegistrationForm = () => {
 
             <Label htmlFor="email">
               <IconText />
-              email
+              {t("registration.email.name")}
               <Input
                 type="email"
                 name="email"
                 autoCapitalize="off"
                 autoCorrect="off"               
-                placeholder="Type your email"
+                placeholder={t("registration.email.placeholder")}
                 />
                 <ErrorMessage name="email">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
@@ -92,13 +95,13 @@ export const RegistrationForm = () => {
 
             <Label htmlFor="password">
               <IconPassword /> 
-              password
+              {t("registration.password.name")}
               <Input
                 type="password"
                 name="password"
                 autoCapitalize="off"
                 autoCorrect="off"              
-                placeholder="Type your password"
+                placeholder={t("registration.password.placeholder")}
                 />
                 <ErrorMessage name="password">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
@@ -107,13 +110,13 @@ export const RegistrationForm = () => {
 
             <Label htmlFor="confirmPassword">
               <IconPassword /> 
-              confirm password
+              {t("registration.confirmPassword.name")}
               <Input
                 type="password"
                 name="confirmPassword"
                 autoCapitalize="off"
                 autoCorrect="off"              
-                placeholder="Type your password"
+                placeholder={t("registration.password.placeholder")}
                 />
                 <ErrorMessage name="confirmPassword">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
@@ -121,13 +124,13 @@ export const RegistrationForm = () => {
             </Label>
 
           <Button type="submit" disabled={isSubmitting}>
-            Submit
+          {t("registration.button.name")}
           </Button>
 
           <Foot>
-            <a href="">Login Page</a>
+            <a href="">{t("registration.foot.login")}</a>
             <Line />
-            <a href="">Home Page</a>
+            <a href="">{t("registration.foot.home")}</a>
           </Foot>
           
         </FormGroup>
