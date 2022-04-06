@@ -1,29 +1,30 @@
 import * as Yup from "yup";
+import { t } from "i18next"; 
 
  const lowercaseRegex = /(?=.*[a-z])/;
  const uppercaseRegex = /(?=.*[A-Z])/;
  const numericRegex = /(?=.*[0-9])/;
 
- export const SignupSchema = Yup.object().shape({
+ export const SignupSchema = () => Yup.object().shape({
    userName: Yup.string()
-     .min(2, "Your user name is too short")
-     .required("Please enter your user name"),
+     .min(2, t`registration.validation.userName`)
+     .required(t`registration.validation.userNameReq`),
    firstName: Yup.string()
-     .min(2, "Your first name is too short"),
+     .min(2, t`registration.validation.firstName`),
    lastName: Yup.string()
-     .min(2, "Your last name is too short"),
+     .min(2, t`registration.validation.lastName`),
    email: Yup.string()
      .lowercase()
-     .min(5, "Your email is too short")
-     .email('The email is incorrect')
-     .required('Please enter your email'),
+     .min(5, t`registration.validation.email`)
+     .email(t`registration.validation.emailIn`)
+     .required(t`registration.validation.emailReq`),
    password: Yup.string()
-     .matches(lowercaseRegex, 'One lowercase required!')
-     .matches(uppercaseRegex, 'One uppercase required!')
-     .matches(numericRegex, 'One number required!')
-     .min(8, 'Minimum 8 characters required!')
-     .required('Please enter your password'),
+     .matches(lowercaseRegex, t`registration.validation.passwordLow`)
+     .matches(uppercaseRegex, t`registration.validation.passwordUpp`)
+     .matches(numericRegex, t`registration.validation.passwordNum`)
+     .min(8, t`registration.validation.passwordMin`)
+     .required(t`registration.validation.passwordReq`),
    confirmPassword: Yup.string()
-     .oneOf([Yup.ref('password')], 'Password must be the same!')
-     .required('Please enter your password'),
+     .oneOf([Yup.ref('password')], t`registration.validation.confirmPassword`)
+     .required(t`registration.validation.passwordReq`),
  });
