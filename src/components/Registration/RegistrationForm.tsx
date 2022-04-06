@@ -128,9 +128,9 @@ export const RegistrationForm = () => {
           </Button>
 
           <Foot>
-            <a href="">{t("registration.foot.login")}</a>
+            <a href="https://brain-code.netlify.app/">{t("registration.foot.login")}</a>
             <Line />
-            <a href="">{t("registration.foot.home")}</a>
+            <a href="https://brain-code.netlify.app/">{t("registration.foot.home")}</a>
           </Foot>
           
         </FormGroup>
