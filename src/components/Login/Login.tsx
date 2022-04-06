@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
+import { toast, ToastContainer } from "react-toastify";
 
-import AuthService from "../../services/auth.service";
-import { Button, Label, Input, StyledInlineErrorMessage, IconPassword, IconText, FormGroup } from "components/styles";
-import { LogoPage } from "components/styles/LogoPage.style";
+import { login } from "services/auth.service";
+import {
+  Button,
+  Label,
+  Input,
+  StyledInlineErrorMessage,
+  IconPassword,
+  IconText,
+  LogoPage,
+} from "components/styles";
+import { LoginForm } from "./Login.style";
 
+interface ILogin {
+  email: string;
+  password: string;
+}
 const Login = () => {
-  const initialValues: {
-    email: string;
-    password: string;
-  } = {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const initialValues: ILogin = {
     email: "",
     password: "",
   };
@@ -20,17 +32,29 @@ const Login = () => {
     password: Yup.string().required("Password is required"),
   });
 
-  const onSubmit = (formValue: { email: string; password: string }) => {
+  const onSubmit = async (formValue: { email: string; password: string }) => {
     const { email, password } = formValue;
-    AuthService.login(email, password)
-      .then((value) => {
-        console.log("Nice, it worked!", value);
-        // this.navroute.navigate(['home']);
-      })
-      .catch((err) => {
-        console.log("Something went wrong:", err.message);
-        // this.AuthError = err.message;
-      });
+
+    setLoading(true);
+    await login(email, password).then(
+      () => {
+        console.log("Tu wejdzie success");
+        //Navigate to user profile
+        toast.success("Successful Login!", {
+          position: toast.POSITION.BOTTOM_CENTER,
+          autoClose: 1000,
+        });
+      },
+      (error) => {
+        console.log("Tu wejdzie error");
+        const resMessage = (error.response && error.response.data) || error.message || error.toString();
+        console.log("Error", resMessage);
+        setLoading(false);
+        toast.error(resMessage, { 
+          position: toast.POSITION.BOTTOM_CENTER,
+          autoClose: 2000 });
+      },
+    );
   };
 
   return (
@@ -38,11 +62,11 @@ const Login = () => {
       {(formValue) => {
         return (
           <Form>
-            <FormGroup>
+            <LoginForm>
               <LogoPage></LogoPage>
               <Label htmlFor="email">
                 <IconText />
-                Email
+                email
               </Label>
               <Input
                 type="email"
@@ -57,16 +81,17 @@ const Login = () => {
               </ErrorMessage>
               <Label htmlFor="password">
                 <IconPassword />
-                Password
+                password
               </Label>
-              <Input type="text" name="password" placeholder="Type your password" />
+              <Input type="password" name="password" placeholder="Type your password" />
               <ErrorMessage name="password">
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
               </ErrorMessage>
               <Button type="submit" disabled={!formValue.isValid}>
                 Login
-              </Button>{" "}
-            </FormGroup>
+              </Button>
+            </LoginForm>
+            <ToastContainer />
             {/* <p>Create Account | Forgot Password</p> */}
           </Form>
         );

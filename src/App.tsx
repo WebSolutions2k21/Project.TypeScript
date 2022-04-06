@@ -5,15 +5,13 @@ import { RegistrationForm } from "./components";
 import Footer from "components/Footer";
 import GlobalStyles from "components/styles/Global";
 
-import Login from "components/Login/LoginForm";
+import Login from "components/Login/Login";
 
 export const theme = {
   colors: {
-    header: "#ebfbff",
+    primary: "#d9248f",
     body: "#fff",
-    footer: "#003333",
-  },
-  mobile: "768px",
+  }
 };
 
 function App() {
