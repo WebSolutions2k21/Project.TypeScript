@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
@@ -20,7 +20,6 @@ interface ILogin {
   password: string;
 }
 const Login = () => {
-  const [loading, setLoading] = useState<boolean>(false);
 
   const initialValues: ILogin = {
     email: "",
@@ -35,7 +34,6 @@ const Login = () => {
   const onSubmit = async (formValue: { email: string; password: string }) => {
     const { email, password } = formValue;
 
-    setLoading(true);
     await login(email, password).then(
       () => {
         console.log("Tu wejdzie success");
@@ -49,7 +47,6 @@ const Login = () => {
         console.log("Tu wejdzie error");
         const resMessage = (error.response && error.response.data) || error.message || error.toString();
         console.log("Error", resMessage);
-        setLoading(false);
         toast.error(resMessage, { 
           position: toast.POSITION.BOTTOM_CENTER,
           autoClose: 2000 });

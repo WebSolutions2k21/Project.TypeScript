@@ -1,8 +1,8 @@
 import React from "react";
 
 import { ThemeProvider } from "styled-components";
-import { RegistrationForm } from "./components";
-import Footer from "components/Footer";
+// import { RegistrationForm } from "./components";
+// import Footer from "components/Footer";
 import GlobalStyles from "components/styles/Global";
 
 import Login from "components/Login/Login";
@@ -19,8 +19,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Login />
-       {/* <RegistrationForm /> */}
-      {/* <Footer />  */}
+       {/* <RegistrationForm />
+      <Footer />  */}
     </ThemeProvider>
   );
 }
