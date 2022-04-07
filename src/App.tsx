@@ -1,11 +1,10 @@
 import React from "react";
 
 import { ThemeProvider } from "styled-components";
-// import { RegistrationForm } from "./components";
+import { RegistrationForm } from "./components";
 // import Footer from "components/Footer";
 import GlobalStyles from "components/styles/Global";
-
-import Login from "components/Login/Login";
+// import Login from "components/Login/Login";
 
 export const theme = {
   colors: {
@@ -18,9 +17,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Login />
-       {/* <RegistrationForm />
-      <Footer />  */}
+      {/* <Login /> */}
+      <RegistrationForm />
+      {/* <Footer />  */} 
     </ThemeProvider>
   );
 }
