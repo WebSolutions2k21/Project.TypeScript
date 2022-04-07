@@ -11,5 +11,32 @@
     "date_morning": "Dzień dobry! Dzisiaj jest {{date, DATE_HUGE}} | Miłego dnia!",
     "date_afternoon": "Witaj! Dzisiaj jest {{date, DATE_HUGE}}",
     "date_evening": "Dobry wieczór! Dzisiaj jest {{date, DATE_HUGE}}"
+  },
+  "user": {
+    "email": {
+      "name": "email",
+      "placeholder": "Wpisz swój email",
+      "validation": {
+        "requied": "Email jest wymagany",
+        "format": "Niepoprawny format maila"
+      }
+    },
+    "password": {
+      "name": "hasło",
+      "placeholder": "Wpisz swoje hasło",
+      "validation": {
+        "requied": "Hasło jest wymagane"
+      }
+    }
+  },
+  "button": {
+    "login": "Zaloguj"
+  },
+  "toast": {
+    "login": {
+      "success": "Zalogowano poprawnie!",
+      "length": "Hasło powinno posiadać 8 lub więcej znaków",
+      "error": "Niepoprawne logowanie"
+    }
   }
 }

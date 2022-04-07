@@ -10,5 +10,32 @@
     "date_morning": "Good morning! Today is {{date, DATE_HUGE}} | Have a nice day!",
     "date_afternoon": "Good afternoon! It's {{date, DATE_HUGE}}",
     "date_evening": "Good evening! Today was the {{date, DATE_HUGE}}"
+  },
+  "user": {
+    "email": {
+      "name": "email",
+      "placeholder": "Type your email",
+      "validation":{
+        "requied": "Email is required",
+        "format": "Invalid email format"
+      }
+    },
+    "password": {
+      "name": "password",
+      "placeholder": "Type your password",
+      "validation":{
+        "requied": "Password is required"
+      }
+    }
+  },
+  "button": {
+    "login": "Login"
+  },
+  "toast": {
+    "login": {
+      "success": "Successful Login!",
+      "length": "Password length must be at least 8 characters long",
+      "error": "Incorrect login"
+    }
   }
 }
