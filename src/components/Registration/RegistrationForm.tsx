@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 
 import IRegistrationForm from './RegistrationForm.interface';
 import { SignupSchema } from './validate';
-import { Button, Label, Input, StyledInlineErrorMessageReg, IconPassword, IconText, FormGroup, Line, Foot } from "components/styles";
+import { RegForm } from './RegForm.style';
+import { Button, Label, Input, StyledInlineErrorMessageReg, IconPassword, IconText, Line, Foot } from "components/styles";
 import { LogoPageSmall } from "components/styles/LogoPage.style";
 
 
@@ -31,7 +32,7 @@ export const RegistrationForm = () => {
   >
     {({ isSubmitting }) => (
       <Form>
-        <FormGroup>
+        <RegForm>
         <LogoPageSmall />
             <Label htmlFor="userName">
               <IconText />
@@ -133,7 +134,7 @@ export const RegistrationForm = () => {
             <a href="https://brain-code.netlify.app/">{t`registration.foot.home`}</a>
           </Foot>
           
-        </FormGroup>
+        </RegForm>
       </Form>
     )}
   </Formik>
