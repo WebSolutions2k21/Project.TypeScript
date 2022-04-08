@@ -19,7 +19,7 @@ import {
   Line,
   Foot,
 } from "components/styles";
-import { LoginForm, View } from "./Login.style";
+import { LoginForm, StyledInlineErrorMessageForm, View } from "./Login.style";
 
 interface ILogin {
   email: string;
@@ -85,7 +85,7 @@ export const Login = () => {
                 placeholder={t`user.email.placeholder`}
               />
               <ErrorMessage name="email">
-                {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                {(msg) => <StyledInlineErrorMessageForm>{msg}</StyledInlineErrorMessageForm>}
               </ErrorMessage>
               <Label htmlFor="password">
                 <IconPassword />
