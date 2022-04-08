@@ -10,7 +10,9 @@
     "date": "Dzisiaj jest {{date, DATE_HUGE}}",
     "date_morning": "Dzień dobry! Dzisiaj jest {{date, DATE_HUGE}} | Miłego dnia!",
     "date_afternoon": "Witaj! Dzisiaj jest {{date, DATE_HUGE}}",
-    "date_evening": "Dobry wieczór! Dzisiaj jest {{date, DATE_HUGE}}"
+    "date_evening": "Dobry wieczór! Dzisiaj jest {{date, DATE_HUGE}}",
+    "createAccount": "Utwórz konto",
+    "forgotPassword": "Przypomnij hasło"
   },
   "user": {
     "email": {

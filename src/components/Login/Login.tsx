@@ -16,6 +16,8 @@ import {
   LogoPage,
   IconEyeHide,
   Toast,
+  Line,
+  Foot,
 } from "components/styles";
 import { LoginForm, View } from "./Login.style";
 
@@ -103,16 +105,19 @@ const Login = () => {
                   ""
                 )}
               </View>
-
               <ErrorMessage name="password">
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
               </ErrorMessage>
               <Button type="submit" disabled={!formValue.isValid}>
                 {t("button.login")}
               </Button>
+              <Foot>
+                <a href="https://brain-code.netlify.app/">{t`footer.createAccount`}</a>
+                <Line />
+                <a href="https://brain-code.netlify.app/">{t`footer.forgotPassword`}</a>
+              </Foot>
             </LoginForm>
             <Toast />
-            {/* <p>Create Account | Forgot Password</p> */}
           </Form>
         );
       }}
