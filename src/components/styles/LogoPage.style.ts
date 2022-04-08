@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logo from "../../assets/BrainCodeLogo.png";
+import logo from "assets/BrainCodeLogo.png";
 
 export const LogoPage = styled.img.attrs({
   src: `${logo}`,

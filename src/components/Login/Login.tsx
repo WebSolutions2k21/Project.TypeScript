@@ -25,10 +25,10 @@ interface ILogin {
   email: string;
   password: string;
 }
-const Login = () => {
+export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
-    setPasswordShown(!passwordShown);
+    setPasswordShown((prev) => !prev);
   };
 
   const { t } = useTranslation();
@@ -74,7 +74,7 @@ const Login = () => {
               <LogoPage></LogoPage>
               <Label htmlFor="email">
                 <IconText />
-                {t("user.email.name")}
+                {t`user.email.name`}
               </Label>
               <Input
                 type="email"
@@ -82,20 +82,20 @@ const Login = () => {
                 autoCapitalize="off"
                 autoCorrect="off"
                 autoComplete="email"
-                placeholder={t("user.email.placeholder")}
+                placeholder={t`user.email.placeholder`}
               />
               <ErrorMessage name="email">
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
               </ErrorMessage>
               <Label htmlFor="password">
                 <IconPassword />
-                {t("user.password.name")}
+                {t`user.password.name`}
               </Label>
               <View>
                 <Input
                   type={passwordShown ? "text" : "password"}
                   name="password"
-                  placeholder={t("user.password.placeholder")}
+                  placeholder={t`user.password.placeholder`}
                 />
                 {formValue.values.password.length > 0 ? (
                   <>
@@ -109,7 +109,7 @@ const Login = () => {
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
               </ErrorMessage>
               <Button type="submit" disabled={!formValue.isValid}>
-                {t("button.login")}
+                {t`button.login`}
               </Button>
               <Foot>
                 <a href="https://brain-code.netlify.app/">{t`footer.createAccount`}</a>

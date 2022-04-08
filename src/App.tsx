@@ -2,18 +2,11 @@ import React from "react";
 
 import { ThemeProvider } from "styled-components";
 import Footer from "components/Footer";
-import { RegistrationForm } from "./components";
-import GlobalStyles from "components/styles/Global";
-import Login from "components/Login/Login";
+import { RegistrationForm, Login } from "components";
+import {GlobalStyles, theme} from "components/styles/Global";
 
-export const theme = {
-  colors: {
-    primary: "#d9248f",
-    warning: "#FF0000",
-    text: "#174C6F",
-    body: "#fff",
-  },
-};
+
+
 
 function App() {
   return (

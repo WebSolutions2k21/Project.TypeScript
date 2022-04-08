@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import text from '../../assets/text.png';
-import password from '../../assets/password.png'
-import eye from '../../assets/eye.svg'
-import eyeHide from '../../assets/eyeHide.svg'
-import line from '../../assets/line.png'
+import text from 'assets/text.png';
+import password from 'assets/password.png'
+import eye from 'assets/eye.svg'
+import eyeHide from 'assets/eyeHide.svg'
+import line from 'assets/line.png'
 
 export const IconText = styled.img.attrs({
   src: `${text}`
