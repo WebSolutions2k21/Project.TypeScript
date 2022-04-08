@@ -4,8 +4,8 @@ export const LoginForm = styled.div`
     display: flex;
     flex-direction: column;
     align: center;
-	width: 375px;
-	align-items: center;
+	width: 365px;
+    align-items: center;
 `;
 
 export const View = styled.div`

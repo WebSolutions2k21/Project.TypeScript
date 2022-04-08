@@ -1,10 +1,9 @@
 import React from "react";
 
 import { ThemeProvider } from "styled-components";
-// import { RegistrationForm } from "./components";
 import Footer from "components/Footer";
+import { RegistrationForm } from "./components";
 import GlobalStyles from "components/styles/Global";
-
 import Login from "components/Login/Login";
 
 export const theme = {
@@ -12,8 +11,8 @@ export const theme = {
     primary: "#d9248f",
     warning: "#FF0000",
     text: "#174C6F",
-    body: "#fff"
-  }
+    body: "#fff",
+  },
 };
 
 function App() {
@@ -21,8 +20,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Login />
-       {/* <RegistrationForm /> */}
-      <Footer /> 
+
+      <p>Registration</p>
+
+      <RegistrationForm />
+      <Footer />
     </ThemeProvider>
   );
 }

@@ -15,7 +15,7 @@
     "email": {
       "name": "email",
       "placeholder": "Type your email",
-      "validation":{
+      "validation": {
         "requied": "Email is required",
         "format": "Invalid email format"
       }
@@ -23,9 +23,56 @@
     "password": {
       "name": "password",
       "placeholder": "Type your password",
-      "validation":{
+      "validation": {
         "requied": "Password is required"
       }
+    }
+  },
+  "registration": {
+    "userName": {
+      "name": "user name",
+      "placeholder": "Type your user name"
+    },
+    "firstName": {
+      "name": "first name",
+      "placeholder": "Type your first name"
+    },
+    "lastName": {
+      "name": "last name",
+      "placeholder": "Type your last name"
+    },
+    "email": {
+      "name": "email",
+      "placeholder": "Type your email"
+    },
+    "password": {
+      "name": "password",
+      "placeholder": "Type your password"
+    },
+    "confirmPassword": {
+      "name": "confirm password"
+    },
+    "button": {
+      "name": "Submit"
+    },
+    "foot": {
+      "login": "Login Page",
+      "home": "Home Page"
+    },
+    "validation": {
+      "userName": "Your user name is too short",
+      "userNameReq": "Please enter your user name",
+      "firstName": "Your first name is too short",
+      "lastName": "Your last name is too short",
+      "email": "Your email is too short",
+      "emailIn": "The email is incorrect",
+      "emailReq": "Please enter your email",
+      "passwordLow": "One lowercase required",
+      "passwordUpp": "One uppercase required",
+      "passwordNum": "One number required",
+      "passwordMin": "Minimum 8 characters required",
+      "passwordReq": "Please enter your password",
+      "confirmPassword": "Password must be the same"
     }
   },
   "button": {

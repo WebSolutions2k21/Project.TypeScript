@@ -6,3 +6,9 @@ export const StyledInlineErrorMessage = styled.div`
   margin: 10px auto 5px 70px;
   font-size: 14px;
 `;
+
+export const StyledInlineErrorMessageReg = styled.div`
+  color: #d9248f;
+  align-self: flex-start;
+  font-size: 12px;
+`;
