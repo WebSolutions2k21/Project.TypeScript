@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Ubuntu:wght@300&display=swap');
 * {
   box-sizing: border-box;
@@ -20,5 +20,12 @@ body {
   justify-content: center;
 }
 `
+export const theme = {
+  colors: {
+    primary: "#d9248f",
+    warning: "#FF0000",
+    text: "#174C6F",
+    body: "#fff",
+  },
+};
 
-export default GlobalStyles;

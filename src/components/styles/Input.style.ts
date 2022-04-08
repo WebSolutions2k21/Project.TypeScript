@@ -16,4 +16,7 @@ export const Input = styled(Field)`
     color: #ffffff;
     text-align: right;
   }
+  & > img {
+    padding-right: 10px;
+  }
 `;

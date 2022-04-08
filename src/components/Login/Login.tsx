@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import { login } from "services/auth.service";
 import {
@@ -9,17 +10,28 @@ import {
   Label,
   Input,
   StyledInlineErrorMessage,
+  IconEye,
   IconPassword,
   IconText,
   LogoPage,
+  IconEyeHide,
+  Toast,
+  Line,
+  Foot,
 } from "components/styles";
-import { LoginForm } from "./Login.style";
+import { LoginForm, StyledInlineErrorMessageForm, View } from "./Login.style";
 
 interface ILogin {
   email: string;
   password: string;
 }
-const Login = () => {
+export const Login = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+    setPasswordShown((prev) => !prev);
+  };
+
+  const { t } = useTranslation();
 
   const initialValues: ILogin = {
     email: "",
@@ -27,8 +39,10 @@ const Login = () => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email("Invalid email format").required("Email is required"),
-    password: Yup.string().required("Password is required"),
+    email: Yup.string()
+      .email(t`user.email.validation.format`)
+      .required(t`user.email.validation.requied`),
+    password: Yup.string().required(t`user.password.validation.requied`),
   });
 
   const onSubmit = async (formValue: { email: string; password: string }) => {
@@ -36,20 +50,17 @@ const Login = () => {
 
     await login(email, password).then(
       () => {
-        console.log("Tu wejdzie success");
         //Navigate to user profile
-        toast.success("Successful Login!", {
-          position: toast.POSITION.BOTTOM_CENTER,
-          autoClose: 1000,
-        });
+        toast.success(t`toast.login.success`);
       },
       (error) => {
-        console.log("Tu wejdzie error");
         const resMessage = (error.response && error.response.data) || error.message || error.toString();
-        console.log("Error", resMessage);
-        toast.error(resMessage, { 
-          position: toast.POSITION.BOTTOM_CENTER,
-          autoClose: 2000 });
+        switch (resMessage) {
+          case '"password" length must be at least 8 characters long':
+            return toast.error(t`toast.login.length`);
+          default:
+            return toast.error(t`toast.login.error`);
+        }
       },
     );
   };
@@ -63,7 +74,7 @@ const Login = () => {
               <LogoPage></LogoPage>
               <Label htmlFor="email">
                 <IconText />
-                email
+                {t`user.email.name`}
               </Label>
               <Input
                 type="email"
@@ -71,25 +82,42 @@ const Login = () => {
                 autoCapitalize="off"
                 autoCorrect="off"
                 autoComplete="email"
-                placeholder="Type your email"
+                placeholder={t`user.email.placeholder`}
               />
               <ErrorMessage name="email">
-                {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                {(msg) => <StyledInlineErrorMessageForm>{msg}</StyledInlineErrorMessageForm>}
               </ErrorMessage>
               <Label htmlFor="password">
                 <IconPassword />
-                password
+                {t`user.password.name`}
               </Label>
-              <Input type="password" name="password" placeholder="Type your password" />
+              <View>
+                <Input
+                  type={passwordShown ? "text" : "password"}
+                  name="password"
+                  placeholder={t`user.password.placeholder`}
+                />
+                {formValue.values.password.length > 0 ? (
+                  <>
+                    {passwordShown ? <IconEye onClick={togglePassword} /> : <IconEyeHide onClick={togglePassword} />}{" "}
+                  </>
+                ) : (
+                  ""
+                )}
+              </View>
               <ErrorMessage name="password">
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
               </ErrorMessage>
               <Button type="submit" disabled={!formValue.isValid}>
-                Login
+                {t`button.login`}
               </Button>
+              <Foot>
+                <a href="https://brain-code.netlify.app/">{t`footer.createAccount`}</a>
+                <Line />
+                <a href="https://brain-code.netlify.app/">{t`footer.forgotPassword`}</a>
+              </Foot>
             </LoginForm>
-            <ToastContainer />
-            {/* <p>Create Account | Forgot Password</p> */}
+            <Toast />
           </Form>
         );
       }}

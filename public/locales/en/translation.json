@@ -9,7 +9,26 @@
     "date": "Today is {{date, DATE_HUGE}}",
     "date_morning": "Good morning! Today is {{date, DATE_HUGE}} | Have a nice day!",
     "date_afternoon": "Good afternoon! It's {{date, DATE_HUGE}}",
-    "date_evening": "Good evening! Today was the {{date, DATE_HUGE}}"
+    "date_evening": "Good evening! Today was the {{date, DATE_HUGE}}",
+    "createAccount": "Create Account",
+    "forgotPassword": "Forgot Password"
+  },
+  "user": {
+    "email": {
+      "name": "email",
+      "placeholder": "Type your email",
+      "validation": {
+        "requied": "Email is required",
+        "format": "Invalid email format"
+      }
+    },
+    "password": {
+      "name": "password",
+      "placeholder": "Type your password",
+      "validation": {
+        "requied": "Password is required"
+      }
+    }
   },
   "registration": {
     "userName": {
@@ -56,6 +75,16 @@
       "passwordMin": "Minimum 8 characters required",
       "passwordReq": "Please enter your password",
       "confirmPassword": "Password must be the same"
+    }
+  },
+  "button": {
+    "login": "Login"
+  },
+  "toast": {
+    "login": {
+      "success": "Successful Login!",
+      "length": "Password length must be at least 8 characters long",
+      "error": "Incorrect login"
     }
   }
 }
