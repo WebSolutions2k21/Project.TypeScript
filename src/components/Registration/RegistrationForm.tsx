@@ -1,36 +1,72 @@
-import React from 'react';
-import { Formik, Form, ErrorMessage, FormikHelpers } from 'formik';
-import { useTranslation } from "react-i18next";
+import React, { useState } from 'react';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 import IRegistrationForm from './RegistrationForm.interface';
 import { SignupSchema } from './validate';
-import { RegForm } from './RegForm.style';
-import { Button, Label, Input, StyledInlineErrorMessageReg, IconPassword, IconText, Line, Foot } from "components/styles";
+import { RegForm, ErrorMsg, View } from './RegForm.style';
+import { Button, Label, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide } from "components/styles";
 import { LogoPageSmall } from "components/styles/LogoPage.style";
+import { registration } from 'services/registration.service';
 
 
 export const RegistrationForm = () => {
   const { t } = useTranslation();
 
+  const [passShown, setPassShown] = useState(false);
+  const togglePass = () => {
+    setPassShown((prev) => !prev);
+  };
+
+  const [conPassShown, setConPassShown] = useState(false);
+  const toggleConPass = () => {
+    setConPassShown((prev) => !prev);
+  };
+
+  const initialValues: IRegistrationForm = {
+    userName: '', 
+    firstName: '', 
+    lastName: '', 
+    email: '', 
+    password: '', 
+    confirmPassword: '' 
+  };
+
+  const onSubmit = async (formValue: { 
+    userName: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string; }) => {
+    const { userName, firstName, lastName, email, password, confirmPassword } = formValue;
+
+    await registration(userName, firstName, lastName, email, password, confirmPassword)
+      .then(
+        () => {
+          // Send email
+          toast.success(t`toast.login.success`);
+        },
+        (error) => {
+          const resMessage = (error.response && error.response.data) || error.message || error.toString();
+          switch (resMessage) {
+            case '"password" length must be at least 8 characters long':
+              return toast.error(t`toast.login.length`);
+            default:
+              return toast.error(t`toast.login.error`);
+          }
+        },
+      );
+  };
+
   return (
     <Formik
-    initialValues={{ 
-      userName: '', 
-      firstName: '', 
-      lastName: '', 
-      email: '', 
-      password: '', 
-      confirmPassword: '' 
-    }}
+    initialValues={initialValues}
     validationSchema={SignupSchema()}
-    onSubmit={(values, { setSubmitting }: FormikHelpers<IRegistrationForm>) => {
-      setTimeout(() => {
-        console.log(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }, 400);
-    }}
-  >
-    {({ isSubmitting }) => (
+    onSubmit={onSubmit}
+    >
+    {( formValue ) => (
       <Form>
         <RegForm>
         <LogoPageSmall />
@@ -45,7 +81,7 @@ export const RegistrationForm = () => {
                 placeholder={t`registration.userName.placeholder`}
                 />
                 <ErrorMessage name="userName">
-                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
+                  {(msg) => <ErrorMsg>{msg}</ErrorMsg>}
                 </ErrorMessage>
             </Label>
 
@@ -60,7 +96,7 @@ export const RegistrationForm = () => {
                 placeholder={t`registration.firstName.placeholder`}
                 />
                 <ErrorMessage name="firstName">
-                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
+                  {(msg) => <ErrorMsg>{msg}</ErrorMsg>}
                 </ErrorMessage>
             </Label>
 
@@ -75,7 +111,7 @@ export const RegistrationForm = () => {
                 placeholder={t`registration.lastName.placeholder`}
                 />
                 <ErrorMessage name="lastName">
-                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
+                  {(msg) => <ErrorMsg>{msg}</ErrorMsg>}
                 </ErrorMessage>
             </Label>
 
@@ -90,41 +126,59 @@ export const RegistrationForm = () => {
                 placeholder={t`registration.email.placeholder`}
                 />
                 <ErrorMessage name="email">
-                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
+                  {(msg) => <ErrorMsg>{msg}</ErrorMsg>}
                 </ErrorMessage>
             </Label>
 
             <Label htmlFor="password">
               <IconPassword /> 
               {t`registration.password.name`}
-              <Input
-                type="password"
-                name="password"
-                autoCapitalize="off"
-                autoCorrect="off"              
-                placeholder={t`registration.password.placeholder`}
-                />
+              <View>
+                <Input
+                  type={passShown ? "text" : "password"}
+                  name="password"
+                  autoCapitalize="off"
+                  autoCorrect="off"              
+                  placeholder={t`registration.password.placeholder`}
+                  />
+                  {formValue.values.password.length > 0 ? (
+                    <>
+                      {passShown ? <IconEye onClick={togglePass} /> : <IconEyeHide onClick={togglePass} />}{" "}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 <ErrorMessage name="password">
-                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
+                  {(msg) => <ErrorMsg>{msg}</ErrorMsg>}
                 </ErrorMessage>
+              </View>
             </Label>
 
             <Label htmlFor="confirmPassword">
               <IconPassword /> 
               {t`registration.confirmPassword.name`}
-              <Input
-                type="password"
-                name="confirmPassword"
-                autoCapitalize="off"
-                autoCorrect="off"              
-                placeholder={t`registration.password.placeholder`}
-                />
+              <View>
+                <Input
+                  type={conPassShown ? "text" : "password"}
+                  name="confirmPassword"
+                  autoCapitalize="off"
+                  autoCorrect="off"              
+                  placeholder={t`registration.password.placeholder`}
+                  />
+                  {formValue.values.confirmPassword.length > 0 ? (
+                    <>
+                      {conPassShown ? <IconEye onClick={toggleConPass} /> : <IconEyeHide onClick={toggleConPass} />}{" "}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 <ErrorMessage name="confirmPassword">
-                  {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
+                  {(msg) => <ErrorMsg>{msg}</ErrorMsg>}
                 </ErrorMessage>
+              </View>
             </Label>
 
-          <Button type="submit" disabled={isSubmitting}>
+          <Button type="submit" disabled={!formValue.isValid}>
           {t`registration.button.name`}
           </Button>
 
