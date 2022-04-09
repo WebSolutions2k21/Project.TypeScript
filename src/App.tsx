@@ -1,32 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from "react";
 
-import { RegistrationForm } from "./components/Registration";
+import { ThemeProvider } from "styled-components";
 import Footer from "components/Footer";
+import { RegistrationForm, Login } from "components";
+import {GlobalStyles, theme} from "components/styles/Global";
+
+
+
 
 function App() {
-
-  const [users, setUsers] = useState({ users: [] });
-
-  // Exemple check that axios works
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios('http://localhost:5000/users');
-
-      setUsers(result.data);
-    };
-    fetchData();
-  }, []);
-  console.log('users', users);
-
   return (
-    <div>
-      hello!
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Login />
+
+      <p>Registration</p>
+
       <RegistrationForm />
       <Footer />
-    </div>
+    </ThemeProvider>
   );
-
 }
 
 export default App;
