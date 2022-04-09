@@ -23,7 +23,7 @@ export const getCurrentUser = () => {
 }
 
 
-export const registration = async (  
+export const register = async (  
   userName: string,
   firstName: string,
   lastName: string,
@@ -31,7 +31,7 @@ export const registration = async (
   password: string,
   confirmPassword: string,) => {
   return await 
-    axios.post("/registration", {
+    axios.post("users/register", {
       userName,
       firstName,
       lastName,
@@ -40,9 +40,7 @@ export const registration = async (
       confirmPassword
     })
     .then((res) => {
-      if (res.data.token) {
-        localStorage.setItem("newUser", JSON.stringify(res.data.token));
-      }
+      console.log(res.data)
       return res.data;
     });
 };

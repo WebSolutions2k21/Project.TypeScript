@@ -8,7 +8,7 @@ import { SignupSchema } from './validate';
 import { RegForm, ErrorMsg, View } from './RegForm.style';
 import { Button, Label, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide } from "components/styles";
 import { LogoPageSmall } from "components/styles/LogoPage.style";
-import { registration } from 'services/auth.service';
+import { register } from 'services/auth.service';
 
 
 export const RegistrationForm = () => {
@@ -42,21 +42,22 @@ export const RegistrationForm = () => {
     confirmPassword: string; }) => {
     const { userName, firstName, lastName, email, password, confirmPassword } = formValue;
 
-    await registration(userName, firstName, lastName, email, password, confirmPassword)
+    await register(userName, firstName, lastName, email, password, confirmPassword)
       .then(
         () => {
           // Send email
+          console.log("działa")
           toast.success("działa");
         },
         (error) => {
           const resMessage = (error.response && error.response.data) || error.message || error.toString();
           console.log("nie działa")
-          // switch (resMessage) {
-          //   case '"password" length must be at least 8 characters long':
-          //     return toast.error(t`toast.login.length`);
-          //   default:
-          //     return toast.error(t`toast.login.error`);
-          // }
+          switch (resMessage) {
+            case '"password" length must be at least 8 characters long':
+              return toast.error(t`toast.login.length`);
+            default:
+              return toast.error(t`toast.login.error`);
+          }
         },
       );
   };
