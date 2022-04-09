@@ -1,7 +1,7 @@
 import axios from "axios/instanceAxios";
 
-export const login  =async (email: string, password: string) => {
-  return  await axios
+export const login = async (email: string, password: string) => {
+  return await axios
     .post("/login", {
       email,
       password,
@@ -20,25 +20,26 @@ export const logout = () => {
 
 export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user") as string);
-}
+};
 
-const REGISTER_URL = '/users/register';
+const REGISTER_URL = "/users/register";
 
-export const register = async (  
-  userName: string,
-  firstName: string,
-  lastName: string,
+export const register = async (
+  username: string,
+  firstname: string,
+  lastname: string,
   email: string,
   password: string,
-  confirmPassword: string,) => {
-  return await 
-    axios.post(REGISTER_URL, {
-      userName,
-      firstName,
-      lastName,
+  confirmpassword: string,
+) => {
+  return await axios
+    .post(REGISTER_URL, {
+      username,
+      firstname,
+      lastname,
       email,
       password,
-      confirmPassword
+      confirmpassword,
     })
     .then((res) => {
       return res.data;
