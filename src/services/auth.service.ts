@@ -22,6 +22,7 @@ export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user") as string);
 }
 
+const REGISTER_URL = '/users/register';
 
 export const register = async (  
   userName: string,
@@ -31,7 +32,7 @@ export const register = async (
   password: string,
   confirmPassword: string,) => {
   return await 
-    axios.post("users/register", {
+    axios.post(REGISTER_URL, {
       userName,
       firstName,
       lastName,
@@ -40,7 +41,6 @@ export const register = async (
       confirmPassword
     })
     .then((res) => {
-      console.log(res.data)
       return res.data;
     });
 };

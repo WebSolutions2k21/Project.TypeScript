@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
 
 import IRegistrationForm from './RegistrationForm.interface';
 import { SignupSchema } from './validate';
@@ -45,19 +44,10 @@ export const RegistrationForm = () => {
     await register(userName, firstName, lastName, email, password, confirmPassword)
       .then(
         () => {
-          // Send email
           console.log("działa")
-          toast.success("działa");
         },
         (error) => {
-          const resMessage = (error.response && error.response.data) || error.message || error.toString();
           console.log("nie działa")
-          switch (resMessage) {
-            case '"password" length must be at least 8 characters long':
-              return toast.error(t`toast.login.length`);
-            default:
-              return toast.error(t`toast.login.error`);
-          }
         },
       );
   };
