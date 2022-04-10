@@ -9,7 +9,6 @@ import {
   Button,
   Label,
   Input,
-  StyledInlineErrorMessage,
   IconEye,
   IconPassword,
   IconText,
@@ -20,11 +19,9 @@ import {
   Foot,
 } from "components/styles";
 import { LoginForm, StyledInlineErrorMessageForm, View } from "./Login.style";
+import ILogin from "./Login.interface";
 
-interface ILogin {
-  email: string;
-  password: string;
-}
+
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
@@ -46,9 +43,8 @@ export const Login = () => {
   });
 
   const onSubmit = async (formValue: { email: string; password: string }) => {
-    const { email, password } = formValue;
 
-    await login(email, password).then(
+    await login(formValue).then(
       () => {
         //Navigate to user profile
         toast.success(t`toast.login.success`);
@@ -106,7 +102,7 @@ export const Login = () => {
                 )}
               </View>
               <ErrorMessage name="password">
-                {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
+                {(msg) => <StyledInlineErrorMessageForm>{msg}</StyledInlineErrorMessageForm>}
               </ErrorMessage>
               <Button type="submit" disabled={!formValue.isValid}>
                 {t`button.login`}

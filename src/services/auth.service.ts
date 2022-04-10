@@ -1,17 +1,13 @@
 import axios from "axios/instanceAxios";
+import ILogin from "components/Login/Login.interface";
 
-export const login  =async (email: string, password: string) => {
-  return  await axios
-    .post("/login", {
-      email,
-      password,
-    })
-    .then((res) => {
-      if (res.data.token) {
-        localStorage.setItem("user", JSON.stringify(res.data.token));
-      }
-      return res.data;
-    });
+export const login = async (data: ILogin) => {
+  return await axios.post("/login", data).then((res) => {
+    if (res.data.token) {
+      localStorage.setItem("user", JSON.stringify(res.data.token));
+    }
+    return res.data;
+  });
 };
 
 export const logout = () => {
@@ -20,4 +16,4 @@ export const logout = () => {
 
 export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user") as string);
-}
+};
