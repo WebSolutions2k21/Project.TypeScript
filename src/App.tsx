@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 import axios from 'axios';
 
-import { RegistrationForm } from "./components/Registration";
-import Footer from "components/Footer";
+// import { RegistrationForm } from "./components/Registration";
+// import Footer from "components/Footer";
+import { AboutUsPage } from './pages';
+import { paths } from './config/paths';
 
 function App() {
 
@@ -20,11 +24,19 @@ function App() {
   console.log('users', users);
 
   return (
-    <div>
-      hello!
-      <RegistrationForm />
-      <Footer />
-    </div>
+    <Routes>
+      <Route
+       path={paths.aboutUs}
+        element={
+          <AboutUsPage />
+        }
+      />
+    </Routes>
+    // <div>
+    //   hello!
+    //   <RegistrationForm />
+    //   <Footer />
+    // </div>
   );
 
 }
