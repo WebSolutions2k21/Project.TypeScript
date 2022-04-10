@@ -17,3 +17,10 @@ export const logout = () => {
 export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user") as string);
 };
+
+export const sendEmail = async (email: string) => {
+ await axios.post("/users/resetpassword", email).then((res) => {
+   console.log("res data", res)
+    return res;
+  });
+};

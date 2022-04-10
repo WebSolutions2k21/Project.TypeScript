@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledInlineErrorMessage } from "components/styles";
+import { StyledInlineErrorMessage, Label } from "components/styles";
 
 export const LoginForm = styled.div`
   display: flex;
@@ -21,5 +21,9 @@ export const View = styled.div`
 `;
 
 export const StyledInlineErrorMessageForm = styled(StyledInlineErrorMessage)`
-margin: 10px auto 5px 70px;
+  margin: 10px auto 5px 70px;
+`;
+
+export const LabelStyle = styled(Label)`
+  margin: 10px auto 5px 70px;
 `;

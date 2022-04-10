@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import { login } from "services/auth.service";
 import {
   Button,
-  Label,
   Input,
   IconEye,
   IconPassword,
@@ -18,9 +17,8 @@ import {
   Line,
   Foot,
 } from "components/styles";
-import { LoginForm, StyledInlineErrorMessageForm, View } from "./Login.style";
+import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle } from "./Login.style";
 import ILogin from "./Login.interface";
-
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -28,7 +26,7 @@ export const Login = () => {
     setPasswordShown((prev) => !prev);
   };
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const initialValues: ILogin = {
     email: "",
@@ -43,7 +41,6 @@ export const Login = () => {
   });
 
   const onSubmit = async (formValue: { email: string; password: string }) => {
-
     await login(formValue).then(
       () => {
         //Navigate to user profile
@@ -68,10 +65,10 @@ export const Login = () => {
           <Form>
             <LoginForm>
               <LogoPage></LogoPage>
-              <Label htmlFor="email">
+              <LabelStyle htmlFor="email">
                 <IconText />
                 {t`user.email.name`}
-              </Label>
+              </LabelStyle>
               <Input
                 type="email"
                 name="email"
@@ -83,10 +80,10 @@ export const Login = () => {
               <ErrorMessage name="email">
                 {(msg) => <StyledInlineErrorMessageForm>{msg}</StyledInlineErrorMessageForm>}
               </ErrorMessage>
-              <Label htmlFor="password">
+              <LabelStyle htmlFor="password">
                 <IconPassword />
                 {t`user.password.name`}
-              </Label>
+              </LabelStyle>
               <View>
                 <Input
                   type={passwordShown ? "text" : "password"}
@@ -120,4 +117,3 @@ export const Login = () => {
     </Formik>
   );
 };
-export default Login;
