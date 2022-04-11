@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import { Label, IconText, LogoPage, Toast, Line, InputAtCard } from "components/styles";
 import { ButtonForm, ForgotPasswordForm, StyledInlineErrorMessageForm, Footer, CardForm } from "./ForgotPassword.style";
-import { sendEmail } from "services/auth.service";
+import { sendEmail } from "services/user.service";
 import { paths } from "config/paths";
 import IForgotPassword from "./IForgotPassword.interface";
 
@@ -21,7 +21,7 @@ export const ForgotPassword = () => {
   });
 
   const initialValues: IForgotPassword = {
-    email: "",
+    email: ""
   };
 
   return (
