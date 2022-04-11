@@ -14,7 +14,6 @@ body {
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.15em;
   height: 105vh;
-  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: center;

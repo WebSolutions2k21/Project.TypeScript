@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Formik, ErrorMessage, Form } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
@@ -9,7 +9,6 @@ import {
   Button,
   Label,
   Input,
-  StyledInlineErrorMessage,
   IconEye,
   IconPassword,
   IconText,
@@ -19,7 +18,7 @@ import {
   Line,
   Foot,
 } from "components/styles";
-import { LoginForm, StyledInlineErrorMessageForm, View } from "./Login.style";
+import { LoginForm, View } from "./Login.style";
 
 interface ILogin {
   email: string;
@@ -84,9 +83,9 @@ export const Login = () => {
                 autoComplete="email"
                 placeholder={t`user.email.placeholder`}
               />
-              <ErrorMessage name="email">
+              {/* <ErrorMessage name="email">
                 {(msg) => <StyledInlineErrorMessageForm>{msg}</StyledInlineErrorMessageForm>}
-              </ErrorMessage>
+              </ErrorMessage> */}
               <Label htmlFor="password">
                 <IconPassword />
                 {t`user.password.name`}
@@ -105,9 +104,9 @@ export const Login = () => {
                   ""
                 )}
               </View>
-              <ErrorMessage name="password">
+              {/* <ErrorMessage name="password">
                 {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
-              </ErrorMessage>
+              </ErrorMessage> */}
               <Button type="submit" disabled={!formValue.isValid}>
                 {t`button.login`}
               </Button>
