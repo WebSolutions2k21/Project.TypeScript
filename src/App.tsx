@@ -12,12 +12,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Login />
+      {/* <Opinions/> */}
+      {/* <Login /> */}
 
-      <p>Registration</p>
+      {/* <p>Registration</p> */}
 
-      <RegistrationForm />
-      <Footer />
+      {/* <RegistrationForm /> */}
+      {/* <Footer /> */}
     </ThemeProvider>
   );
 }
