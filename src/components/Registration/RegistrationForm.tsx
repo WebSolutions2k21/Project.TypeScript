@@ -32,16 +32,17 @@ export const RegistrationForm = () => {
 
   const initialValues: IRegistration = {
     username: "",
-    firstname: undefined,
-    lastname: undefined,
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     confirmpassword: "",
   };
 
-  const onSubmit = async (formValue: IRegistration) => {
+  const onSubmit = (formValue: IRegistration) => {
     const { username, firstname, lastname, email, password, confirmpassword } = formValue;
-    await register(username, email, password, confirmpassword, firstname, lastname).then(
+    register(username, email, password, confirmpassword, firstname, lastname)
+    .then(
       (res) => {
         console.log("res z serwera", res)
       },
