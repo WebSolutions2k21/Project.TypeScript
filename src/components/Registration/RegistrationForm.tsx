@@ -10,8 +10,8 @@ import { register } from "services/auth.service";
 
 interface IRegistration {
   username: string;
-  firstname: string;
-  lastname: string;
+  firstname?: string;
+  lastname?: string;
   email: string;
   password: string;
   confirmpassword: string;
@@ -32,27 +32,18 @@ export const RegistrationForm = () => {
 
   const initialValues: IRegistration = {
     username: "",
-    firstname: "",
-    lastname: "",
+    firstname: undefined,
+    lastname: undefined,
     email: "",
     password: "",
     confirmpassword: "",
   };
 
-  const onSubmit = async (formValue: {
-    username: string;
-    firstname: string;
-    lastname: string;
-    email: string;
-    password: string;
-    confirmpassword: string;
-  }) => {
+  const onSubmit = async (formValue: IRegistration) => {
     const { username, firstname, lastname, email, password, confirmpassword } = formValue;
-    console.log("form value", formValue);
-    await register(username, firstname, lastname, email, password, confirmpassword).then(
+    await register(username, email, password, confirmpassword, firstname, lastname).then(
       (res) => {
         console.log("res z serwera", res)
- 
       },
       (error) => {
         console.log("res z serwera error", error)

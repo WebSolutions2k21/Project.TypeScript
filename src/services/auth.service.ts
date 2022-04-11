@@ -26,11 +26,11 @@ const REGISTER_URL = "/users/register";
 
 export const register = async (
   username: string,
-  firstname: string,
-  lastname: string,
   email: string,
   password: string,
   confirmpassword: string,
+  firstname?: string,
+  lastname?: string,
 ) => {
   return await axios
     .post(REGISTER_URL, {
