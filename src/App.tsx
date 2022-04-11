@@ -1,6 +1,8 @@
 import React from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
+import axios from "axios";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles, theme } from "styles/Global";
 
