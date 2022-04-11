@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import { SignupSchema } from "./validate";
-import { RegForm, ErrorMsg, View } from "./RegForm.style";
+import { RegForm, View } from "./RegForm.style";
 import { Button, Label, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide } from "components/styles";
 import { LogoPageSmall } from "components/styles/LogoPage.style";
 import { register } from "services/auth.service";
+import { paths } from "config/paths";
 
 interface IRegistration {
   username: string;
@@ -70,7 +72,7 @@ export const RegistrationForm = () => {
                   autoCorrect="off"
                   placeholder={t`registration.userName.placeholder`}
                 />
-                <ErrorMessage name="username">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage>
+                {/* <ErrorMessage name="username">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
               </Label>
 
               <Label htmlFor="firstname">
@@ -83,7 +85,7 @@ export const RegistrationForm = () => {
                   autoCorrect="off"
                   placeholder={t`registration.firstName.placeholder`}
                 />
-                <ErrorMessage name="firstname">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage>
+                {/* <ErrorMessage name="firstname">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
               </Label>
 
               <Label htmlFor="lastname">
@@ -96,7 +98,7 @@ export const RegistrationForm = () => {
                   autoCorrect="off"
                   placeholder={t`registration.lastName.placeholder`}
                 />
-                <ErrorMessage name="lastname">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage>
+                {/* <ErrorMessage name="lastname">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
               </Label>
 
               <Label htmlFor="email">
@@ -109,7 +111,7 @@ export const RegistrationForm = () => {
                   autoCorrect="off"
                   placeholder={t`registration.email.placeholder`}
                 />
-                <ErrorMessage name="email">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage>
+                {/* <ErrorMessage name="email">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
               </Label>
 
               <Label htmlFor="password">
@@ -128,7 +130,7 @@ export const RegistrationForm = () => {
                   ) : (
                     ""
                   )}
-                  <ErrorMessage name="password">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage>
+                  {/* <ErrorMessage name="password">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
                 </View>
               </Label>
 
@@ -148,7 +150,7 @@ export const RegistrationForm = () => {
                 ) : (
                   ""
                 )}
-                <ErrorMessage name="confirmpassword">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage>
+                {/* <ErrorMessage name="confirmpassword">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
               </View>
             </Label>
 
@@ -157,9 +159,9 @@ export const RegistrationForm = () => {
               </Button>
 
               <Foot>
-                <a href="https://brain-code.netlify.app/">{t`registration.foot.login`}</a>
+                <Link to={paths.login}>{t`registration.foot.login`}</Link>
                 <Line />
-                <a href="https://brain-code.netlify.app/">{t`registration.foot.home`}</a>
+                <Link to={paths.home}>{t`registration.foot.home`}</Link>
               </Foot>
             </RegForm>
           </Form>
