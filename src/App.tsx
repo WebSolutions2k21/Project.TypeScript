@@ -2,7 +2,7 @@ import React from "react";
 
 import { ThemeProvider } from "styled-components";
 import Footer from "components/Footer";
-import { RegistrationForm, Login } from "components";
+import { RegistrationForm, Login, Opinions } from "components";
 import {GlobalStyles, theme} from "components/styles/Global";
 
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      {/* <Opinions/> */}
+      <Opinions/>
       {/* <Login /> */}
 
       {/* <p>Registration</p> */}

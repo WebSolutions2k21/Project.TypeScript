@@ -21,7 +21,9 @@ import {
 } from "components/styles";
 
 export const Opinions = () => {
-
+  return(
+    <h1>Koopaa</h1>
+  );
 }
 
 export default Opinions;
