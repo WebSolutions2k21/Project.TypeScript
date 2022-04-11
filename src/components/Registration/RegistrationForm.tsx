@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 import IRegistrationForm from "./RegistrationForm.interface";
 import { SignupSchema } from "./validate";
 import { RegForm } from "./RegForm.style";
-import { Button, Label, Input, IconPassword, IconText, Line, Foot } from "components/styles";
-import { LogoPageSmall } from "components/styles/LogoPage.style";
+import { Button, Label, Input, IconPassword, IconText, Line, Foot } from "styles";
+import { LogoPageSmall } from "styles/LogoPage.style";
 
 export const RegistrationForm = () => {
   const { t } = useTranslation();

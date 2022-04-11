@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { Label, IconText, LogoPage, Toast, Line, InputAtCard } from "components/styles";
+import { Label, IconText, LogoPage, Toast, Line, InputAtCard } from "styles";
 import { ButtonForm, ForgotPasswordForm, StyledInlineErrorMessageForm, Footer, CardForm } from "./ForgotPassword.style";
 import { sendEmail } from "services/user.service";
 import { paths } from "config/paths";
@@ -35,7 +35,9 @@ export const ForgotPassword = () => {
               toast.success(t`toast.sendEmail.success`);
             },
             (error) => {
+          
               const resMessage = (error.response && error.response.data) || error.message || error.toString();
+              console.log("error", resMessage)
               switch (resMessage) {
                 case "User not found":
                   return toast.error(t`toast.sendEmail.notFound`);

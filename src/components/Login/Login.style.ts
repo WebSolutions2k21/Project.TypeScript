@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledInlineErrorMessage, Label, Foot } from "components/styles";
+import { StyledInlineErrorMessage, Label, Foot } from "styles";
 
 export const LoginForm = styled.div`
   display: flex;

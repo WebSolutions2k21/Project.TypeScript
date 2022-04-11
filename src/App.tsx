@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles, theme } from "components/styles/Global";
+import { GlobalStyles, theme } from "styles/Global";
 
 import {
   AboutUsPage,
@@ -22,8 +22,8 @@ import {
   UserNotificationsPage,
   UserProfilePage,
   UserProjectPage,
-} from "./pages";
-import { paths } from "./config/paths";
+} from "pages";
+import { paths } from "config/paths";
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { StyledInlineErrorMessage, Button, Foot } from "components/styles";
-import { Card } from "components/styles/Card.style";
+import { StyledInlineErrorMessage, Button, Foot } from "styles";
+import { Card } from "styles/Card.style";
 
 export const ForgotPasswordForm = styled.div`
   display: flex;
