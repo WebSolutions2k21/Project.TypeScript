@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import { login } from "services/auth.service";
 import { Button, Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
@@ -13,6 +14,8 @@ import { paths } from "config/paths";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
+  let navigate = useNavigate();
+
   const togglePassword = () => {
     setPasswordShown((prev) => !prev);
   };
@@ -39,6 +42,7 @@ export const Login = () => {
         onSubmit={(values) => {
           login(values).then(
             () => {
+              navigate(paths.myProfile, { replace: true });
               toast.success(t`toast.login.success`);
             },
             (error) => {
