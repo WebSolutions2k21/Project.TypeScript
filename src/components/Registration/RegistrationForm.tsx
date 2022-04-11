@@ -44,9 +44,9 @@ export const RegistrationForm = () => {
                 autoCorrect="off"                
                 placeholder={t`registration.userName.placeholder`}
                 />
-                <ErrorMessage name="userName">
+                {/* <ErrorMessage name="userName">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
-                </ErrorMessage>
+                </ErrorMessage> */}
             </Label>
 
             <Label htmlFor="firstName">
@@ -59,9 +59,9 @@ export const RegistrationForm = () => {
                 autoCorrect="off"                
                 placeholder={t`registration.firstName.placeholder`}
                 />
-                <ErrorMessage name="firstName">
+                {/* <ErrorMessage name="firstName">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
-                </ErrorMessage>
+                </ErrorMessage> */}
             </Label>
 
             <Label htmlFor="lastName">
@@ -74,9 +74,9 @@ export const RegistrationForm = () => {
                 autoCorrect="off"                
                 placeholder={t`registration.lastName.placeholder`}
                 />
-                <ErrorMessage name="lastName">
+                {/* <ErrorMessage name="lastName">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
-                </ErrorMessage>
+                </ErrorMessage> */}
             </Label>
 
             <Label htmlFor="email">
@@ -89,9 +89,9 @@ export const RegistrationForm = () => {
                 autoCorrect="off"               
                 placeholder={t`registration.email.placeholder`}
                 />
-                <ErrorMessage name="email">
+                {/* <ErrorMessage name="email">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
-                </ErrorMessage>
+                </ErrorMessage> */}
             </Label>
 
             <Label htmlFor="password">
@@ -104,9 +104,9 @@ export const RegistrationForm = () => {
                 autoCorrect="off"              
                 placeholder={t`registration.password.placeholder`}
                 />
-                <ErrorMessage name="password">
+                {/* <ErrorMessage name="password">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
-                </ErrorMessage>
+                </ErrorMessage> */}
             </Label>
 
             <Label htmlFor="confirmPassword">
@@ -119,9 +119,9 @@ export const RegistrationForm = () => {
                 autoCorrect="off"              
                 placeholder={t`registration.password.placeholder`}
                 />
-                <ErrorMessage name="confirmPassword">
+                {/* <ErrorMessage name="confirmPassword">
                   {(msg) => <StyledInlineErrorMessageReg>{msg}</StyledInlineErrorMessageReg>}
-                </ErrorMessage>
+                </ErrorMessage> */}
             </Label>
 
           <Button type="submit" disabled={isSubmitting}>

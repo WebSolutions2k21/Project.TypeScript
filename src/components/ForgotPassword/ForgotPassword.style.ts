@@ -6,7 +6,7 @@ export const ForgotPasswordForm = styled.div`
   display: flex;
   flex-direction: column;
   align: center;
-  width: 365px;
+  width: 375px;
   align-items: center;
 `;
 
@@ -21,8 +21,9 @@ export const CardForm = styled(Card)`
 `;
 
 export const ButtonForm = styled(Button)`
-  margin: 25px;
+  margin: 15px 30px;
 `;
+
 export const Footer = styled(Foot)`
   margin-top: 100px;
 `;

@@ -90,7 +90,8 @@
     },
     "sendEmail": {
       "success": "Successful send email!",
-      "error": "Incorrect send mail"
+      "error": "Incorrect send mail",
+      "notFound": "User not found or does not exist"
     }
   }
 }

@@ -1,24 +1,15 @@
 import React, { useState } from "react";
-import { Formik, ErrorMessage, Form } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import { login } from "services/auth.service";
-import {
-  Button,
-  Input,
-  IconEye,
-  IconPassword,
-  IconText,
-  LogoPage,
-  IconEyeHide,
-  Toast,
-  Line,
-  Foot,
-} from "components/styles";
-import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle } from "./Login.style";
+import { Button, Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "components/styles";
+import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle, Footer } from "./Login.style";
 import ILogin from "./Login.interface";
+import { paths } from "config/paths";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -26,12 +17,7 @@ export const Login = () => {
     setPasswordShown((prev) => !prev);
   };
 
-  const { t, i18n } = useTranslation();
-
-  const initialValues: ILogin = {
-    email: "",
-    password: "",
-  };
+  const { t } = useTranslation();
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -40,31 +26,37 @@ export const Login = () => {
     password: Yup.string().required(t`user.password.validation.requied`),
   });
 
-  const onSubmit = async (formValue: { email: string; password: string }) => {
-    await login(formValue).then(
-      () => {
-        //Navigate to user profile
-        toast.success(t`toast.login.success`);
-      },
-      (error) => {
-        const resMessage = (error.response && error.response.data) || error.message || error.toString();
-        switch (resMessage) {
-          case '"password" length must be at least 8 characters long':
-            return toast.error(t`toast.login.length`);
-          default:
-            return toast.error(t`toast.login.error`);
-        }
-      },
-    );
+  const initialValues: ILogin = {
+    email: "",
+    password: "",
   };
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-      {(formValue) => {
-        return (
-          <Form>
+    <>
+      <Formik
+        validationSchema={validationSchema}
+        initialValues={initialValues}
+        onSubmit={(values) => {
+          login(values).then(
+            () => {
+              toast.success(t`toast.login.success`);
+            },
+            (error) => {
+              const resMessage = (error.response && error.response.data) || error.message || error.toString();
+              switch (resMessage) {
+                case '"password" length must be at least 8 characters long':
+                  return toast.error(t`toast.login.length`);
+                default:
+                  return toast.error(t`toast.login.error`);
+              }
+            },
+          );
+        }}
+      >
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => (
+          <Form noValidate onSubmit={handleSubmit}>
             <LoginForm>
-              <LogoPage></LogoPage>
+              <LogoPage />
               <LabelStyle htmlFor="email">
                 <IconText />
                 {t`user.email.name`}
@@ -72,14 +64,16 @@ export const Login = () => {
               <Input
                 type="email"
                 name="email"
-                autoCapitalize="off"
-                autoCorrect="off"
-                autoComplete="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
                 placeholder={t`user.email.placeholder`}
+                id="email"
               />
-              <ErrorMessage name="email">
-                {(msg) => <StyledInlineErrorMessageForm>{msg}</StyledInlineErrorMessageForm>}
-              </ErrorMessage>
+              <StyledInlineErrorMessageForm>
+                {errors.email && touched.email && errors.email}
+              </StyledInlineErrorMessageForm>
+
               <LabelStyle htmlFor="password">
                 <IconPassword />
                 {t`user.password.name`}
@@ -88,32 +82,36 @@ export const Login = () => {
                 <Input
                   type={passwordShown ? "text" : "password"}
                   name="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
                   placeholder={t`user.password.placeholder`}
+                  id="password"
                 />
-                {formValue.values.password.length > 0 ? (
-                  <>
-                    {passwordShown ? <IconEye onClick={togglePassword} /> : <IconEyeHide onClick={togglePassword} />}{" "}
-                  </>
+                {values.password.length > 0 ? (
+                  <>{passwordShown ? <IconEye onClick={togglePassword} /> : <IconEyeHide onClick={togglePassword} />}</>
                 ) : (
                   ""
                 )}
               </View>
-              <ErrorMessage name="password">
-                {(msg) => <StyledInlineErrorMessageForm>{msg}</StyledInlineErrorMessageForm>}
-              </ErrorMessage>
-              <Button type="submit" disabled={!formValue.isValid}>
+              <StyledInlineErrorMessageForm>
+                {errors.password && touched.password && errors.password}
+              </StyledInlineErrorMessageForm>
+
+              <Button type="submit" disabled={!isValid}>
                 {t`button.login`}
               </Button>
-              <Foot>
-                <a href="https://brain-code.netlify.app/">{t`footer.createAccount`}</a>
+              <Toast />
+
+              <Footer>
+                <Link to={paths.signUp}>{t`footer.createAccount`}</Link>
                 <Line />
-                <a href="https://brain-code.netlify.app/">{t`footer.forgotPassword`}</a>
-              </Foot>
+                <Link to={paths.sendNewPassword}>{t`footer.forgotPassword`}</Link>
+              </Footer>
             </LoginForm>
-            <Toast />
           </Form>
-        );
-      }}
-    </Formik>
+        )}
+      </Formik>
+    </>
   );
 };

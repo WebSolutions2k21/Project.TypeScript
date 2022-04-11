@@ -44,7 +44,8 @@
     },
     "sendEmail": {
       "success": "Mail został wysłany!",
-      "error": "Wysłanie maila nie powiodło się"
+      "error": "Wysłanie maila nie powiodło się",
+      "notFound": "Nie znaleziono lub nie istnieje taki mail"
     }
   }
 }
