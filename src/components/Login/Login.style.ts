@@ -23,5 +23,3 @@ position: relative;
 export const StyledInlineErrorMessageForm = styled(StyledInlineErrorMessage)`
   margin: 10px auto 5px 70px;
 `;
-
-
