@@ -6,12 +6,12 @@ import { t } from "i18next";
  const numericRegex = /(?=.*[0-9])/;
 
  export const SignupSchema = () => Yup.object().shape({
-   userName: Yup.string()
+   username: Yup.string()
      .min(2, t`registration.validation.userName`)
      .required(t`registration.validation.userNameReq`),
-   firstName: Yup.string()
+   firstname: Yup.string()
      .min(2, t`registration.validation.firstName`),
-   lastName: Yup.string()
+   lastname: Yup.string()
      .min(2, t`registration.validation.lastName`),
    email: Yup.string()
      .lowercase()
@@ -24,7 +24,7 @@ import { t } from "i18next";
      .matches(numericRegex, t`registration.validation.passwordNum`)
      .min(8, t`registration.validation.passwordMin`)
      .required(t`registration.validation.passwordReq`),
-   confirmPassword: Yup.string()
+   confirmpassword: Yup.string()
      .oneOf([Yup.ref('password')], t`registration.validation.confirmPassword`)
      .required(t`registration.validation.passwordReq`),
  });
