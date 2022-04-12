@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import { login } from "services/auth.service";
 import { Button, Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
@@ -45,11 +45,15 @@ export const Login = () => {
               navigate(paths.myProfile, { replace: true });
               toast.success(t`toast.login.success`);
             },
-            (error) => {
-              const resMessage = (error.response && error.response.data) || error.message || error.toString();
-              switch (resMessage) {
-                case '"password" length must be at least 8 characters long':
-                  return toast.error(t`toast.login.length`);
+            (error) => {    
+              console.log("error", error.response.status)
+              switch (error.response.status) {
+                case 400:
+                  return toast.error(t`toast.login.validation`);
+                case 404:
+                  return toast.error(t`toast.login.notFound`);
+                  case 423:
+                  return toast.error(t`toast.login.locked`);
                 default:
                   return toast.error(t`toast.login.error`);
               }

@@ -86,8 +86,11 @@
   "toast": {
     "login": {
       "success": "Zalogowano poprawnie!",
-      "length": "Hasło powinno posiadać 8 lub więcej znaków",
-      "error": "Niepoprawne logowanie"
+      "error": "Niepoprawne logowanie",
+      "locked": "Musisz najpierw zweryfikować hasło",
+      "notFound": "Niepoprawny email lub hasło",
+      "validation": "Niepoprawne dane logowania"
+
     },
     "sendEmail": {
       "success": "Mail został wysłany!",
