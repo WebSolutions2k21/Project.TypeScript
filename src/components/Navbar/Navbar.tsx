@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { Spin as Hamburger } from "hamburger-react";
 import { paths } from "config/paths";
 import {
@@ -10,13 +10,12 @@ import {
   NavbarInnerContainer,
   NavbarLinkContainer,
   NavbarLink,
-  Logo,
   OpenLinksButton,
   NavbarLinkExtended,
   ButtonChangeLang,
   ButtonChangeLangDivWrapper,
-} from "../styles/Navbar.style";
-import { Navlink } from "components/styles/Icon.style";
+} from "styles/Navbar.style";
+import { Navlink } from "styles/Icon.style";
 
 const lngs = {
   en: { nativeName: "English" },
