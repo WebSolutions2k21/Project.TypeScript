@@ -31,15 +31,12 @@ export const ForgotPassword = () => {
         initialValues={initialValues}
         onSubmit={(values) => {
           sendEmail(values).then(
-            (res) => {
+            () => {
               toast.success(t`toast.sendEmail.success`);
             },
             (error) => {
-          
-              const resMessage = (error.response && error.response.data) || error.message || error.toString();
-              console.log("error", resMessage)
-              switch (resMessage) {
-                case "User not found":
+              switch (error.response.data) {
+                case 404:
                   return toast.error(t`toast.sendEmail.notFound`);
                 default:
                   return toast.error(t`toast.sendEmail.error`);
