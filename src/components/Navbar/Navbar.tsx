@@ -34,12 +34,8 @@ export const Navbar = () => {
         <RightContainer>
           <NavbarLinkContainer>
             <NavbarLink to={paths.contact}>{t("navbar.contact")}</NavbarLink>
-            <NavbarLink to={paths.aboutUs} onClick={() => setNavText(i18n.t("navbar.aboutus"))}>
-              {t("navbar.aboutus")}
-            </NavbarLink>
-            <NavbarLink to={paths.login} onClick={() => setNavText(i18n.t("navbar.login"))}>
-              {t("navbar.login")}
-            </NavbarLink>
+            <NavbarLink to={paths.aboutUs}>{t("navbar.aboutus")}</NavbarLink>
+            <NavbarLink to={paths.login}>{t("navbar.login")}</NavbarLink>
             <NavbarLink to={paths.signUp}>{t("navbar.signin")}</NavbarLink>
             <NavbarLink to={paths.home}>{t("navbar.home")}</NavbarLink>
             <OpenLinksButton>
