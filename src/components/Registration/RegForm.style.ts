@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Label } from "styles";
 
 export const RegForm = styled.div`
     display: flex;
@@ -23,4 +24,8 @@ position: relative;
   right: 3%;
   cursor: pointer;
   }
+`;
+
+export const LabelStyle = styled(Label)`
+margin: 20px auto 0 57px;
 `;

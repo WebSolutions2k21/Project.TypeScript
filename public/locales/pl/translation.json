@@ -12,7 +12,8 @@
     "date_afternoon": "Witaj! Dzisiaj jest {{date, DATE_HUGE}}",
     "date_evening": "Dobry wieczór! Dzisiaj jest {{date, DATE_HUGE}}",
     "createAccount": "Utwórz konto",
-    "forgotPassword": "Przypomnij hasło"
+    "forgotPassword": "Przypomnij hasło",
+    "homePage": "Strona głowna"
   },
   "user": {
     "email": {
@@ -79,13 +80,22 @@
   }
 },
   "button": {
-    "login": "Zaloguj"
+    "login": "Zaloguj",
+    "sendEmail": "Wyślij maila"
   },
   "toast": {
     "login": {
       "success": "Zalogowano poprawnie!",
-      "length": "Hasło powinno posiadać 8 lub więcej znaków",
-      "error": "Niepoprawne logowanie"
+      "error": "Niepoprawne logowanie",
+      "locked": "Musisz najpierw zweryfikować hasło",
+      "notFound": "Niepoprawny email lub hasło",
+      "validation": "Niepoprawne dane logowania"
+
+    },
+    "sendEmail": {
+      "success": "Mail został wysłany!",
+      "error": "Wysłanie maila nie powiodło się",
+      "notFound": "Nie znaleziono lub nie istnieje taki mail"
     }
   }
 }
