@@ -7,7 +7,7 @@ export const Input = styled(Field)`
   background: none;
   outline: none;
   font-size: 14px;
-  width: 235px;
+  width: 245px;
   height: 30px;
   padding: 10px 0;
   color: ${({ theme }) => theme.colors.body || "#FFFFFF"};

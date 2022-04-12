@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { SignupSchema } from "./validate";
 import { RegForm, View } from "./RegForm.style";
-import { Button, Label, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide } from "components/styles";
+import { Button, Label, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide } from "styles";
 import { LogoPageSmall } from "styles/LogoPage.style";
 import { register } from "services/auth.service";
 import { paths } from "config/paths";
