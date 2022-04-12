@@ -116,3 +116,17 @@ export const NavbarExtendedContainer = styled.div`
     display: none;
   }
 `;
+
+export const ButtonChangeLangDivWrapper = styled.div`
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+`;
+
+export const ButtonChangeLang = styled.button`
+  color: ${({ theme }) => theme.colors.text || "#174C6F"};
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+`;
