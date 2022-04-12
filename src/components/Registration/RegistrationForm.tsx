@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import { SignupSchema } from "./validate";
-import { RegForm, View } from "./RegForm.style";
-import { Button, Label, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide } from "styles";
+import { RegForm, View, LabelStyle} from "./RegForm.style";
+import { Button, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide } from "styles";
 import { LogoPageSmall } from "styles/LogoPage.style";
 import { register } from "services/auth.service";
 import { paths } from "config/paths";
@@ -62,7 +62,7 @@ export const RegistrationForm = () => {
           <Form>
             <RegForm>
               <LogoPageSmall />
-              <Label htmlFor="username">
+              <LabelStyle htmlFor="username">
                 <IconText />
                 {t`registration.userName.name`}
                 <Input
@@ -73,9 +73,9 @@ export const RegistrationForm = () => {
                   placeholder={t`registration.userName.placeholder`}
                 />
                 {/* <ErrorMessage name="username">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
-              </Label>
+              </LabelStyle>
 
-              <Label htmlFor="firstname">
+              <LabelStyle htmlFor="firstname">
                 <IconText />
                 {t`registration.firstName.name`}
                 <Input
@@ -86,9 +86,9 @@ export const RegistrationForm = () => {
                   placeholder={t`registration.firstName.placeholder`}
                 />
                 {/* <ErrorMessage name="firstname">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
-              </Label>
+              </LabelStyle>
 
-              <Label htmlFor="lastname">
+              <LabelStyle htmlFor="lastname">
                 <IconText />
                 {t`registration.lastName.name`}
                 <Input
@@ -99,9 +99,9 @@ export const RegistrationForm = () => {
                   placeholder={t`registration.lastName.placeholder`}
                 />
                 {/* <ErrorMessage name="lastname">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
-              </Label>
+              </LabelStyle>
 
-              <Label htmlFor="email">
+              <LabelStyle htmlFor="email">
                 <IconText />
                 {t`registration.email.name`}
                 <Input
@@ -112,9 +112,9 @@ export const RegistrationForm = () => {
                   placeholder={t`registration.email.placeholder`}
                 />
                 {/* <ErrorMessage name="email">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
-              </Label>
+              </LabelStyle>
 
-              <Label htmlFor="password">
+              <LabelStyle htmlFor="password">
                 <IconPassword />
                 {t`registration.password.name`}
                 <View>
@@ -132,9 +132,9 @@ export const RegistrationForm = () => {
                   )}
                   {/* <ErrorMessage name="password">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
                 </View>
-              </Label>
+              </LabelStyle>
 
-              <Label htmlFor="confirmpassword">
+              <LabelStyle htmlFor="confirmpassword">
               <IconPassword />
               {t`registration.confirmPassword.name`}
               <View>
@@ -152,7 +152,7 @@ export const RegistrationForm = () => {
                 )}
                 {/* <ErrorMessage name="confirmpassword">{(msg) => <ErrorMsg>{msg}</ErrorMsg>}</ErrorMessage> */}
               </View>
-            </Label>
+            </LabelStyle>
 
               <Button type="submit" disabled={!formValue.isValid}>
                 {t`registration.button.name`}
