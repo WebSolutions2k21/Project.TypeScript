@@ -11,7 +11,7 @@ export const ForgotPasswordForm = styled.div`
 `;
 
 export const StyledInlineErrorMessageForm = styled(StyledInlineErrorMessage)`
-  padding-top: 5px;
+  margin: 10px auto;
 `;
 
 export const CardForm = styled(Card)`
@@ -25,5 +25,5 @@ export const ButtonForm = styled(Button)`
 `;
 
 export const Footer = styled(Foot)`
-  margin-top: 100px;
+  margin-top: 130px;
 `;
