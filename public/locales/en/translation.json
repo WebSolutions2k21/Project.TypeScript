@@ -90,6 +90,11 @@
       "locked": "You must first confirm the registration.",
       "error": "Error login"
     },
+    "registration": {
+      "success": "Verify your email address",
+      "validation": "An account is already registered with your email address",
+      "error": "Registration error"
+    },
     "sendEmail": {
       "success": "Successful send email!",
       "error": "Incorrect send mail",
