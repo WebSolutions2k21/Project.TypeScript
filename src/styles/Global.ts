@@ -12,12 +12,13 @@ body {
   background-repeat: no-repeat;
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.15em;
-  height: 105vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 `;
+
 export const theme = {
   colors: {
     primary: "#d9248f",

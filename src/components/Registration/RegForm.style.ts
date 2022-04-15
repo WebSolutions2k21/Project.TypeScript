@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Label } from "styles";
+import { Label, Button } from "styles";
 
 export const RegForm = styled.div`
     display: flex;
@@ -28,4 +28,8 @@ position: relative;
 
 export const LabelStyle = styled(Label)`
 margin: 20px auto 0 57px;
+`;
+
+export const ButtonForm = styled(Button)`
+  margin: 40px;
 `;

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import { login } from "services/auth.service";
 import { Button, Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
-import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle, Footer } from "./Login.style";
+import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle, Footer, ButtonForm } from "./Login.style";
 import ILogin from "./Login.interface";
 import { paths } from "config/paths";
 
@@ -106,9 +106,9 @@ export const Login = () => {
                 {errors.password && touched.password && errors.password}
               </StyledInlineErrorMessageForm>
 
-              <Button type="submit" disabled={!isValid}>
+              <ButtonForm type="submit" disabled={!isValid}>
                 {t`button.login`}
-              </Button>
+              </ButtonForm>
               <Toast />
 
               <Footer>

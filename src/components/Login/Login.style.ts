@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledInlineErrorMessage, Label, Foot } from "styles";
+import { StyledInlineErrorMessage, Label, Foot, Button} from "styles";
 
 export const LoginForm = styled.div`
   display: flex;
@@ -30,4 +30,8 @@ export const LabelStyle = styled(Label)`
 
 export const Footer = styled(Foot)`
   margin-top: 20px;
+`;
+
+export const ButtonForm = styled(Button)`
+  margin: 40px;
 `;

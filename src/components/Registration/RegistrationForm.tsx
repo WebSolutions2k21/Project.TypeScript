@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import { SignupSchema } from "./validate";
-import { RegForm, View, LabelStyle} from "./RegForm.style";
+import { RegForm, View, LabelStyle, ButtonForm} from "./RegForm.style";
 import { Button, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide } from "styles";
 import { LogoPageSmall } from "styles/LogoPage.style";
 import { register } from "services/auth.service";
@@ -154,9 +154,9 @@ export const RegistrationForm = () => {
               </View>
             </LabelStyle>
 
-              <Button type="submit" disabled={!formValue.isValid}>
+              <ButtonForm type="submit" disabled={!formValue.isValid}>
                 {t`registration.button.name`}
-              </Button>
+              </ButtonForm>
 
               <Foot>
                 <Link to={paths.login}>{t`registration.foot.login`}</Link>
