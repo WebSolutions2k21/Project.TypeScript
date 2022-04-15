@@ -51,15 +51,7 @@ export const RegistrationForm = () => {
             }, 3000);
             toast.success(t`toast.registration.success`)
           },
-          (error) => {
-            console.log("error", error.response.status)
-            switch (error.response.status) {
-              case 400:
-                return toast.error(t`toast.registration.validation`);
-              default:
-                return toast.error(t`toast.registration.error`);
-            }
-          }
+          ({ response: { status } }) => toast.error(status === 400 ? t`toast.registration.validation` : t`toast.registration.error`) 
         );
       }}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
