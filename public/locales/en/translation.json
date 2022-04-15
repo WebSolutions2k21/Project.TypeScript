@@ -1,4 +1,11 @@
 {
+  "navbar": {
+    "home": "Home Page",
+    "aboutus": "About Us",
+    "contact": "Contact",
+    "login": "Log In",
+    "signin": "Sign In"
+  },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
     "part2": "Learn React"
