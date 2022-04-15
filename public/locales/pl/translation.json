@@ -90,7 +90,11 @@
       "locked": "Musisz najpierw zweryfikować hasło",
       "notFound": "Niepoprawny email lub hasło",
       "validation": "Niepoprawne dane logowania"
-
+    },
+    "registration": {
+      "success": "E-mail weryfikujący został wysłany!",
+      "validation": "Użytkownik o podanej nazwie lub adresie e-mail jest już zarejestrowany",
+      "error": "Rejestracja nie powiodła się"
     },
     "sendEmail": {
       "success": "Mail został wysłany!",
