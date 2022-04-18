@@ -1,7 +1,8 @@
+import { Opinions } from "components/Opinions";
 import React from "react";
 
 export const OpinionsPage = () => {
     return (
-     <h1>OpinionsPage</h1>
+     <Opinions/>
     );
 };

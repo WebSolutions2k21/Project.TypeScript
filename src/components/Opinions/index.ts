@@ -1,1 +1,1 @@
-export * from "./Opinions"
+export * from "./Opinions";

@@ -3,39 +3,24 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { login } from "services/auth.service";
-import {
-  Button,
-  Label,
-  Input,
-  IconEye,
-  IconPassword,
-  IconText,
-  LogoPage,
-  IconEyeHide,
-  Toast,
-  Line,
-  Foot,
-} from "components/styles";
-import { LoginForm, View } from "./Login.style";
+import { Button, Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
+import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle, Footer } from "./Login.style";
+import ILogin from "./Login.interface";
+import { paths } from "config/paths";
 
-interface ILogin {
-  email: string;
-  password: string;
-}
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
+  let navigate = useNavigate();
+
   const togglePassword = () => {
     setPasswordShown((prev) => !prev);
   };
 
   const { t } = useTranslation();
-
-  const initialValues: ILogin = {
-    email: "",
-    password: "",
-  };
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -44,83 +29,97 @@ export const Login = () => {
     password: Yup.string().required(t`user.password.validation.requied`),
   });
 
-  const onSubmit = async (formValue: { email: string; password: string }) => {
-    const { email, password } = formValue;
-
-    await login(email, password).then(
-      () => {
-        //Navigate to user profile
-        toast.success(t`toast.login.success`);
-      },
-      (error) => {
-        const resMessage = (error.response && error.response.data) || error.message || error.toString();
-        switch (resMessage) {
-          case '"password" length must be at least 8 characters long':
-            return toast.error(t`toast.login.length`);
-          default:
-            return toast.error(t`toast.login.error`);
-        }
-      },
-    );
+  const initialValues: ILogin = {
+    email: "",
+    password: "",
   };
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-      {(formValue) => {
-        return (
-          <Form>
+    <>
+      <Formik
+        validationSchema={validationSchema}
+        initialValues={initialValues}
+        onSubmit={(values) => {
+          login(values).then(
+            () => {
+              navigate(paths.myProfile, { replace: true });
+              toast.success(t`toast.login.success`);
+            },
+            (error) => {
+              console.log("error", error.response.status)
+              switch (error.response.status) {
+                case 400:
+                  return toast.error(t`toast.login.validation`);
+                case 404:
+                  return toast.error(t`toast.login.notFound`);
+                  case 423:
+                  return toast.error(t`toast.login.locked`);
+                default:
+                  return toast.error(t`toast.login.error`);
+              }
+            },
+          );
+        }}
+      >
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => (
+          <Form noValidate onSubmit={handleSubmit}>
             <LoginForm>
-              <LogoPage></LogoPage>
-              <Label htmlFor="email">
+              <LogoPage />
+              <LabelStyle htmlFor="email">
                 <IconText />
                 {t`user.email.name`}
-              </Label>
+              </LabelStyle>
               <Input
                 type="email"
                 name="email"
-                autoCapitalize="off"
-                autoCorrect="off"
-                autoComplete="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
                 placeholder={t`user.email.placeholder`}
+                id="email"
               />
-              {/* <ErrorMessage name="email">
-                {(msg) => <StyledInlineErrorMessageForm>{msg}</StyledInlineErrorMessageForm>}
-              </ErrorMessage> */}
-              <Label htmlFor="password">
+              <StyledInlineErrorMessageForm>
+                {errors.email && touched.email && errors.email}
+              </StyledInlineErrorMessageForm>
+
+              <LabelStyle htmlFor="password">
                 <IconPassword />
                 {t`user.password.name`}
-              </Label>
+              </LabelStyle>
               <View>
                 <Input
                   type={passwordShown ? "text" : "password"}
                   name="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
                   placeholder={t`user.password.placeholder`}
+                  id="password"
                 />
-                {formValue.values.password.length > 0 ? (
-                  <>
-                    {passwordShown ? <IconEye onClick={togglePassword} /> : <IconEyeHide onClick={togglePassword} />}{" "}
-                  </>
+                {values.password.length > 0 ? (
+                  <>{passwordShown ? <IconEye onClick={togglePassword} /> : <IconEyeHide onClick={togglePassword} />}</>
                 ) : (
                   ""
                 )}
               </View>
-              {/* <ErrorMessage name="password">
-                {(msg) => <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>}
-              </ErrorMessage> */}
-              <Button type="submit" disabled={!formValue.isValid}>
+              <StyledInlineErrorMessageForm>
+                {errors.password && touched.password && errors.password}
+              </StyledInlineErrorMessageForm>
+
+              <Button type="submit" disabled={!isValid}>
                 {t`button.login`}
               </Button>
-              <Foot>
-                <a href="https://brain-code.netlify.app/">{t`footer.createAccount`}</a>
+              <Toast />
+
+              <Footer>
+                <Link to={paths.signUp}>{t`footer.createAccount`}</Link>
                 <Line />
-                <a href="https://brain-code.netlify.app/">{t`footer.forgotPassword`}</a>
-              </Foot>
+                <Link to={paths.sendNewPassword}>{t`footer.forgotPassword`}</Link>
+              </Footer>
             </LoginForm>
-            <Toast />
           </Form>
-        );
-      }}
-    </Formik>
+        )}
+      </Formik>
+    </>
   );
 };
-export default Login;
