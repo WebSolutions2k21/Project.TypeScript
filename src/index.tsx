@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback="...is loading">
       <Router>
-          <App />
+        <App />
       </Router>
     </Suspense>
   </React.StrictMode>,
