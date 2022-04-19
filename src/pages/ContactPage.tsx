@@ -1,7 +1,6 @@
+import Navbar from "components/Navbar/Navbar";
 import React from "react";
 
 export const ContactPage = () => {
-    return (
-     <h1>ContactPage</h1>
-    );
+  return <Navbar />;
 };
