@@ -1,4 +1,11 @@
 {
+  "navbar": {
+    "home": "Home Page",
+    "aboutus": "About Us",
+    "contact": "Contact",
+    "login": "Log In",
+    "signin": "Sign In"
+  },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
     "part2": "Learn React"
@@ -89,6 +96,11 @@
       "validation": "Incorrect login data",
       "locked": "You must first confirm the registration.",
       "error": "Error login"
+    },
+    "registration": {
+      "success": "Verify your email address",
+      "validation": "An account is already registered with your email address",
+      "error": "Registration error"
     },
     "sendEmail": {
       "success": "Successful send email!",

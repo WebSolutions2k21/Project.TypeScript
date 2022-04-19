@@ -1,4 +1,11 @@
 {
+  "navbar": {
+    "home": "Start",
+    "aboutus": "O Nas",
+    "contact": "Kontakt",
+    "login": "Logowanie",
+    "signin": "Rejestracja"
+  },
   "description": {
     "part1": "Edytuj <1>src/App.js</1> i zapisz by ponownie wczytać.",
     "part2": "Ucz się React'a"
@@ -90,7 +97,11 @@
       "locked": "Musisz najpierw zweryfikować hasło",
       "notFound": "Niepoprawny email lub hasło",
       "validation": "Niepoprawne dane logowania"
-
+    },
+    "registration": {
+      "success": "E-mail weryfikujący został wysłany!",
+      "validation": "Użytkownik o podanej nazwie lub adresie e-mail jest już zarejestrowany",
+      "error": "Rejestracja nie powiodła się"
     },
     "sendEmail": {
       "success": "Mail został wysłany!",
