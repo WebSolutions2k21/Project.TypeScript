@@ -31,13 +31,13 @@ cursor: auto;
 `;
 
 export const ModalTitle = styled.div`
-  color: #174c6f;
+  color: ${({ theme }) => theme.colors.text};
   font-size: 30px;
 `;
 
 export const ModalContent = styled.div`
   margin-to: 50px;
-  color: #174c6f;
+  color: ${({ theme }) => theme.colors.text};
 `;
 export const CloseBtn = styled.div`
   position: absolute;
