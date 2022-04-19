@@ -4,7 +4,9 @@ import { Modal } from "components/Modal";
 export const EmailVerification = () => {
   return (
     <>
-      <Modal title={"My modal"}>Modal Children</Modal>
+      <Modal title={"My modal"} buttonText={"This is Button"}>
+        Modal Children
+      </Modal>
     </>
   );
 };
