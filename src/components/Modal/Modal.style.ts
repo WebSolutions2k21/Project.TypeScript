@@ -10,7 +10,6 @@ export const ModalStyle = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-
 export const ModalOverlay = styled.div`
   position: absolute;
   top: 0;
@@ -19,15 +18,16 @@ export const ModalOverlay = styled.div`
   height: 100%;
   cursor: pointer;
 `;
+
 export const ModalBox = styled.div`
-position: relative;
-width: 80vw;
-padding 50px;
-box-sizing: border-box;
-background-color: rgba(255, 255, 255, 0.95);
-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
-cursor: auto;
+  position: relative;
+  width: 80vw;
+  padding: 50px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  cursor: auto;
 `;
 
 export const ModalTitle = styled.div`
