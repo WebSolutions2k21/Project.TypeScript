@@ -1,9 +1,9 @@
 export const paths = {
   home: "/",
-  login: "/Login",
-  signUp: "/SignUp",
-  aboutUs: "/AboutUs",
-  contact: "/Contact",
+  login: "/login",
+  signUp: "/signUp",
+  aboutUs: "/aboutUs",
+  contact: "/contact",
 
   validation: "/validation",
   setPassword: "/set-password",

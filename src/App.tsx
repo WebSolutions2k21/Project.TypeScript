@@ -1,10 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-// import axios from 'axios';
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles, theme } from "styles/Global";
 
-// import { RegistrationForm } from "./components/Registration";
-// import Footer from "components/Footer";
 import {
   AboutUsPage,
   AddNewProjectPage,
@@ -23,16 +22,8 @@ import {
   UserNotificationsPage,
   UserProfilePage,
   UserProjectPage,
-  EmailVerification,
-} from "./pages";
-import { paths } from "./config/paths";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyles, theme } from "components/styles/Global";
-
-// import { ThemeProvider } from "styled-components";
-// import Footer from "components/Footer";
-// import { RegistrationForm, Login } from "components";
-// import {GlobalStyles, theme} from "components/styles/Global";
+} from "pages";
+import { paths } from "config/paths";
 
 function App() {
   return (
@@ -56,24 +47,9 @@ function App() {
         <Route path={paths.myNotifications} element={<UserNotificationsPage />} />
         <Route path={paths.myProfile} element={<UserProfilePage />} />
         <Route path={paths.myProjects} element={<UserProjectPage />} />
-        <Route path={paths.emailVerification} element={<EmailVerification />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
-    /* // <div>
-    //   hello!
-    //   <RegistrationForm />
-    //   <Footer />
-    // </div>
-    // <ThemeProvider theme={theme}>
-    //   <GlobalStyles />
-    //   <Login />
-
-    //   <p>Registration</p>
-
-    //   <RegistrationForm />
-    //   <Footer />
-    // </ThemeProvider> */
   );
 }
 

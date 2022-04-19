@@ -1,4 +1,11 @@
 {
+  "navbar": {
+    "home": "Home Page",
+    "aboutus": "About Us",
+    "contact": "Contact",
+    "login": "Log In",
+    "signin": "Sign In"
+  },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
     "part2": "Learn React"
@@ -11,7 +18,8 @@
     "date_afternoon": "Good afternoon! It's {{date, DATE_HUGE}}",
     "date_evening": "Good evening! Today was the {{date, DATE_HUGE}}",
     "createAccount": "Create Account",
-    "forgotPassword": "Forgot Password"
+    "forgotPassword": "Forgot Password",
+    "homePage": "Home Page"
   },
   "user": {
     "email": {
@@ -78,13 +86,26 @@
     }
   },
   "button": {
-    "login": "Login"
+    "login": "Login",
+    "sendEmail": "Send email"
   },
   "toast": {
     "login": {
       "success": "Successful Login!",
-      "length": "Password length must be at least 8 characters long",
-      "error": "Incorrect login"
+      "notFound": "Invalid email or password.",
+      "validation": "Incorrect login data",
+      "locked": "You must first confirm the registration.",
+      "error": "Error login"
+    },
+    "registration": {
+      "success": "Verify your email address",
+      "validation": "An account is already registered with your email address",
+      "error": "Registration error"
+    },
+    "sendEmail": {
+      "success": "Successful send email!",
+      "error": "Incorrect send mail",
+      "notFound": "User not found or does not exist"
     }
   }
 }

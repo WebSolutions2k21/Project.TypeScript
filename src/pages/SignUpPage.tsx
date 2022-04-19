@@ -1,7 +1,9 @@
 import React from "react";
+import { RegistrationForm } from "components";
 
 export const SignUpPage = () => {
     return (
-     <h1>SignUpPage</h1>
+    <RegistrationForm/>
     );
 };
+
