@@ -1,4 +1,4 @@
-import { Button } from "styles";
+import { Button } from "styles/Button.style";
 import React, { useState } from "react";
 
 import { ModalStyle, ModalBox, ModalTitle, CloseBtn, ModalContent, ModalOverlay, ActiveModal } from "./Modal.style";
@@ -6,9 +6,10 @@ import { ModalStyle, ModalBox, ModalTitle, CloseBtn, ModalContent, ModalOverlay,
 interface IModal {
   children: any;
   title: string;
+  buttonText: string;
 }
 
-export const Modal = ({ children, title }: IModal) => {
+export const Modal = ({ children, title, buttonText }: IModal) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => setModalOpen(!isModalOpen);
@@ -21,7 +22,7 @@ export const Modal = ({ children, title }: IModal) => {
 
   return (
     <>
-      <Button onClick={toggleModal}>Start!</Button>
+      <Button onClick={toggleModal}>{buttonText}</Button>
       {isModalOpen && (
         <ModalStyle>
           <ModalOverlay onClick={toggleModal} />
