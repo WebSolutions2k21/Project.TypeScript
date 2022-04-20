@@ -32,6 +32,9 @@ export const Navbar = () => {
   const handleCloseNavMenu = () => {
     setExtendNavbar(false);
   };
+  const handleToggle = () => {
+    setExtendNavbar(!extendNavbar);
+  };
 
   const logoutHandler = () => {
     logout();
@@ -73,7 +76,7 @@ export const Navbar = () => {
                 <Hamburger toggled={extendNavbar} toggle={setExtendNavbar} label="Show menu" color="#3C789E" />
               )}
               {isAuth && (
-                <ButtonNav>
+                <ButtonNav onClick={handleToggle}>
                   <UserAvatar />
                 </ButtonNav>
               )}
