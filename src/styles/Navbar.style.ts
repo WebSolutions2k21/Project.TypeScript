@@ -135,6 +135,9 @@ export const ButtonChangeLang = styled.button`
   padding: 10px;
 `;
 export const ButtonNav = styled.button`
+  position: relative;
+  top: 16px;
+  left: -2px;
   width: 61px;
   height: 53px;
   background-color: transparent;
