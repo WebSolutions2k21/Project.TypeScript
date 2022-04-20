@@ -4,7 +4,12 @@
     "aboutus": "About Us",
     "contact": "Contact",
     "login": "Log In",
-    "signin": "Sign In"
+    "signin": "Sign In",
+    "logout": "Log Out",
+    "myprofile": "My profile",
+    "myproject": "My project",
+    "myopinions": "My opinions",
+    "notifications": "Notifications"
   },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",

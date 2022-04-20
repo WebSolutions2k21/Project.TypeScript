@@ -4,7 +4,12 @@
     "aboutus": "O Nas",
     "contact": "Kontakt",
     "login": "Logowanie",
-    "signin": "Rejestracja"
+    "signin": "Rejestracja",
+    "logout": "Wyloguj",
+    "myprofile": "Profil",
+    "myproject": "Projekty",
+    "myopinions": "Opinie",
+    "notifications": "Powiadomienia"
   },
   "description": {
     "part1": "Edytuj <1>src/App.js</1> i zapisz by ponownie wczytać.",

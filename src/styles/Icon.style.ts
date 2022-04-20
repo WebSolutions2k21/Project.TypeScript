@@ -7,6 +7,8 @@ import line from "assets/line.png";
 import navlink from "assets/navLink.svg";
 import project from "assets/project.png";
 import student from "assets/studentVector.svg";
+import lineNav from "assets/lineNav.svg";
+import userAvatar from "assets/userAvatar.svg";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -42,4 +44,10 @@ export const IconProject = styled.img.attrs({
 
 export const IconStudent = styled.img.attrs({
   src: `${student}`,
+})``;
+export const Navline = styled.img.attrs({
+  src: `${lineNav}`,
+})``;
+export const UserAvatar = styled.img.attrs({
+  src: `${userAvatar}`,
 })``;

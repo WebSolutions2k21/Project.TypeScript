@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { CommonBurgerProps } from "hamburger-react";
+import React from "react";
 
 export const NavbarContainer: any = styled.nav`
   width: 100vw;
-  height: ${(props: { extendNavbar: boolean }) => (props.extendNavbar ? "381px" : "80px")};
+  height: 80px;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -12,7 +14,6 @@ export const NavbarContainer: any = styled.nav`
 
   @media (min-width: 700px) {
     height: 80px;
-    background-color: transparent;
   }
 `;
 export const LeftContainer = styled.div`
@@ -39,6 +40,7 @@ export const NavbarInnerContainer = styled.div`
 
 export const NavbarLinkContainer = styled.div`
   display: flex;
+  margin-right: 20px;
 `;
 
 export const NavbarLink = styled(Link)`
@@ -82,6 +84,7 @@ export const Logo = styled.img`
 
 export const OpenLinksButton = styled.button`
   position: relative;
+  left: 15px;
   width: 60px;
   background: none;
   border: none;
@@ -101,7 +104,8 @@ export const NavbarExtendedContainer = styled.div`
   top: 15px;
   left: calc(100% - 226px - 20px);
   width: 226px;
-  height: 322px;
+  height: ${(props: { extendNavbar: boolean; isAuth: string }) =>
+    props.extendNavbar && props.isAuth ? "435px" : "322px"};
   padding-bottom: 57px;
   padding-left: 24px;
   display: flex;
@@ -129,4 +133,10 @@ export const ButtonChangeLang = styled.button`
   background-color: transparent;
   border: none;
   padding: 10px;
+`;
+export const ButtonNav = styled.button`
+  width: 61px;
+  height: 53px;
+  background-color: transparent;
+  border: none;
 `;

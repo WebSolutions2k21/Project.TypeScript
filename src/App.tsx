@@ -25,11 +25,13 @@ import {
   UserProjectPage,
 } from "pages";
 import { paths } from "config/paths";
+import Navbar from "components/Navbar/Navbar";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <Navbar />
       <Routes>
         <Route path={paths.home} element={<HomePage />} />
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
