@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { SignupSchema } from "./validate";
 import IRegistration from "./Registration.interface";
-import { RegForm, View, LabelStyle, ErrorMsg } from "./RegForm.style";
+import { FooterWrapperLeft, FooterWrapperRight, LinkFooter } from "styles/stylesPages/HomePage.style";
+import { RegForm, View, LabelStyle, ErrorMsg, Footer } from "./RegForm.style";
 import { Button, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide, Toast } from "styles";
 import { LogoPageSmall } from "styles/LogoPage.style";
 import { register } from "services/auth.service";
 import { paths } from "config/paths";
-
+import Navbar from "components/Navbar/Navbar";
 
 export const RegistrationForm = () => {
   const { t } = useTranslation();
@@ -39,32 +40,35 @@ export const RegistrationForm = () => {
 
   return (
     <>
-    <Formik 
-      initialValues={initialValues} 
-      validationSchema={SignupSchema()} 
-      onSubmit={(formValue: IRegistration) => {
-        const { username, email, password, confirmpassword, firstname, lastname } = formValue;
-        register(username, email, password, confirmpassword, firstname, lastname).then(
-          () => {
-            setTimeout(() => {
-              navigate(paths.login, { replace: true })
-            }, 3000);
-            toast.success(t`toast.registration.success`)
-          },
-          ({ response: { status } }) => toast.error(status === 400 ? t`toast.registration.validation` : t`toast.registration.error`) 
-        );
-      }}>
-      {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
-        return (
-          <Form noValidate onSubmit={handleSubmit}>
-            <RegForm>
-              <LogoPageSmall />
+      <Navbar />
+      <Formik
+        initialValues={initialValues}
+        validationSchema={SignupSchema()}
+        onSubmit={(formValue: IRegistration) => {
+          const { username, email, password, confirmpassword, firstname, lastname } = formValue;
+          register(username, email, password, confirmpassword, firstname, lastname).then(
+            () => {
+              setTimeout(() => {
+                navigate(paths.login, { replace: true });
+              }, 3000);
+              toast.success(t`toast.registration.success`);
+            },
+            ({ response: { status } }) =>
+              toast.error(status === 400 ? t`toast.registration.validation` : t`toast.registration.error`),
+          );
+        }}
+      >
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
+          return (
+            <Form noValidate onSubmit={handleSubmit}>
+              <RegForm>
+                <LogoPageSmall />
 
-              <LabelStyle htmlFor="username">
-                <IconText />
-                {t`registration.userName.name`}
-              </LabelStyle>
-              <Input
+                <LabelStyle htmlFor="username">
+                  <IconText />
+                  {t`registration.userName.name`}
+                </LabelStyle>
+                <Input
                   type="text"
                   name="username"
                   autoCapitalize="off"
@@ -74,17 +78,14 @@ export const RegistrationForm = () => {
                   onBlur={handleBlur}
                   value={values.username}
                   id="username"
-              />
-              <ErrorMsg>
-                {errors.username && touched.username && errors.username}
-              </ErrorMsg>
-              
+                />
+                <ErrorMsg>{errors.username && touched.username && errors.username}</ErrorMsg>
 
-              <LabelStyle htmlFor="firstname">
-                <IconText />
-                {t`registration.firstName.name`}
-              </LabelStyle>
-              <Input
+                <LabelStyle htmlFor="firstname">
+                  <IconText />
+                  {t`registration.firstName.name`}
+                </LabelStyle>
+                <Input
                   type="text"
                   name="firstname"
                   autoCapitalize="off"
@@ -94,16 +95,13 @@ export const RegistrationForm = () => {
                   onBlur={handleBlur}
                   value={values.firstname}
                   id="firstname"
-              />
-              <ErrorMsg>
-                {errors.firstname && touched.firstname && errors.firstname}
-              </ErrorMsg>
-              
+                />
+                <ErrorMsg>{errors.firstname && touched.firstname && errors.firstname}</ErrorMsg>
 
-              <LabelStyle htmlFor="lastname">
-                <IconText />
-                {t`registration.lastName.name`}
-              </LabelStyle>
+                <LabelStyle htmlFor="lastname">
+                  <IconText />
+                  {t`registration.lastName.name`}
+                </LabelStyle>
                 <Input
                   type="text"
                   name="lastname"
@@ -115,16 +113,13 @@ export const RegistrationForm = () => {
                   value={values.lastname}
                   id="lastname"
                 />
-                <ErrorMsg>
-                {errors.lastname && touched.lastname && errors.lastname}
-                </ErrorMsg>
-              
+                <ErrorMsg>{errors.lastname && touched.lastname && errors.lastname}</ErrorMsg>
 
-              <LabelStyle htmlFor="email">
-                <IconText />
-                {t`registration.email.name`}
-              </LabelStyle>
-              <Input
+                <LabelStyle htmlFor="email">
+                  <IconText />
+                  {t`registration.email.name`}
+                </LabelStyle>
+                <Input
                   type="email"
                   name="email"
                   autoCapitalize="off"
@@ -134,81 +129,76 @@ export const RegistrationForm = () => {
                   onBlur={handleBlur}
                   value={values.email}
                   id="email"
-              />
-              <ErrorMsg>
-                {errors.email && touched.email && errors.email}
-              </ErrorMsg>
-
-
-              <LabelStyle htmlFor="password">
-                <IconPassword />
-                {t`registration.password.name`}
-              </LabelStyle>
-              <View>
-                <Input
-                  type={passShown ? "text" : "password"}
-                  name="password"
-                  autoCapitalize="off"
-                  autoCorrect="off"
-                  placeholder={t`registration.password.placeholder`}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  id="password"
                 />
+                <ErrorMsg>{errors.email && touched.email && errors.email}</ErrorMsg>
+
+                <LabelStyle htmlFor="password">
+                  <IconPassword />
+                  {t`registration.password.name`}
+                </LabelStyle>
+                <View>
+                  <Input
+                    type={passShown ? "text" : "password"}
+                    name="password"
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                    placeholder={t`registration.password.placeholder`}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    id="password"
+                  />
                   {values.password.length > 0 ? (
                     <>{passShown ? <IconEye onClick={togglePass} /> : <IconEyeHide onClick={togglePass} />} </>
                   ) : (
                     ""
                   )}
-              </View>
-              <ErrorMsg>
-                {errors.password && touched.password && errors.password}
-              </ErrorMsg>
-              
+                </View>
+                <ErrorMsg>{errors.password && touched.password && errors.password}</ErrorMsg>
 
-              <LabelStyle htmlFor="confirmpassword">
-                <IconPassword />
-                {t`registration.confirmPassword.name`}
-              </LabelStyle>
-              <View>
-                <Input
-                  type={conPassShown ? "text" : "password"}
-                  name="confirmpassword"
-                  autoCapitalize="off"
-                  autoCorrect="off"
-                  placeholder={t`registration.password.placeholder`}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.confirmpassword}
-                  id="confirmpassword"
-                />
-                {values.confirmpassword.length > 0 ? (
-                  <>{conPassShown ? <IconEye onClick={toggleConPass} /> : <IconEyeHide onClick={toggleConPass} />} </>
-                ) : (
-                  ""
-                )}
-              </View>
-              <ErrorMsg>
-                {errors.confirmpassword && touched.confirmpassword && errors.confirmpassword}
-              </ErrorMsg>
+                <LabelStyle htmlFor="confirmpassword">
+                  <IconPassword />
+                  {t`registration.confirmPassword.name`}
+                </LabelStyle>
+                <View>
+                  <Input
+                    type={conPassShown ? "text" : "password"}
+                    name="confirmpassword"
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                    placeholder={t`registration.password.placeholder`}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.confirmpassword}
+                    id="confirmpassword"
+                  />
+                  {values.confirmpassword.length > 0 ? (
+                    <>{conPassShown ? <IconEye onClick={toggleConPass} /> : <IconEyeHide onClick={toggleConPass} />} </>
+                  ) : (
+                    ""
+                  )}
+                </View>
+                <ErrorMsg>{errors.confirmpassword && touched.confirmpassword && errors.confirmpassword}</ErrorMsg>
 
-                  <Button type="submit" disabled={!isValid}>
-                    {t`registration.button.name`}
-                  </Button>
-                  <Toast />
+                <Button type="submit" disabled={!isValid}>
+                  {t`registration.button.name`}
+                </Button>
+                <Toast />
 
-                  <Foot>
-                    <Link to={paths.login}>{t`registration.foot.login`}</Link>
-                    <Line />
-                    <Link to={paths.home}>{t`registration.foot.home`}</Link>
-                  </Foot>
-                </RegForm>
-              </Form>
-            );
-          }
-        }
+                <Footer>
+                  <FooterWrapperLeft>
+                    <LinkFooter to={paths.login}>{t`registration.foot.login`}</LinkFooter>
+                  </FooterWrapperLeft>
+                  <Line />
+                  <FooterWrapperRight>
+                    <LinkFooter to={paths.home}>{t`registration.foot.home`}</LinkFooter>
+                  </FooterWrapperRight>
+                </Footer>
+              </RegForm>
+            </Form>
+          );
+        }}
       </Formik>
-      </>
+    </>
   );
 };

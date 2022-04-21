@@ -8,9 +8,19 @@ import { useNavigate } from "react-router-dom";
 
 import { login } from "services/auth.service";
 import { Button, Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
-import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle, Footer } from "./Login.style";
+import {
+  LoginForm,
+  StyledInlineErrorMessageForm,
+  View,
+  LabelStyle,
+  Footer,
+  FooterWrapperLeft,
+  LinkFooter,
+  FooterWrapperRight,
+} from "./Login.style";
 import ILogin from "./Login.interface";
 import { paths } from "config/paths";
+import Navbar from "components/Navbar/Navbar";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -36,6 +46,7 @@ export const Login = () => {
 
   return (
     <>
+      <Navbar />
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
@@ -46,6 +57,8 @@ export const Login = () => {
               toast.success(t`toast.login.success`);
             },
             (error) => {
+              console.log("error", error.response.status)
+              console.log("error", error.response.status);
               switch (error.response.status) {
                 case 400:
                   return toast.error(t`toast.login.validation`);
@@ -109,11 +122,14 @@ export const Login = () => {
                 {t`button.login`}
               </Button>
               <Toast />
-
               <Footer>
-                <Link to={paths.signUp}>{t`footer.createAccount`}</Link>
+                <FooterWrapperLeft>
+                  <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
+                </FooterWrapperLeft>
                 <Line />
-                <Link to={paths.sendNewPassword}>{t`footer.forgotPassword`}</Link>
+                <FooterWrapperRight>
+                  <LinkFooter to={paths.sendNewPassword}>{t`footer.forgotPassword`}</LinkFooter>
+                </FooterWrapperRight>
               </Footer>
             </LoginForm>
           </Form>
