@@ -1,25 +1,35 @@
 import { Modal } from "components/Modal";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getAllTeam } from "services/team.service";
 import { UserAvatar } from "styles";
 import { TitlePage, View } from "./AllTeamProjectTeam.style";
 
 export const AllTeamProjectTeamForm = () => {
-    const [allTeamProject, setAllTeamProject]= useState('');
+  const [allTeamProject, setAllTeamProject] = useState([]);
 
-  const retrieveTutorials = () => {
+  useEffect(() => {
     getAllTeam()
       .then((response: any) => {
-          
-        console.log(response.data);
-        setAllTeamProject(response.data)
+        console.log("Res data", response.data);
+        setAllTeamProject(response.data);
       })
       .catch((e: Error) => {
-        console.log(e);
+        console.log("error w e", e);
       });
-  };
+  }, []);
+  console.log("All team", allTeamProject);
+  // const [data, setData] = useState([])
+  // useEffect(() => {
+  //   fetch('https://pokeapi.co/api/v2/type')
+  //   .then(res => res.json())
+  //   .then(setData)
+  // },[])
 
-  retrieveTutorials()
+  // return <div>
+  //  <ul>
+  //   {data.map((name) => <li key={name}>{name}</li>}
+  //  </ul>
+  // </div>
 
   return (
     <>
@@ -27,9 +37,13 @@ export const AllTeamProjectTeamForm = () => {
         <h1>All Team Projects</h1>
         <UserAvatar />
       </TitlePage>
+      {allTeamProject.map((teamName, _id) => (
+        <div key={_id}>{teamName}</div>
+      ))}
       <View>
-          {allTeamProject}
-        <Modal children={"Zawartość"} title={"AAAA"}></Modal>
+    
+
+        <Modal children={"Zawartość"} title={"AAAA"} buttonText={"View"}></Modal>
       </View>
     </>
   );
