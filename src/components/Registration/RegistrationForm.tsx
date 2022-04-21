@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -9,7 +8,7 @@ import { SignupSchema } from "./validate";
 import IRegistration from "./Registration.interface";
 import { FooterWrapperLeft, FooterWrapperRight, LinkFooter } from "styles/stylesPages/HomePage.style";
 import { RegForm, View, LabelStyle, ErrorMsg, Footer } from "./RegForm.style";
-import { Button, Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide, Toast } from "styles";
+import { Button, Input, IconPassword, IconText, Line, IconEye, IconEyeHide, Toast } from "styles";
 import { LogoPageSmall } from "styles/LogoPage.style";
 import { register } from "services/auth.service";
 import { paths } from "config/paths";
