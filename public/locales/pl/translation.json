@@ -11,6 +11,11 @@
     "myopinions": "Opinie",
     "notifications": "Powiadomienia"
   },
+  "homepage": {
+    "h1": "Zostań Uczniem lub Mentorem!",
+    "button": "Dołącz do Nas!",
+    "text": "Z Nami możesz się uczyć i pomagać"
+  },
   "description": {
     "part1": "Edytuj <1>src/App.js</1> i zapisz by ponownie wczytać.",
     "part2": "Ucz się React'a"
@@ -25,7 +30,8 @@
     "date_evening": "Dobry wieczór! Dzisiaj jest {{date, DATE_HUGE}}",
     "createAccount": "Utwórz konto",
     "forgotPassword": "Przypomnij hasło",
-    "homePage": "Strona głowna"
+    "homePage": "Strona głowna",
+    "login": "Strona logowania"
   },
   "user": {
     "email": {

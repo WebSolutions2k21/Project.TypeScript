@@ -9,6 +9,9 @@ import project from "assets/project.png";
 import student from "assets/studentVector.svg";
 import lineNav from "assets/lineNav.svg";
 import userAvatar from "assets/userAvatar.svg";
+import hatMain from "assets/hatMain.svg";
+import BrainCodeMain from "assets/BrainCodeMain.svg";
+import Teacher from "assets/Teacher.svg";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -50,4 +53,13 @@ export const Navline = styled.img.attrs({
 })``;
 export const UserAvatar = styled.img.attrs({
   src: `${userAvatar}`,
+})``;
+export const HatMain = styled.img.attrs({
+  src: `${hatMain}`,
+})``;
+export const BraincodeMain = styled.img.attrs({
+  src: `${BrainCodeMain}`,
+})``;
+export const TeacherMain = styled.img.attrs({
+  src: `${Teacher}`,
 })``;

@@ -86,7 +86,7 @@ export const Navbar = () => {
       </NavbarInnerContainer>
       {extendNavbar && !isAuth && (
         <NavbarExtendedContainer extendNavbar={extendNavbar} isAuth={isAuth}>
-          <NavbarLinkExtended to={paths.contact}>
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.contact}>
             <Navlink />
             {t("navbar.contact")}
           </NavbarLinkExtended>

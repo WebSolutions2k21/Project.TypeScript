@@ -11,6 +11,11 @@
     "myopinions": "My opinions",
     "notifications": "Notifications"
   },
+  "homepage": {
+    "h1": "Become Student or a Mentor!",
+    "button": "Join Us!",
+    "text": "With Us, You can learn and help"
+  },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
     "part2": "Learn React"
@@ -24,7 +29,9 @@
     "date_evening": "Good evening! Today was the {{date, DATE_HUGE}}",
     "createAccount": "Create Account",
     "forgotPassword": "Forgot Password",
-    "homePage": "Home Page"
+    "homePage": "Home Page",
+    "contact": "Contact Page",
+    "login": "Login Page"
   },
   "user": {
     "email": {
