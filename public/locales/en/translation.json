@@ -16,6 +16,9 @@
     "button": "Join Us!",
     "text": "With Us, You can learn and help"
   },
+  "404page": {
+    "page": "You didn’t break the Internet, but we can’t find what you are looking for."
+  },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
     "part2": "Learn React"

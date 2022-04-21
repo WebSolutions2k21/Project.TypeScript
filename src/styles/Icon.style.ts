@@ -12,6 +12,7 @@ import userAvatar from "assets/userAvatar.svg";
 import hatMain from "assets/hatMain.svg";
 import BrainCodeMain from "assets/BrainCodeMain.svg";
 import Teacher from "assets/Teacher.svg";
+import page404 from "assets/page404.svg";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -62,4 +63,7 @@ export const BraincodeMain = styled.img.attrs({
 })``;
 export const TeacherMain = styled.img.attrs({
   src: `${Teacher}`,
+})``;
+export const Page404 = styled.img.attrs({
+  src: `${page404}`,
 })``;

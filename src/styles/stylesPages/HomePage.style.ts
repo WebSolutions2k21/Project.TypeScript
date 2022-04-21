@@ -43,7 +43,6 @@ export const Footer = styled(Foot)`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 300px;
   margin-top: 20px;
 `;
 export const FooterWrapperLeft = styled.div`
