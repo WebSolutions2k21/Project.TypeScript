@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { CommonBurgerProps } from "hamburger-react";
-import React from "react";
 
 export const NavbarContainer: any = styled.nav`
   width: 100vw;

@@ -12,11 +12,13 @@ import {
   LinkFooter,
   PictureWrapper,
 } from "styles/stylesPages/HomePage.style";
+import Navbar from "components/Navbar/Navbar";
 
 export const HomePage = () => {
   const { t } = useTranslation();
   return (
     <>
+      <Navbar />
       <HomePageContainer>
         <BraincodeMain />
         <Header>{t("homepage.h1")}</Header>
