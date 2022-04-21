@@ -8,5 +8,6 @@ export const EmailVerificationForm = styled.div`
 `;
 
 export const WhiteText = styled.div`
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.body};
+  font-size: 25px;
 `;

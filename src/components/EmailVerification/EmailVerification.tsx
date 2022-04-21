@@ -2,11 +2,14 @@ import Navbar from "components/Navbar/Navbar";
 import { paths } from "config/paths";
 import { t } from "i18next";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button, IconStudent, LogoPage } from "styles";
-import { EmailVerificationForm } from "./EmailVerification.style";
+import { EmailVerificationForm, WhiteText } from "./EmailVerification.style";
 
 export const EmailVerification = () => {
+  const { t } = useTranslation();
+
   const handleClick = () => {
     window.location.href = paths.login;
   };
@@ -16,12 +19,14 @@ export const EmailVerification = () => {
       <Navbar />
       <EmailVerificationForm>
         <LogoPage />
-        <div>Welcome to Our Team !</div>
+        <WhiteText>{t`emailVerification.welcome`}</WhiteText>
         <IconStudent />
-        <div>Your email has been successfully verified</div>
-        <div>Now You can Log In!</div>
+        <div>{t`emailVerification.verified`}</div>
+        <div>{t`emailVerification.canLog`}</div>
 
-        <Button type="submit" onClick={handleClick}>{t`button.login`}</Button>
+        <Button type="submit" onClick={handleClick}>
+          {t`emailVerification.login`}
+        </Button>
       </EmailVerificationForm>
     </>
   );
