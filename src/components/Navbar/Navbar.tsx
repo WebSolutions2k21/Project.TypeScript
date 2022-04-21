@@ -28,7 +28,7 @@ export const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [extendNavbar, setExtendNavbar] = useState(false);
   const [isAuth, setIsAuth] = useState(getCurrentUser());
-  console.log(isAuth);
+
   const handleCloseNavMenu = () => {
     setExtendNavbar(false);
   };
