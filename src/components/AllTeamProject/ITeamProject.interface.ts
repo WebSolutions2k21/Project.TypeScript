@@ -1,12 +1,12 @@
 export default interface ITeamProject {
-    mentorId: string,
-    // programmingLanguage: IProgrammingLanguage,
-    status: boolean,
-    teamName: string
-    // usersIds: []
-  }
+  teamName: any;
+  usersIds: [];
+  mentorId: string;
+  programmingLanguage: Array<IProgrammingLanguage>;
+  status: boolean;
+}
 
-  export default interface IProgrammingLanguage{
-      level: string,
-      nameLang: string
-  }
+interface IProgrammingLanguage {
+  level?: string;
+  nameLang?: string;
+}

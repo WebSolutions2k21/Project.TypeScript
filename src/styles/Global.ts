@@ -12,7 +12,7 @@ body {
   background-image: repeating-linear-gradient(180deg,rgba(164, 205, 215, 0) 0%, #3C789E);
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.15em;
-  height: 100vh;
+  min-height: 100vh;
 
   display: flex;
   flex-direction: row;
@@ -32,4 +32,4 @@ export const theme = {
 };
 
 // background: linear-gradient(180deg, rgba(164, 205, 215, 0) 0%, #3C789E 100%);
-  // background-repeat: no-repeat;
+// background-repeat: no-repeat;

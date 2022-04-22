@@ -1,11 +1,12 @@
 import { Modal } from "components/Modal";
+import Navbar from "components/Navbar/Navbar";
 import React, { useState, useEffect } from "react";
 import { getAllTeam } from "services/team.service";
-import { UserAvatar } from "styles";
-import { TitlePage, View } from "./AllTeamProjectTeam.style";
+import { ButtonModal, ModalButton, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
+import ITeamProject from "./ITeamProject.interface";
 
 export const AllTeamProjectTeamForm = () => {
-  const [allTeamProject, setAllTeamProject] = useState([]);
+  const [allTeamProject, setAllTeamProject] = useState<Array<ITeamProject>>([]);
 
   useEffect(() => {
     getAllTeam()
@@ -18,33 +19,24 @@ export const AllTeamProjectTeamForm = () => {
       });
   }, []);
   console.log("All team", allTeamProject);
-  // const [data, setData] = useState([])
-  // useEffect(() => {
-  //   fetch('https://pokeapi.co/api/v2/type')
-  //   .then(res => res.json())
-  //   .then(setData)
-  // },[])
-
-  // return <div>
-  //  <ul>
-  //   {data.map((name) => <li key={name}>{name}</li>}
-  //  </ul>
-  // </div>
 
   return (
     <>
-      <TitlePage>
-        <h1>All Team Projects</h1>
-        <UserAvatar />
-      </TitlePage>
-      {allTeamProject.map((teamName, _id) => (
-        <div key={_id}>{teamName}</div>
-      ))}
-      <View>
-    
+    <TeamForm>
+   <Navbar/>
 
-        <Modal children={"Zawartość"} title={"AAAA"} buttonText={"View"}></Modal>
-      </View>
+      {allTeamProject &&
+        allTeamProject.map((team, index) => (
+          <View>
+            <TeamName><Name key={index} >{team.teamName}</Name>
+           <ModalButton>  <Modal children={<> <p>Status: {(team.status)? "open" : "close" }</p><div> {team.programmingLanguage && team.programmingLanguage.map((lang, index) => (
+               <> <div key={index}><p> Programming language: {lang.nameLang} </p> </div>
+                <div><p>level: {lang.level} </p>  </div></>
+            ))}</div><ButtonModal>Join Team</ButtonModal></>
+          } title={team.teamName} buttonText={"View"} ></Modal></ModalButton></TeamName>
+          </View>
+        ))}
+        </TeamForm>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "styles";
 
 export const ModalStyle = styled.div`
   position: fixed;
@@ -22,7 +23,8 @@ export const ModalOverlay = styled.div`
 export const ModalBox = styled.div`
   position: relative;
   width: 80vw;
-  padding: 50px;
+  max-width: 375px;
+  padding: 30px;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
@@ -32,11 +34,13 @@ export const ModalBox = styled.div`
 
 export const ModalTitle = styled.div`
   color: ${({ theme }) => theme.colors.text};
-  font-size: 30px;
+  font-size: 20px;
+  text-decoration: underline;
+  text-decoration-color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const ModalContent = styled.div`
-  margin-to: 50px;
+  margin-top: 50px;
   color: ${({ theme }) => theme.colors.text};
 `;
 export const CloseBtn = styled.div`
@@ -47,4 +51,10 @@ export const CloseBtn = styled.div`
 
 export const ActiveModal = styled.div`
   overflow-y: hidden;
+`;
+
+export const ButtonModal = styled(Button)`
+height: 30px;
+width: 100px;
+marigin-right: 20px;
 `;
