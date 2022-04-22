@@ -15,16 +15,16 @@ export const NotFoundPage = () => {
       <Page404Wrapper>
         <Page404 />
         <Header>{t("404page.page")}</Header>
+        <Footer>
+          <FooterWrapperLeft>
+            <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
+          </FooterWrapperLeft>
+          <Line />
+          <FooterWrapperRight>
+            <LinkFooter to={paths.sendNewPassword}>{t`footer.forgotPassword`}</LinkFooter>
+          </FooterWrapperRight>
+        </Footer>
       </Page404Wrapper>
-      <Footer>
-        <FooterWrapperLeft>
-          <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
-        </FooterWrapperLeft>
-        <Line />
-        <FooterWrapperRight>
-          <LinkFooter to={paths.sendNewPassword}>{t`footer.forgotPassword`}</LinkFooter>
-        </FooterWrapperRight>
-      </Footer>
     </>
   );
 };

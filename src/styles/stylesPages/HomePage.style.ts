@@ -11,6 +11,7 @@ export const HomePageContainer: any = styled.div`
 
   @media (min-width: 700px) {
     max-width: 1600px;
+    margin: auto;
   }
 `;
 
