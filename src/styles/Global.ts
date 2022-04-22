@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Ubuntu:wght@300&display=swap');
 * {
   box-sizing: border-box;
   padding: 0;

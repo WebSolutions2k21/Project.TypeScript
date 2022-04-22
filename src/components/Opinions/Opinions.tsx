@@ -4,7 +4,8 @@ import React, { useState } from "react";
 // import { useTranslation } from "react-i18next";
 // import { Link } from "react-router-dom";
 
-import { Button, Input, IconEye, IconText, LogoPage, IconEyeHide, Toast, LogoPageSmall } from "styles";
+import { Button, IconText, Toast } from "styles";
+import { TopArea, CardBox, ButtonStyle, TopText, OpinionAuthor, OpinionText, StarsBox } from "components/Opinions/Opinions.style";
 // import { LogoPageSmall } from "components/styles/LogoPage.style";
 // import { paths } from "config/paths";
 
@@ -19,36 +20,37 @@ interface IOpinions {
 export const Opinions = () => {
   return (
     <>
-      <h4>My Opinions</h4>
-      <img></img>
-      <button>Add New Opinion</button>
+      <TopArea>
+        <TopText>My Opinions</TopText>
+        {/* <img src="/src/assets/UserAvatar 1.png"></img> */}
+        <div>photo</div>
+      </TopArea>
+      <Button>Add New Opinion</Button>
 
-      <LabelStyle htmlFor="opinion">
-        <LabelStyle htmlFor="topInfo">
-          <IconText></IconText>
-          <p>Huar D'ckhed</p>
-        </LabelStyle>
+      <CardBox>
+        <IconText />
+        <OpinionAuthor>Huar D'ckhed</OpinionAuthor>
+        <StarsBox>*****</StarsBox>
+        <OpinionText>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum
+        </OpinionText>
+        <ButtonStyle>Edit</ButtonStyle>
+      </CardBox>
+      <CardBox>
+        <IconText />
+        <OpinionAuthor>Cumi Msait</OpinionAuthor>
+        <StarsBox>*****</StarsBox>
+        <OpinionText>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum
+        </OpinionText>
+        <ButtonStyle>Edit</ButtonStyle>
+      </CardBox>
+      {/* <CardBox>
+        <IconText></IconText>
+        <p>Bitson Mitt</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum</p>
-        <button>Edit</button>
-      </LabelStyle>
-
-      <LabelStyle htmlFor="opinion">
-        <LabelStyle htmlFor="topInfo">
-          <IconText></IconText>
-          <p>Cumi Msait</p>
-        </LabelStyle>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum</p>
-        <button>Edit</button>
-      </LabelStyle>
-
-      <LabelStyle htmlFor="opinion">
-        <LabelStyle htmlFor="topInfo">
-          <IconText></IconText>
-          <p>Bitson Mitt</p>
-        </LabelStyle>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum</p>
-        <button>Edit</button>
-      </LabelStyle>
+        <ButtonStyle>Edit</ButtonStyle>
+      </CardBox> */}
     </>
   );
 };

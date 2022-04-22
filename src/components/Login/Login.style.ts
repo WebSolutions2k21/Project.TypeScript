@@ -22,8 +22,6 @@ export const View = styled.div`
 
 export const StyledInlineErrorMessageForm = styled(StyledInlineErrorMessage)`
   margin: 10px auto 5px 70px;
-<<<<<<< HEAD
-=======
 `;
 
 export const LabelStyle = styled(Label)`
@@ -32,5 +30,4 @@ export const LabelStyle = styled(Label)`
 
 export const Footer = styled(Foot)`
   margin-top: 20px;
->>>>>>> 458115a691287347e66a24951099e86045ea8b9f
 `;
