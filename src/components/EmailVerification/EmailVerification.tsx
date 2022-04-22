@@ -1,17 +1,18 @@
 import Navbar from "components/Navbar/Navbar";
 import { paths } from "config/paths";
-import { t } from "i18next";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { Button, IconStudent, LogoPage } from "styles";
 import { EmailVerificationForm, WhiteText } from "./EmailVerification.style";
 
 export const EmailVerification = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    window.location.href = paths.login;
+    navigate(paths.login);
   };
 
   return (
