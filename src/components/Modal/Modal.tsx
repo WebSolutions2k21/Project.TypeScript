@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IconInModal } from "styles";
 
 import { ModalStyle, ModalBox, ModalTitle, CloseBtn, ModalContent, ModalOverlay, ActiveModal, ButtonModal } from "./Modal.style";
 
@@ -27,7 +28,8 @@ export const Modal = ({ children, title, buttonText }: IModal) => {
           <ModalOverlay onClick={toggleModal} />
           <ModalBox>
             <CloseBtn onClick={toggleModal}>X</CloseBtn>
-            <ModalTitle>{title}</ModalTitle>
+          
+            <ModalTitle>  <IconInModal/>{title}</ModalTitle>
             <ModalContent>{children}</ModalContent>
           </ModalBox>
         </ModalStyle>

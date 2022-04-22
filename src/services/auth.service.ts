@@ -16,7 +16,7 @@ export const logout = () => {
 };
 
 export const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user") as string) && JSON.parse(localStorage.getItem("mentor") as string);
+  return JSON.parse(localStorage.getItem("user") as string) && JSON.parse(localStorage.getItem("mentor") as string );
 };
 
 const REGISTER_URL = "/users/register";

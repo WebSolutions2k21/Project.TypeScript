@@ -6,6 +6,7 @@ import eye from "assets/eye.svg";
 import eyeHide from "assets/eyeHide.svg";
 import line from "assets/line.png";
 import navlink from "assets/navLink.svg";
+import modalIcon from "assets/modalIcon.png";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -33,3 +34,7 @@ export const Navlink = styled.img.attrs({
 })`
   padding-right: 14px;
 `;
+
+export const IconInModal = styled.img.attrs({
+  src: `${modalIcon}`,
+})``;

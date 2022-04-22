@@ -3,17 +3,14 @@ import { Button } from "styles";
 
 export const View = styled.div`
   margin: 20px 15px;
-
-  vertical-align: text-bottom;
+  width: 325px;
 `;
 
 export const TeamForm = styled.div`
   display: flex;
   flex-direction: column;
-  align: center;
-  width: 375px;
+
   align-items: center;
-  display: inline-block;
 `;
 
 export const TeamName = styled.div`
@@ -28,19 +25,17 @@ export const TeamName = styled.div`
 export const ModalButton = styled.div`
   height: 30px;
   width: 100px;
-
-  vertical-align: top;
   display: inline-block;
   float: right;
+  margin: -15px 0;
 `;
 
 export const Name = styled.div`
-  vertical-align: top;
   display: inline-block;
-  padding-bottom: 15px;
 `;
+
 export const ButtonModal = styled(Button)`
-height: 30px;
-width: 100px;
-margin: 0 140px 0 0;
+  height: 30px;
+  width: 100px;
+  margin: 0 280px 0 0;
 `;

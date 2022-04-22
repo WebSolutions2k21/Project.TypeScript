@@ -18,7 +18,6 @@ export const AllTeamProjectTeamForm = () => {
         console.log("error w e", e);
       });
   }, []);
-  console.log("All team", allTeamProject);
 
   return (
     <>
@@ -28,11 +27,13 @@ export const AllTeamProjectTeamForm = () => {
       {allTeamProject &&
         allTeamProject.map((team, index) => (
           <View>
-            <TeamName><Name key={index} >{team.teamName}</Name>
-           <ModalButton>  <Modal children={<> <p>Status: {(team.status)? "open" : "close" }</p><div> {team.programmingLanguage && team.programmingLanguage.map((lang, index) => (
-               <> <div key={index}><p> Programming language: {lang.nameLang} </p> </div>
-                <div><p>level: {lang.level} </p>  </div></>
-            ))}</div><ButtonModal>Join Team</ButtonModal></>
+            <TeamName>
+              <Name key={index} >{team.teamName}</Name>
+           <ModalButton>  
+             <Modal children={<> <p>Status: {(team.status)? "open" : "close" }</p><ul> {team.programmingLanguage && team.programmingLanguage.map((lang, index) => (
+               <> <li key={index}><p> Programming language: {lang.nameLang} </p> </li>
+                <li><p>level: {lang.level} </p>  </li></>
+            ))}</ul><ButtonModal>Join Team</ButtonModal></>
           } title={team.teamName} buttonText={"View"} ></Modal></ModalButton></TeamName>
           </View>
         ))}

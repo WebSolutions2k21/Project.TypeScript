@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import { login } from "services/auth.service";
+import { getCurrentUser, login } from "services/auth.service";
 import { Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
 import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle, Footer, ButtonForm } from "./Login.style";
 import ILogin from "./Login.interface";
@@ -34,6 +34,9 @@ export const Login = () => {
     password: "",
   };
 
+  const isAuth = getCurrentUser();
+  console.log("is auth", isAuth);
+
   return (
     <>
       <Formik
@@ -41,12 +44,9 @@ export const Login = () => {
         initialValues={initialValues}
         onSubmit={(values) => {
           login(values).then(
-            ({mentor}) => {
-              mentor
-                ? navigate(paths.mentorProfile)
-                : navigate(paths.myProfile);
+            ({ mentor }) => {
+              mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
               toast.success(t`toast.login.success`);
-              navigate(paths.myProfile, { replace: true });
             },
             (error) => {
               switch (error.response.status) {

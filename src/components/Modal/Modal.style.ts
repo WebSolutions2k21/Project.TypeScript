@@ -35,14 +35,20 @@ export const ModalBox = styled.div`
 export const ModalTitle = styled.div`
   color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
-  text-decoration: underline;
-  text-decoration-color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary || "#FFFFFF"};
+  border-style: none none solid none;
+ 
+  & > img {
+    padding-right: 10px;
+  }
 `;
 
 export const ModalContent = styled.div`
   margin-top: 50px;
   color: ${({ theme }) => theme.colors.text};
+  
 `;
+
 export const CloseBtn = styled.div`
   position: absolute;
   top: 20px;
@@ -56,5 +62,4 @@ export const ActiveModal = styled.div`
 export const ButtonModal = styled(Button)`
 height: 30px;
 width: 100px;
-marigin-right: 20px;
 `;
