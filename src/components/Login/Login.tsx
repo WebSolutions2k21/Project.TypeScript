@@ -19,7 +19,7 @@ import {
 } from "./Login.style";
 import ILogin from "./Login.interface";
 import { paths } from "config/paths";
-import Navbar from "components/Navbar/Navbar";
+import { Navbar } from "components";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -56,7 +56,7 @@ export const Login = () => {
               toast.success(t`toast.login.success`);
             },
             (error) => {
-              console.log("error", error.response.status)
+              console.log("error", error.response.status);
               console.log("error", error.response.status);
               switch (error.response.status) {
                 case 400:

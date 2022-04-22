@@ -12,7 +12,7 @@ import { Button, Input, IconPassword, IconText, Line, IconEye, IconEyeHide, Toas
 import { LogoPageSmall } from "styles/LogoPage.style";
 import { register } from "services/auth.service";
 import { paths } from "config/paths";
-import Navbar from "components/Navbar/Navbar";
+import { Navbar } from "components";
 
 export const RegistrationForm = () => {
   const { t } = useTranslation();

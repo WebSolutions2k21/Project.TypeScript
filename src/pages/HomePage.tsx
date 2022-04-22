@@ -12,7 +12,7 @@ import {
   LinkFooter,
   PictureWrapper,
 } from "styles/stylesPages/HomePage.style";
-import Navbar from "components/Navbar/Navbar";
+import { Navbar } from "components";
 
 export const HomePage = () => {
   const { t } = useTranslation();
