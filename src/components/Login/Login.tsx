@@ -41,12 +41,14 @@ export const Login = () => {
         initialValues={initialValues}
         onSubmit={(values) => {
           login(values).then(
-            () => {
+            ({mentor}) => {
+              mentor
+                ? navigate(paths.mentorProfile)
+                : navigate(paths.myProfile);
               toast.success(t`toast.login.success`);
               navigate(paths.myProfile, { replace: true });
             },
             (error) => {
-              console.log("error", error.response.status);
               switch (error.response.status) {
                 case 400:
                   return toast.error(t`toast.login.validation`);
