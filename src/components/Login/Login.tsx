@@ -41,8 +41,8 @@ export const Login = () => {
         initialValues={initialValues}
         onSubmit={(values) => {
           login(values).then(
-            (res) => {
-              res.mentor
+            ({mentor}) => {
+              mentor
                 ? navigate(paths.mentorProfile)
                 : navigate(paths.myProfile);
               toast.success(t`toast.login.success`);
