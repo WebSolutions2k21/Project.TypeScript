@@ -4,9 +4,9 @@ import { Foot, Label } from "styles";
 export const RegForm = styled.div`
   display: flex;
   flex-direction: column;
-  align: center;
   width: 355px;
   align-items: center;
+  margin: auto;
 `;
 
 export const ErrorMsg = styled.div`

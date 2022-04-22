@@ -5,9 +5,9 @@ import { StyledInlineErrorMessage, Label, Foot } from "styles";
 export const LoginForm = styled.div`
   display: flex;
   flex-direction: column;
-  align: center;
   width: 375px;
   align-items: center;
+  margin: auto;
 `;
 
 export const View = styled.div`

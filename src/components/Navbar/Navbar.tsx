@@ -61,11 +61,11 @@ export const Navbar = () => {
                 {t("navbar.myopinions")}
               </NavbarLink>
             )}
-            {isAuth && (
+            {/* TODO {isAuth && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.myNotifications}>
                 {t("navbar.notifications")}
               </NavbarLink>
-            )}
+            )} */}
             {isAuth && (
               <NavbarLink onClick={logoutHandler} to={paths.home}>
                 {t("navbar.logout")}
@@ -139,10 +139,10 @@ export const Navbar = () => {
             <Navlink />
             {t("navbar.myopinions")}
           </NavbarLinkExtended>
-          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myNotifications}>
+          {/*TODO <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myNotifications}>
             <Navlink />
             {t("navbar.notifications")}
-          </NavbarLinkExtended>
+          </NavbarLinkExtended> */}
           <Navline />
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.contact}>
             <Navlink />
