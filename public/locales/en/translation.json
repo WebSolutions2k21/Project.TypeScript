@@ -106,7 +106,7 @@
       "success": "Successful send email!",
       "error": "Incorrect send mail",
       "notFound": "User not found or does not exist"
-    }
+    }  
   },
   "addNewProject": {
     "name": "project name",

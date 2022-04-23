@@ -8,7 +8,7 @@ import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg } from "../Registration/RegForm.style";
-import { Button, Input, StyledSelect, IconProject, IconText } from "styles";
+import { Button, Input, StyledSelect, IconProject, IconText, Toast } from "styles";
 
 
 const options = [
@@ -36,9 +36,10 @@ export const AddNewProject = () => {
       validationSchema={AddNewProjectSchema()} 
       onSubmit={(formValue: IAddNewProject) => {
         let { name, userId = user, mentorId, content, status } = formValue;
+
         createProject(name, userId, mentorId, content, status).then(
           () => {
-            toast.success(t`toast.addNewProject.validation.success`)
+            toast.success(t`addNewProject.validation.success`)
           },
           ({ response: { status } }) => toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`) 
         )
@@ -116,6 +117,8 @@ export const AddNewProject = () => {
             <Button type="submit" disabled={!isValid}>
             {t`addNewProject.button`} 
             </Button>
+            
+            <Toast />
 
         </AddNewProjectForm>
       </Form>
