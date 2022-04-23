@@ -41,18 +41,17 @@ export const Login = () => {
         initialValues={initialValues}
         onSubmit={(values) => {
           login(values).then(
-            () => {
-              navigate(paths.myProfile, { replace: true });
+            ({ mentor }) => {
+              mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
               toast.success(t`toast.login.success`);
             },
             (error) => {
-              console.log("error", error.response.status)
               switch (error.response.status) {
                 case 400:
                   return toast.error(t`toast.login.validation`);
                 case 404:
                   return toast.error(t`toast.login.notFound`);
-                  case 423:
+                case 423:
                   return toast.error(t`toast.login.locked`);
                 default:
                   return toast.error(t`toast.login.error`);

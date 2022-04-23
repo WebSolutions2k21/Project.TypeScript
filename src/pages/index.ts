@@ -15,4 +15,4 @@ export * from "./SignUpPage";
 export * from "./UserNotificationsPage";
 export * from "./UserProfilePage";
 export * from "./UserProjectPage";
-export * from "./EmailVerification";
+export * from "./EmailVerificationPage";

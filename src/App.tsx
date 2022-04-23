@@ -10,7 +10,7 @@ import {
   AddNewTeamProjectPage,
   AllTeamProjectsPage,
   ContactPage,
-  EmailVerification,
+  EmailVerificationPage,
   HomePage,
   LoginPage,
   MentorNotificationsPage,
@@ -48,7 +48,7 @@ function App() {
         <Route path={paths.myNotifications} element={<UserNotificationsPage />} />
         <Route path={paths.myProfile} element={<UserProfilePage />} />
         <Route path={paths.myProjects} element={<UserProjectPage />} />
-        <Route path={paths.emailVerification} element={<EmailVerification />} />
+        <Route path={paths.emailVerification} element={<EmailVerificationPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
