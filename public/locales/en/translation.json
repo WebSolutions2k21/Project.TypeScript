@@ -107,5 +107,30 @@
       "error": "Incorrect send mail",
       "notFound": "User not found or does not exist"
     }
+  },
+  "addNewProject": {
+    "name": "project name",
+    "namePlaceholder": "Type your project name",
+    "mentor": "mentor",
+    "mentorPlaceholder": "Choose mentor",
+    "content": "content",
+    "contentPlaceholder": "Type your code or Github Page",
+    "status": "status",
+    "statusPlaceholder": "Choose status",
+    "button": "ENTER",
+      "validation": {
+        "name": "Your project name is too short", 
+        "nameReq": "Please enter project's name",     
+        "mentor": "Please choose your mentor",
+        "content": "Your content name is too short",
+        "contentReq": "Please enter the content",
+        "status": "Please choose project's status"
+      }
+    },
+  "emailVerification": {
+    "login": "Log In!",
+    "welcome": "Welcome to Our Team!",
+    "verified": "Your email has been successfully verified",
+    "canLog": "Now You can Log In!"
   }
 }

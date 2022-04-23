@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import { getCurrentUser, login } from "services/auth.service";
+import { login } from "services/auth.service";
 import { Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
 import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle, Footer, ButtonForm } from "./Login.style";
 import ILogin from "./Login.interface";
@@ -46,7 +46,6 @@ export const Login = () => {
                 mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
               }, 1500);
               toast.success(t`toast.login.success`);
-             
             },
             (error) => {
               switch (error.response.status) {

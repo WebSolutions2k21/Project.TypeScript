@@ -4,3 +4,4 @@ export * from "./ForgotPassword";
 export * from "./AllTeamProject";
 export * from "./Modal";
 
+export * from "./AddNewProject";
