@@ -1,7 +1,12 @@
+import { AllTeamProjectTeamForm } from "components";
+import Navbar from "components/Navbar/Navbar";
 import React from "react";
 
 export const UserProjectPage = () => {
-    return (
-     <h1>UserProjectPage</h1>
-    );
+  return (
+    <>
+      <Navbar />
+      <UserProjectForm />
+    </>
+  );
 };
