@@ -125,7 +125,10 @@
         "mentor": "Wybierz mentora",
         "content": "Nazwa jest zbyt krótka",
         "contentReq": "Wpisz content",
-        "status": "Wybierz status projektu"
+        "status": "Wybierz status projektu",
+        "success": "Udało się!",
+        "validation": "Coś poszło nie tak. Spróbuj ponownie",
+        "error": "Błąd"
   }
 },
   "emailVerification": {

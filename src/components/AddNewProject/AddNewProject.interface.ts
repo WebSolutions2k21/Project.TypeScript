@@ -1,7 +1,7 @@
 export default interface IAddNewProject {
   name: string;
   userId: string;
-  mentor: string;
+  mentorId: string;
   content: string;
   status: string;
 }

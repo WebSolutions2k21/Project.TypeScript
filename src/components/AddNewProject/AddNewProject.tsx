@@ -1,12 +1,10 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 
 import { createProject } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
-import { paths } from "config/paths";
 import { AddNewProjectSchema } from "./validate";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg } from "../Registration/RegForm.style";
@@ -18,16 +16,16 @@ const options = [
   { value: "false", label: "Close project" }
 ];
 
+const user = JSON.parse(localStorage.getItem("user") as string);
 
 export const AddNewProject = () => {
   
   const { t } = useTranslation();
-  let navigate = useNavigate();
 
   const initialValues: IAddNewProject = {
     name: "",
-    userId: "",
-    mentor: "",
+    userId: user,
+    mentorId: "",
     content: "",
     status: "",
   };
@@ -37,15 +35,12 @@ export const AddNewProject = () => {
       initialValues={initialValues} 
       validationSchema={AddNewProjectSchema()} 
       onSubmit={(formValue: IAddNewProject) => {
-        const { name, userId, mentor, content, status } = formValue;
-        createProject(name, userId, mentor, content, status).then(
+        let { name, userId = user, mentorId, content, status } = formValue;
+        createProject(name, userId, mentorId, content, status).then(
           () => {
-            setTimeout(() => {
-              navigate(paths.login, { replace: true })
-            }, 3000);
-            toast.success(t`toast.registration.success`)
+            toast.success(t`toast.addNewProject.validation.success`)
           },
-          ({ response: { status } }) => toast.error(status === 400 ? t`toast.registration.validation` : t`toast.registration.error`) 
+          ({ response: { status } }) => toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`) 
         )
       }}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {

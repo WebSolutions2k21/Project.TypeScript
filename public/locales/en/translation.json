@@ -124,7 +124,10 @@
         "mentor": "Please choose your mentor",
         "content": "Your content name is too short",
         "contentReq": "Please enter the content",
-        "status": "Please choose project's status"
+        "status": "Please choose project's status",
+        "success": "Success",
+        "validation": "Something is wrong. Try again",
+        "error": "Error"
       }
     },
   "emailVerification": {
