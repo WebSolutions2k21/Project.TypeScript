@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 
-import { createProject } from "services/project.service"
+import { createProject } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
 import { paths } from "config/paths";
 import { AddNewProjectSchema } from "./validate";
@@ -20,12 +20,13 @@ const options = [
 
 
 export const AddNewProject = () => {
-
+  
   const { t } = useTranslation();
   let navigate = useNavigate();
 
   const initialValues: IAddNewProject = {
     name: "",
+    userId: "",
     mentor: "",
     content: "",
     status: "",
@@ -36,8 +37,8 @@ export const AddNewProject = () => {
       initialValues={initialValues} 
       validationSchema={AddNewProjectSchema()} 
       onSubmit={(formValue: IAddNewProject) => {
-        const { name, mentor, content, status } = formValue;
-        createProject(name, mentor, content, status).then(
+        const { name, userId, mentor, content, status } = formValue;
+        createProject(name, userId, mentor, content, status).then(
           () => {
             setTimeout(() => {
               navigate(paths.login, { replace: true })

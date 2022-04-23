@@ -1,22 +1,24 @@
-import axios from "axios";
+import axios from "../axios/instanceAxios";
 
-const URL = "http://localhost:5000/project/create"
+const URL = "/project/create";
 
-export const createProject = async(
+export const createProject = async (
   name: string,
+  userId: string,
   mentorId: string,
   content: string,
-  status: string
+  status: string,
 ) => {
   return await axios
     .post(URL, {
       name,
+      userId,
       mentorId,
       content,
-      status
+      status,
     })
     .then((res) => {
-      console.log(res)
+      console.log(res);
       return res.data;
     });
-}
+};
