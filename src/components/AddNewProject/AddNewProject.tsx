@@ -30,7 +30,6 @@ export const AddNewProject = () => {
   };
 
   return (
-    <>
     <Formik
       initialValues={initialValues} 
       validationSchema={AddNewProjectSchema()} 
@@ -117,6 +116,5 @@ export const AddNewProject = () => {
       </Form>
       )}}
     </Formik>
-    </>
   )
 }
