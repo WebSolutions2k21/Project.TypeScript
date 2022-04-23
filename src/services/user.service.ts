@@ -6,7 +6,7 @@ export const sendEmail = async (data: IForgotPassword) => {
 };
 
 export const getUserProjects = () => {
-  return axios.get("/getAllProject").then((res) => {
+  return axios.get("/project").then((res) => {
     console.log("res", res);
     return res;
   });
