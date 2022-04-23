@@ -108,5 +108,24 @@
       "error": "Wysłanie maila nie powiodło się",
       "notFound": "Nie znaleziono lub nie istnieje taki mail"
     }
+  },
+  "addNewProject": {
+    "name": "nazwa projektu",
+    "namePlaceholder": "Wpisz nazwę swojego projektu",
+    "mentor": "mentor",
+    "mentorPlaceholder": "Wybierz mentora",
+    "content": "content",
+    "contentPlaceholder": "Wpisz swój kod lub Github Page",
+    "status": "status",
+    "statusPlaceholder": "Wybierz status",
+    "button": "ENTER"
+  },
+  "validation": {
+    "name": "Nazwa projektu jest zbyt krótka",
+    "nameReq": "Wpisz nazwę projektu",     
+    "mentor": "Wybierz mentora",
+    "content": "Nazwa jest zbyt krótka",
+    "contentReq": "Wpisz content",
+    "status": "Wybierz status projektu"
   }
 }
