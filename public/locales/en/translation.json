@@ -126,5 +126,11 @@
         "contentReq": "Please enter the content",
         "status": "Please choose project's status"
       }
-    }
- }
+    },
+  "emailVerification": {
+    "login": "Log In!",
+    "welcome": "Welcome to Our Team!",
+    "verified": "Your email has been successfully verified",
+    "canLog": "Now You can Log In!"
+  }
+}

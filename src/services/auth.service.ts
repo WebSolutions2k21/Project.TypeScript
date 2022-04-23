@@ -5,6 +5,7 @@ export const login = (data: ILogin) => {
   return axios.post("/login", data).then((res) => {
     if (res.data.token) {
       localStorage.setItem("user", JSON.stringify(res.data.token));
+      localStorage.setItem("mentor", JSON.stringify(res.data.mentor));
     }
     return res.data;
   });
@@ -15,7 +16,7 @@ export const logout = () => {
 };
 
 export const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user") as string);
+  return JSON.parse(localStorage.getItem("user") as string) && JSON.parse(localStorage.getItem("mentor") as string);
 };
 
 const REGISTER_URL = "/users/register";

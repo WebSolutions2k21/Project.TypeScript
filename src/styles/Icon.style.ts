@@ -6,6 +6,7 @@ import eyeHide from "assets/eyeHide.svg";
 import line from "assets/line.png";
 import navlink from "assets/navLink.svg";
 import project from "assets/project.png";
+import student from "assets/studentVector.svg";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -37,4 +38,8 @@ export const Navlink = styled.img.attrs({
 
 export const IconProject = styled.img.attrs({
   src: `${project}`,
+})``;
+
+export const IconStudent = styled.img.attrs({
+  src: `${student}`,
 })``;
