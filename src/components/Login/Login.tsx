@@ -34,9 +34,6 @@ export const Login = () => {
     password: "",
   };
 
-  const isAuth = getCurrentUser();
-  console.log("is auth", isAuth);
-
   return (
     <>
       <Formik
@@ -45,8 +42,11 @@ export const Login = () => {
         onSubmit={(values) => {
           login(values).then(
             ({ mentor }) => {
-              mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
+              setTimeout(() => {
+                mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
+              }, 1500);
               toast.success(t`toast.login.success`);
+             
             },
             (error) => {
               switch (error.response.status) {

@@ -19,10 +19,13 @@ export const AllTeamProjectTeamForm = () => {
       });
   }, []);
 
+  // const grouped = groupBy(allTeamProject, team => team.mentorId);
+
+  // console.log("group", grouped)
+
   return (
     <>
     <TeamForm>
-   <Navbar/>
 
       {allTeamProject &&
         allTeamProject.map((team, index) => (
@@ -41,3 +44,4 @@ export const AllTeamProjectTeamForm = () => {
     </>
   );
 };
+
