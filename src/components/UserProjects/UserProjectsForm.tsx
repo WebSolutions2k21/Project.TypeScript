@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getUserProjects } from "services/user.service";
 import { Button } from "styles";
 import IUserProjects from "./IUserProjects.interface";
-import { getCurrentUser } from "services/auth.service";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
 
@@ -11,7 +10,7 @@ export const UserProjectsForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getUserProjects(getCurrentUser)
+    getUserProjects()
       .then((response: any) => {
         console.log("Res data", response.data);
         setUserAllProjects(response.data);
