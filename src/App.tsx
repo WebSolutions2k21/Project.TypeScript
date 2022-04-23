@@ -25,6 +25,7 @@ import {
   UserProjectPage,
 } from "pages";
 import { paths } from "config/paths";
+import { AddTeamPage } from "pages/AddTeamPage";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path={paths.myProfile} element={<UserProfilePage />} />
         <Route path={paths.myProjects} element={<UserProjectPage />} />
         <Route path={paths.emailVerification} element={<EmailVerificationPage />} />
+        <Route path={paths.addTeam} element={<AddTeamPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
