@@ -1,11 +1,12 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
-// import { Link } from "react-router-dom";
-// import { useNavigate } from 'react-router-dom';
-// import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
+import { createProject } from "services/project.service"
 import IAddNewProject from "./AddNewProject.interface";
+import { paths } from "config/paths";
 import { AddNewProjectSchema } from "./validate";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg } from "../Registration/RegForm.style";
@@ -21,21 +22,30 @@ const options = [
 export const AddNewProject = () => {
 
   const { t } = useTranslation();
+  let navigate = useNavigate();
 
   const initialValues: IAddNewProject = {
     name: "",
-    mentor: [],
+    mentor: "",
     content: "",
-    status: [],
+    status: "",
   };
 
   return (
     <Formik
       initialValues={initialValues} 
       validationSchema={AddNewProjectSchema()} 
-      onSubmit={(formValue) => {
-        // const { name, mentor, content, status } = formValue;
-        console.log(formValue)
+      onSubmit={(formValue: IAddNewProject) => {
+        const { name, mentor, content, status } = formValue;
+        createProject(name, mentor, content, status).then(
+          () => {
+            setTimeout(() => {
+              navigate(paths.login, { replace: true })
+            }, 3000);
+            toast.success(t`toast.registration.success`)
+          },
+          ({ response: { status } }) => toast.error(status === 400 ? t`toast.registration.validation` : t`toast.registration.error`) 
+        )
       }}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
       return (
@@ -68,7 +78,6 @@ export const AddNewProject = () => {
             </LabelStyle>
             <StyledSelect 
             name="mentor"
-            options={values.mentor}
             classNamePrefix={'Select'}
             placeholder={t`addNewProject.mentorPlaceholder`}
             id="mentor"
