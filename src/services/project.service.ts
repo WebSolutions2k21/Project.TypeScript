@@ -1,22 +1,8 @@
-import axios from "axios";
+import axios from "axios/instanceAxios";
+import IAddNewProject from "components/AddNewProject/AddNewProject.interface";
 
-const URL = "http://localhost:5000/project/create"
+export const createProject = async (data: IAddNewProject) => {
+  console.log("dane przychodzące", data)
+  return await axios.post("/project/create", data)
+};
 
-export const createProject = async(
-  name: string,
-  mentorId: string,
-  content: string,
-  status: string
-) => {
-  return await axios
-    .post(URL, {
-      name,
-      mentorId,
-      content,
-      status
-    })
-    .then((res) => {
-      console.log(res)
-      return res.data;
-    });
-}
