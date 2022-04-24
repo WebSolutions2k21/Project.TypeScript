@@ -26,21 +26,13 @@ import {
 } from "pages";
 import { paths } from "config/paths";
 import { PrivateRoute } from "config/PrivateRoute";
-import { PublicRoute } from "config/PublicRoute";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Routes>
-        <Route
-          path={paths.home}
-          element={
-            <PublicRoute>
-              <HomePage />
-            </PublicRoute>
-          }
-        />
+        <Route path={paths.home} element={<HomePage />} />
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
         <Route path={paths.addProject} element={<AddNewProjectPage />} />
         <Route path={paths.addTeamProject} element={<AddNewTeamProjectPage />} />

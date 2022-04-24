@@ -7,7 +7,7 @@ export type PrivateRouteProps = {
   isAuthenticated: boolean;
 } & RouteProps;
 
-export const PublicRoute = (children: any) => {
+export const PublicRoute = (children: JSX.Element) => {
   const isAuthenticated = isUserLogged();
 
   return !isAuthenticated ? children : <Navigate to={paths.login} />;
