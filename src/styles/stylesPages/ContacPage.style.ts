@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Foot } from "styles/Foot.style";
 
 export const ContactPageContainer: any = styled.div`
   width: 100vw;
