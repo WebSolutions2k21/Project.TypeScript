@@ -37,7 +37,7 @@ export const ModalTitle = styled.div`
   font-size: 20px;
   border: 1px solid ${({ theme }) => theme.colors.primary || "#FFFFFF"};
   border-style: none none solid none;
- 
+
   & > img {
     padding-right: 10px;
   }
@@ -59,7 +59,9 @@ export const ActiveModal = styled.div`
   overflow-y: hidden;
 `;
 
-export const ButtonModal = styled(Button)`
-height: 30px;
-width: 100px;
+export const ModalButton = styled(Button)`
+  height: 30px;
+  width: 50px;
+  font-size: 14px;
+  margin: 10px 0px 5px 0px;
 `;

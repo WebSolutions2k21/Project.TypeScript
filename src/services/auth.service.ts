@@ -4,8 +4,8 @@ import ILogin from "components/Login/Login.interface";
 export const login = (data: ILogin) => {
   return axios.post("/login", data).then((res) => {
     if (res.data.token) {
-      localStorage.setItem("user", JSON.stringify(res.data.token) as string);
-      localStorage.setItem("mentor", JSON.stringify(res.data.mentor));
+      localStorage.setItem("user", res.data.token );
+      localStorage.setItem("mentor", res.data.mentor);
     }
     return res.data;
   });

@@ -107,6 +107,10 @@
       "success": "Mail został wysłany!",
       "error": "Wysłanie maila nie powiodło się",
       "notFound": "Nie znaleziono lub nie istnieje taki mail"
+    },
+    "team": {
+      "success": "Brawo dołączyłeś do zespołu!",
+      "error": "Error spróbuj jeszcze raz "
     }
   },
   "addNewProject": {
@@ -133,5 +137,20 @@
     "welcome": "Witaj w naszej drużynie!",
     "verified": "Twój email został pomyślnie zweryfikowany",
     "canLog": "Teraz możesz się zalogować!"
+  },
+  "team":{
+    "status": "Status",
+    "places": "Ilość miejsc",
+    "description": "Opis",
+    "programmingLanguage": "Język programowania",
+    "level": "Poziom",
+    "button":{
+      "view": "Pokaż",
+      "joinTeam": "Dołącz"
+    }
+  },
+  "status": {
+    "open": "otwarty",
+    "close": "zamknięty"
   }
 }

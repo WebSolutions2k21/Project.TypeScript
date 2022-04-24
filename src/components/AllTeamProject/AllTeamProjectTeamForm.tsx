@@ -1,26 +1,29 @@
-import { Modal } from "components/Modal";
-import { paths } from "config/paths";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+
+import { Modal } from "components/Modal";
+import { paths } from "config/paths";
 import { getAllTeam, joinTeam } from "services/team.service";
 import { getUser } from "services/user.service";
-import { Button } from "styles";
-import { ButtonInModal, ModalButton, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
+import { Toast } from "styles";
+import { ButtonInModal, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
 import ITeamProject from "./ITeamProject.interface";
 
 export const AllTeamProjectTeamForm = () => {
   const [allTeamProject, setAllTeamProject] = useState<Array<ITeamProject>>([]);
-  const [group, setGroup] = useState<Array<ITeamProject>>([]);
+
   let navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     getAllTeam()
       .then((response: any) => {
-        console.log("Res data", response.data);
         setAllTeamProject(response.data);
       })
       .catch((e: Error) => {
-        console.log("error w e", e);
+        toast.error(t`toast.team.error`);
       });
   }, []);
 
@@ -32,30 +35,17 @@ export const AllTeamProjectTeamForm = () => {
     });
   }, [allTeamProject]);
 
-  const groupBy = (arr: any[], key: string) => {
-    const initialValue = {};
-    return arr.reduce((acc, cval) => {
-      const myAttribute = cval[key];
-      acc[myAttribute] = [...(acc[myAttribute] || []), cval];
-      return acc;
-    }, initialValue);
-  };
-
-  useEffect(() => {
-    const grouped = groupBy(allTeamProject, "mentorId");
-    setGroup(grouped);
-  }, [allTeamProject]);
-
-  console.log("group", group);
 
   const joinToTeam = (id: string) => {
-    console.log("dobry nr id teamu?", id);
     joinTeam(id)
-      .then((res) => {
-        console.log("ok", res);
+      .then(() => {
+        setTimeout(() => {
+          navigate(paths.myProjects);
+        }, 1000);
+        toast.success(t`toast.team.success`);
       })
       .catch((e: Error) => {
-        console.log("error w e", e);
+        toast.error(t`toast.team.error`);
       });
   };
 
@@ -65,35 +55,38 @@ export const AllTeamProjectTeamForm = () => {
         {allTeamProject &&
           allTeamProject.map((team, index) => (
             <View>
-              <TeamName  key={index}>
+              <TeamName key={index}>
                 <Name>{team.teamName}</Name>
-                <ModalButton>
-                  <Modal
-                    children={
-                      <>
-                        <p key={index}>Status: {team.status ? "open" : "close"}</p>
-                        <p>Places: {team.places}</p>
-                        <p>Description: {team.description}</p>
-                        <ul>
-                          {" "}
-                          {team.programmingLanguage &&
-                            team.programmingLanguage.map((lang, index) => (
-                              <>
-                                <p key={index}> Programming language: {lang.nameLang} </p> <p>level: {lang.level} </p>
-                              </>
-                            ))}
-                        </ul>
-                        <ButtonInModal onClick={() => joinToTeam(team._id)}>Join Team</ButtonInModal>
-                      </>
-                    }
-                    title={team.teamName}
-                    buttonText={"View"}
-                  ></Modal>
-                </ModalButton>
+
+                <Modal
+                  children={
+                    <>
+                      <p key={index}>
+                        {t`team.status`} {team.status ? "open" : "close"}
+                      </p>
+                      <p>{t`team.places`} {team.places}</p>
+                      <p>{t`team.description`}  {team.description}</p>
+                      <ul>
+                        {" "}
+                        {team.programmingLanguage &&
+                          team.programmingLanguage.map((lang, index) => (
+                            <>
+                              <p key={index}> {t`team.programmingLanguage`}: {lang.nameLang} </p> 
+                              <p>{t`team.level`} {lang.level} </p>
+                            </>
+                          ))}
+                      </ul>
+                      <ButtonInModal onClick={() => joinToTeam(team._id)}>{t`team.button.joinTeam`} </ButtonInModal>
+                    </>
+                  }
+                  title={team.teamName}
+                  buttonText={t`team.button.view`}
+                ></Modal>
               </TeamName>
             </View>
           ))}
       </TeamForm>
+      <Toast />
     </>
   );
 };
