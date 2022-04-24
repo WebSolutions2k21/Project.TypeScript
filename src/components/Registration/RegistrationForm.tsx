@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { SignupSchema } from "./validate";
 import IRegistration from "./Registration.interface";
-import { RegForm, View, LabelStyle, ErrorMsg, ButtonForm } from "./RegForm.style";
-import { Input, IconPassword, IconText, Line, Foot, IconEye, IconEyeHide, Toast } from "styles";
+import { FooterWrapperLeft, FooterWrapperRight, LinkFooter } from "styles/stylesPages/HomePage.style";
+import { RegForm, View, LabelStyle, ErrorMsg, Footer } from "./RegForm.style";
+import { Button, Input, IconPassword, IconText, Line, IconEye, IconEyeHide, Toast } from "styles";
 import { LogoPageSmall } from "styles/LogoPage.style";
 import { register } from "services/auth.service";
 import { paths } from "config/paths";
+import { Navbar } from "components";
 
 export const RegistrationForm = () => {
   const { t } = useTranslation();
@@ -38,6 +39,7 @@ export const RegistrationForm = () => {
 
   return (
     <>
+      <Navbar />
       <Formik
         initialValues={initialValues}
         validationSchema={SignupSchema()}
@@ -177,16 +179,20 @@ export const RegistrationForm = () => {
                 </View>
                 <ErrorMsg>{errors.confirmpassword && touched.confirmpassword && errors.confirmpassword}</ErrorMsg>
 
-                <ButtonForm type="submit" disabled={!isValid}>
+                <Button type="submit" disabled={!isValid}>
                   {t`registration.button.name`}
-                </ButtonForm>
+                </Button>
                 <Toast />
 
-                <Foot>
-                  <Link to={paths.login}>{t`registration.foot.login`}</Link>
+                <Footer>
+                  <FooterWrapperLeft>
+                    <LinkFooter to={paths.login}>{t`registration.foot.login`}</LinkFooter>
+                  </FooterWrapperLeft>
                   <Line />
-                  <Link to={paths.home}>{t`registration.foot.home`}</Link>
-                </Foot>
+                  <FooterWrapperRight>
+                    <LinkFooter to={paths.home}>{t`registration.foot.home`}</LinkFooter>
+                  </FooterWrapperRight>
+                </Footer>
               </RegForm>
             </Form>
           );

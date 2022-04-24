@@ -9,6 +9,14 @@ import navlink from "assets/navLink.svg";
 import modalIcon from "assets/modalIcon.png";
 import project from "assets/project.png";
 import student from "assets/studentVector.svg";
+import lineNav from "assets/lineNav.svg";
+import userAvatar from "assets/userAvatar.svg";
+import hatMain from "assets/hatMain.svg";
+import BrainCodeMain from "assets/BrainCodeMain.svg";
+import Teacher from "assets/Teacher.svg";
+import page404 from "assets/page404.svg";
+import teacherSmall from "assets/teacherSmall.svg";
+import hatMainSmall from "assets/hatMainSmall.svg";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -48,4 +56,28 @@ export const IconStudent = styled.img.attrs({
 
 export const IconInModal = styled.img.attrs({
   src: `${modalIcon}`,
+})``;
+export const Navline = styled.img.attrs({
+  src: `${lineNav}`,
+})``;
+export const UserAvatar = styled.img.attrs({
+  src: `${userAvatar}`,
+})``;
+export const HatMain = styled.img.attrs({
+  src: `${hatMain}`,
+})``;
+export const BraincodeMain = styled.img.attrs({
+  src: `${BrainCodeMain}`,
+})``;
+export const TeacherMain = styled.img.attrs({
+  src: `${Teacher}`,
+})``;
+export const Page404 = styled.img.attrs({
+  src: `${page404}`,
+})``;
+export const TeacherSmall = styled.img.attrs({
+  src: `${teacherSmall}`,
+})``;
+export const HatMainSmall = styled.img.attrs({
+  src: `${hatMainSmall}`,
 })``;

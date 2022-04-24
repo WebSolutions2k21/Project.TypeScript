@@ -13,10 +13,15 @@ export const login = (data: ILogin) => {
 
 export const logout = () => {
   localStorage.removeItem("user");
+  localStorage.removeItem("mentor");
 };
 
-export const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user") as string) && JSON.parse(localStorage.getItem("mentor") as string );
+export const isUserLogged = (): boolean => {
+  return !!localStorage.getItem("user");
+};
+
+export const isMentorLogged = (): boolean => {
+  return isUserLogged() && localStorage.getItem("mentor") === "true";
 };
 
 const REGISTER_URL = "/users/register";
