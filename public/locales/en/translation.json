@@ -160,13 +160,13 @@
     "verified": "Your email has been successfully verified",
     "canLog": "Now You can Log In!"
   },
-  "team":{
+  "team": {
     "status": "Status",
     "places": "Places",
     "description": "Description",
     "programmingLanguage": "Programming language",
     "level": "level",
-    "button":{
+    "button": {
       "view": "View",
       "joinTeam": "Join Team"
     }
@@ -174,5 +174,14 @@
   "status": {
     "open": "open",
     "close": "close"
+  },
+  "project": {
+    "individual": "Individual Projects",
+    "TeamProjects": "Team Projects",
+    "button": {
+      "view": "View",
+      "addNew": "Add New Project",
+      "viewTeam": "View Team Projects"
+    }
   }
 }

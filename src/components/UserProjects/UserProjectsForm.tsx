@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { getUserProjects, getUserTeamProjects } from "services/userProjects.service";
-import { Button, IconText } from "styles";
+import { IconText } from "styles";
 import IUserProjects from "./IUserProjects.interface";
 import ITeamProject from "../AllTeamProject/ITeamProject.interface";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
-import { Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
+import { ButtonForm, ModalContent, Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
 import { Modal } from "components/Modal";
+import { useTranslation } from "react-i18next";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
   const [userTeamProjects, setUserTeamProjects] = useState<Array<ITeamProject>>([]);
+
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     getUserTeamProjects()
@@ -46,39 +49,40 @@ export const UserProjectsForm = () => {
       <ProjectForm>
         <ProjectGroup>
           <IconText />
-          <div>Individual Projects</div>
+          <div>{t`project.individual`}</div>
         </ProjectGroup>
         {userAllProjects &&
           userAllProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.name}</Name>
-              <Modal title={project.name} buttonText={"VIEW"}>
-                <div>{project.content}</div>
+              <Modal title={project.name} buttonText={t`project.button.view`}>
+                <ModalContent>{project.content}</ModalContent>
+                <ModalContent>{project.status ? "open" : "close"}</ModalContent>
               </Modal>
             </ProjectCard>
           ))}
-        <Button type="submit" onClick={navigateToAddProject}>
-          Add New Project
-        </Button>
+        <ButtonForm type="submit" onClick={navigateToAddProject}>
+          {t`project.button.addNew`}
+        </ButtonForm>
       </ProjectForm>
       <ProjectForm>
         <ProjectGroup>
           <IconText />
-          <div>Team Projects</div>
+          <div>{t`project.TeamProjects`}</div>
         </ProjectGroup>
         {userTeamProjects &&
           userTeamProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.teamName}</Name>
-              <Modal title={project.teamName} buttonText={"VIEW"}>
-                <div>{project.mentorId}</div>
-                <div>{project.status}</div>
+              <Modal title={project.teamName} buttonText={t`project.button.view`}>
+                <ModalContent>{project.description}</ModalContent>
+                <ModalContent>{project.status ? "open" : "close"}</ModalContent>
               </Modal>
             </ProjectCard>
           ))}
-        <Button type="submit" onClick={navigateToAllTeamProjects}>
-          View Team Projects
-        </Button>
+        <ButtonForm type="submit" onClick={navigateToAllTeamProjects}>
+          {t`project.button.viewTeam`}
+        </ButtonForm>
       </ProjectForm>
     </>
   );

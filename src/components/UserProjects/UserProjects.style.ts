@@ -1,6 +1,7 @@
 // import { Modal } from "components/Modal";
 // import { ModalBox } from "components/Modal/Modal.style";
 import styled from "styled-components";
+import { Button } from "styles";
 // import { Button } from "styles";
 
 export const ProjectForm = styled.div`
@@ -10,6 +11,7 @@ export const ProjectForm = styled.div`
   width: 375px;
   align-items: center;
   gap: 10px;
+  margin-bottom: 30px;
 `;
 export const ProjectCard = styled.div`
   display: grid;
@@ -36,4 +38,14 @@ export const ProjectGroup = styled.div`
   grid-template-columns: 25px 200px;
   align-items: center;
   justify-content: start;
+`;
+
+export const ButtonForm = styled(Button)`
+  margin-top: 30px;
+  margin-bottom: 20px;
+`;
+
+export const ModalContent = styled.div`
+  margin-left: 35px;
+  margin-top: 30px;
 `;

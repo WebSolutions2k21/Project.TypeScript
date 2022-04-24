@@ -157,13 +157,13 @@
     "verified": "Twój email został pomyślnie zweryfikowany",
     "canLog": "Teraz możesz się zalogować!"
   },
-  "team":{
+  "team": {
     "status": "Status",
     "places": "Ilość miejsc",
     "description": "Opis",
     "programmingLanguage": "Język programowania",
     "level": "Poziom",
-    "button":{
+    "button": {
       "view": "Pokaż",
       "joinTeam": "Dołącz"
     }
@@ -171,5 +171,14 @@
   "status": {
     "open": "otwarty",
     "close": "zamknięty"
+  },
+  "project": {
+    "individual": "Indywidualne Projekty",
+    "TeamProjects": "Projekty Grupowe",
+    "button": {
+      "view": "Pokaż",
+      "addNew": "Dodaj nowy projekt",
+      "viewTeam": "Projekty grupowe"
+    }
   }
 }
