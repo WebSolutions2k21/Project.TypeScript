@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Button } from "styles";
 
 export const View = styled.div`
-
   width: 325px;
 `;
 
