@@ -5,7 +5,7 @@ import { t } from "i18next";
  const uppercaseRegex = /(?=.*[A-Z])/;
  const numericRegex = /(?=.*[0-9])/;
 
- export const SignupSchema = () => Yup.object().shape({
+ export const ProfileSchema = () => Yup.object().shape({
    username: Yup.string()
      .min(2, t`registration.validation.userName`)
      .required(t`registration.validation.userNameReq`),
@@ -23,8 +23,5 @@ import { t } from "i18next";
      .matches(uppercaseRegex, t`registration.validation.passwordUpp`)
      .matches(numericRegex, t`registration.validation.passwordNum`)
      .min(8, t`registration.validation.passwordMin`)
-     .required(t`registration.validation.passwordReq`),
-   confirmpassword: Yup.string()
-     .oneOf([Yup.ref('password')], t`registration.validation.confirmPassword`)
      .required(t`registration.validation.passwordReq`),
  });

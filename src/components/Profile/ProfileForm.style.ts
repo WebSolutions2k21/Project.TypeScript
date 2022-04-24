@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Label } from "../../styles";
+import { Label, Foot, Button, Input } from "../../styles";
 
-export const RegForm = styled.div`
+export const ProfileForm = styled.div`
     display: flex;
     flex-direction: column;
     align: center;
@@ -30,3 +30,27 @@ export const View = styled.div`
 export const LabelStyle = styled(Label)`
   margin: 20px auto 0 57px;
 `;
+
+export const Footer = styled(Foot)`
+    margin-top: 20px;
+`;
+
+export const EditButton = styled(Button)`
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 5px;
+  width: fit-content;
+  height: 25px;
+`;
+
+export const InputStyle = styled.div`
+  display: flex;
+  align-items: flex-end;
+`
+export const InputStyled = styled(Input)`
+  width: auto;
+`
+export const InputRegular = styled(Input)`
+    width: 245px;
+`

@@ -1,7 +1,12 @@
 import React from "react";
+import { AddNewProject } from "components";
+import Navbar from "components/Navbar/Navbar";
 
 export const AddNewProjectPage = () => {
     return (
-     <h1>AddNewProjectPage</h1>
+    <>
+        <Navbar />
+        <AddNewProject />
+    </>
     );
 };
