@@ -8,15 +8,13 @@ import {
   FooterWrapperLeft,
   FooterWrapperRight,
   Header,
-  LinkButton,
   LinkFooter,
-  PictureWrapper,
   ProfilDesc,
   ProfilDescContainer,
   ProfilDescText,
   WhiteCard,
 } from "styles/stylesPages/AboutUsPage.style";
-import { BraincodeMain, Button, HatMain, HatMainSmall, Line, LogoPageSmall, TeacherMain, TeacherSmall } from "styles";
+import { HatMainSmall, Line, LogoPageSmall, TeacherSmall } from "styles";
 import { Navbar } from "components";
 
 export const AboutUsPage = () => {
