@@ -29,6 +29,10 @@ export const LabelStyle = styled(Label)`
   margin: 10px auto 5px 70px;
 `;
 
+export const ButtonForm = styled(Button)`
+  margin: 40px;
+`;
+
 export const Footer = styled(Foot)`
   display: flex;
   flex-direction: row;

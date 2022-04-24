@@ -29,6 +29,3 @@ export const theme = {
     cards: "rgba(255, 255, 255, 0.8)",
   },
 };
-
-// background: linear-gradient(180deg, rgba(164, 205, 215, 0) 0%, #3C789E 100%);
-// background-repeat: no-repeat;
