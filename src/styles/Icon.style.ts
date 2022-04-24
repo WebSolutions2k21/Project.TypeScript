@@ -13,6 +13,8 @@ import hatMain from "assets/hatMain.svg";
 import BrainCodeMain from "assets/BrainCodeMain.svg";
 import Teacher from "assets/Teacher.svg";
 import page404 from "assets/page404.svg";
+import teacherSmall from "assets/teacherSmall.svg";
+import hatMainSmall from "assets/hatMainSmall.svg";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -66,4 +68,10 @@ export const TeacherMain = styled.img.attrs({
 })``;
 export const Page404 = styled.img.attrs({
   src: `${page404}`,
+})``;
+export const TeacherSmall = styled.img.attrs({
+  src: `${teacherSmall}`,
+})``;
+export const HatMainSmall = styled.img.attrs({
+  src: `${hatMainSmall}`,
 })``;

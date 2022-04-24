@@ -19,6 +19,14 @@
   "404page": {
     "page": "You didn’t break the Internet, but we can’t find what you are looking for."
   },
+  "aboutus": {
+    "description": "We are a place that allows you to check your practical programming knowledge. Get good advice from more experienced programmers, or become a mentor to help others.",
+    "h1": "Here you can be:",
+    "mentor": "mentor",
+    "student": "student",
+    "text1": "Help others in Their projects. Create Teams to lern more than one person in the same time.",
+    "text2": "Show your individual projects to selected mentors. Join team project to lern with others."
+  },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
     "part2": "Learn React"
@@ -133,15 +141,15 @@
     "status": "status",
     "statusPlaceholder": "Choose status",
     "button": "ENTER",
-      "validation": {
-        "name": "Your project name is too short", 
-        "nameReq": "Please enter project's name",     
-        "mentor": "Please choose your mentor",
-        "content": "Your content name is too short",
-        "contentReq": "Please enter the content",
-        "status": "Please choose project's status"
-      }
-    },
+    "validation": {
+      "name": "Your project name is too short",
+      "nameReq": "Please enter project's name",
+      "mentor": "Please choose your mentor",
+      "content": "Your content name is too short",
+      "contentReq": "Please enter the content",
+      "status": "Please choose project's status"
+    }
+  },
   "emailVerification": {
     "login": "Log In!",
     "welcome": "Welcome to Our Team!",
