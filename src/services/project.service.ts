@@ -20,7 +20,8 @@ export const createProject = (
   content: string,
   status: string,
 ) => {
-  // TODO
+  
+  // TODO => This section will be developed over the next month. These are just the first attempts.
   const data: IAddNewProject = {}
   if (name.length > 0) data.name = name
   if (userId.length > 0) {

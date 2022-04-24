@@ -26,7 +26,7 @@ export const AddNewProject = () => {
   const { t } = useTranslation();
 
 
-  // TODO
+  // TODO => This section will be developed over the next month. These are just the first attempts.
   const [selectedValue, setSelectedValue] = useState("true");
   const selectChange = (obj: any) => {
     setSelectedValue(obj.value);
