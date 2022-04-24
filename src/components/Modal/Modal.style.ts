@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "styles";
 
 export const ModalStyle = styled.div`
   position: fixed;
@@ -32,12 +33,19 @@ export const ModalBox = styled.div`
 
 export const ModalTitle = styled.div`
   color: ${({ theme }) => theme.colors.text};
-  font-size: 30px;
+  font-size: 20px;
+  border: 1px solid ${({ theme }) => theme.colors.primary || "#FFFFFF"};
+  border-style: none none solid none;
+
+  & > img {
+    padding-right: 10px;
+  }
 `;
 
 export const ModalContent = styled.div`
-  margin-to: 50px;
+  margin-top: 10px;
   color: ${({ theme }) => theme.colors.text};
+  font-size: 16px;
 `;
 export const CloseBtn = styled.div`
   position: absolute;
@@ -47,4 +55,11 @@ export const CloseBtn = styled.div`
 
 export const ActiveModal = styled.div`
   overflow-y: hidden;
+`;
+
+export const ModalButton = styled(Button)`
+  height: 30px;
+  width: 50px;
+  font-size: 14px;
+  margin: 10px 0px 5px 0px;
 `;

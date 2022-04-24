@@ -1,5 +1,4 @@
 import { Modal } from "components/Modal";
-import Navbar from "components/Navbar/Navbar";
 import React, { useState, useEffect } from "react";
 import { getAllTeam } from "services/team.service";
 import { ButtonModal, ModalButton, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";

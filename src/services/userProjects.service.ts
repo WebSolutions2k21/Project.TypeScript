@@ -9,3 +9,11 @@ export const getUserProjects = () => {
     return res;
   });
 };
+
+export const getUserTeamProjects = () => {
+  const uID = getCurrentUserToken();
+
+  return axios.get(`/team/user-team`, { headers: { "x-auth-token": uID } }).then((res) => {
+    return res;
+  });
+};
