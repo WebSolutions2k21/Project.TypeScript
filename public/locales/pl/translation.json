@@ -16,6 +16,14 @@
     "button": "Dołącz do Nas!",
     "text": "Z Nami możesz się uczyć i pomagać"
   },
+  "aboutus": {
+    "description": "Jesteśmy miejscem, które pozwala Ci sprawdzić swoją praktyczną wiedzę programistyczną. Uzyskaj dobre rady od bardziej doświadczonych programistów lub zostań mentorem, by pomagać innym.",
+    "h1": "Tutaj możesz być:",
+    "mentor": "mentor",
+    "student": "student",
+    "text1": "Pomagaj innym w ich projektach. Twórz zespoły, aby uczyć więcej niż jedną osobę w tym samym czasie.",
+    "text2": "Pokaż swoje indywidualne projekty wybranym mentorom. Dołącz do projektu zespołowego, aby uczyć się razem z innymi."
+  },
   "description": {
     "part1": "Edytuj <1>src/App.js</1> i zapisz by ponownie wczytać.",
     "part2": "Ucz się React'a"
