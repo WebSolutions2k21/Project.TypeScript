@@ -102,7 +102,7 @@ export const NavbarExtendedContainer = styled.div`
   top: 15px;
   left: calc(100% - 226px - 20px);
   width: 226px;
-  height: ${(props: { extendNavbar: boolean; isAuth: string }) =>
+  height: ${(props: { extendNavbar: boolean; isAuth: boolean }) =>
     props.extendNavbar && props.isAuth ? "435px" : "322px"};
   padding-bottom: 57px;
   padding-left: 24px;

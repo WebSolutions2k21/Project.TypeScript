@@ -17,7 +17,7 @@ import {
   ButtonNav,
 } from "styles/Navbar.style";
 import { Navlink, Navline, UserAvatar } from "styles/Icon.style";
-import { getCurrentUser, logout } from "services/auth.service";
+import { isMentorLogged, isUserLogged, logout } from "services/auth.service";
 
 const lngs = {
   en: { nativeName: "English" },
@@ -27,7 +27,8 @@ const lngs = {
 export const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [extendNavbar, setExtendNavbar] = useState(false);
-  const [isAuth, setIsAuth] = useState(getCurrentUser());
+  const [isAuth, setIsAuth] = useState(isUserLogged());
+  const [isAuthMentor, setIsAuthMentor] = useState(isMentorLogged());
 
   const handleCloseNavMenu = () => {
     setExtendNavbar(false);
@@ -39,6 +40,7 @@ export const Navbar = () => {
   const logoutHandler = () => {
     logout();
     setIsAuth(false);
+    setIsAuthMentor(false);
   };
   return (
     <NavbarContainer extendNavbar={extendNavbar} isAuth={isAuth}>
@@ -51,8 +53,13 @@ export const Navbar = () => {
             {!isAuth && <NavbarLink to={paths.login}>{t("navbar.login")}</NavbarLink>}
             {!isAuth && <NavbarLink to={paths.signUp}>{t("navbar.signin")}</NavbarLink>}
             <NavbarLink to={paths.home}>{t("navbar.home")}</NavbarLink>
-            {isAuth && (
+            {isAuth && !isAuthMentor && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.myProfile}>
+                {t("navbar.myprofile")}
+              </NavbarLink>
+            )}
+            {isAuth && isAuthMentor && (
+              <NavbarLink onClick={handleCloseNavMenu} to={paths.mentorProfile}>
                 {t("navbar.myprofile")}
               </NavbarLink>
             )}
@@ -66,7 +73,17 @@ export const Navbar = () => {
                 {t("navbar.notifications")}
               </NavbarLink>
             )} */}
-            {isAuth && (
+            {/* TODO {isAuthMentor && (
+              <NavbarLink onClick={handleCloseNavMenu} to={paths.mentorNotification}>
+                {t("navbar.notifications")}
+              </NavbarLink>
+            )} */}
+            {isAuth && !isAuthMentor && (
+              <NavbarLink onClick={logoutHandler} to={paths.home}>
+                {t("navbar.logout")}
+              </NavbarLink>
+            )}
+            {isAuth && isAuthMentor && (
               <NavbarLink onClick={logoutHandler} to={paths.home}>
                 {t("navbar.logout")}
               </NavbarLink>
@@ -75,7 +92,12 @@ export const Navbar = () => {
               {!isAuth && (
                 <Hamburger toggled={extendNavbar} toggle={setExtendNavbar} label="Show menu" color="#3C789E" />
               )}
-              {isAuth && (
+              {isAuth && !isAuthMentor && (
+                <ButtonNav onClick={handleToggle}>
+                  <UserAvatar />
+                </ButtonNav>
+              )}
+              {isAuthMentor && (
                 <ButtonNav onClick={handleToggle}>
                   <UserAvatar />
                 </ButtonNav>
@@ -84,7 +106,7 @@ export const Navbar = () => {
           </NavbarLinkContainer>
         </RightContainer>
       </NavbarInnerContainer>
-      {extendNavbar && !isAuth && (
+      {extendNavbar && !isAuth && !isAuthMentor && (
         <NavbarExtendedContainer extendNavbar={extendNavbar} isAuth={isAuth}>
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.contact}>
             <Navlink />
@@ -125,9 +147,65 @@ export const Navbar = () => {
           </ButtonChangeLangDivWrapper>
         </NavbarExtendedContainer>
       )}
-      {extendNavbar && isAuth && (
+      {extendNavbar && isAuth && !isAuthMentor && (
         <NavbarExtendedContainer extendNavbar={extendNavbar} isAuth={isAuth}>
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myProfile}>
+            <Navlink />
+            {t("navbar.myprofile")}
+          </NavbarLinkExtended>
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myProjects}>
+            <Navlink />
+            {t("navbar.myproject")}
+          </NavbarLinkExtended>
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myOpinions}>
+            <Navlink />
+            {t("navbar.myopinions")}
+          </NavbarLinkExtended>
+          {/*TODO <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.mentorNotification}>
+            <Navlink />
+            {t("navbar.notifications")}
+          </NavbarLinkExtended> */}
+          <Navline />
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.contact}>
+            <Navlink />
+            {t("navbar.contact")}
+          </NavbarLinkExtended>
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.aboutUs}>
+            <Navlink />
+            {t("navbar.aboutus")}
+          </NavbarLinkExtended>
+          <NavbarLinkExtended
+            onClick={() => {
+              logoutHandler();
+              handleCloseNavMenu();
+            }}
+            to={paths.home}
+          >
+            <Navlink />
+            {t("navbar.logout")}
+          </NavbarLinkExtended>
+
+          <ButtonChangeLangDivWrapper>
+            {Object.keys(lngs).map((lng) => (
+              <ButtonChangeLang
+                key={lng}
+                style={{
+                  fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
+                }}
+                type="submit"
+                onClick={() => {
+                  i18n.changeLanguage(lng);
+                }}
+              >
+                {lng}
+              </ButtonChangeLang>
+            ))}
+          </ButtonChangeLangDivWrapper>
+        </NavbarExtendedContainer>
+      )}
+      {extendNavbar && isAuth && isAuthMentor && (
+        <NavbarExtendedContainer extendNavbar={extendNavbar} isAuth={isAuth}>
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.mentorProfile}>
             <Navlink />
             {t("navbar.myprofile")}
           </NavbarLinkExtended>
