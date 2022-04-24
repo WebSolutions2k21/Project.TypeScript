@@ -142,15 +142,18 @@
     "status": "status",
     "statusPlaceholder": "Wybierz status",
     "button": "ENTER",
-    "validation": {
-      "name": "Nazwa projektu jest zbyt krótka",
-      "nameReq": "Wpisz nazwę projektu",
-      "mentor": "Wybierz mentora",
-      "content": "Nazwa jest zbyt krótka",
-      "contentReq": "Wpisz content",
-      "status": "Wybierz status projektu"
-    }
-  },
+      "validation": {
+        "name": "Nazwa projektu jest zbyt krótka",
+        "nameReq": "Wpisz nazwę projektu",     
+        "mentor": "Wybierz mentora",
+        "content": "Nazwa jest zbyt krótka",
+        "contentReq": "Wpisz content",
+        "status": "Wybierz status projektu",
+        "success": "Udało się!",
+        "validation": "Coś poszło nie tak. Spróbuj ponownie",
+        "error": "Błąd"
+  }
+},
   "emailVerification": {
     "login": "Zaloguj się!",
     "welcome": "Witaj w naszej drużynie!",
