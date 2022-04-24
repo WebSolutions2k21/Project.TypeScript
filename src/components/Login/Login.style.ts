@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StyledInlineErrorMessage, Label, Foot } from "styles";
+import { StyledInlineErrorMessage, Label, Foot, Button} from "styles";
 
 export const LoginForm = styled.div`
   display: flex;
@@ -27,6 +27,10 @@ export const StyledInlineErrorMessageForm = styled(StyledInlineErrorMessage)`
 
 export const LabelStyle = styled(Label)`
   margin: 10px auto 5px 70px;
+`;
+
+export const ButtonForm = styled(Button)`
+  margin: 40px;
 `;
 
 export const Footer = styled(Foot)`

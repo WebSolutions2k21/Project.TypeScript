@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Foot, Label } from "styles";
+import { Foot, Label, Button } from "styles";
 
 export const RegForm = styled.div`
   display: flex;
@@ -28,8 +28,13 @@ export const View = styled.div`
 `;
 
 export const LabelStyle = styled(Label)`
-  margin: 10px auto 0 57px;
+margin: 20px auto 0 57px;
 `;
+
+export const ButtonForm = styled(Button)`
+  margin: 40px;
+`;
+
 export const Footer = styled(Foot)`
   display: flex;
   flex-direction: row;
