@@ -1,4 +1,5 @@
 import axios from "axios/instanceAxios";
+import IMentor from "components/AllTeamProject/IMentor.interface";
 import IForgotPassword from "components/ForgotPassword/IForgotPassword.interface";
 
 export const sendEmail = async (data: IForgotPassword) => {

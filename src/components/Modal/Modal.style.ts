@@ -44,9 +44,9 @@ export const ModalTitle = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  margin-top: 50px;
+  margin-top: 10px;
   color: ${({ theme }) => theme.colors.text};
-  
+  font-size: 16px;
 `;
 
 export const CloseBtn = styled.div`

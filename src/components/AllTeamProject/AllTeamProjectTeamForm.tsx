@@ -2,17 +2,17 @@ import { Modal } from "components/Modal";
 import { paths } from "config/paths";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllTeam } from "services/team.service";
+import { getAllTeam, joinTeam } from "services/team.service";
 import { getUser } from "services/user.service";
 import { Button } from "styles";
-import { ButtonModal, ModalButton, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
+import { ButtonInModal, ModalButton, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
 import ITeamProject from "./ITeamProject.interface";
 
 export const AllTeamProjectTeamForm = () => {
   const [allTeamProject, setAllTeamProject] = useState<Array<ITeamProject>>([]);
   const [group, setGroup] = useState<Array<ITeamProject>>([]);
   let navigate = useNavigate();
-  
+
   useEffect(() => {
     getAllTeam()
       .then((response: any) => {
@@ -48,42 +48,42 @@ export const AllTeamProjectTeamForm = () => {
 
   console.log("group", group);
 
+  const joinToTeam = (id: string) => {
+    console.log("dobry nr id teamu?", id);
+    joinTeam(id)
+      .then((res) => {
+        console.log("ok", res);
+      })
+      .catch((e: Error) => {
+        console.log("error w e", e);
+      });
+  };
+
   return (
     <>
-      {/* <ul>        {group.map((item: Array<>) => {
-          return <li>{item[0]}</li>;
-        })}
-
-      </ul> */}
-<Button onClick={()=> navigate(paths.addTeam)}>Add Team</Button>
       <TeamForm>
         {allTeamProject &&
           allTeamProject.map((team, index) => (
             <View>
-              <TeamName>
-                <Name key={index}>{team.teamName}</Name>
+              <TeamName  key={index}>
+                <Name>{team.teamName}</Name>
                 <ModalButton>
                   <Modal
                     children={
                       <>
-                        {" "}
-                        <p>Status: {team.status ? "open" : "close"}</p>
+                        <p key={index}>Status: {team.status ? "open" : "close"}</p>
+                        <p>Places: {team.places}</p>
+                        <p>Description: {team.description}</p>
                         <ul>
                           {" "}
                           {team.programmingLanguage &&
                             team.programmingLanguage.map((lang, index) => (
                               <>
-                                {" "}
-                                <li key={index}>
-                                  <p> Programming language: {lang.nameLang} </p>{" "}
-                                </li>
-                                <li>
-                                  <p>level: {lang.level} </p>{" "}
-                                </li>
+                                <p key={index}> Programming language: {lang.nameLang} </p> <p>level: {lang.level} </p>
                               </>
                             ))}
                         </ul>
-                        <ButtonModal>Join Team</ButtonModal>
+                        <ButtonInModal onClick={() => joinToTeam(team._id)}>Join Team</ButtonInModal>
                       </>
                     }
                     title={team.teamName}

@@ -34,8 +34,9 @@ export const Name = styled.div`
   display: inline-block;
 `;
 
-export const ButtonModal = styled(Button)`
+export const ButtonInModal = styled(Button)`
   height: 30px;
   width: 100px;
-  margin: 0 280px 0 0;
+  margin: 10px auto;
+  display: flex;
 `;
