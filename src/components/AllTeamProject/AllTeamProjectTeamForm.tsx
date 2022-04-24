@@ -6,10 +6,10 @@ import { useTranslation } from "react-i18next";
 import { Modal } from "components/Modal";
 import { paths } from "config/paths";
 import { getAllTeam, joinTeam } from "services/team.service";
-import { getUser } from "services/user.service";
 import { Toast } from "styles";
 import { ButtonInModal, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
 import ITeamProject from "./ITeamProject.interface";
+import { Navbar } from "components";
 
 export const AllTeamProjectTeamForm = () => {
   const [allTeamProject, setAllTeamProject] = useState<Array<ITeamProject>>([]);
@@ -27,15 +27,6 @@ export const AllTeamProjectTeamForm = () => {
       });
   }, [t]);
 
-  useEffect(() => {
-    allTeamProject.map((items: ITeamProject) => {
-      getUser(items.mentorId).then((res) => {
-        console.log("res", res);
-      });
-    });
-  }, [allTeamProject]);
-
-
   const joinToTeam = (id: string) => {
     joinTeam(id)
       .then(() => {
@@ -51,6 +42,7 @@ export const AllTeamProjectTeamForm = () => {
 
   return (
     <>
+      <Navbar />
       <TeamForm>
         {allTeamProject &&
           allTeamProject.map((team, index) => (
@@ -64,15 +56,24 @@ export const AllTeamProjectTeamForm = () => {
                       <p key={index}>
                         {t`team.status`} {team.status ? "open" : "close"}
                       </p>
-                      <p>{t`team.places`} {team.places}</p>
-                      <p>{t`team.description`}  {team.description}</p>
+                      <p>
+                        {t`team.places`} {team.places}
+                      </p>
+                      <p>
+                        {t`team.description`} {team.description}
+                      </p>
                       <ul>
                         {" "}
                         {team.programmingLanguage &&
                           team.programmingLanguage.map((lang, index) => (
                             <>
-                              <p key={index}> {t`team.programmingLanguage`}: {lang.nameLang} </p> 
-                              <p>{t`team.level`} {lang.level} </p>
+                              <p key={index}>
+                                {" "}
+                                {t`team.programmingLanguage`}: {lang.nameLang}{" "}
+                              </p>
+                              <p>
+                                {t`team.level`} {lang.level}{" "}
+                              </p>
                             </>
                           ))}
                       </ul>
