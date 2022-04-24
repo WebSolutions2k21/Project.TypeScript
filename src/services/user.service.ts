@@ -5,9 +5,6 @@ export const sendEmail = async (data: IForgotPassword) => {
   return await axios.post("/users/resetpassword", data);
 };
 
-export const getUser = (id: any) => {
-  return axios.get(`/users/${id}`).then((res) => {
-    console.log("res", res);
-    return res;
-  });
+export const getUser = async (id: any) => {
+  return await axios.get(`/users/${id}`);
 };

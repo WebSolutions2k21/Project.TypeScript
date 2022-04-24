@@ -23,7 +23,8 @@ export const ModalOverlay = styled.div`
 export const ModalBox = styled.div`
   position: relative;
   width: 80vw;
-  padding: 50px;
+  max-width: 375px;
+  padding: 30px;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
@@ -47,6 +48,7 @@ export const ModalContent = styled.div`
   color: ${({ theme }) => theme.colors.text};
   font-size: 16px;
 `;
+
 export const CloseBtn = styled.div`
   position: absolute;
   top: 20px;
