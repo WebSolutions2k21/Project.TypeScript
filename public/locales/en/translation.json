@@ -4,7 +4,20 @@
     "aboutus": "About Us",
     "contact": "Contact",
     "login": "Log In",
-    "signin": "Sign In"
+    "signin": "Sign In",
+    "logout": "Log Out",
+    "myprofile": "My profile",
+    "myproject": "My project",
+    "myopinions": "My opinions",
+    "notifications": "Notifications"
+  },
+  "homepage": {
+    "h1": "Become Student or a Mentor!",
+    "button": "Join Us!",
+    "text": "With Us, You can learn and help"
+  },
+  "404page": {
+    "page": "You didn’t break the Internet, but we can’t find what you are looking for."
   },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
@@ -19,7 +32,9 @@
     "date_evening": "Good evening! Today was the {{date, DATE_HUGE}}",
     "createAccount": "Create Account",
     "forgotPassword": "Forgot Password",
-    "homePage": "Home Page"
+    "homePage": "Home Page",
+    "contact": "Contact Page",
+    "login": "Login Page"
   },
   "user": {
     "email": {
