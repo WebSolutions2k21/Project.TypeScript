@@ -11,6 +11,7 @@ body {
   background-repeat: no-repeat;
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.15em;
+  min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: row;

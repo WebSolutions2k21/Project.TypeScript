@@ -1,8 +1,5 @@
 import { LabelStyle } from "components/Registration/RegForm.style";
 import React, { useState } from "react";
-// import { Formik, Form } from "formik";
-// import { useTranslation } from "react-i18next";
-// import { Link } from "react-router-dom";
 
 import { Button, IconText, Toast } from "styles";
 import {
@@ -12,13 +9,18 @@ import {
   CommentInfo,
   ButtonStyle,
   TopText,
-  ProfilePic,
+  ProfPic,
+  ButtonsArea,
+  ButtonSave,
+  BinButton,
+  BinIco,
+  ArrowBtn,
+  ArrowIco,
   OpinionAuthor,
   OpinionText,
   StarsBox,
+  StarsIcon,
 } from "components/Opinions/Opinions.style";
-// import { LogoPageSmall } from "components/styles/LogoPage.style";
-// import { paths } from "config/paths";
 
 interface IOpinions {
   content: string;
@@ -32,8 +34,7 @@ export const Opinions = () => {
     <OpinionForm>
       <TopArea>
         <TopText>My Opinions</TopText>
-        {/* <img src="/src/assets/UserAvatar 1.png"></img> */}
-        <ProfilePic>photo</ProfilePic>
+        <ProfPic />
       </TopArea>
       <Button>Add New Opinion</Button>
 
@@ -41,34 +42,67 @@ export const Opinions = () => {
         <CommentInfo>
           <IconText />
           <OpinionAuthor>Lorem Ipsum</OpinionAuthor>
-          <StarsBox>*****</StarsBox>
+          <StarsBox>
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+          </StarsBox>
         </CommentInfo>
         <OpinionText>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum
         </OpinionText>
-        <ButtonStyle>Edit</ButtonStyle>
+        <ButtonsArea>
+          <ArrowBtn>
+            <ArrowIco />
+          </ArrowBtn>
+          <ButtonSave>save</ButtonSave>
+          <BinButton>
+            <BinIco />
+          </BinButton>
+          <ButtonStyle>edit</ButtonStyle>
+        </ButtonsArea>
       </CardBox>
+
       <CardBox>
         <CommentInfo>
           <IconText />
           <OpinionAuthor>Lorem Ipsum</OpinionAuthor>
-          <StarsBox>*****</StarsBox>
+          <StarsBox>
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+          </StarsBox>
         </CommentInfo>
         <OpinionText>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum
         </OpinionText>
-        <ButtonStyle>Edit</ButtonStyle>
+        <ButtonsArea>
+          <ButtonStyle>edit</ButtonStyle>
+        </ButtonsArea>
       </CardBox>
+
       <CardBox>
         <CommentInfo>
           <IconText />
           <OpinionAuthor>Lorem Ipsum</OpinionAuthor>
-          <StarsBox>*****</StarsBox>
+          <StarsBox>
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+            <StarsIcon />
+          </StarsBox>
         </CommentInfo>
         <OpinionText>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum
         </OpinionText>
-        <ButtonStyle>Edit</ButtonStyle>
+        <ButtonsArea>
+          <ButtonStyle>edit</ButtonStyle>
+        </ButtonsArea>
       </CardBox>
     </OpinionForm>
   );
