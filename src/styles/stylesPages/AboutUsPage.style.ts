@@ -19,7 +19,9 @@ export const AboutUsPageContainer: any = styled.div`
     margin: auto;
   }
 `;
-export const DescriptionContainer: any = styled.div``;
+export const DescriptionContainer: any = styled.div`
+  max-width: 340px;
+`;
 
 export const Header: any = styled.h1`
   margin: 20px 25px;
@@ -34,8 +36,8 @@ export const Header: any = styled.h1`
 export const WhiteCard: any = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  width: 322px;
+  margin: 0 20px 20px;
+  max-width: 322px;
   min-height: 120px;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
