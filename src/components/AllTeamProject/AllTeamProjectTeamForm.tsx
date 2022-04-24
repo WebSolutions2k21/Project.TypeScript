@@ -25,7 +25,7 @@ export const AllTeamProjectTeamForm = () => {
       .catch((e: Error) => {
         toast.error(t`toast.team.error`);
       });
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     allTeamProject.map((items: ITeamProject) => {
