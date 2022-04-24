@@ -9,7 +9,7 @@ import ProfileInterface from "./Profile.interface";
 import { ProfileForm, View, LabelStyle, ErrorMsg, Footer, EditButton, InputStyle, InputStyled, InputRegular } from "./ProfileForm.style";
 import { Button, IconPassword, IconText, Line, IconEye, IconEyeHide, Toast } from "../../styles";
 import { LogoPageSmall } from "../../styles/LogoPage.style";
-import { getCurrentUser } from "../../services/auth.service";
+// import { getCurrentUser } from "../../services/auth.service";
 import { paths } from "../../config/paths";
 
 

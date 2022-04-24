@@ -4,3 +4,4 @@ export * from "./Modal";
 export * from "./ForgotPassword";
 export * from "./Profile";
 export * from "./AddNewProject";
+export * from "./Navbar";

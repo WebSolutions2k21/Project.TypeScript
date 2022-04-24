@@ -10,7 +10,7 @@ import {
   AddNewTeamProjectPage,
   AllTeamProjectsPage,
   ContactPage,
-  EmailVerificationPage,
+  // EmailVerificationPage,
   HomePage,
   LoginPage,
   MentorNotificationsPage,
@@ -40,7 +40,6 @@ function App() {
         <Route path={paths.login} element={<LoginPage />} />
         <Route path={paths.mentorNotification} element={<MentorNotificationsPage />} />
         <Route path={paths.mentorProfile} element={<MentorProfilePage />} />
-        <Route path={paths.mentorProfile} element={<NotFoundPage />} />
         <Route path={paths.myOpinions} element={<OpinionsPage />} />
         <Route path={paths.sendNewPassword} element={<SendNewPasswordPage />} />
         <Route path={paths.setPassword} element={<SetNewPasswordPage />} />
@@ -48,7 +47,7 @@ function App() {
         <Route path={paths.myNotifications} element={<UserNotificationsPage />} />
         <Route path={paths.myProfile} element={<UserProfilePage />} />
         <Route path={paths.myProjects} element={<UserProjectPage />} />
-        <Route path={paths.emailVerification} element={<EmailVerificationPage />} />
+        {/* <Route path={paths.emailVerification} element={<EmailVerificationPage />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
