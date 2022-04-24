@@ -12,7 +12,7 @@ export const getUser = (id: any) => {
   });
 };
 
-export const getUserProjects = () => {
+export const getUserProjects = (id: any) => {
   return axios.get(`/project/user-projects`).then((res) => {
     console.log("res", res);
     return res;

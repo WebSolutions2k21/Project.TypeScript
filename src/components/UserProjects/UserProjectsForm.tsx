@@ -4,13 +4,15 @@ import { Button } from "styles";
 import IUserProjects from "./IUserProjects.interface";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
+import { getCurrentUser } from "services/auth.service";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
   const navigate = useNavigate();
+  const currentUser = getCurrentUser();
 
   useEffect(() => {
-    getUserProjects()
+    getUserProjects(currentUser)
       .then((response: any) => {
         console.log("Res data", response.data);
         setUserAllProjects(response.data);
