@@ -25,13 +25,22 @@ import {
   UserProjectPage,
 } from "pages";
 import { paths } from "config/paths";
+import { PrivateRoute } from "config/PrivateRoute";
+import { PublicRoute } from "config/PublicRoute";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Routes>
-        <Route path={paths.home} element={<HomePage />} />
+        <Route
+          path={paths.home}
+          element={
+            <PublicRoute>
+              <HomePage />
+            </PublicRoute>
+          }
+        />
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
         <Route path={paths.addProject} element={<AddNewProjectPage />} />
         <Route path={paths.addTeamProject} element={<AddNewTeamProjectPage />} />
@@ -46,7 +55,14 @@ function App() {
         <Route path={paths.signUp} element={<SignUpPage />} />
         <Route path={paths.myNotifications} element={<UserNotificationsPage />} />
         <Route path={paths.myProfile} element={<UserProfilePage />} />
-        <Route path={paths.myProjects} element={<UserProjectPage />} />
+        <Route
+          path={paths.myProjects}
+          element={
+            <PrivateRoute>
+              <UserProjectPage />
+            </PrivateRoute>
+          }
+        />
         <Route path={paths.emailVerification} element={<EmailVerificationPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
