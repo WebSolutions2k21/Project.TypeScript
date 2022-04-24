@@ -21,7 +21,7 @@ export const getCurrentUser = () => {
 
 const REGISTER_URL = "/users/register";
 
-export const register = async (
+export const register = (
   username: string,
   email: string,
   password: string,
@@ -29,7 +29,7 @@ export const register = async (
   firstname?: string,
   lastname?: string,
 ) => {
-  return await axios
+  return axios
     .post(REGISTER_URL, {
       username,
       firstname,
