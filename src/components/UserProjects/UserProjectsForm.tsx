@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { getUserProjects } from "services/user.service";
+import { getUserProjects } from "services/userProjects.service";
 import { Button } from "styles";
 import IUserProjects from "./IUserProjects.interface";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
-import { getCurrentUser } from "services/auth.service";
+import { ProjectForm } from "./UserProjects.style";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
   const navigate = useNavigate();
-  const currentUser = getCurrentUser();
 
   useEffect(() => {
-    getUserProjects(currentUser)
+    getUserProjects()
       .then((response: any) => {
-        console.log("Res data", response.data);
         setUserAllProjects(response.data);
       })
       .catch((e: Error) => {
-        console.log("error w e", e);
+        console.log("error w UserProjects", e);
       });
   }, []);
 
@@ -27,17 +25,17 @@ export const UserProjectsForm = () => {
   };
 
   return (
-    <>
+    <ProjectForm>
       {userAllProjects &&
-        userAllProjects.map((user, index) => (
+        userAllProjects.map((project, index) => (
           <div key={index}>
-            <div>{user.name}</div>
-            <div>{user.content}</div>
+            <div>{project.name}</div>
+            <div>{project.content}</div>
           </div>
         ))}
       <Button type="submit" onClick={handleClick}>
         Add New Project
       </Button>
-    </>
+    </ProjectForm>
   );
 };

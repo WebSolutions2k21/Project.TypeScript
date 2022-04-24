@@ -15,6 +15,14 @@ export const logout = () => {
   localStorage.removeItem("user");
 };
 
+export const getCurrentUserToken = () => {
+  if (localStorage.getItem("user")) {
+    return JSON.parse(localStorage.getItem("user") as string);
+  } else {
+    console.error("Can't find User token");
+  }
+};
+
 export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user") as string) && JSON.parse(localStorage.getItem("mentor") as string);
 };
