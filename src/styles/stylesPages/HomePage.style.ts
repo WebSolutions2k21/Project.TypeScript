@@ -39,6 +39,7 @@ export const PictureWrapper: any = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 200px;
+  margin-top: 20px;
 `;
 export const Footer = styled(Foot)`
   display: flex;
