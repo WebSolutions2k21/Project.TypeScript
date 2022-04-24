@@ -1,7 +1,11 @@
 import React from "react";
+import Navbar from "components/Navbar/Navbar";
 
 export const UserProfilePage = () => {
-    return (
-     <h1>UserProfilePage</h1>
-    );
+  return (
+    <>
+      <Navbar />
+      <h1>UserProfilePage</h1>
+    </>
+  );
 };

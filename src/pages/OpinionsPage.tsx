@@ -1,7 +1,11 @@
 import React from "react";
+import { Navbar } from "components";
 
 export const OpinionsPage = () => {
-    return (
-     <h1>OpinionsPage</h1>
-    );
+  return (
+    <>
+      <Navbar />
+      <h1>OpinionsPage</h1>
+    </>
+  );
 };
