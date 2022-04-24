@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { login } from "services/auth.service";
-import { Button, Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
+import { Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
 import {
   LoginForm,
   StyledInlineErrorMessageForm,
@@ -16,6 +16,7 @@ import {
   FooterWrapperLeft,
   LinkFooter,
   FooterWrapperRight,
+  ButtonForm
 } from "./Login.style";
 import ILogin from "./Login.interface";
 import { paths } from "config/paths";
@@ -52,7 +53,9 @@ export const Login = () => {
         onSubmit={(values) => {
           login(values).then(
             ({ mentor }) => {
-              mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
+              setTimeout(() => {
+                mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
+              }, 1500);
               toast.success(t`toast.login.success`);
             },
             (error) => {
@@ -117,9 +120,9 @@ export const Login = () => {
                 {errors.password && touched.password && errors.password}
               </StyledInlineErrorMessageForm>
 
-              <Button type="submit" disabled={!isValid}>
+              <ButtonForm type="submit" disabled={!isValid}>
                 {t`button.login`}
-              </Button>
+              </ButtonForm>
               <Toast />
               <Footer>
                 <FooterWrapperLeft>

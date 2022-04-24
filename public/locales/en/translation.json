@@ -129,6 +129,10 @@
       "success": "Successful send email!",
       "error": "Incorrect send mail",
       "notFound": "User not found or does not exist"
+    },
+    "team": {
+      "success": "Successful join to team!",
+      "error": "Error - no join team "
     }
   },
   "addNewProject": {
@@ -156,6 +160,7 @@
     "verified": "Your email has been successfully verified",
     "canLog": "Now You can Log In!"
   },
+<<<<<<< HEAD
   "profile": {
     "username": "Name",
     "useremail": "Email",
@@ -163,5 +168,21 @@
     "lastname": "Last Name",
     "password": "Password",
     "button": "Edit"
+=======
+  "team":{
+    "status": "Status",
+    "places": "Places",
+    "description": "Description",
+    "programmingLanguage": "Programming language",
+    "level": "level",
+    "button":{
+      "view": "View",
+      "joinTeam": "Join Team"
+    }
+  },
+  "status": {
+    "open": "open",
+    "close": "close"
+>>>>>>> 40d1be6ae1c14c2d9c66634e5ab7bf1bafc1d271
   }
 }

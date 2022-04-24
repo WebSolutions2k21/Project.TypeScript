@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
@@ -43,3 +44,4 @@ export const HomePage = () => {
     </>
   );
 };
+

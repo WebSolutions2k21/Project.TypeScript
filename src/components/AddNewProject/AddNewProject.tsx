@@ -9,7 +9,7 @@ import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg } from "../Registration/RegForm.style";
-import { Button, Input, StyledSelect, IconProject, IconText } from "../../styles";
+import { Button, Input, StyledSelect, IconProject, IconText } from "styles";
 
 
 const options = [
