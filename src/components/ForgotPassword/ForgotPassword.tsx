@@ -10,6 +10,7 @@ import { ButtonForm, ForgotPasswordForm, StyledInlineErrorMessageForm, Footer, C
 import { sendEmail } from "services/user.service";
 import { paths } from "config/paths";
 import IForgotPassword from "./IForgotPassword.interface";
+import { Navbar } from "components";
 
 export const ForgotPassword = () => {
   const { t } = useTranslation();
@@ -26,6 +27,7 @@ export const ForgotPassword = () => {
 
   return (
     <>
+    <Navbar />
       <Formik
         validationSchema={schema}
         initialValues={initialValues}

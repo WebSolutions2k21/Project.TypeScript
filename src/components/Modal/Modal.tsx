@@ -1,7 +1,16 @@
-import { Button } from "styles/Button.style";
 import React, { useState } from "react";
+import { IconInModal } from "styles";
 
-import { ModalStyle, ModalBox, ModalTitle, CloseBtn, ModalContent, ModalOverlay, ActiveModal } from "./Modal.style";
+import {
+  ModalStyle,
+  ModalBox,
+  ModalTitle,
+  CloseBtn,
+  ModalContent,
+  ModalOverlay,
+  ActiveModal,
+  ModalButton,
+} from "./Modal.style";
 
 interface IModal {
   children: any;
@@ -22,13 +31,16 @@ export const Modal = ({ children, title, buttonText }: IModal) => {
 
   return (
     <>
-      <Button onClick={toggleModal}>{buttonText}</Button>
+      <ModalButton onClick={toggleModal}>{buttonText}</ModalButton>
       {isModalOpen && (
         <ModalStyle>
           <ModalOverlay onClick={toggleModal} />
           <ModalBox>
             <CloseBtn onClick={toggleModal}>X</CloseBtn>
-            <ModalTitle>{title}</ModalTitle>
+            <ModalTitle>
+              <IconInModal />
+              {title}
+            </ModalTitle>
             <ModalContent>{children}</ModalContent>
           </ModalBox>
         </ModalStyle>
