@@ -1,7 +1,8 @@
 import React from "react";
+import { Profile } from "components";
 
 export const UserProfilePage = () => {
     return (
-     <h1>UserProfilePage</h1>
+        <Profile/>
     );
 };
