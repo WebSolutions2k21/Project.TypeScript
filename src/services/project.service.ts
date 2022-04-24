@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 
 
 const URL = "/project/create";
+const URLMentors = "/users/mentors";
 
 interface IAddNewProject {
   name?: string;
@@ -19,6 +20,7 @@ export const createProject = (
   content: string,
   status: string,
 ) => {
+  // TODO
   const data: IAddNewProject = {}
   if (name.length > 0) data.name = name
   if (userId.length > 0) {
@@ -38,4 +40,12 @@ export const createProject = (
     .catch(e => {
       console.log(e)
     });
+  };
+
+
+  export const getMentors = () => {
+    return axios.get(URLMentors)
+      .then((res) => {
+        return res;
+      })
   };
