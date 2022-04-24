@@ -145,15 +145,18 @@
     "status": "status",
     "statusPlaceholder": "Choose status",
     "button": "ENTER",
-    "validation": {
-      "name": "Your project name is too short",
-      "nameReq": "Please enter project's name",
-      "mentor": "Please choose your mentor",
-      "content": "Your content name is too short",
-      "contentReq": "Please enter the content",
-      "status": "Please choose project's status"
-    }
-  },
+      "validation": {
+        "name": "Your project name is too short", 
+        "nameReq": "Please enter project's name",     
+        "mentor": "Please choose your mentor",
+        "content": "Your content name is too short",
+        "contentReq": "Please enter the content",
+        "status": "Please choose project's status",
+        "success": "Success",
+        "validation": "Something is wrong. Try again",
+        "error": "Error"
+      }
+    },
   "emailVerification": {
     "login": "Log In!",
     "welcome": "Welcome to Our Team!",

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
-// import { Link } from "react-router-dom";
-// import { useNavigate } from 'react-router-dom';
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
+import { createProject, getMentors } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg } from "../Registration/RegForm.style";
-import { Button, Input, StyledSelect, IconProject, IconText } from "styles";
+import { Button, Input, StyledSelect, IconProject, IconText, Toast } from "styles";
+import { paths } from "config/paths";
 
 
 const options = [
@@ -17,25 +18,58 @@ const options = [
   { value: "false", label: "Close project" }
 ];
 
+const user = JSON.parse(localStorage.getItem("user") as string);
 
 export const AddNewProject = () => {
 
+  let navigate = useNavigate();
   const { t } = useTranslation();
+
+
+  // TODO => This section will be developed over the next month. These are just the first attempts.
+  const [selectedValue, setSelectedValue] = useState("true");
+  const selectChange = (obj: any) => {
+    setSelectedValue(obj.value);
+  }
+  // TODO
+
+  const [allMentors, setAllMentors] = useState([]);
+
+  useEffect(() => {
+    getMentors()
+      .then((res) => {
+        setAllMentors(res.data)
+      })
+      .catch((e: Error) => {
+        console.log(e);
+      });
+  }, [])
+
+  const mentrs = allMentors.map((e:any) => e.username);
 
   const initialValues: IAddNewProject = {
     name: "",
-    mentor: [],
+    userId: user,
+    mentorId: "",
     content: "",
-    status: [],
+    status: selectedValue,
   };
 
   return (
     <Formik
       initialValues={initialValues} 
       validationSchema={AddNewProjectSchema()} 
-      onSubmit={(formValue) => {
-        // const { name, mentor, content, status } = formValue;
-        console.log(formValue)
+      onSubmit={(formValue: IAddNewProject) => {
+        let { name, userId = user, mentorId, content, status = selectedValue } = formValue;
+        createProject(name, userId, mentorId, content, status).then(
+          () => {
+            setTimeout(() => {
+              navigate(paths.myProjects, { replace: true })
+            }, 3000);
+            toast.success(t`addNewProject.validation.success`)
+          },
+          ({ response: { status } }) => toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`) 
+        )
       }}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
       return (
@@ -68,7 +102,7 @@ export const AddNewProject = () => {
             </LabelStyle>
             <StyledSelect 
             name="mentor"
-            options={values.mentor}
+            options={mentrs.map((e) => ({label: e, value: e}))}
             classNamePrefix={'Select'}
             placeholder={t`addNewProject.mentorPlaceholder`}
             id="mentor"
@@ -105,12 +139,15 @@ export const AddNewProject = () => {
             classNamePrefix={'Select'}
             placeholder={t`addNewProject.statusPlaceholder`}
             id="status"
+            onChange={selectChange} 
             />
 
 
             <Button type="submit" disabled={!isValid}>
             {t`addNewProject.button`} 
             </Button>
+
+            <Toast />
 
         </AddNewProjectForm>
       </Form>
