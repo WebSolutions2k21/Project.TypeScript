@@ -17,23 +17,23 @@ export const UserProjectsForm = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    getUserTeamProjects()
-      .then((response: any) => {
-        setUserTeamProjects(response.data);
-      })
-      .catch((e: Error) => {
-        console.log("error in getUserTeamProjects", e);
-      });
+    // getUserTeamProjects()
+    //   .then((response: any) => {
+    //     setUserTeamProjects(response.data);
+    //   })
+    //   .catch((e: Error) => {
+    //     console.log("error in getUserTeamProjects", e);
+    //   });
   }, []);
 
   useEffect(() => {
-    getUserProjects()
-      .then((response: any) => {
-        setUserAllProjects(response.data);
-      })
-      .catch((e: Error) => {
-        console.log("error in getUserProjects", e);
-      });
+    // getUserProjects()
+    //   .then((response: any) => {
+    //     setUserAllProjects(response.data);
+    //   })
+    //   .catch((e: Error) => {
+    //     console.log("error in getUserProjects", e);
+    //   });
   }, []);
 
   const navigateToAddProject = () => {
