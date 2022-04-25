@@ -6,6 +6,7 @@ export const login = (data: ILogin) => {
     if (res.data.token) {
       localStorage.setItem("user", res.data.token );
       localStorage.setItem("mentor", res.data.mentor);
+      localStorage.setItem("userID", res.data.id);
     }
     return res.data;
   });
@@ -23,6 +24,10 @@ export const isUserLogged = (): boolean => {
 export const isMentorLogged = (): boolean => {
   return isUserLogged() && localStorage.getItem("mentor") === "true";
 };
+
+export const getUserID = (): any => {
+  return localStorage.getItem("userID");
+}
 
 const REGISTER_URL = "/users/register";
 

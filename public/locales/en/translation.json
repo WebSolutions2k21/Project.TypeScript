@@ -160,15 +160,14 @@
     "verified": "Your email has been successfully verified",
     "canLog": "Now You can Log In!"
   },
-<<<<<<< HEAD
   "profile": {
     "username": "Name",
     "useremail": "Email",
     "firstname": "First Name",
     "lastname": "Last Name",
     "password": "Password",
-    "button": "Edit"
-=======
+    "button": "Save"
+  },
   "team":{
     "status": "Status",
     "places": "Places",
@@ -183,6 +182,5 @@
   "status": {
     "open": "open",
     "close": "close"
->>>>>>> 40d1be6ae1c14c2d9c66634e5ab7bf1bafc1d271
   }
 }

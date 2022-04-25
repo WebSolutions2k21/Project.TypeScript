@@ -1,50 +1,86 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios/instanceAxios";
 
 import { ProfileSchema } from "./validate";
 import ProfileInterface from "./Profile.interface";
-import { ProfileForm, View, LabelStyle, ErrorMsg, Footer, EditButton, InputStyle, InputStyled, InputRegular } from "./ProfileForm.style";
-import { Button, IconPassword, IconText, Line, IconEye, IconEyeHide, Toast } from "../../styles";
+import { ProfileForm, View, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton } from "./ProfileForm.style";
+import { IconPassword, IconText, Line, IconEye, IconEyeHide, Toast, Input } from "../../styles";
 import { LogoPageSmall } from "../../styles/LogoPage.style";
-// import { getCurrentUser } from "../../services/auth.service";
 import { paths } from "../../config/paths";
+import { getUserID } from "services/auth.service";
+import { getUser } from "services/user.service"
 
 
 export const Profile = () => {
   const { t } = useTranslation();
+  let navigate = useNavigate();
 
-  const [passShown, setPassShown] = useState(false);
-  const togglePass = () => {
-    setPassShown((prev) => !prev);
-  };
+  // const [passShown, setPassShown] = useState(false);
+  // const togglePass = () => {
+  //   setPassShown((prev) => !prev);
+  // };
+
+  const [id, setID] = useState('');
+  const [username, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
   
+  useEffect(() => {
+    setID(getUserID());
+    getUser(id)
+    .then((response: any) => {
+        setUserName (response.data.username);
+        setEmail(response.data.email);
+        setFirstName(response.data.firstname);
+        setLastName(response.data.lastname);
+      })
+      .catch((e: Error) => {
+        toast.error(t`profile.error`);
+      });
+  }, [email, firstname, id, lastname, t, username]);
+
   const initialValues: ProfileInterface = {
-    username: "",
-    email: "",
+    username: username,
+    email: email,
     firstname: "",
     lastname: "",
-    password: "",
+  };
+
+  const updateUserData = async (
+    firstname: string,
+    lastname: string,
+    username: string,
+    email: string,
+  ) => {
+    return await axios
+      .patch(`/users/${id}`, {
+        firstname,
+        lastname,
+        username,
+        email
+      })
+      .then((res) => {
+        return res.data;
+      });
   };
 
   return (
     <>
     <Formik 
       initialValues={initialValues} 
-      validationSchema={ProfileSchema()} 
+      validationSchema={ProfileSchema()}
       onSubmit={(formValue: ProfileInterface) => {
-        const { username, email, firstname, lastname, password } = formValue;
-        // register(username, email, password, confirmpassword, firstname, lastname).then(
-        //   () => {
-        //     setTimeout(() => {
-        //       navigate(paths.login, { replace: true })
-        //     }, 3000);
-        //     toast.success(t`toast.registration.success`)
-        //   },
-        //   ({ response: { status } }) => toast.error(status === 400 ? t`toast.registration.validation` : t`toast.registration.error`) 
-        // );
+        const { firstname, lastname } = formValue;
+        updateUserData(firstname, lastname, username, email).then(
+          () => {
+              navigate(paths.myProfile);
+          }
+        );
       }}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
         return (
@@ -55,63 +91,49 @@ export const Profile = () => {
                 <IconText />
                 {t`profile.username`}
               </LabelStyle>
-              <InputStyle>
-              <InputRegular
+  
+              <Input
                   type="text"
                   name="username"
                   autoCapitalize="off"
                   autoCorrect="off"
-                //   placeholder={t`registration.userName.placeholder`}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.username}
+                  value={username}
                   id="username"
               />
-            </InputStyle>
-              <ErrorMsg>
-                {errors.username && touched.username && errors.username}
-              </ErrorMsg>
 
               <LabelStyle htmlFor="email">
                 <IconText />
                 {t`profile.useremail`}
               </LabelStyle>
-              <InputRegular
+              <Input
                   type="email"
                   name="email"
                   autoCapitalize="off"
                   autoCorrect="off"
-                //   placeholder={t`registration.email.placeholder`}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.email}
+                  value={email}
                   id="email"
-              />
-              <ErrorMsg>
-                {errors.email && touched.email && errors.email}
-              </ErrorMsg>
-              
-
+              />              
               <LabelStyle htmlFor="firstname">
                 <IconText />
                 {t`profile.firstname`}
               </LabelStyle>
-              <InputStyle>
+
               <InputStyled
                   type="text"
                   name="firstname"
                   autoCapitalize="off"
                   autoCorrect="off"
-                //   placeholder={t`registration.firstName.placeholder`}
+                  placeholder={firstname}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.firstname}
                   id="firstname"
               />
-              <EditButton type="submit" disabled={!isValid}>
-              {t`profile.button`}
-                </EditButton>
-                </InputStyle>
+
               <ErrorMsg>
                 {errors.firstname && touched.firstname && errors.firstname}
               </ErrorMsg>
@@ -121,33 +143,30 @@ export const Profile = () => {
                 <IconText />
                 {t`profile.lastname`}
               </LabelStyle>
-              <InputStyle>
+            
                 <InputStyled
                   type="text"
                   name="lastname"
                   autoCapitalize="off"
                   autoCorrect="off"
-                //   placeholder={t`registration.lastName.placeholder`}
+                  placeholder={lastname}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.lastname}
                   id="lastname"
                 />
-                <EditButton type="submit" disabled={!isValid}>
-              {t`profile.button`}
-                </EditButton>
-                </InputStyle>
+               
                 <ErrorMsg>
                 {errors.lastname && touched.lastname && errors.lastname}
                 </ErrorMsg>
 
-              <LabelStyle htmlFor="password">
+              {/* <LabelStyle htmlFor="password">
                 <IconPassword />
                 {t`profile.password`}
-              </LabelStyle>
-              <InputStyle>
-              <View>
-                <InputStyled
+              </LabelStyle> */}
+            
+              {/* <View>
+                <Input
                   type={passShown ? "text" : "password"}
                   name="password"
                   autoCapitalize="off"
@@ -155,7 +174,7 @@ export const Profile = () => {
                 //   placeholder={t`registration.password.placeholder`}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.password}
+                  // value={password}
                   id="password"
                 />
                   {values.password.length > 0 ? (
@@ -164,14 +183,13 @@ export const Profile = () => {
                     ""
                   )}
               </View>
-              <EditButton type="submit" disabled={!isValid}>
-              {t`profile.button`}
-                </EditButton>
-            </InputStyle>
+            
               <ErrorMsg>
                 {errors.password && touched.password && errors.password}
-              </ErrorMsg>
-
+              </ErrorMsg> */}
+              < EditButton type="submit" disabled={!isValid}>
+              {t`profile.button`}
+                </ EditButton>
                   <Footer>
                     <Link to={paths.home}>{t`registration.foot.home`}</Link>
                   </Footer>
@@ -183,46 +201,4 @@ export const Profile = () => {
       </Formik>
       </>
   );
-
-//   return (
-//     <>
-//     <Formik
-//     initialValues={(formValue: ProfileInterface) => {
-//         let { username, email, firstname, lastname, password } = formValue;
-//         getCurrentUser();
-//       }}>
-//     validationSchema={ProfileSchema()} 
-//     onSubmit={(formValue: ProfileInterface) => {
-//       let { username, email, firstname, lastname, password } = formValue;
-//       getCurrentUser();
-//     }}>
-//       </Formik>
-//       </>
-//   );
 };
-
-// return (
-//     <Form noValidate onSubmit={handleSubmit}>
-//       <RegForm>
-//         <LogoPageSmall />
-
-//         <LabelStyle htmlFor="username">
-//           <IconText />
-//           {t`registration.userName.name`}
-//         </LabelStyle>
-//         <Input
-//             type="text"
-//             name="username"
-//             autoCapitalize="off"
-//             autoCorrect="off"
-//             placeholder={t`registration.userName.placeholder`}
-//             onChange={handleChange}
-//             onBlur={handleBlur}
-//             value={values.username}
-//             id="username"
-//         />
-//           </RegForm>
-//         </Form>
-//       );
-//     }
-//   }

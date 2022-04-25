@@ -157,15 +157,14 @@
     "verified": "Twój email został pomyślnie zweryfikowany",
     "canLog": "Teraz możesz się zalogować!"
   },
-<<<<<<< HEAD
   "profile": {
     "username": "Nazwa użytkownika",
     "useremail": "Email",
     "firstname": "Imię",
     "lastname": "Nazwisko",
     "password": "Hasło",
-    "button": "Edytuj"
-=======
+    "button": "Zapisz"
+  },
   "team":{
     "status": "Status",
     "places": "Ilość miejsc",
@@ -180,6 +179,5 @@
   "status": {
     "open": "otwarty",
     "close": "zamknięty"
->>>>>>> 40d1be6ae1c14c2d9c66634e5ab7bf1bafc1d271
   }
 }

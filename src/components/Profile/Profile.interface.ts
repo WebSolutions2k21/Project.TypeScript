@@ -3,6 +3,6 @@ export default interface ProfileInterface {
   email: string;
   firstname: string;
   lastname: string;
-  password: string;
+  // password: string;
   // programming_languages: [],
 }

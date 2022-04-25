@@ -36,21 +36,18 @@ export const Footer = styled(Foot)`
 `;
 
 export const EditButton = styled(Button)`
-  font-size: 14px;
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0 5px;
-  width: fit-content;
-  height: 25px;
+  margin-top: 20px;
 `;
 
-export const InputStyle = styled.div`
-  display: flex;
-  align-items: flex-end;
-`
+// export const InputStyle = styled.div`
+//   display: flex;
+//   align-items: flex-end;
+// `
 export const InputStyled = styled(Input)`
-  width: auto;
+  &::placeholder {
+  text-align: left;
+  }
 `
-export const InputRegular = styled(Input)`
-    width: 245px;
-`
+// export const InputRegular = styled(Input)`
+//     width: 245px;
+// `
