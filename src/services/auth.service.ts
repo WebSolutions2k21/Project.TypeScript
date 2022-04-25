@@ -4,7 +4,7 @@ import ILogin from "components/Login/Login.interface";
 export const login = (data: ILogin) => {
   return axios.post("/login", data).then((res) => {
     if (res.data.token) {
-      localStorage.setItem("user", res.data.token );
+      localStorage.setItem("user", res.data.token);
       localStorage.setItem("mentor", res.data.mentor);
       localStorage.setItem("userID", res.data.id);
     }
@@ -15,6 +15,14 @@ export const login = (data: ILogin) => {
 export const logout = () => {
   localStorage.removeItem("user");
   localStorage.removeItem("mentor");
+};
+
+export const getCurrentUserToken = () => {
+  if (localStorage.getItem("user")) {
+    return JSON.parse(localStorage.getItem("user") as string);
+  } else {
+    console.error("Can't find User token");
+  }
 };
 
 export const isUserLogged = (): boolean => {
@@ -31,7 +39,7 @@ export const getUserID = (): any => {
 
 const REGISTER_URL = "/users/register";
 
-export const register = async (
+export const register = (
   username: string,
   email: string,
   password: string,
@@ -39,7 +47,7 @@ export const register = async (
   firstname?: string,
   lastname?: string,
 ) => {
-  return await axios
+  return axios
     .post(REGISTER_URL, {
       username,
       firstname,

@@ -7,8 +7,8 @@ import { toast } from "react-toastify";
 import { SignupSchema } from "./validate";
 import IRegistration from "./Registration.interface";
 import { FooterWrapperLeft, FooterWrapperRight, LinkFooter } from "styles/stylesPages/HomePage.style";
-import { RegForm, View, LabelStyle, ErrorMsg, Footer } from "./RegForm.style";
-import { Button, Input, IconPassword, IconText, Line, IconEye, IconEyeHide, Toast } from "styles";
+import { RegForm, View, LabelStyle, ErrorMsg, Footer, ButtonForm } from "./RegForm.style";
+import { Input, IconPassword, IconText, Line, IconEye, IconEyeHide, Toast } from "styles";
 import { LogoPageSmall } from "styles/LogoPage.style";
 import { register } from "services/auth.service";
 import { paths } from "config/paths";
@@ -176,9 +176,9 @@ export const RegistrationForm = () => {
                 </View>
                 <ErrorMsg>{errors.confirmpassword && touched.confirmpassword && errors.confirmpassword}</ErrorMsg>
 
-                <Button type="submit" disabled={!isValid}>
+                <ButtonForm type="submit" disabled={!isValid}>
                   {t`registration.button.name`}
-                </Button>
+                </ButtonForm>
                 <Toast />
 
                 <Footer>
