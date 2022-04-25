@@ -1,7 +1,11 @@
 import React from "react";
+import { Navbar } from "components";
 
 export const MentorProfilePage = () => {
-    return (
-     <h1>MentorProfilePage</h1>
-    );
+  return (
+    <>
+      <Navbar />
+      <h1>MentorProfilePage</h1>
+    </>
+  );
 };

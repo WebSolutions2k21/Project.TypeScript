@@ -1,7 +1,11 @@
 import React from "react";
+import { Navbar } from "components";
 
 export const UserProjectPage = () => {
-    return (
-     <h1>UserProjectPage</h1>
-    );
+  return (
+    <>
+      <Navbar />
+      <h1>UserProjectPage</h1>
+    </>
+  );
 };

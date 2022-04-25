@@ -40,7 +40,6 @@ function App() {
         <Route path={paths.login} element={<LoginPage />} />
         <Route path={paths.mentorNotification} element={<MentorNotificationsPage />} />
         <Route path={paths.mentorProfile} element={<MentorProfilePage />} />
-        <Route path={paths.mentorProfile} element={<NotFoundPage />} />
         <Route path={paths.myOpinions} element={<OpinionsPage />} />
         <Route path={paths.sendNewPassword} element={<SendNewPasswordPage />} />
         <Route path={paths.setPassword} element={<SetNewPasswordPage />} />

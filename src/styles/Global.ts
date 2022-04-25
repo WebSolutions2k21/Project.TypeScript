@@ -7,17 +7,18 @@ export const GlobalStyles = createGlobalStyle`
   margin: 0;
 }
 body {
-  background: linear-gradient(180deg, rgba(164, 205, 215, 0) 0%, #3C789E 100%);
-  background-repeat: no-repeat;
+  
+  background-image: repeating-linear-gradient(180deg,rgba(164, 205, 215, 0) 0%, #3C789E);
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.15em;
   min-height: 100vh;
-  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  scroll-behavior: smooth;
 }
 `;
+
 export const theme = {
   colors: {
     primary: "#d9248f",

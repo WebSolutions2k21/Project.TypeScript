@@ -4,7 +4,28 @@
     "aboutus": "About Us",
     "contact": "Contact",
     "login": "Log In",
-    "signin": "Sign In"
+    "signin": "Sign In",
+    "logout": "Log Out",
+    "myprofile": "My profile",
+    "myproject": "My project",
+    "myopinions": "My opinions",
+    "notifications": "Notifications"
+  },
+  "homepage": {
+    "h1": "Become Student or a Mentor!",
+    "button": "Join Us!",
+    "text": "With Us, You can learn and help"
+  },
+  "404page": {
+    "page": "You didn’t break the Internet, but we can’t find what you are looking for."
+  },
+  "aboutus": {
+    "description": "We are a place that allows you to check your practical programming knowledge. Get good advice from more experienced programmers, or become a mentor to help others.",
+    "h1": "Here you can be:",
+    "mentor": "mentor",
+    "student": "student",
+    "text1": "Help others in Their projects. Create Teams to lern more than one person in the same time.",
+    "text2": "Show your individual projects to selected mentors. Join team project to lern with others."
   },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
@@ -19,7 +40,9 @@
     "date_evening": "Good evening! Today was the {{date, DATE_HUGE}}",
     "createAccount": "Create Account",
     "forgotPassword": "Forgot Password",
-    "homePage": "Home Page"
+    "homePage": "Home Page",
+    "contact": "Contact Page",
+    "login": "Login Page"
   },
   "user": {
     "email": {
@@ -106,6 +129,29 @@
       "success": "Successful send email!",
       "error": "Incorrect send mail",
       "notFound": "User not found or does not exist"
+    },
+    "team": {
+      "success": "Successful join to team!",
+      "error": "Error - no join team "
+    }
+  },
+  "addNewProject": {
+    "name": "project name",
+    "namePlaceholder": "Type your project name",
+    "mentor": "mentor",
+    "mentorPlaceholder": "Choose mentor",
+    "content": "content",
+    "contentPlaceholder": "Type your code or Github Page",
+    "status": "status",
+    "statusPlaceholder": "Choose status",
+    "button": "ENTER",
+    "validation": {
+      "name": "Your project name is too short",
+      "nameReq": "Please enter project's name",
+      "mentor": "Please choose your mentor",
+      "content": "Your content name is too short",
+      "contentReq": "Please enter the content",
+      "status": "Please choose project's status"
     }
   },
   "emailVerification": {
@@ -113,5 +159,20 @@
     "welcome": "Welcome to Our Team!",
     "verified": "Your email has been successfully verified",
     "canLog": "Now You can Log In!"
+  },
+  "team":{
+    "status": "Status",
+    "places": "Places",
+    "description": "Description",
+    "programmingLanguage": "Programming language",
+    "level": "level",
+    "button":{
+      "view": "View",
+      "joinTeam": "Join Team"
+    }
+  },
+  "status": {
+    "open": "open",
+    "close": "close"
   }
 }

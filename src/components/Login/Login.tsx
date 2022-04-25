@@ -3,14 +3,24 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { login } from "services/auth.service";
-import { Button, Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
-import { LoginForm, StyledInlineErrorMessageForm, View, LabelStyle, Footer } from "./Login.style";
+import { Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
+import {
+  LoginForm,
+  StyledInlineErrorMessageForm,
+  View,
+  LabelStyle,
+  Footer,
+  FooterWrapperLeft,
+  LinkFooter,
+  FooterWrapperRight,
+  ButtonForm
+} from "./Login.style";
 import ILogin from "./Login.interface";
 import { paths } from "config/paths";
+import { Navbar } from "components";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -36,16 +46,21 @@ export const Login = () => {
 
   return (
     <>
+      <Navbar />
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={(values) => {
           login(values).then(
             ({ mentor }) => {
-              mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
+              setTimeout(() => {
+                mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
+              }, 1500);
               toast.success(t`toast.login.success`);
             },
             (error) => {
+              console.log("error", error.response.status);
+              console.log("error", error.response.status);
               switch (error.response.status) {
                 case 400:
                   return toast.error(t`toast.login.validation`);
@@ -105,15 +120,18 @@ export const Login = () => {
                 {errors.password && touched.password && errors.password}
               </StyledInlineErrorMessageForm>
 
-              <Button type="submit" disabled={!isValid}>
+              <ButtonForm type="submit" disabled={!isValid}>
                 {t`button.login`}
-              </Button>
+              </ButtonForm>
               <Toast />
-
               <Footer>
-                <Link to={paths.signUp}>{t`footer.createAccount`}</Link>
+                <FooterWrapperLeft>
+                  <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
+                </FooterWrapperLeft>
                 <Line />
-                <Link to={paths.sendNewPassword}>{t`footer.forgotPassword`}</Link>
+                <FooterWrapperRight>
+                  <LinkFooter to={paths.sendNewPassword}>{t`footer.forgotPassword`}</LinkFooter>
+                </FooterWrapperRight>
               </Footer>
             </LoginForm>
           </Form>
