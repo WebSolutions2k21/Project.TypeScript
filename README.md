@@ -1,59 +1,81 @@
-# CodersCamp2021.Project.TypeScript
-Kontynuacja projektu trzeciego - front strony
+# CodersCamp2021 - Projekt TypeScript
 
-## Praca z projektem
+Czwarty projekt. Tworzenie strony wizualnej dla backendu stworzonego we wcześniejszym projekcie.
 
--Pobierz repo <br>
--Stwórz plik .env w folderze server i wklej do niego dane z Trello. <br>
--Wpisz w terminalu komendy:   <br> 
-git submodule sync <br>
-git submodule init <br>
-git submodule update --force <br>
-yarn <br>
--By odpalić apkę wpisz: yarn dev <br>
-    
+## Zespół projektowy:
 
-### Branch Name
+Zespół pracował w ramach kursu CodersCamp. Aplikację wykonali uczestnicy kursu z pomocą mentora. Zachęcamy do odwiedzenia profili członków zespołu, w celu zapoznania się z ich portfolio.
 
-Używamy kebab-case do nazywania branchy
+#### Mentor:
 
-```sh
-more-gray-shades
-support-dark-theme
-button-component
-itp.
-```
+[Aleksander Atamańczuk](https://github.com/TenGosc007)
 
-### Commit Message
+#### Uczestnicy:
 
-Przyjmujemy poniższy format commit message
+- [Małgorzata Bednarczuk](https://github.com/margiebed)
 
-```sh
-<type>: <commit_message>
-```
+- [Anna Koruc](https://github.com/annakoruc)
 
-#### Commit Message Type
+- [Marta Probierz](https://github.com/marta-probierz)
 
-- **build**: Zmiana która afektuje budowanie projektu lub zależności zewnętrzne
-- **docs**: Zmiana w dokumentacji bądź dodatkowych materiałach
-- **feature**: Wprowadzenie nowej funkcjonalności
-- **bugfix**: Naprawienie błędu
-- **refactor**: Zmiana w projekcie, która nic nie naprawia, ani nie dodaje
+- [Weronika Kurek-Pękala](https://github.com/SolWika)
 
-#### Zasady Commit Message
+- [Kasia Filip](https://github.com/kasia-filip)
 
-- używaj imperatywnej formy czasu teraźniejszego: "change", nie "changed" lub "changes"
-- nie zaczynaj wielką literą
-- nie dodawaj kropki na końcu zdania
-- używaj języka angielskiego
+- [Sebastian Michalczyk](https://github.com/WindOfCodes)
 
-### Pull Request
+[Diagram ERD](https://www.figma.com/file/rKjruMuYjpcQelDVIyJRZy/Projekt-3?node-id=0%3A1)
 
-Pracujemy na gałęziach w metodologii `branch per feature`. Staramy się tworzyć małe PR. W opisie PR powinno być dokładnie opisane co on zmienia. Każdy PR musi być zaakceptowany przez przynajmniej jedną inną osobę.
+<img width="686" alt="image" src="https://user-images.githubusercontent.com/84628957/159575697-1fbeabd5-b191-4efa-a6d6-574194a7f326.png">
 
+[Projekt na Figmie](https://www.figma.com/file/DEZEAncpuOngo9CoKRzrsm/Brain-Code?node-id=0%3A1)
 
-### .env
+### [WEJDŹ NA STRONĘ](https://brain-code.netlify.app/)
 
-Stwórz plik .env w folderze server i wklej do niego dane z Trello.
+## Cel projektu
 
+Celem projektu było stworzenie warstwy wizualnej strony z połączeniem do wcześniejszego wykonanego API. Na stronie możemy się zalogować jako użytkownik i poszukać swojego mentora. Możemy dodawać projekty, a także uczestniczyć w projektach grupowych.
 
+Aplikacja będzie rozwijana w dalszej części kursu.
+
+Aplikacja została wykonana według wymagań dostarczonych przez organizatorów CodersCamp.
+
+## Kod startowy projektu
+
+1. Nasza aplikacja została wdrożona na Netlify.
+2. Biorąc pod uwagę fakt, iż nasza aplikacja jest implementowana przez kilku deweloperów, zdecydowaliśmy się na użycie biblioteki Prettier, służącej do formatowania kodu. Niniejsza biblioteka jest świetnym narzędziem, który wyłapuje błędy składni, automatycznie poprawia linie kodu według zdefiniowanej konfiguracji.
+
+## Technologie użyte w projekcie:
+
+1. TypeScript
+2. React
+3. Node.js
+4. Express.js
+5. Jest
+6. MongoDB
+7. Joi
+8. Nodemailer
+9. Mongoose
+10. SuperTest
+11. Formik
+12. Formspree
+13. i18next
+
+## Narzędzia pomocnicze
+
+- Visual Studio Code
+- Yarn
+- Nodemon
+- Figma
+- Trello
+
+Aby uruchomić aplikację na lokalnej maszynie, wykonaj następujące kroki:
+
+1. Sklonuj repozytorium.
+2. Otwórz je w ulubionym edytorze.
+3. Stwórz plik .env i wklej do niego tą treść:
+
+URL = https://brain-code.netlify.app/
+
+4. Zainstaluj zależności za pomocą komendy: yarn .
+5. Uruchom serwer za pomocą komendy: yarn dev .
