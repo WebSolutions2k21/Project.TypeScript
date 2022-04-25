@@ -8,8 +8,8 @@ import { createProject, getMentors } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
 import { AddNewProjectForm } from "./Form.style";
-import { LabelStyle, ErrorMsg } from "../Registration/RegForm.style";
-import { Button, Input, StyledSelect, IconProject, IconText, Toast } from "styles";
+import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
+import { Input, StyledSelect, IconProject, IconText, Toast } from "styles";
 import { paths } from "config/paths";
 
 
@@ -143,9 +143,9 @@ export const AddNewProject = () => {
             />
 
 
-            <Button type="submit" disabled={!isValid}>
-            {t`addNewProject.button`} 
-            </Button>
+            <ButtonForm type="submit" disabled={!isValid}>
+              {t`addNewProject.button`} 
+            </ButtonForm>
 
             <Toast />
 
