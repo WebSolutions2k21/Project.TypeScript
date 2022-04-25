@@ -78,4 +78,4 @@ Aby uruchomić aplikację na lokalnej maszynie, wykonaj następujące kroki:
 URL = https://brain-code.netlify.app/
 
 4. Zainstaluj zależności za pomocą komendy: yarn .
-5. Wystartuj serwer za pomocą komendy: yarn dev .
+5. Uruchom serwer za pomocą komendy: yarn dev .
