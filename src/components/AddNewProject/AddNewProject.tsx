@@ -18,7 +18,7 @@ const options = [
   { value: "false", label: "Close project" }
 ];
 
-const user = JSON.parse(localStorage.getItem("user") as string);
+const user = localStorage.getItem("user") as string;
 
 export const AddNewProject = () => {
 
