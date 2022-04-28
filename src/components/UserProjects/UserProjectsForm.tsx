@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // import { getUserProjects, getUserTeamProjects } from "services/userProjects.service";
 import { IconText } from "styles";
-import IUserProjects from "./IUserProjects.interface";
-import ITeamProject from "../AllTeamProject/ITeamProject.interface";
+// import IUserProjects from "./IUserProjects.interface";
+// import ITeamProject from "../AllTeamProject/ITeamProject.interface";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
-import { ButtonForm, ModalContent, Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
-import { Modal } from "components/Modal";
+import { ButtonForm, ProjectForm, ProjectGroup } from "./UserProjects.style";
+// import { ButtonForm, ModalContent, Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
+// import { Modal } from "components/Modal";
 import { useTranslation } from "react-i18next";
 
 export const UserProjectsForm = () => {
