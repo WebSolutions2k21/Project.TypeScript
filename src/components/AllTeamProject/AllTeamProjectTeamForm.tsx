@@ -23,21 +23,31 @@ export const AllTeamProjectTeamForm = () => {
         setAllTeamProject(response.data);
       })
       .catch((e: Error) => {
+        console.log("wywala 2")
         toast.error(t`toast.team.error`);
       });
   }, [t]);
 
+  
   const joinToTeam = (id: string) => {
     joinTeam(id)
       .then(() => {
-        setTimeout(() => {
-          navigate(paths.myProjects);
-        }, 1000);
         toast.success(t`toast.team.success`);
       })
-      .catch((e: Error) => {
-        toast.error(t`toast.team.error`);
+      .catch((error) => {
+        console.log("wywala 1")
+        switch (error.response.status) {
+          case 400:
+            return toast.error(t`toast.team.notFound`);
+          case 423:
+            return toast.error(t`toast.team.locked`);
+          default:
+            return toast.error(t`toast.team.error`);
+        }
       });
+    setTimeout(() => {
+      navigate(paths.myProjects);
+    }, 1000);
   };
 
   return (

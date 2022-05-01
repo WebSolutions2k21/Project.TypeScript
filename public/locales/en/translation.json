@@ -141,7 +141,9 @@
     },
     "team": {
       "success": "Successful join to team!",
-      "error": "Error - no join team "
+      "error": "Error - no join team ",
+      "notFound": "No user or team found.",
+      "locked": "You are already enrolled"
     }
   },
   "addNewProject": {

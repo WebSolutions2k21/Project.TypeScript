@@ -59,8 +59,6 @@ export const Login = () => {
               toast.success(t`toast.login.success`);
             },
             (error) => {
-              console.log("error", error.response.status);
-              console.log("error", error.response.status);
               switch (error.response.status) {
                 case 400:
                   return toast.error(t`toast.login.validation`);

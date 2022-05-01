@@ -138,7 +138,9 @@
     },
     "team": {
       "success": "Brawo dołączyłeś do zespołu!",
-      "error": "Error spróbuj jeszcze raz "
+      "error": "Error spróbuj jeszcze raz",
+      "notFound": "Nie znaleziono usera bądź projektu",
+      "locked": "Jesteś już zapisany do teamu"
     }
   },
   "addNewProject": {
