@@ -25,9 +25,16 @@ import {
   UserProjectPage,
 } from "pages";
 import { paths } from "config/paths";
-import { PrivateRoute } from "config/PrivateRoute";
+import { PrivateRoute, PrivateRouteProps } from "config/PrivateRoute";
+import { isUserLogged } from "services/auth.service";
 
 function App() {
+ 
+  const defaultPrivateRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
+    isAuthenticated: isUserLogged(),
+    authenticationPath: paths.login,
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -46,13 +53,16 @@ function App() {
         <Route path={paths.setPassword} element={<SetNewPasswordPage />} />
         <Route path={paths.signUp} element={<SignUpPage />} />
         <Route path={paths.myNotifications} element={<UserNotificationsPage />} />
-        <Route path={paths.myProfile} element={<UserProfilePage />} />
+        <Route
+          path={paths.myProfile}
+          element={
+            <PrivateRoute {...defaultPrivateRouteProps} outlet={<UserProfilePage />}/>
+          }
+        />
         <Route
           path={paths.myProjects}
           element={
-            <PrivateRoute>
-              <UserProjectPage />
-            </PrivateRoute>
+            <PrivateRoute {...defaultPrivateRouteProps} outlet={<UserProjectPage />}/>
           }
         />
         <Route path={paths.emailVerification} element={<EmailVerificationPage />} />
