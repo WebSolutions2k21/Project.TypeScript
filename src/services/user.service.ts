@@ -8,3 +8,21 @@ export const sendEmail = async (data: IForgotPassword) => {
 export const getUser = async (id: any) => {
   return await axios.get(`/users/${id}`);
 };
+
+const CHANGEPASSWORD_URL = "/users/changepassword";
+
+export const changePassword = (
+  oldPassword: string,
+  newPassword: string,
+  confirmNewPassword: string,
+) => {
+  return axios
+    .put(CHANGEPASSWORD_URL, {
+      oldPassword,
+      newPassword,
+      confirmNewPassword,
+    })
+    .then((res) => {
+      return res.data;
+    });
+}

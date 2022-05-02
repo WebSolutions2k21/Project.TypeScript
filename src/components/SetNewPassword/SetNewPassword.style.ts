@@ -4,7 +4,7 @@ import { Button, Foot } from "styles";
 export const Title = styled.div`
   color: #174c6f;
   font-size: 20px;
-  padding-bottom: 35px;
+  padding-bottom: 25px;
 `;
 
 export const ButtonForm = styled(Button)`
