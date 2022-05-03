@@ -20,6 +20,7 @@ export const TopText = styled.h3`
   color: #174c6f;
   float: left;
   line-height: 50px;
+  // margin: -115px 0 50px 0;
 `;
 
 export const CardBox = styled(Card)`

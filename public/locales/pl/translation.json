@@ -24,6 +24,15 @@
     "text1": "Pomagaj innym w ich projektach. Twórz zespoły, aby uczyć więcej niż jedną osobę w tym samym czasie.",
     "text2": "Pokaż swoje indywidualne projekty wybranym mentorom. Dołącz do projektu zespołowego, aby uczyć się razem z innymi."
   },
+  "contactpage": {
+    "h1": "Bądźmy w kontakcie",
+    "text1": "Twój email",
+    "text2": "Treść wiadomości",
+    "text3": "Dziękujemy za wiadomość!",
+    "emailplace": "Wpisz swój e-mail",
+    "messageplace": "Wpisz swoją wiadomość",
+    "button": "Wyślij wiadomość"
+  },
   "description": {
     "part1": "Edytuj <1>src/App.js</1> i zapisz by ponownie wczytać.",
     "part2": "Ucz się React'a"
@@ -148,7 +157,10 @@
       "mentor": "Wybierz mentora",
       "content": "Nazwa jest zbyt krótka",
       "contentReq": "Wpisz content",
-      "status": "Wybierz status projektu"
+      "status": "Wybierz status projektu",
+      "success": "Udało się!",
+      "validation": "Coś poszło nie tak. Spróbuj ponownie",
+      "error": "Błąd"
     }
   },
   "emailVerification": {
@@ -157,13 +169,13 @@
     "verified": "Twój email został pomyślnie zweryfikowany",
     "canLog": "Teraz możesz się zalogować!"
   },
-  "team":{
+  "team": {
     "status": "Status",
     "places": "Ilość miejsc",
     "description": "Opis",
     "programmingLanguage": "Język programowania",
     "level": "Poziom",
-    "button":{
+    "button": {
       "view": "Pokaż",
       "joinTeam": "Dołącz"
     }
@@ -171,5 +183,14 @@
   "status": {
     "open": "otwarty",
     "close": "zamknięty"
+  },
+  "project": {
+    "individual": "Indywidualne Projekty",
+    "TeamProjects": "Projekty Grupowe",
+    "button": {
+      "view": "Pokaż",
+      "addNew": "Dodaj nowy projekt",
+      "viewTeam": "Projekty grupowe"
+    }
   }
 }

@@ -1,6 +1,7 @@
 export default interface IAddNewProject {
   name: string;
-  mentor: string[];
+  userId: string;
+  mentorId: string;
   content: string;
-  status: boolean[];
+  status: string;
 }
