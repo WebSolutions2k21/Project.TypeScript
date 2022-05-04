@@ -1,39 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { getUserProjects, getUserTeamProjects } from "services/userProjects.service";
+import React, { useEffect } from "react";
+// import { getUserProjects, getUserTeamProjects } from "services/userProjects.service";
 import { IconText } from "styles";
-import IUserProjects from "./IUserProjects.interface";
-import ITeamProject from "../AllTeamProject/ITeamProject.interface";
+// import IUserProjects from "./IUserProjects.interface";
+// import ITeamProject from "../AllTeamProject/ITeamProject.interface";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
-import { ButtonForm, ModalContent, Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
-import { Modal } from "components/Modal";
+import { ButtonForm, ProjectForm, ProjectGroup } from "./UserProjects.style";
+// import { ButtonForm, ModalContent, Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
+// import { Modal } from "components/Modal";
 import { useTranslation } from "react-i18next";
 
 export const UserProjectsForm = () => {
-  const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
-  const [userTeamProjects, setUserTeamProjects] = useState<Array<ITeamProject>>([]);
+  // const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
+  // const [userTeamProjects, setUserTeamProjects] = useState<Array<ITeamProject>>([]);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   useEffect(() => {
-    getUserTeamProjects()
-      .then((response: any) => {
-        setUserTeamProjects(response.data);
-      })
-      .catch((e: Error) => {
-        console.log("error in getUserTeamProjects", e);
-      });
+    // getUserTeamProjects()
+    //   .then((response: any) => {
+    //     setUserTeamProjects(response.data);
+    //   })
+    //   .catch((e: Error) => {
+    //     console.log("error in getUserTeamProjects", e);
+    //   });
   }, []);
 
   useEffect(() => {
-    getUserProjects()
-      .then((response: any) => {
-        setUserAllProjects(response.data);
-      })
-      .catch((e: Error) => {
-        console.log("error in getUserProjects", e);
-      });
+    // getUserProjects()
+    //   .then((response: any) => {
+    //     setUserAllProjects(response.data);
+    //   })
+    //   .catch((e: Error) => {
+    //     console.log("error in getUserProjects", e);
+    //   });
   }, []);
 
   const navigateToAddProject = () => {
@@ -51,7 +52,7 @@ export const UserProjectsForm = () => {
           <IconText />
           <div>{t`project.individual`}</div>
         </ProjectGroup>
-        {userAllProjects &&
+        {/* {userAllProjects &&
           userAllProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.name}</Name>
@@ -60,7 +61,7 @@ export const UserProjectsForm = () => {
                 <ModalContent>{project.status ? "open" : "close"}</ModalContent>
               </Modal>
             </ProjectCard>
-          ))}
+          ))} */}
         <ButtonForm type="submit" onClick={navigateToAddProject}>
           {t`project.button.addNew`}
         </ButtonForm>
@@ -70,7 +71,7 @@ export const UserProjectsForm = () => {
           <IconText />
           <div>{t`project.TeamProjects`}</div>
         </ProjectGroup>
-        {userTeamProjects &&
+        {/* {userTeamProjects &&
           userTeamProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.teamName}</Name>
@@ -79,7 +80,7 @@ export const UserProjectsForm = () => {
                 <ModalContent>{project.status ? "open" : "close"}</ModalContent>
               </Modal>
             </ProjectCard>
-          ))}
+          ))} */}
         <ButtonForm type="submit" onClick={navigateToAllTeamProjects}>
           {t`project.button.viewTeam`}
         </ButtonForm>

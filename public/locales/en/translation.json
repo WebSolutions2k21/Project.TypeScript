@@ -195,5 +195,13 @@
       "addNew": "Add New Project",
       "viewTeam": "View Team Projects"
     }
+  },
+  "setNewPassword": {
+    "title": "Want to change password?",
+    "setNewPassword": "set new password",
+    "setNewPasswordPlaceholder": "Type your new password",
+    "confirmPassword": "confirm new password",
+    "confirmPasswordPlaceholder": "Confirm new password",
+    "button": "Set new password"
   }
 }

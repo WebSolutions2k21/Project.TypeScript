@@ -192,5 +192,13 @@
       "addNew": "Dodaj nowy projekt",
       "viewTeam": "Projekty grupowe"
     }
+  },
+  "setNewPassword": {
+    "title": "Chcesz zmienić hasło?",
+    "setNewPassword": "nowe hasło",
+    "setNewPasswordPlaceholder": "Wpisz nowe hasło",
+    "confirmPassword": "potwierdź nowe hasło",
+    "confirmPasswordPlaceholder": "Potwierdź nowe hasło",
+    "button": "Zmień hasło"
   }
 }
