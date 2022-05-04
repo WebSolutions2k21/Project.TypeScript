@@ -202,6 +202,8 @@
     "confirmPassword": "potwierdź nowe hasło",
     "confirmPasswordPlaceholder": "Potwierdź nowe hasło",
     "button": "Zmień hasło",
-    "success": "Twoje hasło zostało pomyślnie zmienione"
+    "success": "Twoje hasło zostało pomyślnie zmienione",
+    "badRequest": "Stare hasło zostało wprowadzone niepoprawnie. Spróbuj ponownie!",
+    "error": "Coś poszło nie tak. Spróbuj ponownie"
   }
 }

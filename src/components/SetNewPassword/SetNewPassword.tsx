@@ -62,8 +62,8 @@ export const SetNewPassword = () => {
               toast.success(t`setNewPassword.success`);
             },
             ({ response: { status } }) =>
-            console.log(status)
-          )
+              toast.error(status === 400 ? t`setNewPassword.badRequest` : t`setNewPassword.error`),
+          );
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => (
@@ -98,7 +98,6 @@ export const SetNewPassword = () => {
               <StyledInlineErrorMessageForm>
                 {errors.oldPassword && touched.oldPassword && errors.oldPassword}
               </StyledInlineErrorMessageForm>
-
 
               <LabelStyle htmlFor="newPassword">
                 <IconText />
