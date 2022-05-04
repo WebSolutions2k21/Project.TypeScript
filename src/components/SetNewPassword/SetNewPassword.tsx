@@ -52,13 +52,12 @@ export const SetNewPassword = () => {
       <Formik
         validationSchema={validation()}
         initialValues={initialValues}
-        onSubmit={(values: ISetNewPassword) => {
-          const { oldPassword, newPassword, confirmNewPassword } = values;
+        onSubmit={({ oldPassword, newPassword, confirmNewPassword }: ISetNewPassword) => {
           changePassword(oldPassword, newPassword, confirmNewPassword).then(
             () => {
               setTimeout(() => {
                 navigate(paths.login, { replace: true });
-              }, 3000);
+              }, 2000);
               toast.success(t`setNewPassword.success`);
             },
             ({ response: { status } }) =>
