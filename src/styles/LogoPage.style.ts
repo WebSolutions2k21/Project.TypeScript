@@ -15,3 +15,10 @@ export const LogoPageSmall = styled.img.attrs({
   margin: 0 160px 5px 0;
   width: 120px;
 `;
+
+export const LogoPageMedium = styled.img.attrs({
+  src: `${logo}`,
+})`
+  margin: 5px 0 30px 0;
+  width: 200px;
+`;

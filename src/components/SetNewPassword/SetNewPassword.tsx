@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { validation } from "./validate";
 import ISetNewPassword from "./SetNewPassword.interface";
+import { changePassword } from "services/user.service";
 import { paths } from "config/paths";
 import { Navbar } from "components";
 import { Title, ButtonForm, Footer } from "./SetNewPassword.style";
-import { Input, IconPassword, IconText, LogoPage, IconEye, IconEyeHide, Line } from "styles";
+import { Input, IconPassword, IconText, LogoPageMedium, IconEye, IconEyeHide, Line, Toast } from "styles";
 import {
   LoginForm,
   StyledInlineErrorMessageForm,
@@ -22,7 +23,12 @@ import {
 
 export const SetNewPassword = () => {
   const { t } = useTranslation();
-  // let navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const [oldPassShown, setOldPassShown] = useState(false);
+  const toggleOldPass = () => {
+    setOldPassShown((prev) => !prev);
+  };
 
   const [passShown, setPassShown] = useState(false);
   const togglePass = () => {
@@ -35,8 +41,9 @@ export const SetNewPassword = () => {
   };
 
   const initialValues: ISetNewPassword = {
-    password: "",
-    confirmpassword: "",
+    oldPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
   };
 
   return (
@@ -45,73 +52,108 @@ export const SetNewPassword = () => {
       <Formik
         validationSchema={validation()}
         initialValues={initialValues}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={({ oldPassword, newPassword, confirmNewPassword }: ISetNewPassword) => {
+          changePassword(oldPassword, newPassword, confirmNewPassword).then(
+            () => {
+              setTimeout(() => {
+                navigate(paths.login, { replace: true });
+              }, 2000);
+              toast.success(t`setNewPassword.success`);
+            },
+            ({ response: { status } }) =>
+              toast.error(status === 400 ? t`setNewPassword.badRequest` : t`setNewPassword.error`),
+          );
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <LoginForm>
-              <LogoPage />
+              <LogoPageMedium />
 
               <Title>{t`setNewPassword.title`}</Title>
 
-              <LabelStyle htmlFor="password">
+              <LabelStyle htmlFor="oldPassword">
+                <IconText />
+                {t`setNewPassword.setOldPassword`}
+              </LabelStyle>
+              <View>
+                <Input
+                  type={oldPassShown ? "text" : "password"}
+                  name="oldPassword"
+                  autoCapitalize="off"
+                  autoCorrect="off"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.oldPassword}
+                  placeholder={t`setNewPassword.setOldPasswordPlaceholder`}
+                  id="oldPassword"
+                />
+                {values.oldPassword.length > 0 ? (
+                  <>{oldPassShown ? <IconEye onClick={toggleOldPass} /> : <IconEyeHide onClick={toggleOldPass} />} </>
+                ) : (
+                  ""
+                )}
+              </View>
+              <StyledInlineErrorMessageForm>
+                {errors.oldPassword && touched.oldPassword && errors.oldPassword}
+              </StyledInlineErrorMessageForm>
+
+              <LabelStyle htmlFor="newPassword">
                 <IconText />
                 {t`setNewPassword.setNewPassword`}
               </LabelStyle>
               <View>
                 <Input
                   type={passShown ? "text" : "password"}
-                  name="password"
+                  name="newPassword"
                   autoCapitalize="off"
                   autoCorrect="off"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.password}
+                  value={values.newPassword}
                   placeholder={t`setNewPassword.setNewPasswordPlaceholder`}
-                  id="password"
+                  id="newPassword"
                 />
-                {values.password.length > 0 ? (
+                {values.newPassword.length > 0 ? (
                   <>{passShown ? <IconEye onClick={togglePass} /> : <IconEyeHide onClick={togglePass} />} </>
                 ) : (
                   ""
                 )}
               </View>
               <StyledInlineErrorMessageForm>
-                {errors.password && touched.password && errors.password}
+                {errors.newPassword && touched.newPassword && errors.newPassword}
               </StyledInlineErrorMessageForm>
 
-              <LabelStyle htmlFor="confirmpassword">
+              <LabelStyle htmlFor="confirmNewPassword">
                 <IconPassword />
                 {t`setNewPassword.confirmPassword`}
               </LabelStyle>
               <View>
                 <Input
                   type={conPassShown ? "text" : "password"}
-                  name="confirmpassword"
+                  name="confirmNewPassword"
                   autoCapitalize="off"
                   autoCorrect="off"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.confirmpassword}
+                  value={values.confirmNewPassword}
                   placeholder={t`setNewPassword.confirmPasswordPlaceholder`}
-                  id="confirmPassword"
+                  id="confirmNewPassword"
                 />
-                {values.confirmpassword.length > 0 ? (
+                {values.confirmNewPassword.length > 0 ? (
                   <>{conPassShown ? <IconEye onClick={toggleConPass} /> : <IconEyeHide onClick={toggleConPass} />} </>
                 ) : (
                   ""
                 )}
               </View>
               <StyledInlineErrorMessageForm>
-                {errors.confirmpassword && touched.confirmpassword && errors.confirmpassword}
+                {errors.confirmNewPassword && touched.confirmNewPassword && errors.confirmNewPassword}
               </StyledInlineErrorMessageForm>
 
               <ButtonForm type="submit" disabled={!isValid}>
                 {t`setNewPassword.button`}
               </ButtonForm>
-              {/* <Toast /> */}
+              <Toast />
               <Footer>
                 <FooterWrapperLeft>
                   <LinkFooter to={paths.login}>{t`registration.foot.login`}</LinkFooter>
