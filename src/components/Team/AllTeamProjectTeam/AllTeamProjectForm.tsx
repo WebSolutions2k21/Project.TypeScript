@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
@@ -8,7 +8,7 @@ import { paths } from "config/paths";
 import { getAllTeam, joinTeam } from "services/team.service";
 import { Toast } from "styles";
 import { ButtonInModal, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
-import ITeamProject from "./ITeamProject.interface";
+import ITeamProject from "../ITeamProject.interface";
 import { Navbar } from "components";
 
 export const AllTeamProjectTeamForm = () => {
@@ -23,19 +23,16 @@ export const AllTeamProjectTeamForm = () => {
         setAllTeamProject(response.data);
       })
       .catch((e: Error) => {
-        console.log("wywala 2")
         toast.error(t`toast.team.error`);
       });
   }, [t]);
 
-  
   const joinToTeam = (id: string) => {
     joinTeam(id)
       .then(() => {
         toast.success(t`toast.team.success`);
       })
       .catch((error) => {
-        console.log("wywala 1")
         switch (error.response.status) {
           case 400:
             return toast.error(t`toast.team.notFound`);
@@ -53,6 +50,7 @@ export const AllTeamProjectTeamForm = () => {
   return (
     <>
       <Navbar />
+      <Link to={paths.myTeam}> My Team</Link>
       <TeamForm>
         {allTeamProject &&
           allTeamProject.map((team, index) => (
@@ -67,7 +65,7 @@ export const AllTeamProjectTeamForm = () => {
                         {t`team.status`} {team.status ? "open" : "close"}
                       </p>
                       <p>
-                        {t`team.places`} {team.places}
+                        {t`team.places.name`} {team.places}
                       </p>
                       <p>
                         {t`team.description`} {team.description}
@@ -87,7 +85,7 @@ export const AllTeamProjectTeamForm = () => {
                             </>
                           ))}
                       </ul>
-                      <ButtonInModal onClick={() => joinToTeam(team._id)}>{t`team.button.joinTeam`} </ButtonInModal>
+                      <ButtonInModal onClick={() => joinToTeam(team._id!)}>{t`team.button.joinTeam`} </ButtonInModal>
                     </>
                   }
                   title={team.teamName}

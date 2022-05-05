@@ -1,7 +1,7 @@
 export default interface ITeamProject {
-  _id: string;
+  _id?: string;
   teamName: any;
-  usersIds: [];
+  usersIds: string [];
   mentorId: string;
   programmingLanguage: Array<IProgrammingLanguage>;
   status: boolean;

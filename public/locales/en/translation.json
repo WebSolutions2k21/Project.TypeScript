@@ -176,13 +176,27 @@
   },
   "team": {
     "status": "Status",
-    "places": "Places",
+    "places": {
+      "name": "Places",
+      "placeholder": "Choose places"
+    },
     "description": "Description",
     "programmingLanguage": "Programming language",
     "level": "level",
+    "users": "Users",
+    "teamName": {
+      "name": "Team name",
+      "placeholder": "Enter team name",
+      "validation": {
+        "min": "Team name is too short",
+        "max": "Team name is too long ",
+        "requied": "Team name is required"
+      }
+     },
     "button": {
       "view": "View",
-      "joinTeam": "Join Team"
+      "joinTeam": "Join Team",
+      "add": "Add new team"
     }
   },
   "status": {

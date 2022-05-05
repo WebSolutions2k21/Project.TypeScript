@@ -8,3 +8,7 @@ export const sendEmail = async (data: IForgotPassword) => {
 export const getUser = async (id: any) => {
   return await axios.get(`/users/${id}`);
 };
+
+export const getOnlyUsers = async () => {
+  return await axios.get(`/users/only-users`);
+};

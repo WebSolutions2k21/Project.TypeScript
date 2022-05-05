@@ -19,5 +19,7 @@ export const paths = {
   myNotifications: "/my-notifications",
   mentorNotification: "/mentor-notifications",
   teamProjects: "/all-team-projects",
+  addTeam: "/add-team",
+  myTeam: "/my-team",
   emailVerification: "/email-verification",
 };

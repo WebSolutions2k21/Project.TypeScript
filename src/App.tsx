@@ -8,6 +8,7 @@ import {
   AboutUsPage,
   AddNewProjectPage,
   AddNewTeamProjectPage,
+  AddTeamPage,
   AllTeamProjectsPage,
   ContactPage,
   EmailVerificationPage,
@@ -15,6 +16,7 @@ import {
   LoginPage,
   MentorNotificationsPage,
   MentorProfilePage,
+  MyTeamPage,
   NotFoundPage,
   OpinionsPage,
   SendNewPasswordPage,
@@ -36,6 +38,8 @@ function App() {
         <Route path={paths.addProject} element={<AddNewProjectPage />} />
         <Route path={paths.addTeamProject} element={<AddNewTeamProjectPage />} />
         <Route path={paths.teamProjects} element={<AllTeamProjectsPage />} />
+        <Route path={paths.addTeam} element={<AddTeamPage/>} />
+        <Route path={paths.myTeam} element={<MyTeamPage/>} />
         <Route path={paths.contact} element={<ContactPage />} />
         <Route path={paths.login} element={<LoginPage />} />
         <Route path={paths.mentorNotification} element={<MentorNotificationsPage />} />

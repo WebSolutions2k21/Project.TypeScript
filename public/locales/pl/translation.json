@@ -173,13 +173,27 @@
   },
   "team": {
     "status": "Status",
-    "places": "Ilość miejsc",
+    "places": {
+      "name": "Ilość miejsc",
+      "placeholder": "Wybierz ilość miejsc"
+    },
     "description": "Opis",
     "programmingLanguage": "Język programowania",
     "level": "Poziom",
+    "users": "Zespół",
+    "teamName": {
+     "name": "Nazwa zespołu",
+     "placeholder": "Wpisz nazwę zespołu",
+     "validation": {
+      "min": "Nazwa zespołu jest za krótka",
+      "max": "Nazwa zespołu jest za długa",
+      "requied": "Nazwa zespołu jest wymagana"
+    }
+    },
     "button": {
       "view": "Pokaż",
-      "joinTeam": "Dołącz"
+      "joinTeam": "Dołącz",
+      "add": "Dodaj zespół"
     }
   },
   "status": {

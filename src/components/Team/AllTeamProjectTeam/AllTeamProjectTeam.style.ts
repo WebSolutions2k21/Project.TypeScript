@@ -39,3 +39,7 @@ export const ButtonInModal = styled(Button)`
   margin: 10px auto;
   display: flex;
 `;
+export const ButtonForm = styled(Button)`
+  margin-top: 30px;
+  margin-bottom: 20px;
+`;
