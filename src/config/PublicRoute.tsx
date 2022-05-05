@@ -1,14 +1,16 @@
 import React from "react";
-import { Navigate, RouteProps } from "react-router-dom";
-import { paths } from "./paths";
-import { isUserLogged } from "services/auth.service";
+import { Navigate } from "react-router-dom";
 
-export type PrivateRouteProps = {
+export type PublicRouteProps = {
   isAuthenticated: boolean;
-} & RouteProps;
+  authenticationPath: string;
+  outlet: JSX.Element;
+};
 
-export const PublicRoute = (children: JSX.Element) => {
-  const isAuthenticated = isUserLogged();
-
-  return !isAuthenticated ? children : <Navigate to={paths.login} />;
+export const PublicRoute = ({ isAuthenticated, authenticationPath, outlet }: PublicRouteProps) => {
+  if (!isAuthenticated) {
+    return outlet;
+  } else {
+    return <Navigate to={{ pathname: authenticationPath }} />;
+  }
 };
