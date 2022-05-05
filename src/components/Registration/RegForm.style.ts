@@ -32,7 +32,7 @@ margin: 20px auto 0 57px;
 `;
 
 export const ButtonForm = styled(Button)`
-  margin: 40px;
+  margin: 30px;
 `;
 
 export const Footer = styled(Foot)`

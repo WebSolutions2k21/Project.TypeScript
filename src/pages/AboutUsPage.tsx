@@ -42,16 +42,16 @@ export const AboutUsPage = () => {
           </ProfilDescContainer>
           <ProfilDescText>{t("aboutus.text2")} </ProfilDescText>
         </WhiteCard>
-        <Footer>
-          <FooterWrapperLeft>
-            <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
-          </FooterWrapperLeft>
-          <Line />
-          <FooterWrapperRight>
-            <LinkFooter to={paths.home}>{t`footer.homePage`}</LinkFooter>
-          </FooterWrapperRight>
-        </Footer>
       </AboutUsPageContainer>
+      <Footer>
+        <FooterWrapperLeft>
+          <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
+        </FooterWrapperLeft>
+        <Line />
+        <FooterWrapperRight>
+          <LinkFooter to={paths.home}>{t`footer.homePage`}</LinkFooter>
+        </FooterWrapperRight>
+      </Footer>
     </>
   );
 };

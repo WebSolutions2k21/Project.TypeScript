@@ -27,6 +27,15 @@
     "text1": "Help others in Their projects. Create Teams to lern more than one person in the same time.",
     "text2": "Show your individual projects to selected mentors. Join team project to lern with others."
   },
+  "contactpage": {
+    "h1": "Get in touch with Us",
+    "text1": "Your email",
+    "text2": "Your message",
+    "text3": "Thanks for joining!",
+    "emailplace": "Type your email",
+    "messageplace": "Type your message",
+    "button": "Send e-mail"
+  },
   "description": {
     "part1": "Edit <1>src/App.js</1> and save to reload.",
     "part2": "Learn React"
@@ -151,7 +160,10 @@
       "mentor": "Please choose your mentor",
       "content": "Your content name is too short",
       "contentReq": "Please enter the content",
-      "status": "Please choose project's status"
+      "status": "Please choose project's status",
+      "success": "Success",
+      "validation": "Something is wrong. Try again",
+      "error": "Error"
     }
   },
   "emailVerification": {
@@ -183,5 +195,18 @@
       "addNew": "Add New Project",
       "viewTeam": "View Team Projects"
     }
+  },
+  "setNewPassword": {
+    "title": "Want to change password?",
+    "setOldPassword": "set old password",
+    "setOldPasswordPlaceholder": "Type your old password",
+    "setNewPassword": "set new password",
+    "setNewPasswordPlaceholder": "Type your new password",
+    "confirmPassword": "confirm new password",
+    "confirmPasswordPlaceholder": "Confirm new password",
+    "button": "Set new password",
+    "success": "Your password was successfully changed",
+    "badRequest": "Your old password was entered incorrectly. Please try again!",
+    "error": "Something is wrong. Try again"
   }
 }
