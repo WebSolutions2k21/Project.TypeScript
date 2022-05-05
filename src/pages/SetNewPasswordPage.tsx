@@ -1,6 +1,5 @@
 import React from "react";
-import { SetNewPassword } from "components";
 
 export const SetNewPasswordPage = () => {
-  return <SetNewPassword />;
+  return <h1>Set New Password</h1>;
 };

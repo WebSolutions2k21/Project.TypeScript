@@ -5,11 +5,11 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { validation } from "./validate";
-import ISetNewPassword from "./SetNewPassword.interface";
+import IChangePassword from "./ChangePassword.interface";
 import { changePassword } from "services/user.service";
 import { paths } from "config/paths";
 import { Navbar } from "components";
-import { Title, ButtonForm, Footer } from "./SetNewPassword.style";
+import { Title, ButtonForm, Footer } from "./ChangePassword.style";
 import { Input, IconPassword, IconText, LogoPageMedium, IconEye, IconEyeHide, Line, Toast } from "styles";
 import {
   LoginForm,
@@ -21,7 +21,7 @@ import {
   View,
 } from "../Login/Login.style";
 
-export const SetNewPassword = () => {
+export const ChangePassword = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ export const SetNewPassword = () => {
     setConPassShown((prev) => !prev);
   };
 
-  const initialValues: ISetNewPassword = {
+  const initialValues: IChangePassword = {
     oldPassword: "",
     newPassword: "",
     confirmNewPassword: "",
@@ -52,7 +52,7 @@ export const SetNewPassword = () => {
       <Formik
         validationSchema={validation()}
         initialValues={initialValues}
-        onSubmit={({ oldPassword, newPassword, confirmNewPassword }: ISetNewPassword) => {
+        onSubmit={({ oldPassword, newPassword, confirmNewPassword }: IChangePassword) => {
           changePassword(oldPassword, newPassword, confirmNewPassword).then(
             () => {
               setTimeout(() => {
