@@ -18,9 +18,10 @@ export const logout = () => {
 
 export const getCurrentUserToken = () => {
   if (localStorage.getItem("user")) {
-    return JSON.parse(localStorage.getItem("user") as string);
+    return localStorage.getItem("user") as string;
   } else {
     console.error("Can't find User token");
+    return "";
   }
 };
 

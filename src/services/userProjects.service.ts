@@ -1,15 +1,12 @@
 import axios from "axios/instanceAxios";
 
 import { getCurrentUserToken } from "./auth.service";
-const token = localStorage.getItem("user") as string;
+
+const token = getCurrentUserToken();
 
 export const getUserProjects =async () => {
-  // const uID = localStorage.getItem("user");
-
-  // return axios.get(`/project/user-projects`, { headers: { "x-auth-token": uID } }).then((res) => {
-  //   return res;
-  // });
-  await axios(`/team/user-team`, {
+  
+  return await axios(`/project/user-projects`, {
     method: "get",
     headers: {
       "x-auth-token": token,
@@ -18,12 +15,8 @@ export const getUserProjects =async () => {
 };
 
 export const getUserTeamProjects =async () => {
-  // const uID = localStorage.getItem("user")
-
-  // return axios.get(`/team/user-team`, { headers: { "x-auth-token": uID } }).then((res) => {
-  //   return res;
-  // });
-  await axios(`/team/user-team`, {
+  
+  return await axios(`/team/user-team`, {
     method: "get",
     headers: {
       "x-auth-token": token,

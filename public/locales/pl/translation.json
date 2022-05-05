@@ -197,10 +197,15 @@
   },
   "setNewPassword": {
     "title": "Chcesz zmienić hasło?",
+    "setOldPassword": "stare hasło",
+    "setOldPasswordPlaceholder": "Wpisz stare hasło",
     "setNewPassword": "nowe hasło",
     "setNewPasswordPlaceholder": "Wpisz nowe hasło",
     "confirmPassword": "potwierdź nowe hasło",
     "confirmPasswordPlaceholder": "Potwierdź nowe hasło",
-    "button": "Zmień hasło"
+    "button": "Zmień hasło",
+    "success": "Twoje hasło zostało pomyślnie zmienione",
+    "badRequest": "Stare hasło zostało wprowadzone niepoprawnie. Spróbuj ponownie!",
+    "error": "Coś poszło nie tak. Spróbuj ponownie"
   }
 }
