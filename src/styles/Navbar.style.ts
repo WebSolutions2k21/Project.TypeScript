@@ -80,8 +80,9 @@ export const Logo = styled.img`
   height: auto;
 `;
 
-export const OpenLinksButton = styled.button`
+export const OpenLinksButton = styled.div`
   position: relative;
+  top: 12px;
   left: 15px;
   width: 60px;
   background: none;

@@ -214,10 +214,15 @@
   },
   "setNewPassword": {
     "title": "Want to change password?",
+    "setOldPassword": "set old password",
+    "setOldPasswordPlaceholder": "Type your old password",
     "setNewPassword": "set new password",
     "setNewPasswordPlaceholder": "Type your new password",
     "confirmPassword": "confirm new password",
     "confirmPasswordPlaceholder": "Confirm new password",
-    "button": "Set new password"
+    "button": "Set new password",
+    "success": "Your password was successfully changed",
+    "badRequest": "Your old password was entered incorrectly. Please try again!",
+    "error": "Something is wrong. Try again"
   }
 }
