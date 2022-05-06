@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import axios from "axios/instanceAxios";
 import IForgotPassword from "components/ForgotPassword/IForgotPassword.interface";
 
@@ -32,10 +33,10 @@ export const changePassword = (oldPassword: string, newPassword: string, confirm
     });
 };
 
-const token = localStorage.getItem("user") as string;
-const SETNEWPASSWORD_URL = `/users/newpassword/${token}`;
-
-export const setNewPassword = (newPassword: string, confirmNewPassword: string) => {
+export const SetNewPass = (newPassword: string, confirmNewPassword: string) => {
+  const location = useLocation();
+  const token = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+  const SETNEWPASSWORD_URL = `/users/newpassword/${token}`;
   return axios
     .put(
       SETNEWPASSWORD_URL,

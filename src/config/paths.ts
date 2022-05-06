@@ -6,7 +6,7 @@ export const paths = {
   contact: "/contact",
 
   validation: "/validation",
-  setPassword: "/set-password",
+  setPassword: "/set-password/:token",
   sendNewPassword: "/change-password",
   myProfile: "/my-profile",
   mentorProfile: "/mentor-profile",

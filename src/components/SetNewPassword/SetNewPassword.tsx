@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { validation } from "./validate";
 import ISetNewPassword from "./SetNewPassword.interface";
-import { setNewPassword } from "services/user.service";
+import { SetNewPass } from "services/user.service";
 import { paths } from "config/paths";
 import { Navbar } from "components";
 import { Title, ButtonForm, Footer } from "../ChangePassword/ChangePassword.style";
@@ -48,7 +48,7 @@ export const SetNewPassword = () => {
         validationSchema={validation()}
         initialValues={initialValues}
         onSubmit={({ newPassword, confirmNewPassword }: ISetNewPassword) => {
-          setNewPassword(newPassword, confirmNewPassword).then(
+          SetNewPass(newPassword, confirmNewPassword).then(
             () => {
               setTimeout(() => {
                 navigate(paths.login, { replace: true });
