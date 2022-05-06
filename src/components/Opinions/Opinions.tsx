@@ -31,7 +31,7 @@ export const Opinions = () => {
       <Navbar />
       <OpinionForm>
         <TopArea>
-          <TopText>My Opinions</TopText>
+          {/* <TopText>My Opinions</TopText> */}
           {/* <ProfPic /> */}
         </TopArea>
         <Button>Add New Opinion</Button>
@@ -39,6 +39,7 @@ export const Opinions = () => {
         {/* <Modal title={}>
           
         </Modal> */}
+        
 
         <CardBox>
           <CommentInfo>
