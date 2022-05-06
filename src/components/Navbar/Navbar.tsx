@@ -23,8 +23,11 @@ const lngs = {
   en: { nativeName: "English" },
   pl: { nativeName: "Polish" },
 };
+interface NPage {
+  namePage?: string;
+}
 
-export const Navbar = () => {
+export const Navbar = ({ namePage }: NPage) => {
   const { t, i18n } = useTranslation();
   const [extendNavbar, setExtendNavbar] = useState(false);
   const [isAuth, setIsAuth] = useState(isUserLogged());
@@ -42,10 +45,11 @@ export const Navbar = () => {
     setIsAuth(false);
     setIsAuthMentor(false);
   };
+
   return (
     <NavbarContainer extendNavbar={extendNavbar} isAuth={isAuth}>
       <NavbarInnerContainer>
-        <LeftContainer></LeftContainer>
+        <LeftContainer>{namePage}</LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>
             <NavbarLink to={paths.contact}>{t("navbar.contact")}</NavbarLink>
@@ -68,16 +72,16 @@ export const Navbar = () => {
                 {t("navbar.myopinions")}
               </NavbarLink>
             )}
-            {/* TODO {isAuth && (
+            {isAuth && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.myNotifications}>
                 {t("navbar.notifications")}
               </NavbarLink>
-            )} */}
-            {/* TODO {isAuthMentor && (
+            )}
+            {isAuthMentor && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.mentorNotification}>
                 {t("navbar.notifications")}
               </NavbarLink>
-            )} */}
+            )}
             {isAuth && !isAuthMentor && (
               <NavbarLink onClick={logoutHandler} to={paths.home}>
                 {t("navbar.logout")}
@@ -161,10 +165,10 @@ export const Navbar = () => {
             <Navlink />
             {t("navbar.myopinions")}
           </NavbarLinkExtended>
-          {/*TODO <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.mentorNotification}>
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.mentorNotification}>
             <Navlink />
             {t("navbar.notifications")}
-          </NavbarLinkExtended> */}
+          </NavbarLinkExtended>
           <Navline />
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.contact}>
             <Navlink />
@@ -217,10 +221,10 @@ export const Navbar = () => {
             <Navlink />
             {t("navbar.myopinions")}
           </NavbarLinkExtended>
-          {/*TODO <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myNotifications}>
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myNotifications}>
             <Navlink />
             {t("navbar.notifications")}
-          </NavbarLinkExtended> */}
+          </NavbarLinkExtended>
           <Navline />
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.contact}>
             <Navlink />

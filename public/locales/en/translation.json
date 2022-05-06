@@ -7,9 +7,15 @@
     "signin": "Sign In",
     "logout": "Log Out",
     "myprofile": "My profile",
+    "mentorprofile": "Mentor profile",
     "myproject": "My project",
     "myopinions": "My opinions",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "project": "Project",
+    "opinions": "Opinions",
+    "addproject": "Add Project",
+    "teamproject": "Team project"
   },
   "homepage": {
     "h1": "Become Student or a Mentor!",

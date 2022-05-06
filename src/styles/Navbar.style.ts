@@ -16,13 +16,17 @@ export const NavbarContainer: any = styled.nav`
 `;
 export const LeftContainer = styled.div`
   display: flex;
-  flex: 30%;
+  flex: 35%;
   justify-content: flex-start;
-  margin-left: 10px;
+  align-items: center;
+  margin-left: 31px;
+  font-size: 20px;
+  line-height: 21px;
+  color: ${({ theme }) => theme.colors.text || "#174C6F"};
 `;
 export const RightContainer = styled.div`
   display: flex;
-  flex: 70%;
+  flex: 65%;
   justify-content: flex-end;
   padding-right: 10px;
 `;
@@ -91,7 +95,7 @@ export const OpenLinksButton = styled.div`
   font-size: 45px;
   cursor: pointer;
   line-height: 80px;
-  z-index: 1000;
+  z-index: 2000;
 
   @media (min-width: 700px) {
     display: none;
@@ -135,7 +139,7 @@ export const ButtonChangeLang = styled.button`
 `;
 export const ButtonNav = styled.button`
   position: relative;
-  top: 16px;
+  top: 5px;
   left: -2px;
   width: 61px;
   height: 53px;
