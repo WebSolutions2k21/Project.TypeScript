@@ -71,17 +71,17 @@ export const AllTeamProjectTeamForm = () => {
                         {t`team.description`} {team.description}
                       </p>
                       <ul>
-                        {" "}
                         {team.programmingLanguage &&
-                          team.programmingLanguage.map((lang, index) => (
+                          team.programmingLanguage.map(({nameLang, level }, index) => (
                             <>
-                              <p key={index}>
+                             <li key={index}>
+                              <p >
                                 {" "}
-                                {t`team.programmingLanguage`}: {lang.nameLang}{" "}
+                                {t`team.programmingLanguage`}: {nameLang}{" "}
                               </p>
                               <p>
-                                {t`team.level`} {lang.level}{" "}
-                              </p>
+                                {t`team.level`} {level}{" "}
+                              </p></li>
                             </>
                           ))}
                       </ul>

@@ -1,6 +1,5 @@
-import { Navbar } from "components";
+import { Modal, Navbar } from "components";
 import { Form, Formik } from "formik";
-import * as Yup from "yup";
 
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -9,12 +8,12 @@ import { toast } from "react-toastify";
 import { createTeam } from "services/team.service";
 
 import ITeamProject from "../ITeamProject.interface";
-import { Label, StyledSelect, Toast } from "styles";
+import { IconPassword, Label, StyledSelect, Toast } from "styles";
 import { TeamForm } from "../AllTeamProjectTeam/AllTeamProjectTeam.style";
-import { ButtonForm, LabelStyle, StyledInlineErrorMessageForm } from "./AddTeam.style";
+import { ButtonForm, LabelStyle, StyledInlineErrorMessageForm, StyleFromModal } from "./AddTeam.style";
 import { IconText, Input, IconProject } from "styles";
 
-
+import { options } from "config/languages";
 import { getOnlyUsers } from "services/user.service";
 import IUser from "../IUser.interface";
 import { AddNewTeamValidationSchema } from "../AddTeamValidation";
@@ -86,13 +85,12 @@ export const AddNewTeam = () => {
           createTeam(values).then(
             (res) => {
               console.log("res ", res);
-           
-      
-                setTimeout(() => {
-                 navigate(paths.myTeam);
-                }, 1500);
-                toast.success(t`toast.login.success`);
-        },
+
+              setTimeout(() => {
+                navigate(paths.myTeam);
+              }, 1500);
+              toast.success(t`toast.login.success`);
+            },
             (error) => {
               // switch (error.response.status) {
               //   case 400:
@@ -112,7 +110,6 @@ export const AddNewTeam = () => {
           <Form noValidate onSubmit={handleSubmit}>
             {
               <TeamForm>
-                
                 <LabelStyle htmlFor="teamName">
                   <IconProject />
                   {t`team.teamName.name`}
@@ -156,13 +153,28 @@ export const AddNewTeam = () => {
                   name="places"
                   options={places.map((e) => ({ label: e, value: e }))}
                   classNamePrefix={"Select"}
-                 
+                  placeholder={t`team.places.placeholder`}
                   id="places"
-                  value={selectedOption}
                   onChange={selectChange}
-                  getOptionLabel={(option: any)=>option.value}
                 />
-
+     
+               
+                <Modal children={
+                  <>
+                             <LabelStyle htmlFor="language">
+                  <IconPassword />
+                  {t`addNewProject.language`}
+                </LabelStyle>
+                  <StyleFromModal
+                  name="language"
+                  options={options}
+                  classNamePrefix={"Select"}
+                  placeholder={t`addNewProject.languagePlaceholder`}
+                  id="language"
+                  // onChange={selectChange}
+                /></>
+                } title={t`addNewProject.languagePlaceholder`} buttonText={t`team.button.add`}></Modal>
+                
                 <LabelStyle htmlFor="users">
                   <IconText />
                   {t`team.users`}
@@ -186,7 +198,7 @@ export const AddNewTeam = () => {
                     ))}
                 </ul>
                 <ButtonForm type="submit" disabled={!isValid}>
-                  {t`team.button.add`}
+                  {t`team.button.addTeam`}
                 </ButtonForm>
                 <Toast />
               </TeamForm>

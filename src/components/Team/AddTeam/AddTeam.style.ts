@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StyledInlineErrorMessage, Label, Foot, Button} from "styles";
+import { StyledInlineErrorMessage, Label, Foot, Button, StyledSelect} from "styles";
 
 export const TeamForm = styled.div`
   display: flex;
@@ -55,4 +55,18 @@ export const LinkFooter: any = styled(Link)`
   color: ${({ theme }) => theme.colors.body || "#fff"};
   line-height: 36px;
   text-decoration: none;
+`;
+
+export const StyleFromModal = styled(StyledSelect)`
+.Select__menu {
+  color: ${({ theme }) => theme.colors.body || "#174C6F"};
+  font-size: 14px;
+}
+
+.Select__single-value {
+  color: red;
+  text-align: left;
+  margin-left: -8px;
+  margin-top: 7px;
+}
 `;

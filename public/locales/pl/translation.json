@@ -179,7 +179,7 @@
       "name": "Ilość miejsc",
       "placeholder": "Wybierz ilość miejsc"
     },
-    "description": "Opis",
+    "description": "Opis zespołu",
     "programmingLanguage": "Język programowania",
     "level": "Poziom",
     "users": "Zespół",
@@ -195,7 +195,8 @@
     "button": {
       "view": "Pokaż",
       "joinTeam": "Dołącz",
-      "add": "Dodaj zespół"
+      "addTeam": "Dodaj zespół",
+      "add": "+"
     }
   },
   "status": {

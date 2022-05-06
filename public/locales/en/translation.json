@@ -198,7 +198,8 @@
     "button": {
       "view": "View",
       "joinTeam": "Join Team",
-      "add": "Add new team"
+      "addTeam": "Add new team",
+      "add": "+"
     }
   },
   "status": {

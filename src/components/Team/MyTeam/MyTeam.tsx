@@ -15,7 +15,7 @@ import { IconText, Input } from "styles";
 import { paths } from "config/paths";
 
 export const MyTeam = () => {
-    const [passwordShown, setPasswordShown] = useState(false);
+
     let navigate = useNavigate();
   
     const { t } = useTranslation();
@@ -28,7 +28,7 @@ export const MyTeam = () => {
       <>
        <Navbar />
           <ButtonForm type="submit" onClick={navigateToAddTeam}>
-          {t`team.button.add`}
+          {t`team.button.addTeam`}
         </ButtonForm>
        </>
     );
