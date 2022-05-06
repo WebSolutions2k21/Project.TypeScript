@@ -31,3 +31,25 @@ export const changePassword = (oldPassword: string, newPassword: string, confirm
       return res.data;
     });
 };
+
+const token = localStorage.getItem("user") as string;
+const SETNEWPASSWORD_URL = `/users/newpassword/${token}`;
+
+export const setNewPassword = (newPassword: string, confirmNewPassword: string) => {
+  return axios
+    .put(
+      SETNEWPASSWORD_URL,
+      {
+        newPassword,
+        confirmNewPassword,
+      },
+      {
+        headers: {
+          "x-auth-token": token,
+        },
+      },
+    )
+    .then((res) => {
+      return res.data;
+    });
+};
