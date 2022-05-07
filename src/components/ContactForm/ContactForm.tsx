@@ -14,12 +14,14 @@ import {
 import { Button, IconText, Line } from "styles";
 import { Footer, FooterWrapperLeft, FooterWrapperRight, LinkFooter } from "styles/stylesPages/HomePage.style";
 
-function ContactForm() {
+export const ContactForm = () => {
   const { t } = useTranslation();
   const [state, handleSubmit] = useForm("xqkngaqb");
+
   if (state.succeeded) {
     return <Paragraf>{t`contactpage.text3`}</Paragraf>;
   }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -59,6 +61,4 @@ function ContactForm() {
       </form>
     </>
   );
-}
-
-export default ContactForm;
+};

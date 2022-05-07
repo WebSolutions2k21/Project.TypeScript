@@ -7,9 +7,15 @@
     "signin": "Sign In",
     "logout": "Log Out",
     "myprofile": "My profile",
+    "mentorprofile": "Mentor profile",
     "myproject": "My project",
     "myopinions": "My opinions",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "project": "Project",
+    "opinions": "Opinions",
+    "addproject": "Add Project",
+    "teamproject": "Team project"
   },
   "homepage": {
     "h1": "Become Student or a Mentor!",
@@ -149,10 +155,12 @@
     "namePlaceholder": "Type your project name",
     "mentor": "mentor",
     "mentorPlaceholder": "Choose mentor",
+    "language": "programming language",
+    "languagePlaceholder": "Choose programming language",
     "content": "content",
     "contentPlaceholder": "Type your code or Github Page",
-    "status": "status",
-    "statusPlaceholder": "Choose status",
+    "description": "description",
+    "descriptionPlaceholder": "Write something about project",
     "button": "ENTER",
     "validation": {
       "name": "Your project name is too short",
@@ -198,13 +206,15 @@
   },
   "setNewPassword": {
     "title": "Want to change password?",
+    "title2": "Create your new password",
     "setOldPassword": "set old password",
     "setOldPasswordPlaceholder": "Type your old password",
     "setNewPassword": "set new password",
     "setNewPasswordPlaceholder": "Type your new password",
     "confirmPassword": "confirm new password",
     "confirmPasswordPlaceholder": "Confirm new password",
-    "button": "Set new password",
+    "button": "Change password",
+    "button2": "Set new password",
     "success": "Your password was successfully changed",
     "badRequest": "Your old password was entered incorrectly. Please try again!",
     "error": "Something is wrong. Try again"

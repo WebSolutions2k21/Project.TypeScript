@@ -23,6 +23,7 @@ import {
   UserNotificationsPage,
   UserProfilePage,
   UserProjectPage,
+  ChangeOldPassword,
 } from "pages";
 import { paths } from "config/paths";
 import { PrivateRoute, PrivateRouteProps } from "config/PrivateRoute";
@@ -62,6 +63,10 @@ function App() {
         <Route
           path={paths.setPassword}
           element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<SetNewPasswordPage />} />}
+        />
+        <Route
+          path={paths.changePassword}
+          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<ChangeOldPassword />} />}
         />
         <Route
           path={paths.myProfile}

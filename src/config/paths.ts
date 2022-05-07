@@ -10,7 +10,8 @@ export const paths = {
   emailVerification: "/email-verification",
   sendNewPassword: "/change-password",
 
-  setPassword: "/set-password",
+  setPassword: "/set-password/:token",
+  changePassword: "/new-password",
   myProfile: "/my-profile",
   mentorProfile: "/mentor-profile",
   myProjects: "/my-projects",
