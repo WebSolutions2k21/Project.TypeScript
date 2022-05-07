@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Navbar from "components/Navbar/Navbar";
+import { Navbar } from "components";
 
 import { Line, Page404 } from "styles";
 import { Footer, FooterWrapperLeft, FooterWrapperRight, Header, LinkFooter } from "styles/stylesPages/HomePage.style";

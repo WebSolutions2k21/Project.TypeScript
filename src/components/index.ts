@@ -8,3 +8,4 @@ export * from "./AddNewProject";
 export * from "./Navbar";
 export * from "./ChangePassword";
 export * from "./SetNewPassword";
+export * from "./ContactForm";

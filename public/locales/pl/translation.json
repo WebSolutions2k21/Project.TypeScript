@@ -7,9 +7,15 @@
     "signin": "Rejestracja",
     "logout": "Wyloguj",
     "myprofile": "Profil",
+    "mentorprofile": "Profil Mentora",
     "myproject": "Projekty",
     "myopinions": "Opinie",
-    "notifications": "Powiadomienia"
+    "notifications": "Powiadomienia",
+    "profile": "Profil",
+    "project": "Projekty",
+    "opinions": "Opinie",
+    "addproject": "Dodaj projekt",
+    "teamproject": "Grupowe projekty"
   },
   "homepage": {
     "h1": "Zostań Uczniem lub Mentorem!",
