@@ -4,20 +4,22 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
 
+import { Modal } from "components/Modal";
 import { getAllOpinions } from "services/opinion.service";
 import { LabelStyle } from "components/Registration/RegForm.style";
 import IOpinions from "./Opinions.interface";
 
 import { Button, IconText, Toast } from "styles";
 import {
+  AddOpinionButton,
   OpinionForm,
-  TopArea,
+  // TopArea,
   CardBox,
   CommentInfo,
   ButtonStyle,
-  TopText,
-  ProfPic,
-  ButtonsArea,
+  // TopText,
+  // ProfPic,
+  // ButtonsArea,
   ButtonSave,
   BinButton,
   BinIco,
@@ -29,7 +31,6 @@ import {
   StarsIcon,
 } from "components/Opinions/Opinions.style";
 import { Navbar } from "components";
-import { Modal } from "components/Modal";
 
 export const Opinions = () => {
   const [allUsersOpinions, setAllUsersOpinions] = useState<Array<IOpinions>>([]);
@@ -50,11 +51,12 @@ export const Opinions = () => {
     <>
       <Navbar />
       <OpinionForm>
-        <TopArea>
+        {/* <TopArea> */}
           {/* <TopText>My Opinions</TopText> */}
           {/* <ProfPic /> */}
-        </TopArea>
-        <Button>Add New Opinion</Button>
+        {/* </TopArea> */}
+        {/* <Button>Add New Opinion</Button> */}
+        <AddOpinionButton>Add New Opinion</AddOpinionButton>
 
         {/* <Modal title={}>
           
@@ -64,7 +66,7 @@ export const Opinions = () => {
             <CardBox key={index}>
               <CommentInfo>
                 <IconText />
-                <OpinionAuthor>{opinion.userId}</OpinionAuthor>
+                <OpinionAuthor>{opinion.username}</OpinionAuthor>
                 <StarsBox>
                   <StarsIcon />
                   <StarsIcon />
@@ -74,59 +76,21 @@ export const Opinions = () => {
                 </StarsBox>
               </CommentInfo>
               <OpinionText>{opinion.content}</OpinionText>
-              <ButtonsArea>
-                <ArrowBtn>
+              {/* <ButtonsArea> */}
+                {/* <ArrowBtn>
                   <ArrowIco />
                 </ArrowBtn>
                 <ButtonSave>save</ButtonSave>
                 <BinButton>
                   <BinIco />
                 </BinButton>
-                <ButtonStyle>edit</ButtonStyle>
-              </ButtonsArea>
+                <ButtonStyle>edit</ButtonStyle> */}
+              {/* </ButtonsArea> */}
             </CardBox>
           ))}
 
-        {/* <CardBox>
-          <CommentInfo>
-            <IconText />
-            <OpinionAuthor>Lorem Ipsum</OpinionAuthor>
-            <StarsBox>
-              <StarsIcon />
-              <StarsIcon />
-              <StarsIcon />
-              <StarsIcon />
-              <StarsIcon />
-            </StarsBox>
-          </CommentInfo>
-          <OpinionText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum
-          </OpinionText>
-          <ButtonsArea>
-            <ButtonStyle>edit</ButtonStyle>
-          </ButtonsArea>
-        </CardBox>
-
-        <CardBox>
-          <CommentInfo>
-            <IconText />
-            <OpinionAuthor>Lorem Ipsum</OpinionAuthor>
-            <StarsBox>
-              <StarsIcon />
-              <StarsIcon />
-              <StarsIcon />
-              <StarsIcon />
-              <StarsIcon />
-            </StarsBox>
-          </CommentInfo>
-          <OpinionText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque, est impedit cum
-          </OpinionText>
-          <ButtonsArea>
-            <ButtonStyle>edit</ButtonStyle>
-          </ButtonsArea>
-        </CardBox> */}
       </OpinionForm>
+      <Toast />
     </>
   );
 };

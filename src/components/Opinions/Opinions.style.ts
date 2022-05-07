@@ -3,46 +3,66 @@ import { Button, Star, ProfilePic, Arrow, Bin } from "styles";
 import { Card } from "styles/Card.style";
 
 export const OpinionForm = styled.div`
+  // display: flex;
+  // flex-direction: column;
+  // align: center;
+  // align-items: center;
+  width: 85vw;
+  max-width: 700px;
+  margin: 0 auto;
+`;
+
+export const AddOpinionButton = styled(Button)`
   display: flex;
-  flex-direction: column;
-  align: center;
+  justify-content: center;
   align-items: center;
+  margin: 0 auto;
 `;
 
-export const TopArea = styled.div`
-  margin: 50px 5% 0 10%;
-  width: 85%;
-`;
+// export const TopArea = styled.div`
+//   // margin: 50px 5% 0 10%;
+//   width: 100vw;
+//   max-height: 2.5rem;
+//   justify-content: space-between;
+//   padding: 10px;
+// `;
 
-export const TopText = styled.h3`
-  font-weight: 400;
-  font-size: 20px;
-  color: #174c6f;
-  float: left;
-  line-height: 50px;
-  // margin: -115px 0 50px 0;
-`;
+// export const TopText = styled.h3`
+//   font-weight: 400;
+//   font-size: 20px;
+//   color: #174c6f;
+//   float: left;
+//   line-height: 50px;
+//   // margin: -115px 0 50px 0;
+// `;
 
 export const CardBox = styled(Card)`
   width: 85%;
-  margin: 0 auto 40px;
+  margin: 20px auto;
+  padding: 10px;
+  // margin: 0 auto 40px;
   // background: rgba(255, 85, 185, 0.12);
 `;
 
-export const ProfPic = styled(ProfilePic)`
-  float: right;
-  width: 60px;
-`;
+// export const ProfPic = styled(ProfilePic)`
+//   float: right;
+//   width: 60px;
+// `;
 
 export const CommentInfo = styled.div`
+  font-size: clamp(0.8125rem, 0.7589rem + 0.2679vw, 1rem);
+  display: flex;
+  align-items: center;
   margin: 15px 10px;
+  /* @media (max-width: 576px) {
+    font-size: 13px;
+  } */
 `;
 
 export const OpinionAuthor = styled.p`
   margin-left: 7px;
-  margin-right: 50px;
+  margin-right: auto;
   display: inline;
-  font-size: 16px;
   color: #174c6f;
 `;
 
@@ -52,6 +72,9 @@ export const StarsBox = styled.div`
 
 export const StarsIcon = styled(Star)`
   margin: 0 3px;
+  @media (max-width: 576px) {
+    width: 13px;
+  }
 `;
 
 export const OpinionText = styled.p`
@@ -99,12 +122,14 @@ export const ButtonStyle = styled(Button)`
   width: 50px;
   height: 25px;
   font-size: 14px;
-  display: inline;
-  margin: 0;
-  right: 45px;
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
+  display: block;
+  // display: inline;
+  margin: 10px;
+  margin-left: auto;
+  // right: 45px;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // position: absolute;
   // display: none;
   &:hover {
   }
