@@ -68,6 +68,11 @@ export const Navbar = ({ namePage }: NPage) => {
               </NavbarLink>
             )}
             {isAuth && (
+              <NavbarLink onClick={handleCloseNavMenu} to={paths.myProjects}>
+                {t("navbar.myproject")}
+              </NavbarLink>
+            )}
+            {isAuth && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.myOpinions}>
                 {t("navbar.myopinions")}
               </NavbarLink>
