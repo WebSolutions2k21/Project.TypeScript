@@ -1,4 +1,3 @@
-import Navbar from "components/Navbar/Navbar";
 import { paths } from "config/paths";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -6,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, IconStudent, LogoPage } from "styles";
 import { EmailVerificationForm, WhiteText } from "./EmailVerification.style";
+
+import { Navbar } from "components";
 
 export const EmailVerification = () => {
   const { t } = useTranslation();

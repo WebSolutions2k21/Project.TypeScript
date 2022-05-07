@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { AddNewProject } from "components";
-import Navbar from "components/Navbar/Navbar";
+
+import { Navbar, AddNewProject } from "components";
 
 export const AddNewProjectPage = () => {
   const { t } = useTranslation();

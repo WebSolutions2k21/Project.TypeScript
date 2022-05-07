@@ -266,4 +266,3 @@ export const Navbar = ({ namePage }: NPage) => {
     </NavbarContainer>
   );
 };
-export default Navbar;

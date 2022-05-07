@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Navbar from "components/Navbar/Navbar";
-import ContactForm from "components/ContactForm/ContactForm";
+import { Navbar, ContactForm } from "components";
 import { LogoPage } from "styles";
 import { ContactPageContainer } from "styles/stylesPages/ContacPage.style";
 
