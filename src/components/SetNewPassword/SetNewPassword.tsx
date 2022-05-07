@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { validation } from "./validate";
 import ISetNewPassword from "./SetNewPassword.interface";
-import { SetNewPass } from "services/user.service";
+import { setNewPass } from "services/user.service";
 import { paths } from "config/paths";
 import { Navbar } from "components";
 import { Title, ButtonForm, Footer } from "../ChangePassword/ChangePassword.style";
@@ -21,10 +21,10 @@ import {
   View,
 } from "../Login/Login.style";
 
-
 export const SetNewPassword = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [passShown, setPassShown] = useState(false);
   const togglePass = () => {
@@ -48,7 +48,8 @@ export const SetNewPassword = () => {
         validationSchema={validation()}
         initialValues={initialValues}
         onSubmit={({ newPassword, confirmNewPassword }: ISetNewPassword) => {
-          SetNewPass(newPassword, confirmNewPassword).then(
+          const token = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+          setNewPass(newPassword, confirmNewPassword, token).then(
             () => {
               setTimeout(() => {
                 navigate(paths.login, { replace: true });

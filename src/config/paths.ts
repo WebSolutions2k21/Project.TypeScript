@@ -20,4 +20,5 @@ export const paths = {
   mentorNotification: "/mentor-notifications",
   teamProjects: "/all-team-projects",
   emailVerification: "/email-verification",
+  changePassword: "/new-password",
 };

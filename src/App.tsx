@@ -23,6 +23,7 @@ import {
   UserNotificationsPage,
   UserProfilePage,
   UserProjectPage,
+  ChangeOldPassword
 } from "pages";
 import { paths } from "config/paths";
 
@@ -48,6 +49,7 @@ function App() {
         <Route path={paths.myProfile} element={<UserProfilePage />} />
         <Route path={paths.myProjects} element={<UserProjectPage />} />
         <Route path={paths.emailVerification} element={<EmailVerificationPage />} />
+        <Route path={paths.changePassword} element={<ChangeOldPassword />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
