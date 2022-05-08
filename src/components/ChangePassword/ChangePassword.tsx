@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { validation } from "./validate";
-import ISetNewPassword from "./SetNewPassword.interface";
-import { setNewPass } from "services/user.service";
+import IChangePassword from "./ChangePassword.interface";
+import { changePassword } from "services/user.service";
 import { paths } from "config/paths";
 import { Navbar } from "components";
-import { Title, ButtonForm, Footer } from "../ChangePassword/ChangePassword.style";
-import { Input, IconPassword, IconText, LogoPage, IconEye, IconEyeHide, Line, Toast } from "styles";
+import { Title, ButtonForm, Footer } from "./ChangePassword.style";
+import { Input, IconPassword, IconText, LogoPageMedium, IconEye, IconEyeHide, Line, Toast } from "styles";
 import {
   LoginForm,
   StyledInlineErrorMessageForm,
@@ -21,10 +21,14 @@ import {
   View,
 } from "../Login/Login.style";
 
-export const SetNewPassword = () => {
+export const ChangePassword = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const location = useLocation();
+
+  const [oldPassShown, setOldPassShown] = useState(false);
+  const toggleOldPass = () => {
+    setOldPassShown((prev) => !prev);
+  };
 
   const [passShown, setPassShown] = useState(false);
   const togglePass = () => {
@@ -36,7 +40,8 @@ export const SetNewPassword = () => {
     setConPassShown((prev) => !prev);
   };
 
-  const initialValues: ISetNewPassword = {
+  const initialValues: IChangePassword = {
+    oldPassword: "",
     newPassword: "",
     confirmNewPassword: "",
   };
@@ -47,9 +52,8 @@ export const SetNewPassword = () => {
       <Formik
         validationSchema={validation()}
         initialValues={initialValues}
-        onSubmit={({ newPassword, confirmNewPassword }: ISetNewPassword) => {
-          const token = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-          setNewPass(newPassword, confirmNewPassword, token).then(
+        onSubmit={({ oldPassword, newPassword, confirmNewPassword }: IChangePassword) => {
+          changePassword(oldPassword, newPassword, confirmNewPassword).then(
             () => {
               setTimeout(() => {
                 navigate(paths.login, { replace: true });
@@ -64,9 +68,35 @@ export const SetNewPassword = () => {
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <LoginForm>
-              <LogoPage />
+              <LogoPageMedium />
 
-              <Title>{t`setNewPassword.title2`}</Title>
+              <Title>{t`setNewPassword.title`}</Title>
+
+              <LabelStyle htmlFor="oldPassword">
+                <IconText />
+                {t`setNewPassword.setOldPassword`}
+              </LabelStyle>
+              <View>
+                <Input
+                  type={oldPassShown ? "text" : "password"}
+                  name="oldPassword"
+                  autoCapitalize="off"
+                  autoCorrect="off"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.oldPassword}
+                  placeholder={t`setNewPassword.setOldPasswordPlaceholder`}
+                  id="oldPassword"
+                />
+                {values.oldPassword.length > 0 ? (
+                  <>{oldPassShown ? <IconEye onClick={toggleOldPass} /> : <IconEyeHide onClick={toggleOldPass} />} </>
+                ) : (
+                  ""
+                )}
+              </View>
+              <StyledInlineErrorMessageForm>
+                {errors.oldPassword && touched.oldPassword && errors.oldPassword}
+              </StyledInlineErrorMessageForm>
 
               <LabelStyle htmlFor="newPassword">
                 <IconText />
@@ -121,7 +151,7 @@ export const SetNewPassword = () => {
               </StyledInlineErrorMessageForm>
 
               <ButtonForm type="submit" disabled={!isValid}>
-                {t`setNewPassword.button2`}
+                {t`setNewPassword.button`}
               </ButtonForm>
               <Toast />
               <Footer>

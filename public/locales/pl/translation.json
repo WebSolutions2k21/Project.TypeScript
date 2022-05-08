@@ -7,9 +7,15 @@
     "signin": "Rejestracja",
     "logout": "Wyloguj",
     "myprofile": "Profil",
+    "mentorprofile": "Profil Mentora",
     "myproject": "Projekty",
     "myopinions": "Opinie",
-    "notifications": "Powiadomienia"
+    "notifications": "Powiadomienia",
+    "profile": "Profil",
+    "project": "Projekty",
+    "opinions": "Opinie",
+    "addproject": "Dodaj projekt",
+    "teamproject": "Grupowe projekty"
   },
   "homepage": {
     "h1": "Zostań Uczniem lub Mentorem!",
@@ -197,6 +203,7 @@
   },
   "setNewPassword": {
     "title": "Chcesz zmienić hasło?",
+    "title2": "Utwórz nowe hasło",
     "setOldPassword": "stare hasło",
     "setOldPasswordPlaceholder": "Wpisz stare hasło",
     "setNewPassword": "nowe hasło",
@@ -204,6 +211,7 @@
     "confirmPassword": "potwierdź nowe hasło",
     "confirmPasswordPlaceholder": "Potwierdź nowe hasło",
     "button": "Zmień hasło",
+    "button2": "Zapisz",
     "success": "Twoje hasło zostało pomyślnie zmienione",
     "badRequest": "Stare hasło zostało wprowadzone niepoprawnie. Spróbuj ponownie!",
     "error": "Coś poszło nie tak. Spróbuj ponownie"

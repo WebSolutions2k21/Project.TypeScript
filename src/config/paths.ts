@@ -6,20 +6,23 @@ export const paths = {
   contact: "/contact",
 
   validation: "/validation",
-  setPassword: "/set-password",
+
+  emailVerification: "/email-verification",
   sendNewPassword: "/change-password",
+
+  setPassword: "/set-password/:token",
+  changePassword: "/new-password",
   myProfile: "/my-profile",
   mentorProfile: "/mentor-profile",
-
   myProjects: "/my-projects",
   myOpinions: "/my-opinions",
   addOpinion: "/add-opinion",
   editOpinion: "/edit-opinion",
 
   addProject: "/add-project",
+  teamProjects: "/all-team-projects",
   addTeamProject: "/add-team-project",
+
   myNotifications: "/my-notifications",
   mentorNotification: "/mentor-notifications",
-  teamProjects: "/all-team-projects",
-  emailVerification: "/email-verification",
 };
