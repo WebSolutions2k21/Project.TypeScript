@@ -16,7 +16,7 @@ import {
   FooterWrapperLeft,
   LinkFooter,
   FooterWrapperRight,
-  ButtonForm
+  ButtonForm,
 } from "./Login.style";
 import ILogin from "./Login.interface";
 import { paths } from "config/paths";
@@ -73,7 +73,7 @@ export const Login = () => {
           );
         }}
       >
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => (
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid, isSubmitting }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <LoginForm>
               <LogoPage />
@@ -118,7 +118,7 @@ export const Login = () => {
                 {errors.password && touched.password && errors.password}
               </StyledInlineErrorMessageForm>
 
-              <ButtonForm type="submit" disabled={!isValid}>
+              <ButtonForm type="submit" disabled={!isValid && !isSubmitting}>
                 {t`button.login`}
               </ButtonForm>
               <Toast />

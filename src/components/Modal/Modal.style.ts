@@ -10,6 +10,7 @@ export const ModalStyle = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  z-index:1;
 `;
 export const ModalOverlay = styled.div`
   position: absolute;

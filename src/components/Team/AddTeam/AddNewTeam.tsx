@@ -1,4 +1,4 @@
-import { Modal, Navbar } from "components";
+import { Modal } from "components";
 import { Form, Formik } from "formik";
 
 import React, { useEffect, useState } from "react";
@@ -64,6 +64,9 @@ export const AddNewTeam = () => {
       });
   }, [t]);
 
+  const username = users.map((e: any) => e.username);
+  console.log("username", username);
+
   const initialValues: ITeamProject = {
     teamName: "",
     usersIds: [],
@@ -93,7 +96,6 @@ export const AddNewTeam = () => {
 
   return (
     <>
-      <Navbar />
       <Formik
         validationSchema={AddNewTeamValidationSchema()}
         initialValues={initialValues}
@@ -101,6 +103,7 @@ export const AddNewTeam = () => {
           values.usersIds = ids;
           values.mentorId = localStorage.getItem("id") as string;
           values.places = selectedPlaces;
+          values.programmingLanguage = allLanguage
           console.log("values", values);
 
           createTeam(values).then(
@@ -226,7 +229,7 @@ export const AddNewTeam = () => {
                   {t`team.users`}
                 </LabelStyle>
 
-                <ul>
+                {/* <ul>
                   {users.length > 0 &&
                     users.map(({ _id, lastname, firstname }, index) => (
                       <li key={_id}>
@@ -242,7 +245,16 @@ export const AddNewTeam = () => {
                         </Label>
                       </li>
                     ))}
-                </ul>
+                </ul> */}
+                      <StyledSelect
+                  name="users"
+                  options={username.map((e) => ({ label: e, value: e }))}
+                  classNamePrefix={"Select"}
+                  placeholder={t`team.places.placeholder`}
+                  id="users"
+                  isMulti
+                  // onChange={selectChange}
+                />
                 <ButtonForm type="submit" disabled={!isValid}>
                   {t`team.button.addTeam`}
                 </ButtonForm>

@@ -72,12 +72,18 @@ export const Navbar = ({ namePage }: NPage) => {
                 {t("navbar.myproject")}
               </NavbarLink>
             )}
+            {isAuthMentor && (
+              <NavbarLink onClick={handleCloseNavMenu} to={paths.myTeam}>
+                {t("navbar.myteam")}
+              </NavbarLink>
+            )}
+
             {isAuth && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.myOpinions}>
                 {t("navbar.myopinions")}
               </NavbarLink>
             )}
-            {isAuth && (
+            {isAuth && !isAuthMentor && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.myNotifications}>
                 {t("navbar.notifications")}
               </NavbarLink>
@@ -87,6 +93,7 @@ export const Navbar = ({ namePage }: NPage) => {
                 {t("navbar.notifications")}
               </NavbarLink>
             )}
+
             {isAuth && !isAuthMentor && (
               <NavbarLink onClick={logoutHandler} to={paths.home}>
                 {t("navbar.logout")}
@@ -221,6 +228,10 @@ export const Navbar = ({ namePage }: NPage) => {
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myProjects}>
             <Navlink />
             {t("navbar.myproject")}
+          </NavbarLinkExtended>
+          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myTeam}>
+            <Navlink />
+            {t("navbar.myteam")}
           </NavbarLinkExtended>
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myOpinions}>
             <Navlink />

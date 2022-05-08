@@ -8,7 +8,7 @@ export const View = styled.div`
 export const TeamForm = styled.div`
   display: flex;
   flex-direction: column;
-
+  margin: auto;
   align: center;
   width: 375px;
   align-items: center;
@@ -17,8 +17,7 @@ export const TeamForm = styled.div`
 
 export const TeamName = styled.div`
   display: grid;
-  width: 80vw;
-  grid-template-columns: 250px 50px;
+  grid-template-columns: 275px 50px;
   justify-self: stretch;
   border: 1px solid ${({ theme }) => theme.colors.body || "#FFFFFF"};
   border-style: none none solid none;
@@ -26,6 +25,7 @@ export const TeamName = styled.div`
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
   }
+  margin: auto;
 `;
 
 export const Name = styled.div`
@@ -38,6 +38,7 @@ export const ButtonInModal = styled(Button)`
   width: 100px;
   margin: 10px auto;
   display: flex;
+  justify-content: center;
 `;
 export const ButtonForm = styled(Button)`
   margin-top: 30px;

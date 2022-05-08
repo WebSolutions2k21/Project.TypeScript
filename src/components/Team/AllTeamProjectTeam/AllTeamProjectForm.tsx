@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
@@ -9,7 +9,6 @@ import { getAllTeam, joinTeam } from "services/team.service";
 import { Toast } from "styles";
 import { ButtonInModal, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
 import ITeamProject from "../ITeamProject.interface";
-import { Navbar } from "components";
 
 export const AllTeamProjectTeamForm = () => {
   const [allTeamProject, setAllTeamProject] = useState<Array<ITeamProject>>([]);
@@ -49,8 +48,6 @@ export const AllTeamProjectTeamForm = () => {
 
   return (
     <>
-      <Navbar />
-      <Link to={paths.myTeam}> My Team</Link>
       <TeamForm>
         {allTeamProject &&
           allTeamProject.map((team, index) => (
@@ -72,16 +69,17 @@ export const AllTeamProjectTeamForm = () => {
                       </p>
                       <ul>
                         {team.programmingLanguage &&
-                          team.programmingLanguage.map(({nameLang, level }, index) => (
+                          team.programmingLanguage.map(({ nameLang, level }, index) => (
                             <>
-                             <li key={index}>
-                              <p >
-                                {" "}
-                                {t`team.programmingLanguage`}: {nameLang}{" "}
-                              </p>
-                              <p>
-                                {t`team.level`} {level}{" "}
-                              </p></li>
+                              <li key={index}>
+                                <p>
+                                  {" "}
+                                  {t`team.programmingLanguage`}: {nameLang}{" "}
+                                </p>
+                                <p>
+                                  {t`team.level`} {level}{" "}
+                                </p>
+                              </li>
                             </>
                           ))}
                       </ul>
