@@ -8,9 +8,9 @@ import { toast } from "react-toastify";
 import { createTeam } from "services/team.service";
 
 import ITeamProject from "../ITeamProject.interface";
-import { IconPassword, Label, StyledSelect, Toast } from "styles";
+import { Button, IconPassword, Label, StyledSelect, Toast } from "styles";
 import { TeamForm } from "../AllTeamProjectTeam/AllTeamProjectTeam.style";
-import { ButtonForm, LabelStyle, StyledInlineErrorMessageForm, StyleFromModal } from "./AddTeam.style";
+import { ButtonForm, ButtonInModal, LabelStyle, StyledInlineErrorMessageForm, StyleFromModal } from "./AddTeam.style";
 import { IconText, Input, IconProject } from "styles";
 
 import { options } from "config/languages";
@@ -18,6 +18,10 @@ import { getOnlyUsers } from "services/user.service";
 import IUser from "../IUser.interface";
 import { AddNewTeamValidationSchema } from "../AddTeamValidation";
 import { paths } from "config/paths";
+import { level } from "config/level";
+import { IProgrammingLanguage } from "../IProgrammingLanguege";
+
+import { ActiveModal } from "components/Modal/Modal.style";
 
 export const AddNewTeam = () => {
   const [users, setUsers] = useState<Array<IUser>>([]);
@@ -25,12 +29,29 @@ export const AddNewTeam = () => {
   const places = Array(10)
     .fill(0)
     .map((e, i) => i + 1);
-  console.log("places", places);
   let navigate = useNavigate();
 
-  const [selectedOption, setSelectedOption] = useState(places[4]);
+  const [selectedPlaces, setSelectedPlaces] = useState(places[4]);
+  const [state, setState] = useState<IProgrammingLanguage>({ nameLang: "", level: "" });
 
+  const [currentNameLang, setCurrentNameLang] = useState("");
+  const [currentLevel, setCurrentLevel] = useState("");
+
+  const [allLanguage, setAllLanguage] = useState<Array<IProgrammingLanguage>>([]);
   const { t } = useTranslation();
+
+  const addLevelAndLang = () => {
+    console.log("State", state)
+    console.log("All language w add", allLanguage);
+    setState(() => ({
+      nameLang: currentNameLang,
+      level: currentLevel,
+    }));
+    console.log("czy sie dodało");
+
+    setAllLanguage((prevState) => [...prevState, state]);
+    document.body.classList.remove(ActiveModal);
+  };
 
   useEffect(() => {
     getOnlyUsers()
@@ -67,7 +88,7 @@ export const AddNewTeam = () => {
   };
 
   const selectChange = (e: any) => {
-    setSelectedOption(e.value);
+    setSelectedPlaces(e.value);
   };
 
   return (
@@ -79,7 +100,7 @@ export const AddNewTeam = () => {
         onSubmit={(values) => {
           values.usersIds = ids;
           values.mentorId = localStorage.getItem("id") as string;
-          values.places = selectedOption;
+          values.places = selectedPlaces;
           console.log("values", values);
 
           createTeam(values).then(
@@ -157,24 +178,49 @@ export const AddNewTeam = () => {
                   id="places"
                   onChange={selectChange}
                 />
-     
-               
-                <Modal children={
-                  <>
-                             <LabelStyle htmlFor="language">
+
+                <LabelStyle htmlFor="language">
                   <IconPassword />
-                  {t`addNewProject.language`}
+                  {t`team.language`}
                 </LabelStyle>
-                  <StyleFromModal
-                  name="language"
-                  options={options}
-                  classNamePrefix={"Select"}
-                  placeholder={t`addNewProject.languagePlaceholder`}
-                  id="language"
-                  // onChange={selectChange}
-                /></>
-                } title={t`addNewProject.languagePlaceholder`} buttonText={t`team.button.add`}></Modal>
-                
+                <ul>
+                  {allLanguage.length > 0 &&
+                    allLanguage.map(({ nameLang, level }, index) => (
+                      <li key={index}>
+                        <Label htmlFor={`team-language-${index}`}>
+                          {nameLang} {level}
+                        </Label>
+                      </li>
+                    ))}
+                </ul>
+                <Modal
+                  children={
+                    <>
+                      <StyleFromModal
+                        name="language"
+                        options={options}
+                        classNamePrefix={"Select"}
+                        placeholder={t`team.languagePlaceholder`}
+                        id="language"
+                        onChange={(e: any) => setCurrentNameLang(e.value)}
+                      />
+                      <StyleFromModal
+                        name="level"
+                        options={level}
+                        classNamePrefix={"Select"}
+                        placeholder={t`team.level`}
+                        id="level"
+                        onChange={(e: any) => setCurrentLevel(e.value)}
+                      />
+                      <ButtonInModal type="button" onClick={() => addLevelAndLang()}>
+                        {t`team.button.add`}{" "}
+                      </ButtonInModal>
+                    </>
+                  }
+                  title={t`team.languageName`}
+                  buttonText={t`team.button.add`}
+                ></Modal>
+
                 <LabelStyle htmlFor="users">
                   <IconText />
                   {t`team.users`}

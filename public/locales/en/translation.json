@@ -186,6 +186,9 @@
     "programmingLanguage": "Programming language",
     "level": "level",
     "users": "Users",
+    "language": "Programming language",
+    "languageName": "Choose programming language and level",
+    "languagePlaceholder": "Choose programming language",
     "teamName": {
       "name": "Team name",
       "placeholder": "Enter team name",
@@ -194,7 +197,9 @@
         "max": "Team name is too long ",
         "requied": "Team name is required"
       }
+     
      },
+    
     "button": {
       "view": "View",
       "joinTeam": "Join Team",

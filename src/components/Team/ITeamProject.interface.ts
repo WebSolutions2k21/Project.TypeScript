@@ -1,3 +1,5 @@
+import { IProgrammingLanguage } from "./IProgrammingLanguege";
+
 export default interface ITeamProject {
   _id?: string;
   teamName: any;
@@ -9,7 +11,4 @@ export default interface ITeamProject {
   description: string;
 }
 
-interface IProgrammingLanguage {
-  level?: string;
-  nameLang?: string;
-}
+

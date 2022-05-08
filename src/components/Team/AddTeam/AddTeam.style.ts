@@ -58,15 +58,19 @@ export const LinkFooter: any = styled(Link)`
 `;
 
 export const StyleFromModal = styled(StyledSelect)`
-.Select__menu {
-  color: ${({ theme }) => theme.colors.body || "#174C6F"};
-  font-size: 14px;
+.Select__control {
+  color: ${({ theme }) => theme.colors.body || "#FFFFFF"};
 }
 
-.Select__single-value {
-  color: red;
-  text-align: left;
-  margin-left: -8px;
-  margin-top: 7px;
+.Select__placeholder {
+  color: ${({ theme }) => theme.colors.text || "#174C6F"};
 }
+
+`;
+
+export const ButtonInModal = styled(Button)`
+  height: 30px;
+  width: 100px;
+  margin: 10px auto;
+  display: flex;
 `;
