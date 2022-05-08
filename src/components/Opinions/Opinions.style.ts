@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, Star, ProfilePic, Arrow, Bin } from "styles";
+import { Button, Star, Arrow, Bin } from "styles"; //+ ProfilePic
 import { Card } from "styles/Card.style";
 
 export const OpinionForm = styled.div`

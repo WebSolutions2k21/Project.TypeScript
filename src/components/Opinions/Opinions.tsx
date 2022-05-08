@@ -9,7 +9,7 @@ import { getAllOpinions } from "services/opinion.service";
 // import { LabelStyle } from "components/Registration/RegForm.style";
 import IOpinions from "./Opinions.interface";
 
-import { Button, IconText, Toast } from "styles";
+import { IconText, Toast } from "styles"; //+ Button
 import {
   AddOpinionButton,
   OpinionForm,
@@ -43,10 +43,10 @@ export const Opinions = () => {
         toast.error(t`toast.opinion.error`);
       });
   }, [t]);
-  
+
   const navigateToAddOpinion = () => {
-     navigate(paths.addOpinion);
-   };
+    navigate(paths.addOpinion);
+  };
 
   const navigateToEditOpinion = () => {
     navigate(paths.editOpinion);
@@ -76,7 +76,6 @@ export const Opinions = () => {
               <ButtonStyle type="submit" onClick={navigateToEditOpinion}>{t`opinions.button.edit`}</ButtonStyle>
             </CardBox>
           ))}
-
       </OpinionForm>
       <Toast />
     </>
