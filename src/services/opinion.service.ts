@@ -11,3 +11,10 @@ export const getAllOpinions = async () => {
     },
   });
 };
+
+const URLMentors = "/users/mentors";
+export const getMentors = () => {
+  return axios.get(URLMentors).then((res) => {
+    return res;
+  });
+};

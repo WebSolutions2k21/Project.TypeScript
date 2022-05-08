@@ -17,6 +17,7 @@ import {
   MentorProfilePage,
   NotFoundPage,
   OpinionsPage,
+  AddNewOpinionPage,
   SendNewPasswordPage,
   SetNewPasswordPage,
   SignUpPage,
@@ -41,6 +42,7 @@ function App() {
         <Route path={paths.mentorNotification} element={<MentorNotificationsPage />} />
         <Route path={paths.mentorProfile} element={<MentorProfilePage />} />
         <Route path={paths.myOpinions} element={<OpinionsPage />} />
+        <Route path={paths.addOpinion} element={<AddNewOpinionPage />} />
         <Route path={paths.sendNewPassword} element={<SendNewPasswordPage />} />
         <Route path={paths.setPassword} element={<SetNewPasswordPage />} />
         <Route path={paths.signUp} element={<SignUpPage />} />

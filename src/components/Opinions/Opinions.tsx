@@ -4,27 +4,23 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
 
-import { Modal } from "components/Modal";
+// import { Modal } from "components";
 import { getAllOpinions } from "services/opinion.service";
-import { LabelStyle } from "components/Registration/RegForm.style";
+// import { LabelStyle } from "components/Registration/RegForm.style";
 import IOpinions from "./Opinions.interface";
 
 import { Button, IconText, Toast } from "styles";
 import {
   AddOpinionButton,
   OpinionForm,
-  // TopArea,
   CardBox,
   CommentInfo,
   ButtonStyle,
-  // TopText,
-  // ProfPic,
-  // ButtonsArea,
-  ButtonSave,
-  BinButton,
-  BinIco,
-  ArrowBtn,
-  ArrowIco,
+  // ButtonSave,///
+  // BinButton,
+  // BinIco,
+  // ArrowBtn,
+  // ArrowIco,
   OpinionAuthor,
   OpinionText,
   StarsBox,
@@ -47,20 +43,21 @@ export const Opinions = () => {
         toast.error(t`toast.opinion.error`);
       });
   }, [t]);
+  
+  const navigateToAddOpinion = () => {
+     navigate(paths.addOpinion);
+   };
+
+  const navigateToEditOpinion = () => {
+    navigate(paths.editOpinion);
+  };
+
   return (
     <>
       <Navbar />
       <OpinionForm>
-        {/* <TopArea> */}
-          {/* <TopText>My Opinions</TopText> */}
-          {/* <ProfPic /> */}
-        {/* </TopArea> */}
-        {/* <Button>Add New Opinion</Button> */}
-        <AddOpinionButton>Add New Opinion</AddOpinionButton>
+        <AddOpinionButton type="submit" onClick={navigateToAddOpinion}>{t`opinions.button.addNew`}</AddOpinionButton>
 
-        {/* <Modal title={}>
-          
-        </Modal> */}
         {allUsersOpinions &&
           allUsersOpinions.map((opinion, index) => (
             <CardBox key={index}>
@@ -76,16 +73,7 @@ export const Opinions = () => {
                 </StarsBox>
               </CommentInfo>
               <OpinionText>{opinion.content}</OpinionText>
-              {/* <ButtonsArea> */}
-                {/* <ArrowBtn>
-                  <ArrowIco />
-                </ArrowBtn>
-                <ButtonSave>save</ButtonSave>
-                <BinButton>
-                  <BinIco />
-                </BinButton>
-                <ButtonStyle>edit</ButtonStyle> */}
-              {/* </ButtonsArea> */}
+              <ButtonStyle type="submit" onClick={navigateToEditOpinion}>{t`opinions.button.edit`}</ButtonStyle>
             </CardBox>
           ))}
 

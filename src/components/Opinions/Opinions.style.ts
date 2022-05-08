@@ -19,23 +19,6 @@ export const AddOpinionButton = styled(Button)`
   margin: 0 auto;
 `;
 
-// export const TopArea = styled.div`
-//   // margin: 50px 5% 0 10%;
-//   width: 100vw;
-//   max-height: 2.5rem;
-//   justify-content: space-between;
-//   padding: 10px;
-// `;
-
-// export const TopText = styled.h3`
-//   font-weight: 400;
-//   font-size: 20px;
-//   color: #174c6f;
-//   float: left;
-//   line-height: 50px;
-//   // margin: -115px 0 50px 0;
-// `;
-
 export const CardBox = styled(Card)`
   width: 85%;
   margin: 20px auto;
@@ -43,11 +26,6 @@ export const CardBox = styled(Card)`
   // margin: 0 auto 40px;
   // background: rgba(255, 85, 185, 0.12);
 `;
-
-// export const ProfPic = styled(ProfilePic)`
-//   float: right;
-//   width: 60px;
-// `;
 
 export const CommentInfo = styled.div`
   font-size: clamp(0.8125rem, 0.7589rem + 0.2679vw, 1rem);

@@ -13,6 +13,8 @@ export const paths = {
 
   myProjects: "/my-projects",
   myOpinions: "/my-opinions",
+  addOpinion: "/add-opinion",
+  editOpinion: "/edit-opinion",
 
   addProject: "/add-project",
   addTeamProject: "/add-team-project",

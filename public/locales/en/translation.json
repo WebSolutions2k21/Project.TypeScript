@@ -210,5 +210,30 @@
     "success": "Your password was successfully changed",
     "badRequest": "Your old password was entered incorrectly. Please try again!",
     "error": "Something is wrong. Try again"
+  },
+  "opinions": {
+    "button": {
+      "addNew": "Add New Opinion",
+      "edit": "EDIT",
+      "save": "SAVE"
+    }
+  },
+  "addNewOpinion": {
+    "mentor": "mentor",
+    "mentorPlaceholder": "Choose mentor",
+    "content": "opinion",
+    "contentPlaceholder": "Type your opinion",
+    "button": "ADD",
+    "validation": {
+      "name": "Your username name is too short",
+      "nameReq": "Please enter username",
+      "mentor": "Please choose your mentor",
+      "content": "Your opinion is too short",
+      "contentReq": "Please enter the opinion",
+      "status": "Please choose project's status",
+      "success": "Success",
+      "validation": "Something is wrong. Try again",
+      "error": "Error"
+    }
   }
 }
