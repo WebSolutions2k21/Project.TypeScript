@@ -1,12 +1,14 @@
 import React from "react";
-import { AddNewProject } from "components";
-import Navbar from "components/Navbar/Navbar";
+import { useTranslation } from "react-i18next";
+
+import { Navbar, AddNewProject } from "components";
 
 export const AddNewProjectPage = () => {
-    return (
+  const { t } = useTranslation();
+  return (
     <>
-        <Navbar />
-        <AddNewProject />
+      <Navbar namePage={t("navbar.addproject")} />
+      <AddNewProject />
     </>
-    );
+  );
 };

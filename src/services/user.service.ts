@@ -34,4 +34,25 @@ export const changePassword = (oldPassword: string, newPassword: string, confirm
     .then((res) => {
       return res.data;
     });
-  };
+};
+
+const SETNEWPASSWORD_URL = "/users/newpassword/";
+
+export const setNewPass = (newPassword: string, confirmNewPassword: string, token: string) => {
+  return axios
+    .put(
+      SETNEWPASSWORD_URL,
+      {
+        newPassword,
+        confirmNewPassword,
+      },
+      {
+        headers: {
+          "x-auth-token": token,
+        },
+      },
+    )
+    .then((res) => {
+      return res.data;
+    });
+};
