@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const NavbarContainer: any = styled.nav`
   width: 100vw;
@@ -45,7 +45,7 @@ export const NavbarLinkContainer = styled.div`
   margin-right: 20px;
 `;
 
-export const NavbarLink = styled(Link)`
+export const NavbarLink = styled(NavLink)`
   position: relative;
   color: #3c789e;
   text-decoration: none;
@@ -56,7 +56,7 @@ export const NavbarLink = styled(Link)`
     content: "";
     position: absolute;
     bottom: 22px;
-    left: -100px;
+    left: -130px;
     width: 100%;
     height: 3px;
     background-color: #db2490;
@@ -65,13 +65,22 @@ export const NavbarLink = styled(Link)`
   &:hover::after {
     left: 0;
   }
+  &[class*="active"]::after {
+    content: "";
+    position: absolute;
+    bottom: 22px;
+    left: 0px;
+    width: 100%;
+    height: 3px;
+    background-color: #db2490;
+  }
 
   @media (max-width: 700px) {
     display: none;
     color: white;
   }
 `;
-export const NavbarLinkExtended = styled(Link)`
+export const NavbarLinkExtended = styled(NavLink)`
   display: flex;
   color: ${({ theme }) => theme.colors.text || "#174C6F"};
   text-decoration: none;
