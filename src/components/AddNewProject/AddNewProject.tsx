@@ -27,6 +27,20 @@ export const AddNewProject = () => {
   // };
   // TODO
 
+  const [valueState,setValueState] = useState("")
+  const handler = (event:any) => {
+    const value = event.value
+    setValueState(value)
+}
+
+const onChangeInput = (value:any) => {
+  console.log(value.value)
+}
+
+const onChangeInputArray = (value:any) => {
+  console.log(value)
+}
+
   const [allMentors, setAllMentors] = useState([]);
 
   useEffect(() => {
@@ -39,7 +53,7 @@ export const AddNewProject = () => {
       });
   }, []);
 
-  const mentrs = allMentors.map((e: any) => e.username);
+  const mentrs = allMentors.map((e: any) => e);
 
   const initialValues: IAddNewProject = {
     name: "",
@@ -91,16 +105,19 @@ export const AddNewProject = () => {
               />
               <ErrorMsg>{errors.name && touched.name && errors.name}</ErrorMsg>
 
-              <LabelStyle htmlFor="mentor">
+              <LabelStyle htmlFor="mentorId">
                 <IconText />
                 {t`addNewProject.mentor`}
               </LabelStyle>
               <StyledSelect
-                name="mentor"
-                options={mentrs.map((e) => ({ label: e, value: e }))}
+                name="mentorId"
+                options={mentrs.map((e) => ({ label: e.username, value: e._id }))}
                 classNamePrefix={"Select"}
                 placeholder={t`addNewProject.mentorPlaceholder`}
-                id="mentor"
+                id="mentorId"
+                onChange={onChangeInput}
+                value={values.mentorId}
+                
               />
 
               <LabelStyle htmlFor="language">
@@ -115,6 +132,7 @@ export const AddNewProject = () => {
                 placeholder={t`addNewProject.languagePlaceholder`}
                 id="language"
                 // onChange={selectChange}
+                onChange={onChangeInputArray}
               />
 
               <LabelStyle htmlFor="content">
