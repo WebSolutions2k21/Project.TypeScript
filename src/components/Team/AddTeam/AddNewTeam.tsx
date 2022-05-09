@@ -47,7 +47,6 @@ export const AddNewTeam = () => {
       nameLang: currentNameLang,
       level: currentLevel,
     }));
-    console.log("czy sie dodało");
 
     setAllLanguage((prevState) => [...prevState, state]);
     document.body.classList.remove(ActiveModal);
@@ -63,9 +62,6 @@ export const AddNewTeam = () => {
         toast.error(t`toast.team.error`);
       });
   }, [t]);
-
-  const username = users.map((e: any) => e.username);
-  console.log("username", username);
 
   const initialValues: ITeamProject = {
     teamName: "",
@@ -229,7 +225,7 @@ export const AddNewTeam = () => {
                   {t`team.users`}
                 </LabelStyle>
 
-                {/* <ul>
+                <ul>
                   {users.length > 0 &&
                     users.map(({ _id, lastname, firstname }, index) => (
                       <li key={_id}>
@@ -245,16 +241,7 @@ export const AddNewTeam = () => {
                         </Label>
                       </li>
                     ))}
-                </ul> */}
-                      <StyledSelect
-                  name="users"
-                  options={username.map((e) => ({ label: e, value: e }))}
-                  classNamePrefix={"Select"}
-                  placeholder={t`team.places.placeholder`}
-                  id="users"
-                  isMulti
-                  // onChange={selectChange}
-                />
+                </ul>
                 <ButtonForm type="submit" disabled={!isValid}>
                   {t`team.button.addTeam`}
                 </ButtonForm>
