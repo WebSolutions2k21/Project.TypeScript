@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
+import { RatingStar } from "rating-star";
 
-// import { Modal } from "components";
+import { Modal } from "components";
 import { getAllOpinions } from "services/opinion.service";
 // import { LabelStyle } from "components/Registration/RegForm.style";
 import IOpinions from "./Opinions.interface";
@@ -26,7 +27,7 @@ import {
   StarsBox,
   StarsIcon,
 } from "components/Opinions/Opinions.style";
-import { Navbar } from "components";
+// import { Navbar } from "components";
 
 export const Opinions = () => {
   const [allUsersOpinions, setAllUsersOpinions] = useState<Array<IOpinions>>([]);
@@ -52,11 +53,21 @@ export const Opinions = () => {
     navigate(paths.editOpinion);
   };
 
+  const [rating, setRating] = React.useState(5);
+
+  const onRatingChange = (score: React.SetStateAction<number>) => {
+    setRating(score);
+  };
+
   return (
     <>
-      <Navbar />
       <OpinionForm>
         <AddOpinionButton type="submit" onClick={navigateToAddOpinion}>{t`opinions.button.addNew`}</AddOpinionButton>
+
+        <Modal title="opinions" buttonText="+">
+          <input type="text" name="content" placeholder={t`addNewOpinion.contentPlaceholder`}></input>
+          <RatingStar clickable maxScore={5} id="stars" rating={rating} onRatingChange={onRatingChange} />
+        </Modal>
 
         {allUsersOpinions &&
           allUsersOpinions.map((opinion, index) => (
