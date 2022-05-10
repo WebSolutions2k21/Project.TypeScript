@@ -1,21 +1,21 @@
 {
   "navbar": {
-    "home": "Home Page",
-    "aboutus": "About Us",
+    "home": "Home\u00a0Page",
+    "aboutus": "About\u00a0Us",
     "contact": "Contact",
-    "login": "Log In",
-    "signin": "Sign In",
-    "logout": "Log Out",
-    "myprofile": "My profile",
-    "mentorprofile": "Mentor profile",
-    "myproject": "My project",
-    "myopinions": "My opinions",
+    "login": "Log\u00a0In",
+    "signin": "Sign\u00a0In",
+    "logout": "Log\u00a0Out",
+    "myprofile": "My\u00a0profile",
+    "mentorprofile": "Mentor\u00a0profile",
+    "myproject": "My\u00a0project",
+    "myopinions": "My\u00a0opinions",
     "notifications": "Notifications",
     "profile": "Profile",
     "project": "Project",
     "opinions": "Opinions",
-    "addproject": "Add Project",
-    "teamproject": "Team project"
+    "addproject": "Add\u00a0Project",
+    "teamproject": "Team\u00a0project"
   },
   "homepage": {
     "h1": "Become Student or a Mentor!",
