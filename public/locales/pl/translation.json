@@ -194,6 +194,7 @@
     "languageName": "Wybierz język programowania i poziom",
     "level": "Poziom",
     "users": "Zespół",
+    "usersPlaceholder": "Dodaj osoby do zespołu",
     "language": "Język programowania",
     "languagePlaceholder": "Wybierz język programowania",
     "teamName": {

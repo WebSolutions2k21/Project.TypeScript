@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { createTeam } from "services/team.service";
 
 import ITeamProject from "../ITeamProject.interface";
-import { Button, IconPassword, Label, StyledSelect, Toast } from "styles";
+import { IconPassword, Label, StyledSelect, Toast } from "styles";
 import { TeamForm } from "../AllTeamProjectTeam/AllTeamProjectTeam.style";
 import { ButtonForm, ButtonInModal, LabelStyle, StyledInlineErrorMessageForm, StyleFromModal } from "./AddTeam.style";
 import { IconText, Input, IconProject } from "styles";
@@ -25,13 +25,14 @@ import { ActiveModal } from "components/Modal/Modal.style";
 
 export const AddNewTeam = () => {
   const [users, setUsers] = useState<Array<IUser>>([]);
+  const [idsAll, setIdsAll] = useState<Array<any>>([]);
   const [ids, setIds] = useState<Array<string>>([]);
   const places = Array(10)
     .fill(0)
     .map((e, i) => i + 1);
   let navigate = useNavigate();
 
-  const [selectedPlaces, setSelectedPlaces] = useState(places[4]);
+  const [selectedPlaces, setSelectedPlaces] = useState(places[0]);
   const [state, setState] = useState<IProgrammingLanguage>({ nameLang: "", level: "" });
 
   const [currentNameLang, setCurrentNameLang] = useState("");
@@ -41,12 +42,13 @@ export const AddNewTeam = () => {
   const { t } = useTranslation();
 
   const addLevelAndLang = () => {
-    console.log("State", state)
-    console.log("All language w add", allLanguage);
+    // console.log("State", state);
+    // console.log("All language w add", allLanguage);
     setState(() => ({
       nameLang: currentNameLang,
       level: currentLevel,
     }));
+    // console.log("czy sie dodało");
 
     setAllLanguage((prevState) => [...prevState, state]);
     document.body.classList.remove(ActiveModal);
@@ -56,12 +58,18 @@ export const AddNewTeam = () => {
     getOnlyUsers()
       .then((response: any) => {
         setUsers(response.data);
-        console.log("response data users only", response.data);
+        // console.log("response data users only", response.data);
       })
       .catch((e: Error) => {
         toast.error(t`toast.team.error`);
       });
   }, [t]);
+
+  const usernames = users.map(({ username, _id }) => ({
+    label: username,
+    value: _id,
+  }));
+  // console.log("username", usernames);
 
   const initialValues: ITeamProject = {
     teamName: "",
@@ -69,26 +77,47 @@ export const AddNewTeam = () => {
     mentorId: "",
     programmingLanguage: [],
     status: true,
-    places: 5,
+    places: 0,
     description: "",
   };
 
-  const selectUser = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedId = event.target.value;
+  useEffect(() => {
+    idsAll.map((val: any) => {
+      console.log("id length", ids.length + 1, selectedPlaces);
+      if (ids.length + 1 <= selectedPlaces) {
+        const newIds = [...ids];
 
-    if (ids.includes(selectedId)) {
-      const newIds = ids.filter((id) => id !== selectedId);
-      setIds(newIds);
-    } else {
-      const newIds = [...ids];
-      newIds.push(selectedId);
-      setIds(newIds);
-    }
-  };
+        newIds.push(val.value);
+
+        setIds(newIds);
+      } else {
+        console.log("nie moesz dodać");
+      }
+    });
+  }, [idsAll]);
+
+  // const selectUser = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // const selectedId = event.target.value;
+
+  // if (ids.includes(selectedId)) {
+  //   const newIds = ids.filter((id) => id !== selectedId);
+  //   setIds(newIds);
+  // } else {
+  //   const newIds = [...ids];
+  //   newIds.push(selectedId);
+  //   setIds(newIds);
+  // }
+
+  // };
 
   const selectChange = (e: any) => {
     setSelectedPlaces(e.value);
   };
+
+  //   console.log("value w set", idsAll)
+  // idsAll.map((res) => {
+  // console.log('ddd', res)
+  //  })
 
   return (
     <>
@@ -99,7 +128,7 @@ export const AddNewTeam = () => {
           values.usersIds = ids;
           values.mentorId = localStorage.getItem("id") as string;
           values.places = selectedPlaces;
-          values.programmingLanguage = allLanguage
+          values.programmingLanguage = allLanguage;
           console.log("values", values);
 
           createTeam(values).then(
@@ -175,7 +204,9 @@ export const AddNewTeam = () => {
                   classNamePrefix={"Select"}
                   placeholder={t`team.places.placeholder`}
                   id="places"
-                  onChange={selectChange}
+                  onChange={(e: any) => {
+                    setSelectedPlaces(e.value);
+                  }}
                 />
 
                 <LabelStyle htmlFor="language">
@@ -224,24 +255,18 @@ export const AddNewTeam = () => {
                   <IconText />
                   {t`team.users`}
                 </LabelStyle>
+                <StyledSelect
+                  name="users"
+                  options={usernames}
+                  classNamePrefix={"Select"}
+                  id="users"
+                  isMulti
+                  placeholder={t`team.usersPlaceholder`}
+                  onChange={(values: any) => {
+                    setIdsAll(values);
+                  }}
+                />
 
-                <ul>
-                  {users.length > 0 &&
-                    users.map(({ _id, lastname, firstname }, index) => (
-                      <li key={_id}>
-                        <input
-                          type="checkbox"
-                          value={_id}
-                          onChange={selectUser}
-                          checked={ids.includes(_id) ? true : false}
-                        />
-                        <Label htmlFor={`user-team-checkbox-${index}`}>
-                          {" "}
-                          {firstname} {lastname}
-                        </Label>
-                      </li>
-                    ))}
-                </ul>
                 <ButtonForm type="submit" disabled={!isValid}>
                   {t`team.button.addTeam`}
                 </ButtonForm>

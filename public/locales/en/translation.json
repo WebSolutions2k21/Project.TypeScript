@@ -195,6 +195,7 @@
     "programmingLanguage": "Programming language",
     "level": "level",
     "users": "Users",
+    "usersPlaceholder": "Choose users",
     "language": "Programming language",
     "languageName": "Choose programming language and level",
     "languagePlaceholder": "Choose programming language",
