@@ -1,23 +1,23 @@
 {
   "navbar": {
     "home": "Start",
-    "aboutus": "O Nas",
+    "aboutus": "O\u00a0Nas",
     "contact": "Kontakt",
     "login": "Logowanie",
     "signin": "Rejestracja",
     "logout": "Wyloguj",
     "myprofile": "Profil",
-    "mentorprofile": "Profil Mentora",
+    "mentorprofile": "Profil\u00a0Mentora",
     "myproject": "Projekty",
     "myopinions": "Opinie",
     "notifications": "Powiadomienia",
     "profile": "Profil",
     "project": "Projekty",
     "opinions": "Opinie",
-    "addproject": "Dodaj projekt",
-    "teamproject": "Grupowe projekty",
-    "myteam": "Moje zespoły",
-    "addteam": "Dodaj zespół"
+    "myteam": "Moje\u00a0zespoły",
+    "addteam": "Dodaj\u00a0zespół",
+    "addproject": "Dodaj\u00a0projekt",
+    "teamproject": "Grupowe\u00a0projekty"
   },
   "homepage": {
     "h1": "Zostań Uczniem lub Mentorem!",
