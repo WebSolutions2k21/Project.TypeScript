@@ -15,6 +15,7 @@ import {
   ButtonChangeLang,
   ButtonChangeLangDivWrapper,
   ButtonNav,
+  NavbarLogOutLink,
 } from "styles/Navbar.style";
 import { Navlink, Navline, UserAvatar } from "styles/Icon.style";
 import { isMentorLogged, isUserLogged, logout } from "services/auth.service";
@@ -88,14 +89,14 @@ export const Navbar = ({ namePage }: NPage) => {
               </NavbarLink>
             )}
             {isAuth && !isAuthMentor && (
-              <NavbarLink onClick={logoutHandler} to={paths.home}>
+              <NavbarLogOutLink onClick={logoutHandler} to={paths.home}>
                 {t("navbar.logout")}
-              </NavbarLink>
+              </NavbarLogOutLink>
             )}
             {isAuth && isAuthMentor && (
-              <NavbarLink onClick={logoutHandler} to={paths.home}>
+              <NavbarLogOutLink onClick={logoutHandler} to={paths.home}>
                 {t("navbar.logout")}
-              </NavbarLink>
+              </NavbarLogOutLink>
             )}
             <OpenLinksButton>
               {!isAuth && (
