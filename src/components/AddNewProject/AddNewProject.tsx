@@ -1,47 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
-// import { toast } from "react-toastify";
-// import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-// import { createProject, getMentors } from "services/project.service";
-import { getMentors } from "services/project.service";
+import { createProject, getMentors } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
 import { options } from "./languages";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";
-// import { paths } from "config/paths";
+import { paths } from "config/paths";
 
 const user = localStorage.getItem("user") as string;
 
 export const AddNewProject = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
-  // TODO: wybor w react-select
-  // const [selectedValue, setSelectedValue] = useState("true");
-  // const selectChange = (obj: any) => {
-  //   setSelectedValue(obj.value);
-  // };
-  // TODO
+  const [lngs, setLngs] = useState([]);
+  const onChangeInputArray = (value: any) => {
+    setLngs(value.map((e: any) => e.value));
+    return lngs;
+  };
 
-  const [valueState,setValueState] = useState("")
-  const handler = (event:any) => {
-    const value = event.value
-    setValueState(value)
-}
-
-const onChangeInput = (value:any) => {
-  console.log(value.value)
-}
-
-const onChangeInputArray = (value:any) => {
-  console.log(value)
-}
-
-  const [allMentors, setAllMentors] = useState([]);
+  const [allMentors, setAllMentors] = useState<object[]>([]);
+  const [mntr, setMntr] = useState<string>("");
 
   useEffect(() => {
     getMentors()
@@ -54,6 +39,10 @@ const onChangeInputArray = (value:any) => {
   }, []);
 
   const mentrs = allMentors.map((e: any) => e);
+
+  const onChangeInput = (value: any) => {
+    setMntr(value.value);
+  };
 
   const initialValues: IAddNewProject = {
     name: "",
@@ -69,19 +58,19 @@ const onChangeInputArray = (value:any) => {
       initialValues={initialValues}
       validationSchema={AddNewProjectSchema()}
       onSubmit={(formValue: IAddNewProject) => {
-        // let { name, userId = user, mentorId, language, content, description } = formValue;
-        console.log(formValue);
-        // TODO:
-        //  createProject(name, userId, mentorId, language, content, description).then(
-        //   () => {
-        //     setTimeout(() => {
-        //       navigate(paths.myProjects, { replace: true });
-        //     }, 3000);
-        //     toast.success(t`addNewProject.validation.success`);
-        //   },
-        //   ({ response: { status } }) =>
-        //     toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`),
-        // );
+        formValue.mentorId = mntr;
+        formValue.language = lngs;
+        let { name, userId, mentorId, language = lngs, content, description } = formValue;
+        createProject(name, userId, mentorId, language, content, description).then(
+          () => {
+            setTimeout(() => {
+              navigate(paths.myProjects, { replace: true });
+            }, 3000);
+            toast.success(t`addNewProject.validation.success`);
+          },
+          ({ response: { status } }) =>
+            toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`),
+        );
       }}
     >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
@@ -116,8 +105,6 @@ const onChangeInputArray = (value:any) => {
                 placeholder={t`addNewProject.mentorPlaceholder`}
                 id="mentorId"
                 onChange={onChangeInput}
-                value={values.mentorId}
-                
               />
 
               <LabelStyle htmlFor="language">
@@ -131,7 +118,6 @@ const onChangeInputArray = (value:any) => {
                 classNamePrefix={"Select"}
                 placeholder={t`addNewProject.languagePlaceholder`}
                 id="language"
-                // onChange={selectChange}
                 onChange={onChangeInputArray}
               />
 

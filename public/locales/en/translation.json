@@ -169,7 +169,7 @@
       "content": "Your content name is too short",
       "contentReq": "Please enter the content",
       "status": "Please choose project's status",
-      "success": "Success",
+      "success": "Your project has been successfully added",
       "validation": "Something is wrong. Try again",
       "error": "Error"
     }

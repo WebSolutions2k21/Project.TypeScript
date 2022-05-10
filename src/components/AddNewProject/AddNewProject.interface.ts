@@ -4,5 +4,5 @@ export default interface IAddNewProject {
   mentorId: string;
   language: string[];
   content: string;
-  description?: string;
+  description: string;
 }
