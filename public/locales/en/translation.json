@@ -198,10 +198,14 @@
   "project": {
     "individual": "Individual Projects",
     "TeamProjects": "Team Projects",
+    "description": "Description:",
+    "status": "Status:",
+    "content": "Content:",
     "button": {
       "view": "View",
       "addNew": "Add New Project",
-      "viewTeam": "View Team Projects"
+      "viewTeam": "View Team Projects",
+      "save": "Save"
     }
   },
   "setNewPassword": {

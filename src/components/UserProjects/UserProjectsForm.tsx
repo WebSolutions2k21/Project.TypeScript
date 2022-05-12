@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
 
 import { ButtonForm, ModalContent, Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
-import { Modal } from "components/Modal";
+import { Modal, InputDoubleClick } from "components";
 import { useTranslation } from "react-i18next";
 
 export const UserProjectsForm = () => {
@@ -56,9 +56,15 @@ export const UserProjectsForm = () => {
           userAllProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.name}</Name>
-              <Modal title={project.name} buttonText={t`project.button.view`}>
-                <ModalContent>{project.content}</ModalContent>
-                <ModalContent>{project.status ? "open" : "close"}</ModalContent>
+              <Modal title={project.name} buttonText={t`project.button.view`} childrenButton={t`project.button.save`}>
+                <ModalContent>
+                  {t`project.content`}
+                  {project.content}
+                </ModalContent>
+                <ModalContent>
+                  {t`project.status`}
+                  {project.status ? "open" : "close"}
+                </ModalContent>
               </Modal>
             </ProjectCard>
           ))}
@@ -75,15 +81,26 @@ export const UserProjectsForm = () => {
           userTeamProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.teamName}</Name>
-              <Modal title={project.teamName} buttonText={t`project.button.view`} childrenButton={"start"}>
-                <ModalContent>{project.description}</ModalContent>
-                <ModalContent>{project.status ? "open" : "close"}</ModalContent>
+              <Modal
+                title={project.teamName}
+                buttonText={t`project.button.view`}
+                childrenButton={t`project.button.save`}
+              >
+                <ModalContent>
+                  {t`project.description`}
+                  {project.description}
+                </ModalContent>
+                <ModalContent>
+                  {t`project.status`}
+                  {project.status ? "open" : "close"}
+                </ModalContent>
               </Modal>
             </ProjectCard>
           ))}
         <ButtonForm type="submit" onClick={navigateToAllTeamProjects}>
           {t`project.button.viewTeam`}
         </ButtonForm>
+        <InputDoubleClick />
       </ProjectForm>
     </>
   );

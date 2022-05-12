@@ -10,14 +10,14 @@ import {
   ModalOverlay,
   ActiveModal,
   ModalButton,
-  ChildrenButton,
+  ChildrenButtons,
 } from "./Modal.style";
 
 interface IModal {
   children: any;
   title: string;
   buttonText: string;
-  childrenButton?: string;
+  childrenButton: string;
 }
 
 export const Modal = ({ children, title, buttonText, childrenButton }: IModal) => {
@@ -38,13 +38,13 @@ export const Modal = ({ children, title, buttonText, childrenButton }: IModal) =
         <ModalStyle>
           <ModalOverlay onClick={toggleModal} />
           <ModalBox>
-            <CloseBtn onClick={toggleModal}>X</CloseBtn>
+            <CloseBtn onClick={toggleModal} />
             <ModalTitle>
               <IconInModal />
               {title}
             </ModalTitle>
             <ModalContent>{children}</ModalContent>
-            <ChildrenButton onClick={toggleModal}>{childrenButton}</ChildrenButton>
+            <ChildrenButtons onClick={toggleModal}>{childrenButton}</ChildrenButtons>
           </ModalBox>
         </ModalStyle>
       )}
