@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { createProject, getMentors } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
-import { options } from "./languages";
+import { options } from "../../utils/languages";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";
@@ -18,13 +18,7 @@ const user = localStorage.getItem("user") as string;
 export const AddNewProject = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-
   const [lngs, setLngs] = useState([]);
-  const onChangeInputArray = (value: any) => {
-    setLngs(value.map((e: any) => e.value));
-    return lngs;
-  };
-
   const [allMentors, setAllMentors] = useState<object[]>([]);
   const [mntr, setMntr] = useState<string>("");
 
@@ -39,6 +33,11 @@ export const AddNewProject = () => {
   }, []);
 
   const mentrs = allMentors.map((e: any) => e);
+
+  const onChangeInputArray = (value: any) => {
+    setLngs(value.map((e: any) => e.value));
+    return lngs;
+  };
 
   const onChangeInput = (value: any) => {
     setMntr(value.value);
@@ -106,6 +105,7 @@ export const AddNewProject = () => {
                 id="mentorId"
                 onChange={onChangeInput}
               />
+              <ErrorMsg>{errors.mentorId && touched.mentorId && errors.mentorId}</ErrorMsg>
 
               <LabelStyle htmlFor="language">
                 <IconPassword />
@@ -120,6 +120,7 @@ export const AddNewProject = () => {
                 id="language"
                 onChange={onChangeInputArray}
               />
+              <ErrorMsg>{errors.language && touched.language && errors.language}</ErrorMsg>
 
               <LabelStyle htmlFor="content">
                 <IconProject />
