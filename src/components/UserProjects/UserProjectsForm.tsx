@@ -75,7 +75,7 @@ export const UserProjectsForm = () => {
           userTeamProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.teamName}</Name>
-              <Modal title={project.teamName} buttonText={t`project.button.view`}>
+              <Modal title={project.teamName} buttonText={t`project.button.view`} childrenButton={"start"}>
                 <ModalContent>{project.description}</ModalContent>
                 <ModalContent>{project.status ? "open" : "close"}</ModalContent>
               </Modal>

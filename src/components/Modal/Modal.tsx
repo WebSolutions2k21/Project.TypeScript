@@ -10,15 +10,17 @@ import {
   ModalOverlay,
   ActiveModal,
   ModalButton,
+  ChildrenButton,
 } from "./Modal.style";
 
 interface IModal {
   children: any;
   title: string;
   buttonText: string;
+  childrenButton?: string;
 }
 
-export const Modal = ({ children, title, buttonText }: IModal) => {
+export const Modal = ({ children, title, buttonText, childrenButton }: IModal) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => setModalOpen(!isModalOpen);
@@ -42,6 +44,7 @@ export const Modal = ({ children, title, buttonText }: IModal) => {
               {title}
             </ModalTitle>
             <ModalContent>{children}</ModalContent>
+            <ChildrenButton onClick={toggleModal}>{childrenButton}</ChildrenButton>
           </ModalBox>
         </ModalStyle>
       )}
