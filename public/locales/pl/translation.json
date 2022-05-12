@@ -147,6 +147,7 @@
     },
     "team": {
       "success": "Brawo dołączyłeś do zespołu!",
+      "successAdd": "Brawo utworzyłeś zespół",
       "error": "Error spróbuj jeszcze raz",
       "notFound": "Nie znaleziono usera bądź projektu",
       "locked": "Jesteś już zapisany do teamu",
@@ -206,6 +207,8 @@
         "requied": "Nazwa zespołu jest wymagana"
       }
     },
+    "closeInformation": "Wybierz ilość miejsc",
+    "closeInformationEnd": "Ilość użytkowników równa się ilości miejsc",
     "button": {
       "view": "Pokaż",
       "joinTeam": "Dołącz",

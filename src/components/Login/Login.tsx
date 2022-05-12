@@ -52,10 +52,7 @@ export const Login = () => {
         initialValues={initialValues}
         onSubmit={(values) => {
           login(values).then(
-            ({ mentor }) => {
-              setTimeout(() => {
-                mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
-              }, 1500);
+            () => {
               toast.success(t`toast.login.success`);
             },
             (error) => {

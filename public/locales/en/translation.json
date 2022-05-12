@@ -149,6 +149,7 @@
     },
     "team": {
       "success": "Successful join to team!",
+      "successAdd": "Successful add team!",
       "error": "Error - no join team ",
       "notFound": "No user or team found.",
       "locked": "You are already enrolled",
@@ -208,6 +209,8 @@
         "requied": "Team name is required"
       }
     },
+    "closeInformation": "First select number of places",
+    "closeInformationEnd": "Number of users equals the number of places",
     "modalText": "Do you want remove team?",
     "button": {
       "view": "View",

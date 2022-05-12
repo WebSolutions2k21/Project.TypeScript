@@ -8,20 +8,17 @@ import { toast } from "react-toastify";
 import { createTeam } from "services/team.service";
 
 import ITeamProject from "../ITeamProject.interface";
-import { IconPassword, Label, StyledSelect, Toast } from "styles";
+import { IconPassword, Label, StyledSelect, Toast, IconText, Input, IconProject } from "styles";
 import { TeamForm } from "../AllTeamProjectTeam/AllTeamProjectTeam.style";
 import { ButtonForm, ButtonInModal, LabelStyle, StyledInlineErrorMessageForm, StyleFromModal } from "./AddTeam.style";
-import { IconText, Input, IconProject } from "styles";
 
 import { options } from "config/languages";
 import { getOnlyUsers } from "services/user.service";
 import IUser from "../IUser.interface";
-import { AddNewTeamValidationSchema } from "../AddTeamValidation";
+import { AddNewTeamValidationSchema } from "./AddTeamValidation";
 import { paths } from "config/paths";
 import { level } from "config/level";
 import { IProgrammingLanguage } from "../IProgrammingLanguege";
-
-import { ActiveModal } from "components/Modal/Modal.style";
 
 export const AddNewTeam = () => {
   const [users, setUsers] = useState<Array<IUser>>([]);
@@ -32,7 +29,7 @@ export const AddNewTeam = () => {
     .map((e, i) => i + 1);
   let navigate = useNavigate();
 
-  const [selectedPlaces, setSelectedPlaces] = useState(places[0]);
+  const [selectedPlaces, setSelectedPlaces] = useState(0);
   const [state, setState] = useState<IProgrammingLanguage>({ nameLang: "", level: "" });
 
   const [currentNameLang, setCurrentNameLang] = useState("");
@@ -42,23 +39,18 @@ export const AddNewTeam = () => {
   const { t } = useTranslation();
 
   const addLevelAndLang = () => {
-    // console.log("State", state);
-    // console.log("All language w add", allLanguage);
     setState(() => ({
       nameLang: currentNameLang,
       level: currentLevel,
     }));
-    // console.log("czy sie dodało");
 
     setAllLanguage((prevState) => [...prevState, state]);
-    document.body.classList.remove(ActiveModal);
   };
 
   useEffect(() => {
     getOnlyUsers()
       .then((response: any) => {
         setUsers(response.data);
-        // console.log("response data users only", response.data);
       })
       .catch((e: Error) => {
         toast.error(t`toast.team.error`);
@@ -69,7 +61,6 @@ export const AddNewTeam = () => {
     label: username,
     value: _id,
   }));
-  // console.log("username", usernames);
 
   const initialValues: ITeamProject = {
     teamName: "",
@@ -83,41 +74,25 @@ export const AddNewTeam = () => {
 
   useEffect(() => {
     idsAll.map((val: any) => {
-      console.log("id length", ids.length + 1, selectedPlaces);
-      if (ids.length + 1 <= selectedPlaces) {
-        const newIds = [...ids];
-
+      const newIds = [...ids];
+      if (ids.length <= selectedPlaces) {
         newIds.push(val.value);
-
         setIds(newIds);
-      } else {
-        console.log("nie moesz dodać");
       }
+      //TODO display error
+      return ids;
     });
-  }, [idsAll]);
+    isEmptyPlace();
+    checkCurrentPlaces();
+  }, [idsAll, selectedPlaces]);
 
-  // const selectUser = (event: React.ChangeEvent<HTMLInputElement>) => {
-  // const selectedId = event.target.value;
-
-  // if (ids.includes(selectedId)) {
-  //   const newIds = ids.filter((id) => id !== selectedId);
-  //   setIds(newIds);
-  // } else {
-  //   const newIds = [...ids];
-  //   newIds.push(selectedId);
-  //   setIds(newIds);
-  // }
-
-  // };
-
-  const selectChange = (e: any) => {
-    setSelectedPlaces(e.value);
+  const isEmptyPlace = () => {
+    return !(ids.length === selectedPlaces);
   };
 
-  //   console.log("value w set", idsAll)
-  // idsAll.map((res) => {
-  // console.log('ddd', res)
-  //  })
+  const checkCurrentPlaces = () => {
+    return ids.length >= selectedPlaces;
+  };
 
   return (
     <>
@@ -129,28 +104,17 @@ export const AddNewTeam = () => {
           values.mentorId = localStorage.getItem("id") as string;
           values.places = selectedPlaces;
           values.programmingLanguage = allLanguage;
-          console.log("values", values);
+          values.status = isEmptyPlace();
 
           createTeam(values).then(
-            (res) => {
-              console.log("res ", res);
-
+            () => {
               setTimeout(() => {
                 navigate(paths.myTeam);
               }, 1500);
-              toast.success(t`toast.login.success`);
+              toast.success(t`toast.team.successAdd`);
             },
-            (error) => {
-              // switch (error.response.status) {
-              //   case 400:
-              //     return toast.error(t`toast.login.validation`);
-              //   case 404:
-              //     return toast.error(t`toast.login.notFound`);
-              //   case 423:
-              //     return toast.error(t`toast.login.locked`);
-              //   default:
-              //     return toast.error(t`toast.login.error`);
-              // }
+            () => {
+              return toast.error(t`toast.team.error`);
             },
           );
         }}
@@ -175,12 +139,10 @@ export const AddNewTeam = () => {
                 <StyledInlineErrorMessageForm>
                   {errors.teamName && touched.teamName && errors.teamName}
                 </StyledInlineErrorMessageForm>
-
                 <LabelStyle htmlFor="teamName">
                   <IconProject />
                   {t`team.description`}
                 </LabelStyle>
-
                 <Input
                   type="text"
                   name="description"
@@ -193,7 +155,6 @@ export const AddNewTeam = () => {
                 <StyledInlineErrorMessageForm>
                   {errors.description && touched.description && errors.description}
                 </StyledInlineErrorMessageForm>
-
                 <LabelStyle htmlFor="places">
                   <IconText />
                   {t`team.places.name`}
@@ -207,6 +168,37 @@ export const AddNewTeam = () => {
                   onChange={(e: any) => {
                     setSelectedPlaces(e.value);
                   }}
+                />
+                {selectedPlaces === 0 ? (
+                  <>
+                    <LabelStyle htmlFor="users">{t`team.closeInformation`}</LabelStyle>
+                  </>
+                ) : (
+                  ""
+                )}
+                {ids.length >= selectedPlaces && selectedPlaces > 0 ? (
+                  <>
+                    <LabelStyle htmlFor="users">{t`team.closeInformationEnd`}</LabelStyle>
+                  </>
+                ) : (
+                  ""
+                )}
+                <LabelStyle htmlFor="users">
+                  <IconText />
+                  {t`team.users`}
+                </LabelStyle>
+
+                <StyledSelect
+                  name="users"
+                  options={usernames}
+                  classNamePrefix={"Select"}
+                  id="users"
+                  isMulti
+                  placeholder={t`team.usersPlaceholder`}
+                  onChange={(values: any) => {
+                    setIdsAll(values);
+                  }}
+                  isDisabled={checkCurrentPlaces() ? true : false}
                 />
 
                 <LabelStyle htmlFor="language">
@@ -223,6 +215,7 @@ export const AddNewTeam = () => {
                       </li>
                     ))}
                 </ul>
+                {/* TODO fix when modal with button will be implement */}
                 <Modal
                   children={
                     <>
@@ -250,23 +243,6 @@ export const AddNewTeam = () => {
                   title={t`team.languageName`}
                   buttonText={t`team.button.add`}
                 ></Modal>
-
-                <LabelStyle htmlFor="users">
-                  <IconText />
-                  {t`team.users`}
-                </LabelStyle>
-                <StyledSelect
-                  name="users"
-                  options={usernames}
-                  classNamePrefix={"Select"}
-                  id="users"
-                  isMulti
-                  placeholder={t`team.usersPlaceholder`}
-                  onChange={(values: any) => {
-                    setIdsAll(values);
-                  }}
-                />
-
                 <ButtonForm type="submit" disabled={!isValid}>
                   {t`team.button.addTeam`}
                 </ButtonForm>

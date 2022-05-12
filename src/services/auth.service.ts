@@ -7,6 +7,7 @@ export const login = (data: ILogin) => {
       localStorage.setItem("user", res.data.token);
       localStorage.setItem("mentor", res.data.mentor);
       localStorage.setItem("id", res.data.id);
+      window.location.reload();
     }
     return res.data;
   });
