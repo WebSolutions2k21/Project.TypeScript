@@ -89,13 +89,11 @@ export const AddNewTeam = () => {
   }, [idsAll, selectedPlaces]);
 
   const isEmptyPlace = () => {
-    return !(ids.length === selectedPlaces);
+    return (ids.length !== selectedPlaces);
   };
 
-  const checkCurrentPlaces = () => {
-    return ids.length >= selectedPlaces;
-  };
-
+  const checkCurrentPlaces = () => ids.length >= selectedPlaces;
+ 
   return (
     <>
       <Formik

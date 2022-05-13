@@ -24,7 +24,6 @@ export const MyTeam = () => {
   useEffect(() => {
     getMyTeam()
       .then((response: any) => {
-        console.log("res", response);
         setMyTeam(response.data);
       })
       .catch((e: Error) => {
@@ -33,10 +32,8 @@ export const MyTeam = () => {
   }, [t]);
 
   const deleteMentorTeam = (id: string) => {
-    console.log("id do usunięcia", id);
     deleteTeam(id)
       .then((response: any) => {
-        console.log("res delete", response);
         setTimeout(() => {
           window.location.reload();
         }, 1500);
