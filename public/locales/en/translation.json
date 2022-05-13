@@ -14,6 +14,8 @@
     "profile": "Profile",
     "project": "Project",
     "opinions": "Opinions",
+    "myteam": "My\u00a0Teams",
+    "addteam": "Add\u00a0Team",
     "addproject": "Add\u00a0Project",
     "teamproject": "Team\u00a0project"
   },
@@ -147,7 +149,11 @@
     },
     "team": {
       "success": "Successful join to team!",
-      "error": "Error - no join team "
+      "successAdd": "Successful add team!",
+      "error": "Error - no join team ",
+      "notFound": "No user or team found.",
+      "locked": "You are already enrolled",
+      "successDelete": "Successful delete team!"
     }
   },
   "addNewProject": {
@@ -182,13 +188,37 @@
   },
   "team": {
     "status": "Status",
-    "places": "Places",
+    "places": {
+      "name": "Places",
+      "placeholder": "Choose places"
+    },
     "description": "Description",
     "programmingLanguage": "Programming language",
     "level": "level",
+    "users": "Users",
+    "usersPlaceholder": "Choose users",
+    "language": "Programming language",
+    "languageName": "Choose programming language and level",
+    "languagePlaceholder": "Choose programming language",
+    "teamName": {
+      "name": "Team name",
+      "placeholder": "Enter team name",
+      "validation": {
+        "min": "Team name is too short",
+        "max": "Team name is too long ",
+        "requied": "Team name is required"
+      }
+    },
+    "closeInformation": "First select number of places",
+    "closeInformationEnd": "Number of users equals the number of places",
+    "modalText": "Do you want remove team?",
     "button": {
       "view": "View",
-      "joinTeam": "Join Team"
+      "joinTeam": "Join Team",
+      "addTeam": "Add new team",
+      "add": "+",
+      "delete": "Delete",
+      "edit": "Edit"
     }
   },
   "status": {

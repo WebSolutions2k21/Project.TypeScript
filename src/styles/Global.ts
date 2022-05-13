@@ -8,7 +8,6 @@ export const GlobalStyles = createGlobalStyle`
   margin: 0;
 }
 body {
-  
   background-image: repeating-linear-gradient(180deg,rgba(164, 205, 215, 0) 0%, #3C789E);
   font-family: 'Maven Pro', sans-serif;
   font-size: 1.15em;
@@ -17,6 +16,9 @@ body {
   flex-direction: row;
   justify-content: center;
   scroll-behavior: smooth;
+}
+li{
+  list-style: none;
 }
 `;
 
