@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { editUserProject, getUserProjects, getUserTeamProjects } from "services/userProjects.service";
 import { IconText } from "styles";
 import IUserProjects from "./IUserProjects.interface";
-import ITeamProject from "../AllTeamProject/ITeamProject.interface";
+import ITeamProject from "components/Team/ITeamProject.interface";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
 

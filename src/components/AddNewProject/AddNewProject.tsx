@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { getMentors } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
-import { options } from "./languages";
+import { options } from "config/languages";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";

@@ -33,7 +33,7 @@ export const Modal = ({ children, title, buttonText, childrenButton }: IModal) =
 
   return (
     <>
-      <ModalButton onClick={toggleModal}>{buttonText}</ModalButton>
+      <ModalButton onClick={toggleModal} type="button">{buttonText}</ModalButton>
       {isModalOpen && (
         <ModalStyle>
           <ModalOverlay onClick={toggleModal} />
