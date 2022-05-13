@@ -84,6 +84,8 @@ export const AddNewTeam = () => {
     });
     isEmptyPlace();
     checkCurrentPlaces();
+  // TODO only UI working on this
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idsAll, selectedPlaces]);
 
   const isEmptyPlace = () => {

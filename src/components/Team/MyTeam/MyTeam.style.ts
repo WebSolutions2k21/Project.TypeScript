@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StyledInlineErrorMessage, Label, Foot, Button} from "styles";
+import { StyledInlineErrorMessage, Button} from "styles";
 
 export const TeamForm = styled.div`
   display: flex;
@@ -43,7 +42,6 @@ export const StyledInlineErrorMessageForm = styled(StyledInlineErrorMessage)`
   margin: 10px auto 5px 70px;
 `;
 
-
 export const ButtonForm = styled(Button)`
   margin: 40px;
 `;
@@ -54,6 +52,7 @@ width: 50px;
 font-size: 14px;
 margin: 10px 0px 5px 0px;
 `;
+
 export const ButtonInModal = styled(Button)`
   height: 30px;
   width: 100px;

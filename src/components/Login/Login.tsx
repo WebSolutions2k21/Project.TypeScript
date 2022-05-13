@@ -3,7 +3,6 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
 import { login } from "services/auth.service";
 import { Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
@@ -24,7 +23,6 @@ import { Navbar } from "components";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
-  let navigate = useNavigate();
 
   const togglePassword = () => {
     setPasswordShown((prev) => !prev);
