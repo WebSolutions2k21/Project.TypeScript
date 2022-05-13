@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { editUserProject, getUserProjects, getUserTeamProjects } from "services/userProjects.service";
+import { getUserProjects, getUserTeamProjects } from "services/userProjects.service";
 import { IconText } from "styles";
 import IUserProjects from "./IUserProjects.interface";
 import ITeamProject from "components/Team/ITeamProject.interface";
@@ -15,9 +15,9 @@ import {
   ProjectForm,
   ProjectGroup,
 } from "./UserProjects.style";
-import { Modal, InputDoubleClick } from "components";
+import { Modal } from "components";
 import { useTranslation } from "react-i18next";
-import { Form, Formik } from "formik";
+// TODO import { Form, Formik } from "formik";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
@@ -54,19 +54,19 @@ export const UserProjectsForm = () => {
     navigate(paths.teamProjects);
   };
 
-  const initialValues: IUserProjects = {
-    projectId: "",
-    name: "",
-    content: "",
-    status: true,
-    language: [""],
-    description: "",
-  };
+  // TODO const initialValues: IUserProjects = {
+  //   projectId: "",
+  //   name: "",
+  //   content: "",
+  //   status: true,
+  //   language: [""],
+  //   description: "",
+  // };
 
   return (
     <>
       <ProjectForm>
-        {/* <Formik initialValues={initialValues} onSubmit={(projectId) => editUserProject(projectId)}>
+        {/* TODO <Formik initialValues={initialValues} onSubmit={(projectId) => editUserProject(projectId)}>
           {({ handleSubmit }) => {
             return (
               <Form onSubmit={handleSubmit}> */}
@@ -85,7 +85,7 @@ export const UserProjectsForm = () => {
               >
                 <ModalContent>
                   {t`project.content`}
-                  {/* <InputDoubleClick children={project.content} /> */}
+                  {/* TODO <InputDoubleClick children={project.content} /> */}
                 </ModalContent>
                 <ModalContent>
                   {t`project.status`}
@@ -97,7 +97,7 @@ export const UserProjectsForm = () => {
         <ButtonForm type="submit" onClick={navigateToAddProject}>
           {t`project.button.addNew`}
         </ButtonForm>
-        {/* </Form>
+        {/* TODO </Form>
             );
           }}
         </Formik> */}
@@ -131,7 +131,7 @@ export const UserProjectsForm = () => {
           {t`project.button.viewTeam`}
         </ButtonForm>
 
-        {/* <InputDoubleClick /> */}
+        {/*  TODO <InputDoubleClick /> */}
       </ProjectForm>
     </>
   );
