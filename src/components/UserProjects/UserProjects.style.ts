@@ -51,3 +51,11 @@ export const ModalContent = styled.div`
   margin-top: 30px;
   margin-bottom: 30px;
 `;
+
+export const ButtonInModal = styled(Button)`
+  height: 30px;
+  width: 50px;
+  margin: 10px auto;
+  display: flex;
+  font-size: 14px;
+`;

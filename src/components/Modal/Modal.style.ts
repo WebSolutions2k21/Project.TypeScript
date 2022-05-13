@@ -70,12 +70,8 @@ export const ModalButton = styled(Button)`
   margin: 10px 0px 5px 0px;
 `;
 
-export const ChildrenButtons = styled(Button)`
+export const ChildrenButtons = styled.div`
   position: absolute;
   bottom: 10px;
   right: 20px;
-  height: 30px;
-  width: 50px;
-  font-size: 14px;
-  margin: 10px 0px 5px 0px;
 `;

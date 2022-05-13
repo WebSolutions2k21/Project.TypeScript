@@ -17,7 +17,7 @@ interface IModal {
   children: any;
   title: string;
   buttonText: string;
-  childrenButton: string;
+  childrenButton: any;
 }
 
 export const Modal = ({ children, title, buttonText, childrenButton }: IModal) => {

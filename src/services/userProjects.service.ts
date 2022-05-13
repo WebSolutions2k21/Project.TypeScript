@@ -4,8 +4,7 @@ import { getCurrentUserToken } from "./auth.service";
 
 const token = getCurrentUserToken();
 
-export const getUserProjects =async () => {
-  
+export const getUserProjects = async () => {
   return await axios(`/project/user-projects`, {
     method: "get",
     headers: {
@@ -14,8 +13,7 @@ export const getUserProjects =async () => {
   });
 };
 
-export const getUserTeamProjects =async () => {
-  
+export const getUserTeamProjects = async () => {
   return await axios(`/team/user-team`, {
     method: "get",
     headers: {
@@ -24,3 +22,11 @@ export const getUserTeamProjects =async () => {
   });
 };
 
+export const editUserProject = async (projectId: string) => {
+  return await axios(`/project/${projectId}`, {
+    method: "put",
+    headers: {
+      "x-auth-token": token,
+    },
+  });
+};

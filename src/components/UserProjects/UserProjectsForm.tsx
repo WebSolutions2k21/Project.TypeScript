@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { getUserProjects, getUserTeamProjects } from "services/userProjects.service";
+import { editUserProject, getUserProjects, getUserTeamProjects } from "services/userProjects.service";
 import { IconText } from "styles";
 import IUserProjects from "./IUserProjects.interface";
 import ITeamProject from "../AllTeamProject/ITeamProject.interface";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
 
-import { ButtonForm, ModalContent, Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
+import {
+  ButtonForm,
+  ButtonInModal,
+  ModalContent,
+  Name,
+  ProjectCard,
+  ProjectForm,
+  ProjectGroup,
+} from "./UserProjects.style";
 import { Modal, InputDoubleClick } from "components";
 import { useTranslation } from "react-i18next";
+import { Form, Formik } from "formik";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
@@ -45,9 +54,22 @@ export const UserProjectsForm = () => {
     navigate(paths.teamProjects);
   };
 
+  const initialValues: IUserProjects = {
+    projectId: "",
+    name: "",
+    content: "",
+    status: true,
+    language: [""],
+    description: "",
+  };
+
   return (
     <>
       <ProjectForm>
+        {/* <Formik initialValues={initialValues} onSubmit={(projectId) => editUserProject(projectId)}>
+          {({ handleSubmit }) => {
+            return (
+              <Form onSubmit={handleSubmit}> */}
         <ProjectGroup>
           <IconText />
           <div>{t`project.individual`}</div>
@@ -56,10 +78,14 @@ export const UserProjectsForm = () => {
           userAllProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.name}</Name>
-              <Modal title={project.name} buttonText={t`project.button.view`} childrenButton={t`project.button.save`}>
+              <Modal
+                title={project.name}
+                buttonText={t`project.button.view`}
+                childrenButton={<ButtonInModal> {t`project.button.save`}</ButtonInModal>}
+              >
                 <ModalContent>
                   {t`project.content`}
-                  {project.content}
+                  {/* <InputDoubleClick children={project.content} /> */}
                 </ModalContent>
                 <ModalContent>
                   {t`project.status`}
@@ -71,6 +97,10 @@ export const UserProjectsForm = () => {
         <ButtonForm type="submit" onClick={navigateToAddProject}>
           {t`project.button.addNew`}
         </ButtonForm>
+        {/* </Form>
+            );
+          }}
+        </Formik> */}
       </ProjectForm>
       <ProjectForm>
         <ProjectGroup>
@@ -84,7 +114,7 @@ export const UserProjectsForm = () => {
               <Modal
                 title={project.teamName}
                 buttonText={t`project.button.view`}
-                childrenButton={t`project.button.save`}
+                childrenButton={<ButtonInModal> {t`project.button.save`}</ButtonInModal>}
               >
                 <ModalContent>
                   {t`project.description`}
@@ -100,7 +130,8 @@ export const UserProjectsForm = () => {
         <ButtonForm type="submit" onClick={navigateToAllTeamProjects}>
           {t`project.button.viewTeam`}
         </ButtonForm>
-        <InputDoubleClick />
+
+        {/* <InputDoubleClick /> */}
       </ProjectForm>
     </>
   );
