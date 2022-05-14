@@ -7,6 +7,7 @@ import axios from "axios/instanceAxios";
 
 import { ProfileSchema } from "./validate";
 import ProfileInterface from "./Profile.interface";
+// import ProgrammingLanguageInterface from "./ProgrammingLg.interface";
 import { ProfileForm, View, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton } from "./ProfileForm.style";
 import { IconPassword, IconText, Line, IconEye, IconEyeHide, Toast, Input } from "../../styles";
 import { LogoPageSmall } from "../../styles/LogoPage.style";
@@ -49,7 +50,7 @@ export const Profile = () => {
     email: email,
     firstname: "",
     lastname: "",
-    programming_languages: [],
+    // programming_languages: [],
   };
 
   const updateUserData = async (
@@ -57,7 +58,7 @@ export const Profile = () => {
     lastname: string,
     username: string,
     email: string,
-    programming_languages: Array<T>
+    // programming_languages:  Array<ProgrammingLanguageInterface>,
   ) => {
     return await axios
       .patch(`/users/${id}`, {
@@ -65,7 +66,7 @@ export const Profile = () => {
         lastname,
         username,
         email,
-        programming_languages
+        // programming_languages
       })
       .then((res) => {
         return res.data;
@@ -79,7 +80,7 @@ export const Profile = () => {
       validationSchema={ProfileSchema()}
       onSubmit={(formValue: ProfileInterface) => {
         const { firstname, lastname } = formValue;
-        updateUserData(firstname, lastname, username, email, programming_languages).then(
+        updateUserData(firstname, lastname, username, email).then(
           () => {
               navigate(paths.myProfile);
           }
@@ -173,10 +174,10 @@ export const Profile = () => {
                   name="programming_language"
                   autoCapitalize="off"
                   autoCorrect="off"
-                  placeholder={programming_language}
+                  // placeholder={programming_language}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.programming_languages}
+                  // value={values.programming_languages}
                   id="programming_language"
                 />
                

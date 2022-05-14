@@ -8,8 +8,7 @@ import { paths } from "config/paths";
 import { getAllTeam, joinTeam } from "services/team.service";
 import { Toast } from "styles";
 import { ButtonInModal, TeamForm, TeamName, View, Name } from "./AllTeamProjectTeam.style";
-import ITeamProject from "./ITeamProject.interface";
-import { Navbar } from "components";
+import ITeamProject from "../ITeamProject.interface";
 
 export const AllTeamProjectTeamForm = () => {
   const [allTeamProject, setAllTeamProject] = useState<Array<ITeamProject>>([]);
@@ -30,19 +29,25 @@ export const AllTeamProjectTeamForm = () => {
   const joinToTeam = (id: string) => {
     joinTeam(id)
       .then(() => {
-        setTimeout(() => {
-          navigate(paths.myProjects);
-        }, 1000);
         toast.success(t`toast.team.success`);
       })
-      .catch((e: Error) => {
-        toast.error(t`toast.team.error`);
+      .catch((error) => {
+        switch (error.response.status) {
+          case 400:
+            return toast.error(t`toast.team.notFound`);
+          case 423:
+            return toast.error(t`toast.team.locked`);
+          default:
+            return toast.error(t`toast.team.error`);
+        }
       });
+    setTimeout(() => {
+      navigate(paths.myProjects);
+    }, 1000);
   };
 
   return (
     <>
-      <Navbar />
       <TeamForm>
         {allTeamProject &&
           allTeamProject.map((team, index) => (
@@ -57,28 +62,31 @@ export const AllTeamProjectTeamForm = () => {
                         {t`team.status`} {team.status ? "open" : "close"}
                       </p>
                       <p>
-                        {t`team.places`} {team.places}
+                        {t`team.places.name`} {team.places}
                       </p>
                       <p>
                         {t`team.description`} {team.description}
                       </p>
                       <ul>
-                        {" "}
                         {team.programmingLanguage &&
-                          team.programmingLanguage.map((lang, index) => (
+                          team.programmingLanguage.map(({ nameLang, level }, index) => (
                             <>
-                              <p key={index}>
-                                {" "}
-                                {t`team.programmingLanguage`}: {lang.nameLang}{" "}
-                              </p>
-                              <p>
-                                {t`team.level`} {lang.level}{" "}
-                              </p>
+                              <li key={index}>
+                                <p>
+                                  {" "}
+                                  {t`team.programmingLanguage`}: {nameLang}{" "}
+                                </p>
+                                <p>
+                                  {t`team.level`} {level}{" "}
+                                </p>
+                              </li>
                             </>
                           ))}
                       </ul>
-                      <ButtonInModal onClick={() => joinToTeam(team._id)}>{t`team.button.joinTeam`} </ButtonInModal>
                     </>
+                  }
+                  childrenButton={
+                    <ButtonInModal onClick={() => joinToTeam(team._id!)}>{t`team.button.joinTeam`} </ButtonInModal>
                   }
                   title={team.teamName}
                   buttonText={t`team.button.view`}

@@ -2,13 +2,22 @@ import React, { useEffect, useState } from "react";
 import { getUserProjects, getUserTeamProjects } from "services/userProjects.service";
 import { IconText } from "styles";
 import IUserProjects from "./IUserProjects.interface";
-import ITeamProject from "../AllTeamProject/ITeamProject.interface";
+import ITeamProject from "components/Team/ITeamProject.interface";
 import { useNavigate } from "react-router-dom";
 import { paths } from "config/paths";
 
-import { ButtonForm, ModalContent, Name, ProjectCard, ProjectForm, ProjectGroup } from "./UserProjects.style";
-import { Modal } from "components/Modal";
+import {
+  ButtonForm,
+  ButtonInModal,
+  ModalContent,
+  Name,
+  ProjectCard,
+  ProjectForm,
+  ProjectGroup,
+} from "./UserProjects.style";
+import { Modal } from "components";
 import { useTranslation } from "react-i18next";
+// TODO import { Form, Formik } from "formik";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
@@ -45,9 +54,22 @@ export const UserProjectsForm = () => {
     navigate(paths.teamProjects);
   };
 
+  // TODO const initialValues: IUserProjects = {
+  //   projectId: "",
+  //   name: "",
+  //   content: "",
+  //   status: true,
+  //   language: [""],
+  //   description: "",
+  // };
+
   return (
     <>
       <ProjectForm>
+        {/* TODO <Formik initialValues={initialValues} onSubmit={(projectId) => editUserProject(projectId)}>
+          {({ handleSubmit }) => {
+            return (
+              <Form onSubmit={handleSubmit}> */}
         <ProjectGroup>
           <IconText />
           <div>{t`project.individual`}</div>
@@ -56,15 +78,29 @@ export const UserProjectsForm = () => {
           userAllProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.name}</Name>
-              <Modal title={project.name} buttonText={t`project.button.view`}>
-                <ModalContent>{project.content}</ModalContent>
-                <ModalContent>{project.status ? "open" : "close"}</ModalContent>
+              <Modal
+                title={project.name}
+                buttonText={t`project.button.view`}
+                childrenButton={<ButtonInModal> {t`project.button.save`}</ButtonInModal>}
+              >
+                <ModalContent>
+                  {t`project.content`}
+                  {/* TODO <InputDoubleClick children={project.content} /> */}
+                </ModalContent>
+                <ModalContent>
+                  {t`project.status`}
+                  {project.status ? "open" : "close"}
+                </ModalContent>
               </Modal>
             </ProjectCard>
           ))}
         <ButtonForm type="submit" onClick={navigateToAddProject}>
           {t`project.button.addNew`}
         </ButtonForm>
+        {/* TODO </Form>
+            );
+          }}
+        </Formik> */}
       </ProjectForm>
       <ProjectForm>
         <ProjectGroup>
@@ -75,15 +111,27 @@ export const UserProjectsForm = () => {
           userTeamProjects.map((project, index) => (
             <ProjectCard key={index}>
               <Name>{project.teamName}</Name>
-              <Modal title={project.teamName} buttonText={t`project.button.view`}>
-                <ModalContent>{project.description}</ModalContent>
-                <ModalContent>{project.status ? "open" : "close"}</ModalContent>
+              <Modal
+                title={project.teamName}
+                buttonText={t`project.button.view`}
+                childrenButton={<ButtonInModal> {t`project.button.save`}</ButtonInModal>}
+              >
+                <ModalContent>
+                  {t`project.description`}
+                  {project.description}
+                </ModalContent>
+                <ModalContent>
+                  {t`project.status`}
+                  {project.status ? "open" : "close"}
+                </ModalContent>
               </Modal>
             </ProjectCard>
           ))}
         <ButtonForm type="submit" onClick={navigateToAllTeamProjects}>
           {t`project.button.viewTeam`}
         </ButtonForm>
+
+        {/*  TODO <InputDoubleClick /> */}
       </ProjectForm>
     </>
   );

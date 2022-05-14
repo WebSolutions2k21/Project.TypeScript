@@ -9,6 +9,10 @@ export const getUser = async (id: any) => {
   return await axios.get(`/users/${id}`);
 };
 
+export const getOnlyUsers = async () => {
+  return await axios.get(`/users/only-users`);
+};
+
 const CHANGEPASSWORD_URL = "/users/changepassword";
 
 export const changePassword = (oldPassword: string, newPassword: string, confirmNewPassword: string) => {

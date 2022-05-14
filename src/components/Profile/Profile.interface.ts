@@ -1,4 +1,4 @@
-import  ProgrammingLanguageInterface from "./ProgrammingLg.interface"
+// import  ProgrammingLanguageInterface from "./ProgrammingLg.interface"
 
 export default interface ProfileInterface {
   username: string,
@@ -6,5 +6,5 @@ export default interface ProfileInterface {
   firstname: string;
   lastname: string;
   // password: string;
-  programming_languages: Array<ProgrammingLanguageInterface>,
+  // programming_languages: Array<ProgrammingLanguageInterface>,
 }

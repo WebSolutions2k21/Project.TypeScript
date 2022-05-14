@@ -17,6 +17,7 @@ import Teacher from "assets/Teacher.svg";
 import page404 from "assets/page404.svg";
 import teacherSmall from "assets/teacherSmall.svg";
 import hatMainSmall from "assets/hatMainSmall.svg";
+import closeButton from "assets/closeButton.svg";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -80,4 +81,7 @@ export const TeacherSmall = styled.img.attrs({
 })``;
 export const HatMainSmall = styled.img.attrs({
   src: `${hatMainSmall}`,
+})``;
+export const CloseButton = styled.img.attrs({
+  src: `${closeButton}`,
 })``;

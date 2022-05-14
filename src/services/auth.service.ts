@@ -6,7 +6,8 @@ export const login = (data: ILogin) => {
     if (res.data.token) {
       localStorage.setItem("user", res.data.token);
       localStorage.setItem("mentor", res.data.mentor);
-      localStorage.setItem("userID", res.data.id);
+      localStorage.setItem("id", res.data.id);
+      window.location.reload();
     }
     return res.data;
   });
@@ -15,6 +16,7 @@ export const login = (data: ILogin) => {
 export const logout = () => {
   localStorage.removeItem("user");
   localStorage.removeItem("mentor");
+  localStorage.removeItem("id");
 };
 
 export const getCurrentUserToken = () => {
