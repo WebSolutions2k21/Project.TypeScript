@@ -83,8 +83,10 @@ export const AllTeamProjectTeamForm = () => {
                             </>
                           ))}
                       </ul>
-                      <ButtonInModal onClick={() => joinToTeam(team._id!)}>{t`team.button.joinTeam`} </ButtonInModal>
                     </>
+                  }
+                  childrenButton={
+                    <ButtonInModal onClick={() => joinToTeam(team._id!)}>{t`team.button.joinTeam`} </ButtonInModal>
                   }
                   title={team.teamName}
                   buttonText={t`team.button.view`}

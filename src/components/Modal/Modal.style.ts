@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "styles";
+import { Button, CloseButton } from "styles";
 
 export const ModalStyle = styled.div`
   position: fixed;
@@ -50,10 +50,14 @@ export const ModalContent = styled.div`
   font-size: 16px;
 `;
 
-export const CloseBtn = styled.div`
+export const CloseBtn = styled(CloseButton)`
   position: absolute;
   top: 20px;
   right: 20px;
+  transition: transform 250ms ease-out;
+  &:hover {
+    transform: rotate(180deg);
+  }
 `;
 
 export const ActiveModal = styled.div`
@@ -65,4 +69,10 @@ export const ModalButton = styled(Button)`
   width: 50px;
   font-size: 14px;
   margin: 10px 0px 5px 0px;
+`;
+
+export const ChildrenButtons = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
 `;

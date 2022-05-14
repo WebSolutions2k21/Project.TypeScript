@@ -84,16 +84,16 @@ export const AddNewTeam = () => {
     });
     isEmptyPlace();
     checkCurrentPlaces();
-  // TODO only UI working on this
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // TODO only UI working on this
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idsAll, selectedPlaces]);
 
   const isEmptyPlace = () => {
-    return (ids.length !== selectedPlaces);
+    return ids.length !== selectedPlaces;
   };
 
   const checkCurrentPlaces = () => ids.length >= selectedPlaces;
- 
+
   return (
     <>
       <Formik
@@ -235,10 +235,12 @@ export const AddNewTeam = () => {
                         id="level"
                         onChange={(e: any) => setCurrentLevel(e.value)}
                       />
-                      <ButtonInModal type="button" onClick={() => addLevelAndLang()}>
-                        {t`team.button.add`}{" "}
-                      </ButtonInModal>
                     </>
+                  }
+                  childrenButton={
+                    <ButtonInModal type="button" onClick={() => addLevelAndLang()}>
+                      {t`team.button.add`}{" "}
+                    </ButtonInModal>
                   }
                   title={t`team.languageName`}
                   buttonText={t`team.button.add`}

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export const NavbarContainer: any = styled.nav`
   width: 100vw;
@@ -80,6 +80,33 @@ export const NavbarLink = styled(NavLink)`
     color: white;
   }
 `;
+export const NavbarLogOutLink = styled(Link)`
+  position: relative;
+  color: #3c789e;
+  text-decoration: none;
+  margin-left: 15px;
+  line-height: 80px;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 22px;
+    left: -130px;
+    width: 100%;
+    height: 3px;
+    background-color: #db2490;
+    transition: 0.5s linear;
+  }
+  &:hover::after {
+    left: 0;
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+    color: white;
+  }
+`;
+
 export const NavbarLinkExtended = styled(NavLink)`
   display: flex;
   color: ${({ theme }) => theme.colors.text || "#174C6F"};

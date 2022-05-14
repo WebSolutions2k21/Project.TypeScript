@@ -60,8 +60,10 @@ export const MyTeam = () => {
                     children={
                       <>
                         <p> {t`team.modalText`}</p>
-                        <ButtonInModal onClick={() => deleteMentorTeam(_id!)}>{t`team.button.delete`}</ButtonInModal>
                       </>
+                    }
+                    childrenButton={
+                      <ButtonInModal onClick={() => deleteMentorTeam(_id!)}>{t`team.button.delete`}</ButtonInModal>
                     }
                     title={teamName}
                     buttonText={t`team.button.delete`}
