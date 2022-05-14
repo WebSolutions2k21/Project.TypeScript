@@ -49,6 +49,7 @@ export const Profile = () => {
     email: email,
     firstname: "",
     lastname: "",
+    programming_languages: [],
   };
 
   const updateUserData = async (
@@ -56,13 +57,15 @@ export const Profile = () => {
     lastname: string,
     username: string,
     email: string,
+    programming_languages: Array<T>
   ) => {
     return await axios
       .patch(`/users/${id}`, {
         firstname,
         lastname,
         username,
-        email
+        email,
+        programming_languages
       })
       .then((res) => {
         return res.data;
@@ -76,7 +79,7 @@ export const Profile = () => {
       validationSchema={ProfileSchema()}
       onSubmit={(formValue: ProfileInterface) => {
         const { firstname, lastname } = formValue;
-        updateUserData(firstname, lastname, username, email).then(
+        updateUserData(firstname, lastname, username, email, programming_languages).then(
           () => {
               navigate(paths.myProfile);
           }
@@ -159,6 +162,27 @@ export const Profile = () => {
                 <ErrorMsg>
                 {errors.lastname && touched.lastname && errors.lastname}
                 </ErrorMsg>
+
+                <LabelStyle htmlFor="programming_language">
+                <IconText />
+                {t`profile.programming_language`}
+              </LabelStyle>
+            
+                <InputStyled
+                  type="text"
+                  name="programming_language"
+                  autoCapitalize="off"
+                  autoCorrect="off"
+                  placeholder={programming_language}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.programming_languages}
+                  id="programming_language"
+                />
+               
+                {/* <ErrorMsg>
+                {errors.programming_language && touched.programming_language && errors.programming_language}
+                </ErrorMsg> */}
 
               {/* <LabelStyle htmlFor="password">
                 <IconPassword />

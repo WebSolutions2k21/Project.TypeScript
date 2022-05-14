@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const NavbarContainer: any = styled.nav`
   width: 100vw;
@@ -16,13 +16,17 @@ export const NavbarContainer: any = styled.nav`
 `;
 export const LeftContainer = styled.div`
   display: flex;
-  flex: 30%;
+  flex: 35%;
   justify-content: flex-start;
-  margin-left: 10px;
+  align-items: center;
+  margin-left: 31px;
+  font-size: 20px;
+  line-height: 21px;
+  color: ${({ theme }) => theme.colors.text || "#174C6F"};
 `;
 export const RightContainer = styled.div`
   display: flex;
-  flex: 70%;
+  flex: 65%;
   justify-content: flex-end;
   padding-right: 10px;
 `;
@@ -41,7 +45,7 @@ export const NavbarLinkContainer = styled.div`
   margin-right: 20px;
 `;
 
-export const NavbarLink = styled(Link)`
+export const NavbarLink = styled(NavLink)`
   position: relative;
   color: #3c789e;
   text-decoration: none;
@@ -52,7 +56,7 @@ export const NavbarLink = styled(Link)`
     content: "";
     position: absolute;
     bottom: 22px;
-    left: -100px;
+    left: -130px;
     width: 100%;
     height: 3px;
     background-color: #db2490;
@@ -61,13 +65,22 @@ export const NavbarLink = styled(Link)`
   &:hover::after {
     left: 0;
   }
+  &[class*="active"]::after {
+    content: "";
+    position: absolute;
+    bottom: 22px;
+    left: 0px;
+    width: 100%;
+    height: 3px;
+    background-color: #db2490;
+  }
 
   @media (max-width: 700px) {
     display: none;
     color: white;
   }
 `;
-export const NavbarLinkExtended = styled(Link)`
+export const NavbarLinkExtended = styled(NavLink)`
   display: flex;
   color: ${({ theme }) => theme.colors.text || "#174C6F"};
   text-decoration: none;
@@ -80,8 +93,9 @@ export const Logo = styled.img`
   height: auto;
 `;
 
-export const OpenLinksButton = styled.button`
+export const OpenLinksButton = styled.div`
   position: relative;
+  top: 12px;
   left: 15px;
   width: 60px;
   background: none;
@@ -90,7 +104,7 @@ export const OpenLinksButton = styled.button`
   font-size: 45px;
   cursor: pointer;
   line-height: 80px;
-  z-index: 1000;
+  z-index: 2000;
 
   @media (min-width: 700px) {
     display: none;
@@ -134,7 +148,7 @@ export const ButtonChangeLang = styled.button`
 `;
 export const ButtonNav = styled.button`
   position: relative;
-  top: 16px;
+  top: 5px;
   left: -2px;
   width: 61px;
   height: 53px;

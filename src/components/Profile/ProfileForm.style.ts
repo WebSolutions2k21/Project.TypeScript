@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { Label, Foot, Button, Input } from "../../styles";
 
 export const ProfileForm = styled.div`
-    display: flex;
-    flex-direction: column;
-    align: center;
-	  width: 355px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 375px;
+  align-items: center;
+  margin: auto;
 `;
 
 export const ErrorMsg = styled.div`

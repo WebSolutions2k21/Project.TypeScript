@@ -1,15 +1,21 @@
 {
   "navbar": {
     "home": "Start",
-    "aboutus": "O Nas",
+    "aboutus": "O\u00a0Nas",
     "contact": "Kontakt",
     "login": "Logowanie",
     "signin": "Rejestracja",
     "logout": "Wyloguj",
     "myprofile": "Profil",
+    "mentorprofile": "Profil\u00a0Mentora",
     "myproject": "Projekty",
     "myopinions": "Opinie",
-    "notifications": "Powiadomienia"
+    "notifications": "Powiadomienia",
+    "profile": "Profil",
+    "project": "Projekty",
+    "opinions": "Opinie",
+    "addproject": "Dodaj\u00a0projekt",
+    "teamproject": "Grupowe\u00a0projekty"
   },
   "homepage": {
     "h1": "Zostań Uczniem lub Mentorem!",
@@ -146,10 +152,12 @@
     "namePlaceholder": "Wpisz nazwę swojego projektu",
     "mentor": "mentor",
     "mentorPlaceholder": "Wybierz mentora",
+    "language": "język programowania",
+    "languagePlaceholder": "Wybierz język programowania",
     "content": "content",
     "contentPlaceholder": "Wpisz swój kod lub Github Page",
-    "status": "status",
-    "statusPlaceholder": "Wybierz status",
+    "description": "opis",
+    "descriptionPlaceholder": "Napisz coś o projekcie",
     "button": "ENTER",
     "validation": {
       "name": "Nazwa projektu jest zbyt krótka",
@@ -175,7 +183,8 @@
     "firstname": "Imię",
     "lastname": "Nazwisko",
     "password": "Hasło",
-    "button": "Zapisz"
+    "button": "Zapisz",
+    "programming_language": "Język programowania"
   },
   "team": {
     "status": "Status",
@@ -200,5 +209,20 @@
       "addNew": "Dodaj nowy projekt",
       "viewTeam": "Projekty grupowe"
     }
+  },
+  "setNewPassword": {
+    "title": "Chcesz zmienić hasło?",
+    "title2": "Utwórz nowe hasło",
+    "setOldPassword": "stare hasło",
+    "setOldPasswordPlaceholder": "Wpisz stare hasło",
+    "setNewPassword": "nowe hasło",
+    "setNewPasswordPlaceholder": "Wpisz nowe hasło",
+    "confirmPassword": "potwierdź nowe hasło",
+    "confirmPasswordPlaceholder": "Potwierdź nowe hasło",
+    "button": "Zmień hasło",
+    "button2": "Zapisz",
+    "success": "Twoje hasło zostało pomyślnie zmienione",
+    "badRequest": "Stare hasło zostało wprowadzone niepoprawnie. Spróbuj ponownie!",
+    "error": "Coś poszło nie tak. Spróbuj ponownie"
   }
 }

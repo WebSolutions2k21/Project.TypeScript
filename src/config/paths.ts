@@ -1,19 +1,25 @@
 export const paths = {
-    home: '/',
-    login: '/Login',
-    signUp: '/SignUp',
-    aboutUs: '/AboutUs',
-    contact: '/Contact',
-  
-    setPassword: '/set-password',
-    sendNewPassword: '/change-password',
-    myProfile: '/my-profile',
-    mentorProfile: '/mentor-profile',
-    myProjects: '/my-projects',
-    myOpinions: '/my-opinions',
-    addProject: '/add-project',
-    addTeamProject: '/add-team-project',
-    myNotifications: '/my-notifications',
-    mentorNotification:'/mentor-notifications',
-    teamProjects: '/all-team-projects'
+  home: "/",
+  login: "/login",
+  signUp: "/signUp",
+  aboutUs: "/aboutUs",
+  contact: "/contact",
+
+  validation: "/validation",
+
+  emailVerification: "/email-verification",
+  sendNewPassword: "/change-password",
+
+  setPassword: "/set-password/:token",
+  changePassword: "/new-password",
+  myProfile: "/my-profile",
+  mentorProfile: "/mentor-profile",
+  myProjects: "/my-projects",
+  addProject: "/add-project",
+  teamProjects: "/all-team-projects",
+  addTeamProject: "/add-team-project",
+
+  myOpinions: "/my-opinions",
+  myNotifications: "/my-notifications",
+  mentorNotification: "/mentor-notifications",
 };

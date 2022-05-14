@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
+
 import {
   AboutUsPageContainer,
   DescriptionContainer,
@@ -14,7 +15,8 @@ import {
   ProfilDescText,
   WhiteCard,
 } from "styles/stylesPages/AboutUsPage.style";
-import { HatMainSmall, Line, LogoPageSmall, TeacherSmall } from "../styles";
+import { HatMainSmall, Line, LogoPageSmall, TeacherSmall } from "styles";
+
 import { Navbar } from "components";
 
 export const AboutUsPage = () => {

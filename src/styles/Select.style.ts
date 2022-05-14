@@ -8,12 +8,16 @@ export const StyledSelect = styled(Select)`
     color: ${({ theme }) => theme.colors.body || "#FFFFFF"};
     border-radius: 0;
     width: 245px;
-    height: 30px;
     background: none;
     font-size: 14px;
     text-align: right;
     padding-right: 10px;
-    margin-top: -13px;
+    margin-top: -5px;
+  }
+
+  .Select__control:hover {
+    border: 1px solid ${({ theme }) => theme.colors.body || "#FFFFFF"};
+    border-style: none none solid none;
   }
 
   .Select__control--is-focused {
@@ -23,7 +27,8 @@ export const StyledSelect = styled(Select)`
 
   .Select__placeholder {
     color: ${({ theme }) => theme.colors.body || "#FFFFFF"};
-    margin-bottom: -5px;
+    margin-bottom: -10px;
+    margin-right: -7px;
   }
 
   .Select__indicator-separator {
@@ -33,7 +38,10 @@ export const StyledSelect = styled(Select)`
   .Select__dropdown-indicator {
     color: ${({ theme }) => theme.colors.body || "#FFFFFF"};
     margin-right: -22px;
-    margin-bottom: -5px;
+  }
+
+  .Select__dropdown-indicator:hover {
+    cursor: pointer;
   }
 
   .Select__menu {
@@ -45,6 +53,23 @@ export const StyledSelect = styled(Select)`
     color: ${({ theme }) => theme.colors.body || "#FFFFFF"};
     text-align: left;
     margin-left: -8px;
-    margin-bottom: -12px;
+    margin-top: 7px;
+  }
+
+  .Select__value-container--is-multi {
+    margin-left: -10px;
+  }
+
+  .Select__value-container--has-value {
+    margin-top: 8px;
+  }
+
+  .Select__multi-value__label {
+    color: ${({ theme }) => theme.colors.text || "#174C6F"};
+  }
+
+  .Select__clear-indicator {
+    display: none;
+    padding: 0;
   }
 `;

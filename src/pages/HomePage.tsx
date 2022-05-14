@@ -1,8 +1,8 @@
-
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
-import { BraincodeMain, Button, HatMain, Line, TeacherMain } from "../styles";
+
+import { BraincodeMain, Button, HatMain, Line, TeacherMain } from "styles";
 import {
   Footer,
   FooterWrapperLeft,
@@ -13,6 +13,7 @@ import {
   LinkFooter,
   PictureWrapper,
 } from "styles/stylesPages/HomePage.style";
+
 import { Navbar } from "components";
 
 export const HomePage = () => {
@@ -44,4 +45,3 @@ export const HomePage = () => {
     </>
   );
 };
-

@@ -43,8 +43,7 @@ export const RegistrationForm = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={SignupSchema()}
-        onSubmit={(formValue: IRegistration) => {
-          const { username, email, password, confirmpassword, firstname, lastname } = formValue;
+        onSubmit={({ username, email, password, confirmpassword, firstname, lastname }: IRegistration) => {
           register(username, email, password, confirmpassword, firstname, lastname).then(
             () => {
               setTimeout(() => {
