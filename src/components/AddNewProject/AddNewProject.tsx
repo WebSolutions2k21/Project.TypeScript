@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { createProject, getMentors } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
-import { options } from "../../utils/languages";
+import { options } from "utils/languages";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";
@@ -31,6 +31,29 @@ export const AddNewProject = () => {
         console.log(e);
       });
   }, []);
+
+  interface ProgrammingLanguage {
+    _id: string;
+    level: string;
+    nameLang: string;
+  }
+  interface Mentors {
+    isVerified: boolean;
+    isMentor: boolean;
+    _id: string;
+    username: string;
+    firstname?: any;
+    lastname: string;
+    email: string;
+    password: string;
+    date: Date;
+    programmingLanguage: ProgrammingLanguage[];
+    __v: number;
+  }
+
+  interface IValue {
+    value: { value: string };
+  }
 
   const mentrs = allMentors.map((e: any) => e);
 
@@ -59,7 +82,7 @@ export const AddNewProject = () => {
       onSubmit={(formValue: IAddNewProject) => {
         formValue.mentorId = mntr;
         formValue.language = lngs;
-        let { name, userId, mentorId, language = lngs, content, description } = formValue;
+        const { name, userId, mentorId, language = lngs, content, description } = formValue;
         createProject(name, userId, mentorId, language, content, description).then(
           () => {
             setTimeout(() => {
