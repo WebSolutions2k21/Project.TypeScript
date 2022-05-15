@@ -2,14 +2,14 @@ import axios from "axios/instanceAxios";
 import ITeamProject from "components/Team/ITeamProject.interface";
 import { getCurrentUserToken } from "./auth.service";
 
-const token = getCurrentUserToken()
+const token = getCurrentUserToken();
 
 export const getAllTeam = async () => {
   return await axios.get("/team");
 };
 
 export const createTeam = async (data: ITeamProject) => {
-  return await axios.post("/team/create", data)
+  return await axios.post("/team/create", data);
 };
 
 export const joinTeam = async (id: string) => {
@@ -30,7 +30,6 @@ export const getMyTeam = async () => {
   });
 };
 
-
 export const deleteTeam = async (id: string) => {
   return await axios(`/team/${id}`, {
     method: "delete",
@@ -38,8 +37,4 @@ export const deleteTeam = async (id: string) => {
       "x-auth-token": token,
     },
   });
-};
-
-export const getUserTeam = async () => {
-  return await axios.get("/team/user-team");
 };

@@ -4,12 +4,12 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-import { createProject } from "services/project.service";
-import { getUserTeam } from "services/team.service";
+import { createTeamProject } from "services/project.service";
+import { getUserTeamProjects } from "services/userProjects.service";
 import IAddNewTeamProject from "./AddNewTeamProject.interface";
 // import { AddNewProjectSchema } from "./validate";
 import { options } from "../../utils/languages";
-import { AddNewProjectForm } from "../AddNewProject/Form.style"
+import { AddNewProjectForm } from "../AddNewProject/Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";
 import { paths } from "config/paths";
@@ -20,16 +20,11 @@ export const AddNewTeamProject = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [lngs, setLngs] = useState([]);
-
-  const onChangeInputArray = (value: any) => {
-    setLngs(value.map((e: any) => e.value));
-    return lngs;
-  };
-
-  const [allTeam, setAllTeam] = useState([]);
+  const [allTeam, setAllTeam] = useState<object[]>([]);
+  const [team, setTeam] = useState<string>("");
 
   useEffect(() => {
-    getUserTeam()
+    getUserTeamProjects()
       .then((res) => {
         setAllTeam(res.data);
       })
@@ -38,13 +33,21 @@ export const AddNewTeamProject = () => {
       });
   }, []);
 
-  console.log(allTeam);
-  const teams = allTeam.map((e: any) => e.teamName);
+  const teams = allTeam.map((e: any) => e);
+
+  const onChangeInputArray = (value: any) => {
+    setLngs(value.map((e: any) => e.value));
+    return lngs;
+  };
+
+  const onChangeInput = (value: any) => {
+    setTeam(value.value);
+  };
 
   const initialValues: IAddNewTeamProject = {
     name: "",
-    mentorId: "",
-    teamId: [],
+    userId: user,
+    teamId: "",
     language: [],
     content: "",
     description: "",
@@ -54,24 +57,21 @@ export const AddNewTeamProject = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(formValue: IAddNewTeamProject) => {
+        formValue.language = lngs;
+        formValue.teamId = team;
+        const { name, userId, teamId = team, language = lngs, content, description } = formValue;
         console.log(formValue)
+        createTeamProject(name, userId, teamId, language, content, description).then(
+          () => {
+            setTimeout(() => {
+              navigate(paths.myProjects, { replace: true });
+            }, 3000);
+            toast.success(t`addNewProject.validation.success`);
+          },
+          ({ response: { status } }) =>
+            toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`),
+        );
       }}
-      // validationSchema={}
-      // onSubmit={(formValue) => {
-      //   formValue.mentorId = mntr;
-      //   formValue.language = lngs;
-      //   let { name, userId, mentorId, language = lngs, content, description } = formValue;
-      //   createProject(name, userId, mentorId, language, content, description).then(
-      //     () => {
-      //       setTimeout(() => {
-      //         navigate(paths.myProjects, { replace: true });
-      //       }, 3000);
-      //       toast.success(t`addNewProject.validation.success`);
-      //     },
-      //     ({ response: { status } }) =>
-      //       toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`),
-      //   );
-      // }}
     >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
         return (
@@ -94,22 +94,19 @@ export const AddNewTeamProject = () => {
               />
               <ErrorMsg>{errors.name && touched.name && errors.name}</ErrorMsg>
 
-
               <LabelStyle htmlFor="teamId">
-                <IconPassword />
+                <IconText />
                 {t`addNewProject.team`}
               </LabelStyle>
               <StyledSelect
-                isMulti
                 name="teamId"
-                options={teams.map((e) => ({ label: e, value: e }))}
+                options={teams.map((e) => ({ label: e.teamName, value: e._id }))}
                 classNamePrefix={"Select"}
                 placeholder={t`addNewProject.teamPlaceholder`}
                 id="teamId"
-                // onChange={}
+                onChange={onChangeInput}
               />
               <ErrorMsg>{errors.teamId && touched.teamId && errors.teamId}</ErrorMsg>
-
 
               <LabelStyle htmlFor="language">
                 <IconPassword />
