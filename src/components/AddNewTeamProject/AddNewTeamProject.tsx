@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import { createProject } from "services/project.service";
+import { getUserTeam } from "services/team.service";
 import IAddNewTeamProject from "./AddNewTeamProject.interface";
 // import { AddNewProjectSchema } from "./validate";
 import { options } from "../../utils/languages";
@@ -25,6 +26,20 @@ export const AddNewTeamProject = () => {
     return lngs;
   };
 
+  const [allTeam, setAllTeam] = useState([]);
+
+  useEffect(() => {
+    getUserTeam()
+      .then((res) => {
+        setAllTeam(res.data);
+      })
+      .catch((e: Error) => {
+        console.log(e);
+      });
+  }, []);
+
+  console.log(allTeam);
+  const teams = allTeam.map((e: any) => e.teamName);
 
   const initialValues: IAddNewTeamProject = {
     name: "",
@@ -87,7 +102,7 @@ export const AddNewTeamProject = () => {
               <StyledSelect
                 isMulti
                 name="teamId"
-                // options={options}
+                options={teams.map((e) => ({ label: e, value: e }))}
                 classNamePrefix={"Select"}
                 placeholder={t`addNewProject.teamPlaceholder`}
                 id="teamId"

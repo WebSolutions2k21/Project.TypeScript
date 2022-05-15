@@ -39,3 +39,7 @@ export const deleteTeam = async (id: string) => {
     },
   });
 };
+
+export const getUserTeam = async () => {
+  return await axios.get("/team/user-team");
+};
