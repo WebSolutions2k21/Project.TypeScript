@@ -8,6 +8,7 @@ export const ForgotPasswordForm = styled.div`
   align: center;
   width: 375px;
   align-items: center;
+  margin: auto;
 `;
 
 export const StyledInlineErrorMessageForm = styled(StyledInlineErrorMessage)`

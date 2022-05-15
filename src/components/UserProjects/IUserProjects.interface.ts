@@ -1,7 +1,8 @@
 export default interface IUserProjects {
+  projectId: any;
   name: any;
-  userId: string;
-  mentorId: string;
   content: string;
   status: boolean;
+  language: [string];
+  description: string;
 }

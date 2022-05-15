@@ -8,6 +8,7 @@ import {
   AboutUsPage,
   AddNewProjectPage,
   AddNewTeamProjectPage,
+  AddTeamPage,
   AllTeamProjectsPage,
   ContactPage,
   EmailVerificationPage,
@@ -15,6 +16,7 @@ import {
   LoginPage,
   MentorNotificationsPage,
   MentorProfilePage,
+  MyTeamPage,
   NotFoundPage,
   OpinionsPage,
   SendNewPasswordPage,
@@ -45,7 +47,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Routes>
-        <Route path={paths.home} element={<HomePage />} />
+        <Route path={paths.home} element={<PublicRoute {...defaultPublicRouteProps} outlet={<HomePage />} />} />
+
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
         <Route path={paths.contact} element={<ContactPage />} />
 
@@ -104,7 +107,14 @@ function App() {
           path={paths.mentorNotification}
           element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MentorNotificationsPage />} />}
         />
-
+               <Route
+          path={paths.addTeam}
+          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddTeamPage />} />}
+        />
+               <Route
+          path={paths.myTeam}
+          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamPage />} />}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
