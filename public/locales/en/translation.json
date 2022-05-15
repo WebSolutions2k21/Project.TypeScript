@@ -155,6 +155,8 @@
     "namePlaceholder": "Type your project name",
     "mentor": "mentor",
     "mentorPlaceholder": "Choose mentor",
+    "team": "team",
+    "teamPlaceholder": "Choose team",
     "language": "programming language",
     "languagePlaceholder": "Choose programming language",
     "content": "content",
