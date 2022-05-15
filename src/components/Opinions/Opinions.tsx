@@ -64,7 +64,7 @@ export const Opinions = () => {
       <OpinionForm>
         <AddOpinionButton type="submit" onClick={navigateToAddOpinion}>{t`opinions.button.addNew`}</AddOpinionButton>
 
-        <Modal title="opinions" buttonText="+">
+        <Modal title="opinions" buttonText="+" childrenButton={""}>
           <input type="text" name="content" placeholder={t`addNewOpinion.contentPlaceholder`}></input>
           <RatingStar
             // colors={{ mask: "#d9248f" }}
