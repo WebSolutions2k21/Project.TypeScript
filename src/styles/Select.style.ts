@@ -16,13 +16,15 @@ export const StyledSelect = styled(Select)`
   }
 
   .Select__control:hover {
-    border: 1px solid ${({ theme }) => theme.colors.body || "#FFFFFF"};
+    border: 1px solid ${({ theme }) => theme.colors.text || "#FFFFFF"};
     border-style: none none solid none;
+ 
   }
 
   .Select__control--is-focused {
     outline: none;
     box-shadow: none;
+    color: black;
   }
 
   .Select__placeholder {
@@ -34,6 +36,7 @@ export const StyledSelect = styled(Select)`
 
   .Select__indicator-separator {
     display: none;
+    color: black;
   }
 
   .Select__dropdown-indicator {
@@ -43,6 +46,7 @@ export const StyledSelect = styled(Select)`
 
   .Select__dropdown-indicator:hover {
     cursor: pointer;
+    color: black;
   }
 
   .Select__menu {
@@ -51,13 +55,14 @@ export const StyledSelect = styled(Select)`
   }
 
   .Select__single-value {
-    color: ${({ theme }) => theme.colors.body || "#FFFFFF"};
+    color: ${({ theme }) => theme.colors.text || "#174C6F"};
     text-align: left;
     margin-left: -8px;
     margin-top: 7px;
   }
 
   .Select__value-container--is-multi {
+    
     margin-left: -10px;
   }
 

@@ -14,6 +14,8 @@
     "profile": "Profil",
     "project": "Projekty",
     "opinions": "Opinie",
+    "myteam": "Moje\u00a0zespoły",
+    "addteam": "Dodaj\u00a0zespół",
     "addproject": "Dodaj\u00a0projekt",
     "teamproject": "Grupowe\u00a0projekty"
   },
@@ -120,6 +122,7 @@
       "confirmPassword": "Hasło musi być takie same"
     }
   },
+  "modalText": "Czy na pewno chesz usunąć zespół?",
   "button": {
     "login": "Zaloguj",
     "sendEmail": "Wyślij maila"
@@ -144,7 +147,11 @@
     },
     "team": {
       "success": "Brawo dołączyłeś do zespołu!",
-      "error": "Error spróbuj jeszcze raz "
+      "successAdd": "Brawo utworzyłeś zespół",
+      "error": "Error spróbuj jeszcze raz",
+      "notFound": "Nie znaleziono usera bądź projektu",
+      "locked": "Jesteś już zapisany do teamu",
+      "successDelete": "Zespół został usunięty"
     }
   },
   "addNewProject": {
@@ -179,13 +186,36 @@
   },
   "team": {
     "status": "Status",
-    "places": "Ilość miejsc",
-    "description": "Opis",
+    "places": {
+      "name": "Ilość miejsc",
+      "placeholder": "Wybierz ilość miejsc"
+    },
+    "description": "Opis zespołu",
     "programmingLanguage": "Język programowania",
+    "languageName": "Wybierz język programowania i poziom",
     "level": "Poziom",
+    "users": "Zespół",
+    "usersPlaceholder": "Dodaj osoby do zespołu",
+    "language": "Język programowania",
+    "languagePlaceholder": "Wybierz język programowania",
+    "teamName": {
+      "name": "Nazwa zespołu",
+      "placeholder": "Wpisz nazwę zespołu",
+      "validation": {
+        "min": "Nazwa zespołu jest za krótka",
+        "max": "Nazwa zespołu jest za długa",
+        "requied": "Nazwa zespołu jest wymagana"
+      }
+    },
+    "closeInformation": "Wybierz ilość miejsc",
+    "closeInformationEnd": "Ilość użytkowników równa się ilości miejsc",
     "button": {
       "view": "Pokaż",
-      "joinTeam": "Dołącz"
+      "joinTeam": "Dołącz",
+      "addTeam": "Dodaj zespół",
+      "add": "+",
+      "delete": "Usuń",
+      "edit": "Edytuj"
     }
   },
   "status": {
@@ -195,10 +225,14 @@
   "project": {
     "individual": "Indywidualne Projekty",
     "TeamProjects": "Projekty Grupowe",
+    "description": "Opis:",
+    "status": "Status:",
+    "content": "Zawartość:",
     "button": {
       "view": "Pokaż",
       "addNew": "Dodaj nowy projekt",
-      "viewTeam": "Projekty grupowe"
+      "viewTeam": "Projekty grupowe",
+      "save": "Zapisz"
     }
   },
   "setNewPassword": {

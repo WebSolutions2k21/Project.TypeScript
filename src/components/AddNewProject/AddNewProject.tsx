@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { createProject, getMentors } from "services/project.service";
 import IAddNewProject from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
-import { options } from "utils/languages";
+import { options } from "config/languages";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";
