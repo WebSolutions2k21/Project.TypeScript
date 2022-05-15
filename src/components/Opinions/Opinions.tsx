@@ -76,7 +76,7 @@ export const Opinions = () => {
             onRatingChange={onRatingChange}
           />
         </Modal>
-{/* cyk komentarz */}
+
         {allUsersOpinions &&
           allUsersOpinions.map((opinion, index) => (
             <CardBox key={index}>
