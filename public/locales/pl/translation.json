@@ -231,7 +231,7 @@
     "button": {
       "view": "Pokaż",
       "addNew": "Dodaj nowy projekt",
-      "viewTeam": "Projekty grupowe",
+      "viewTeam": "Wyświetl grupy",
       "save": "Zapisz"
     }
   },

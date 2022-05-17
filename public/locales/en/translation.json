@@ -234,7 +234,7 @@
     "button": {
       "view": "View",
       "addNew": "Add New Project",
-      "viewTeam": "View Team Projects",
+      "viewTeam": "View Teams",
       "save": "Save"
     }
   },

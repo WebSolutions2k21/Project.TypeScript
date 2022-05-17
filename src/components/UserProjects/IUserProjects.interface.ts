@@ -1,5 +1,5 @@
 export default interface IUserProjects {
-  projectId: any;
+  _id: any;
   name: any;
   content: string;
   status: boolean;

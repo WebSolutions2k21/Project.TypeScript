@@ -1,9 +1,17 @@
 import React, { useState } from "react";
-import { Input } from "styles";
 
-export const InputDoubleClick = (children: string) => {
+type IProps = {
+  textInput: string;
+  onChange?: any;
+  onBlur?: any;
+  name?: string;
+  values?: string;
+};
+
+export const InputDoubleClick = ({ textInput }: IProps) => {
   const [toggle, setToggle] = useState(true);
-  const [text, setText] = useState("test");
+
+  const [text, setText] = useState(textInput);
 
   function handleChange(event: any) {
     setText(event.target.value);
@@ -20,9 +28,9 @@ export const InputDoubleClick = (children: string) => {
           {text}
         </p>
       ) : (
-        <Input
+        <input
           type="text"
-          value={children}
+          value={`${text}`}
           onChange={handleChange}
           onKeyDown={(event: any) => {
             if (event.key === "Enter" || event.key === "Escape") {
