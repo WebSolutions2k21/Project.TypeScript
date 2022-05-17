@@ -2,20 +2,20 @@ import React, { useState } from "react";
 
 type IProps = {
   textInput: string;
-  onChange?: any;
+  onChangeFunction?: any;
   onBlur?: any;
   name?: string;
-  values?: string;
+  myValues?: string;
 };
 
-export const InputDoubleClick = ({ textInput }: IProps) => {
+export const InputDoubleClick = ({ textInput, onChangeFunction, myValues }: IProps) => {
   const [toggle, setToggle] = useState(true);
 
-  const [text, setText] = useState(textInput);
+  // const [text, setText] = useState(textInput);
 
-  function handleChange(event: any) {
-    setText(event.target.value);
-  }
+  // function handleChange(event: any) {
+  //   onChange ? onChange() : setText(event.target.value);
+  // }
 
   return (
     <div>
@@ -25,13 +25,13 @@ export const InputDoubleClick = ({ textInput }: IProps) => {
             setToggle(false);
           }}
         >
-          {text}
+          {/* {text} */}
         </p>
       ) : (
         <input
           type="text"
-          value={`${text}`}
-          onChange={handleChange}
+          value={myValues}
+          onChange={onChangeFunction}
           onKeyDown={(event: any) => {
             if (event.key === "Enter" || event.key === "Escape") {
               setToggle(true);

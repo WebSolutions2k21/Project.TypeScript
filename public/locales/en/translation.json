@@ -226,6 +226,8 @@
     "close": "close"
   },
   "project": {
+    "name": "Name:",
+    "language": "Programing language:",
     "individual": "Individual Projects",
     "TeamProjects": "Team Projects",
     "description": "Description:",
@@ -235,7 +237,8 @@
       "view": "View",
       "addNew": "Add New Project",
       "viewTeam": "View Teams",
-      "save": "Save"
+      "save": "Save",
+      "edit": "Edit"
     }
   },
   "setNewPassword": {

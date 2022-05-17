@@ -223,6 +223,8 @@
     "close": "zamknięty"
   },
   "project": {
+    "name": "Nazwa:",
+    "language": "Języki programowania:",
     "individual": "Indywidualne Projekty",
     "TeamProjects": "Projekty Grupowe",
     "description": "Opis:",
@@ -232,7 +234,8 @@
       "view": "Pokaż",
       "addNew": "Dodaj nowy projekt",
       "viewTeam": "Wyświetl grupy",
-      "save": "Zapisz"
+      "save": "Zapisz",
+      "edit": "Edytuj"
     }
   },
   "setNewPassword": {

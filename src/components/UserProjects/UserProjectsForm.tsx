@@ -10,6 +10,7 @@ import {
   ButtonForm,
   ButtonInModal,
   ModalContent,
+  ModalInput,
   Name,
   ProjectCard,
   ProjectForm,
@@ -17,13 +18,12 @@ import {
 } from "./UserProjects.style";
 import { Modal } from "components";
 import { useTranslation } from "react-i18next";
-import { InputDoubleClick } from "components/InputDoubleClick";
+
 import { Form, Formik } from "formik";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
   const [userTeamProjects, setUserTeamProjects] = useState<Array<ITeamProject>>([]);
-  const [editProject, setEditProject] = useState<Array<IUserProjects>>([]);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -48,26 +48,12 @@ export const UserProjectsForm = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   const id = userAllProjects;
-  //   editProject(id);
-  // });
-
   const navigateToAddProject = () => {
     navigate(paths.addProject);
   };
 
   const navigateToAllTeamProjects = () => {
     navigate(paths.teamProjects);
-  };
-
-  const initialValues: IUserProjects = {
-    _id: "",
-    name: "",
-    content: "",
-    status: true,
-    language: [""],
-    description: "",
   };
 
   return (
@@ -81,24 +67,17 @@ export const UserProjectsForm = () => {
           userAllProjects.map((project, index) => (
             <Formik
               key={index}
-              initialValues={initialValues}
-              onSubmit={() => {
-                console.log(project._id);
-                console.log(project.content);
-                console.log("0");
-                editUserProject(
-                  project._id,
-                  project.name,
-                  project.content,
-                  project.status,
-                  project.language,
-                  project.description,
-                ).then((response: any) => {
-                  setEditProject(response.data);
-                  console.log("before", response.data);
-                  console.log("1");
-                  console.log(editProject);
-                });
+              initialValues={{
+                _id: project._id,
+                name: project.name,
+                content: project.content,
+                status: project.status,
+                language: project.language,
+                description: project.description,
+              }}
+              onSubmit={({ _id, name, content, status, language, description }) => {
+                editUserProject(_id, name, content, status, language, description);
+                window.location.reload();
               }}
             >
               {({ handleSubmit, handleBlur, handleChange, values }) => {
@@ -108,7 +87,7 @@ export const UserProjectsForm = () => {
                       <Name>{project.name}</Name>
                       <Modal
                         title={project.name}
-                        buttonText={t`project.button.view`}
+                        buttonText={t`project.button.edit`}
                         childrenButton={
                           <ButtonInModal
                             type="submit"
@@ -120,21 +99,49 @@ export const UserProjectsForm = () => {
                           </ButtonInModal>
                         }
                       >
-                        <ButtonForm type="submit" />
                         <ModalContent>
+                          {t`project.name`}
+                          <ModalInput
+                            type="text"
+                            name="name"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            values={values.name}
+                          />
+                          {t`project.description`}
+                          <ModalInput
+                            type="text"
+                            name="description"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            values={values.description}
+                          />
                           {t`project.content`}
-                          <InputDoubleClick
+                          <ModalInput
+                            type="text"
                             name="content"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            textInput={project.content}
-                            values={project.content}
+                            values={values.content}
+                          />
+                          {t`project.language`}
+                          <ModalInput
+                            type="text"
+                            name="language"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            values={values.language}
+                          />
+                          {t`project.status`}
+                          <ModalInput
+                            type="text"
+                            name="status"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            values={project.status ? "open" : "close"}
                           />
                         </ModalContent>
-                        <ModalContent>
-                          {t`project.status`}
-                          {project.status ? "open" : "close"}
-                        </ModalContent>
+                        <ButtonForm type="submit" />
                       </Modal>
                     </ProjectCard>
                   </Form>

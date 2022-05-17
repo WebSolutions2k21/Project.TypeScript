@@ -1,7 +1,7 @@
 // import { Modal } from "components/Modal";
 // import { ModalBox } from "components/Modal/Modal.style";
 import styled from "styled-components";
-import { Button } from "styles";
+import { Button, Input } from "styles";
 // import { Button } from "styles";
 
 export const ProjectForm = styled.div`
@@ -58,4 +58,9 @@ export const ButtonInModal = styled(Button)`
   margin: 10px auto;
   display: flex;
   font-size: 14px;
+`;
+export const ModalInput = styled(Input)`
+  border: 1px solid ${({ theme }) => theme.colors.text || "#174C6F"};
+  color: ${({ theme }) => theme.colors.text || "#174C6F"};
+  margin-bottom: 10px;
 `;
