@@ -154,6 +154,7 @@ export const NavbarExtendedContainer = styled.div`
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  z-index: 1;
 
   @media (min-width: 700px) {
     display: none;

@@ -1,7 +1,6 @@
 import axios from "../axios/instanceAxios";
 import jwt_decode from "jwt-decode";
 
-
 const URL = "/project/create";
 const URLMentors = "/users/mentors";
 
@@ -9,40 +8,39 @@ interface IAddNewProject {
   name?: string;
   userId?: string;
   mentorId?: string;
+  language?: string[];
   content?: string;
-  status?: string;
+  description?: string;
 }
 
 export const createProject = (
   name: string,
   userId: string,
   mentorId: string,
+  language: string[],
   content: string,
-  status: string,
+  description: string,
 ) => {
-  
-  // TODO => This section will be developed over the next month. These are just the first attempts.
-  const data: IAddNewProject = {}
-  if (name.length > 0) data.name = name
+  const data: IAddNewProject = {};
+  if (name.length > 0) data.name = name;
   if (userId.length > 0) {
-    const uID:{_id: string} = jwt_decode(userId)
-    data.userId = uID._id
+    const uID: { _id: string } = jwt_decode(userId);
+    data.userId = uID._id;
   }
-  if (mentorId.length > 0) data.mentorId = jwt_decode(mentorId)
-  if (content.length > 0) data.content = content
-  if (status.length > 0) data.status = status
-  
+  if (mentorId.length > 0) data.mentorId = mentorId;
+  if (language.length > 0) data.language = language;
+  if (content.length > 0) data.content = content;
+  if (description.length > 0) data.description = description;
+
   return axios
     .post(URL, data)
     .then((res) => {
-      console.log(res);
       return res.data;
     })
-    .catch(e => {
-      console.log(e)
+    .catch((e) => {
+      console.log(e);
     });
-  };
-
+};
 
   export const getMentors = () => {
     return axios.get(URLMentors)
