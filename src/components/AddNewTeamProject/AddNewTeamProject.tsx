@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { createTeamProject } from "services/project.service";
 import { getUserTeamProjects } from "services/userProjects.service";
 import IAddNewTeamProject from "./AddNewTeamProject.interface";
-// import { AddNewProjectSchema } from "./validate";
+import { AddNewProjectSchema } from "../AddNewProject/validate";
 import { options } from "../../utils/languages";
 import { AddNewProjectForm } from "../AddNewProject/Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";
 import { paths } from "config/paths";
 
-const user = localStorage.getItem("user") as string;
+const mentor = localStorage.getItem("id") as string;
 
 export const AddNewTeamProject = () => {
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ export const AddNewTeamProject = () => {
 
   const initialValues: IAddNewTeamProject = {
     name: "",
-    userId: user,
+    mentorId: mentor,
     teamId: "",
     language: [],
     content: "",
@@ -56,12 +56,12 @@ export const AddNewTeamProject = () => {
   return (
     <Formik
       initialValues={initialValues}
+      validationSchema={AddNewProjectSchema()}
       onSubmit={(formValue: IAddNewTeamProject) => {
         formValue.language = lngs;
         formValue.teamId = team;
-        const { name, userId, teamId = team, language = lngs, content, description } = formValue;
-        console.log(formValue)
-        createTeamProject(name, userId, teamId, language, content, description).then(
+        const { name, mentorId = mentor, teamId = team, language = lngs, content, description } = formValue;
+        createTeamProject(name, mentorId, teamId, language, content, description).then(
           () => {
             setTimeout(() => {
               navigate(paths.myProjects, { replace: true });

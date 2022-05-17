@@ -159,8 +159,8 @@
     "namePlaceholder": "Wpisz nazwę swojego projektu",
     "mentor": "mentor",
     "mentorPlaceholder": "Wybierz mentora",
-    "team": "team",
-    "teamPlaceholder": "Wybierz team",
+    "team": "zespół",
+    "teamPlaceholder": "Wybierz zespół",
     "language": "język programowania",
     "languagePlaceholder": "Wybierz język programowania",
     "content": "content",
@@ -174,8 +174,10 @@
       "mentor": "Wybierz mentora",
       "content": "Nazwa jest zbyt krótka",
       "contentReq": "Wpisz content",
-      "status": "Wybierz status projektu",
-      "success": "Udało się!",
+      "description": "Opis jest zbyt krótki",
+      "descriptionReq": "Opisz swój projekt",
+      "language": "Wybierz język(i) programowania",
+      "success": "Twój projekt został pomyślnie dodany",
       "validation": "Coś poszło nie tak. Spróbuj ponownie",
       "error": "Błąd"
     }
