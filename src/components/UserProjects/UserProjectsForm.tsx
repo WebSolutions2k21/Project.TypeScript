@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { editUserProject, getOneProject, getUserProjects, getUserTeamProjects } from "services/userProjects.service";
-import { Button, IconText } from "styles";
+import { editUserProject, getUserProjects, getUserTeamProjects } from "services/userProjects.service";
+import { IconText } from "styles";
 import IUserProjects from "./IUserProjects.interface";
 import ITeamProject from "components/Team/ITeamProject.interface";
 import { useNavigate } from "react-router-dom";
@@ -19,16 +19,11 @@ import { Modal } from "components";
 import { useTranslation } from "react-i18next";
 import { InputDoubleClick } from "components/InputDoubleClick";
 import { Form, Formik } from "formik";
-import { toast } from "react-toastify";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
   const [userTeamProjects, setUserTeamProjects] = useState<Array<ITeamProject>>([]);
-  // const [oneProject, setOneProject] = useState([]);
-
-  // const oneProject = (id: string) => {
-  //   getOneProject(id);
-  // };
+  const [editProject, setEditProject] = useState<Array<IUserProjects>>([]);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -47,12 +42,16 @@ export const UserProjectsForm = () => {
     getUserProjects()
       .then((response: any) => {
         setUserAllProjects(response.data);
-        console.log(response.data._id);
       })
       .catch((e: Error) => {
         console.log("error in getUserProjects", e);
       });
   }, []);
+
+  // useEffect(() => {
+  //   const id = userAllProjects;
+  //   editProject(id);
+  // });
 
   const navigateToAddProject = () => {
     navigate(paths.addProject);
@@ -86,7 +85,7 @@ export const UserProjectsForm = () => {
               onSubmit={() => {
                 console.log(project._id);
                 console.log(project.content);
-
+                console.log("0");
                 editUserProject(
                   project._id,
                   project.name,
@@ -94,20 +93,12 @@ export const UserProjectsForm = () => {
                   project.status,
                   project.language,
                   project.description,
-                );
-                //   .then(() => {
-                //     toast.success(t`toast.team.success`);
-                //   })
-                //   .catch((error) => {
-                //     switch (error.response.status) {
-                //       case 400:
-                //         return toast.error(t`toast.team.notFound`);
-                //       case 423:
-                //         return toast.error(t`toast.team.locked`);
-                //       default:
-                //         return toast.error(t`toast.team.error`);
-                //     }
-                //   });
+                ).then((response: any) => {
+                  setEditProject(response.data);
+                  console.log("before", response.data);
+                  console.log("1");
+                  console.log(editProject);
+                });
               }}
             >
               {({ handleSubmit, handleBlur, handleChange, values }) => {
@@ -122,19 +113,7 @@ export const UserProjectsForm = () => {
                           <ButtonInModal
                             type="submit"
                             onClick={() => {
-                              // editUserProject(project._id, {project.content} );
                               console.log(project.content);
-
-                              // console.log(
-                              //   editUserProject(
-                              //     project.projectId,
-                              //     project.name,
-                              //     project.content,
-                              //     project.status,
-                              //     project.language,
-                              //     project.description,
-                              //   ),
-                              // );
                             }}
                           >
                             {t`project.button.save`}
@@ -149,7 +128,7 @@ export const UserProjectsForm = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             textInput={project.content}
-                            values={values.content}
+                            values={project.content}
                           />
                         </ModalContent>
                         <ModalContent>
