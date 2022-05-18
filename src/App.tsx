@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
@@ -30,24 +30,39 @@ import {
 import { paths } from "config/paths";
 import { PrivateRoute, PrivateRouteProps } from "config/PrivateRoute";
 import { PublicRoute, PublicRouteProps } from "config/PublicRoute";
-import { isUserLogged } from "services/auth.service";
+// import { isUserLogged, logout } from "services/auth.service";
+import { useDispatch } from "react-redux";
+import { authUser, logout } from "state/user";
 
 function App() {
-  const defaultPrivateRouteProps: Omit<PrivateRouteProps, "outlet"> = {
-    isAuthenticated: isUserLogged(),
-    authenticationPath: paths.login,
-  };
+  // const defaultPrivateRouteProps: Omit<PrivateRouteProps, "outlet"> = {
+  //   isAuthenticated: isUserLogged(),
+  //   authenticationPath: paths.login,
+  // };
 
-  const defaultPublicRouteProps: Omit<PublicRouteProps, "outlet"> = {
-    isAuthenticated: isUserLogged(),
-    authenticationPath: paths.myProfile,
-  };
+  // const defaultPublicRouteProps: Omit<PublicRouteProps, "outlet"> = {
+  //   isAuthenticated: isUserLogged(),
+  //   authenticationPath: paths.myProfile,
+  // };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      dispatch(authUser());
+    } else {
+      dispatch(logout());
+    }
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Routes>
-        <Route path={paths.home} element={<PublicRoute {...defaultPublicRouteProps} outlet={<HomePage />} />} />
+      <Route element={HomePage} path={paths.home} />
+      <Route element={LoginPage} path={paths.login} />
+      {/* <PrivateRoute element={UserProfilePage} path={paths.myProfile} /> */}
+        {/* <Route path={paths.home} element={<PublicRoute {...defaultPublicRouteProps} outlet={<HomePage />} />} />
 
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
         <Route path={paths.contact} element={<ContactPage />} />
@@ -107,14 +122,8 @@ function App() {
           path={paths.mentorNotification}
           element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MentorNotificationsPage />} />}
         />
-               <Route
-          path={paths.addTeam}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddTeamPage />} />}
-        />
-               <Route
-          path={paths.myTeam}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamPage />} />}
-        />
+        <Route path={paths.addTeam} element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddTeamPage />} />} />
+        <Route path={paths.myTeam} element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamPage />} />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>

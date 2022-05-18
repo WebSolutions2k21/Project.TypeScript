@@ -20,9 +20,17 @@ import {
 import ILogin from "./Login.interface";
 import { paths } from "config/paths";
 import { Navbar } from "components";
+import { loginUserFetch, selectError } from "state/user";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
+
+
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const errorMessage = useSelector(selectError);
+  const dispatch = useDispatch();
 
   const togglePassword = () => {
     setPasswordShown((prev) => !prev);
@@ -49,23 +57,24 @@ export const Login = () => {
         validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={(values) => {
-          login(values).then(
-            () => {
-              toast.success(t`toast.login.success`);
-            },
-            (error) => {
-              switch (error.response.status) {
-                case 400:
-                  return toast.error(t`toast.login.validation`);
-                case 404:
-                  return toast.error(t`toast.login.notFound`);
-                case 423:
-                  return toast.error(t`toast.login.locked`);
-                default:
-                  return toast.error(t`toast.login.error`);
-              }
-            },
-          );
+          // login(values).then(
+          //   () => {
+          //     toast.success(t`toast.login.success`);
+          //   },
+          //   (error) => {
+          //     switch (error.response.status) {
+          //       case 400:
+          //         return toast.error(t`toast.login.validation`);
+          //       case 404:
+          //         return toast.error(t`toast.login.notFound`);
+          //       case 423:
+          //         return toast.error(t`toast.login.locked`);
+          //       default:
+          //         return toast.error(t`toast.login.error`);
+          //     }
+          //   },
+          // );
+          dispatch(loginUserFetch(values));
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid, isSubmitting }) => (
@@ -79,7 +88,7 @@ export const Login = () => {
               <Input
                 type="email"
                 name="email"
-                onChange={handleChange}
+                onChange={e: Echange) => setName(e.target.value)}
                 onBlur={handleBlur}
                 value={values.email}
                 placeholder={t`user.email.placeholder`}
