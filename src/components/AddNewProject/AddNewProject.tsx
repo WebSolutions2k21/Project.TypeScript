@@ -1,33 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
-// import { toast } from "react-toastify";
-// import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-// import { createProject, getMentors } from "services/project.service";
-import { getMentors } from "services/project.service";
-import IAddNewProject from "./AddNewProject.interface";
+import { createProject, getMentors } from "services/project.service";
+import { IAddNewProject } from "./AddNewProject.interface";
 import { AddNewProjectSchema } from "./validate";
 import { options } from "config/languages";
 import { AddNewProjectForm } from "./Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";
-// import { paths } from "config/paths";
+import { paths } from "config/paths";
 
 const user = localStorage.getItem("user") as string;
 
 export const AddNewProject = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { t } = useTranslation();
-
-  // TODO: wybor w react-select
-  // const [selectedValue, setSelectedValue] = useState("true");
-  // const selectChange = (obj: any) => {
-  //   setSelectedValue(obj.value);
-  // };
-  // TODO
-
-  const [allMentors, setAllMentors] = useState([]);
+  const [lngs, setLngs] = useState([]);
+  const [allMentors, setAllMentors] = useState<object[]>([]);
+  const [mntr, setMntr] = useState<string>("");
 
   useEffect(() => {
     getMentors()
@@ -39,7 +32,16 @@ export const AddNewProject = () => {
       });
   }, []);
 
-  const mentrs = allMentors.map((e: any) => e.username);
+  const mentrs = allMentors.map((e: any) => e);
+
+  const onChangeInputArray = (value: any) => {
+    setLngs(value.map((e: any) => e.value));
+    return lngs;
+  };
+
+  const onChangeInput = (value: any) => {
+    setMntr(value.value);
+  };
 
   const initialValues: IAddNewProject = {
     name: "",
@@ -55,19 +57,19 @@ export const AddNewProject = () => {
       initialValues={initialValues}
       validationSchema={AddNewProjectSchema()}
       onSubmit={(formValue: IAddNewProject) => {
-        // let { name, userId = user, mentorId, language, content, description } = formValue;
-        console.log(formValue);
-        // TODO:
-        //  createProject(name, userId, mentorId, language, content, description).then(
-        //   () => {
-        //     setTimeout(() => {
-        //       navigate(paths.myProjects, { replace: true });
-        //     }, 3000);
-        //     toast.success(t`addNewProject.validation.success`);
-        //   },
-        //   ({ response: { status } }) =>
-        //     toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`),
-        // );
+        formValue.mentorId = mntr;
+        formValue.language = lngs;
+        const { name, userId, mentorId, language = lngs, content, description } = formValue;
+        createProject(name, userId, mentorId, language, content, description).then(
+          () => {
+            setTimeout(() => {
+              navigate(paths.myProjects, { replace: true });
+            }, 3000);
+            toast.success(t`addNewProject.validation.success`);
+          },
+          ({ response: { status } }) =>
+            toast.error(status === 400 ? t`addNewProject.validation.validation` : t`addNewProject.validation.error`),
+        );
       }}
     >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
@@ -91,17 +93,19 @@ export const AddNewProject = () => {
               />
               <ErrorMsg>{errors.name && touched.name && errors.name}</ErrorMsg>
 
-              <LabelStyle htmlFor="mentor">
+              <LabelStyle htmlFor="mentorId">
                 <IconText />
                 {t`addNewProject.mentor`}
               </LabelStyle>
               <StyledSelect
-                name="mentor"
-                options={mentrs.map((e) => ({ label: e, value: e }))}
+                name="mentorId"
+                options={mentrs.map((e) => ({ label: e.username, value: e._id }))}
                 classNamePrefix={"Select"}
                 placeholder={t`addNewProject.mentorPlaceholder`}
-                id="mentor"
+                id="mentorId"
+                onChange={onChangeInput}
               />
+              <ErrorMsg>{errors.mentorId && touched.mentorId && errors.mentorId}</ErrorMsg>
 
               <LabelStyle htmlFor="language">
                 <IconPassword />
@@ -114,8 +118,9 @@ export const AddNewProject = () => {
                 classNamePrefix={"Select"}
                 placeholder={t`addNewProject.languagePlaceholder`}
                 id="language"
-                // onChange={selectChange}
+                onChange={onChangeInputArray}
               />
+              <ErrorMsg>{errors.language && touched.language && errors.language}</ErrorMsg>
 
               <LabelStyle htmlFor="content">
                 <IconProject />

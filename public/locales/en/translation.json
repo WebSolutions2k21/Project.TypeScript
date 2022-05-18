@@ -174,8 +174,8 @@
       "mentor": "Please choose your mentor",
       "content": "Your content name is too short",
       "contentReq": "Please enter the content",
-      "status": "Please choose project's status",
-      "success": "Success",
+      "language": "Please choose programming language(s)",
+      "success": "Your project has been successfully added",
       "validation": "Something is wrong. Try again",
       "error": "Error"
     }
