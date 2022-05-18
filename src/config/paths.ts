@@ -22,8 +22,8 @@ export const paths = {
   myOpinions: "/my-opinions",
   myNotifications: "/my-notifications",
   mentorNotification: "/mentor-notifications",
- 
+
   addTeam: "/add-team",
   myTeam: "/my-team",
-
+  myTeamProjects: "/my-team-projects",
 };

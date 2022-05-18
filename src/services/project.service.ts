@@ -74,3 +74,9 @@ export const createProject = (
         console.log(e);
       });
   };
+
+export const getAllProjects = async () => {
+  return await axios(`/project`, {
+    method: "get",
+  });
+};

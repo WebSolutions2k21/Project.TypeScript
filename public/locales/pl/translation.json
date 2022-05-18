@@ -219,7 +219,8 @@
       "addTeam": "Dodaj zespół",
       "add": "+",
       "delete": "Usuń",
-      "edit": "Edytuj"
+      "edit": "Edytuj",
+      "projects": "Projekty"
     }
   },
   "status": {
@@ -227,16 +228,23 @@
     "close": "zamknięty"
   },
   "project": {
+    "name": "Nazwa:",
+    "language": "Języki programowania:",
     "individual": "Indywidualne Projekty",
-    "TeamProjects": "Projekty Grupowe",
+    "Teams": "Grupy Projektowe",
     "description": "Opis:",
     "status": "Status:",
     "content": "Zawartość:",
     "button": {
       "view": "Pokaż",
       "addNew": "Dodaj nowy projekt",
-      "viewTeam": "Projekty grupowe",
-      "save": "Zapisz"
+      "viewTeam": "Wyświetl grupy",
+      "save": "ZAPISZ",
+      "edit": "Edytuj",
+      "delete": "Usuń!",
+      "close": "Zamknij",
+      "projects": "Projekty",
+      "addNewTeamProject": "Nowy Projekt"
     }
   },
   "setNewPassword": {

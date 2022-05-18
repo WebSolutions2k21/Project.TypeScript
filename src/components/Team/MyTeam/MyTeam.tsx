@@ -43,6 +43,12 @@ export const MyTeam = () => {
         toast.error(t`toast.team.error`);
       });
   };
+
+  const navigateToMyTeamProjects = (project: any) => {
+    navigate(paths.myTeamProjects);
+    localStorage.setItem("teamProject", project);
+  };
+
   return (
     <>
       <TeamForm>
@@ -56,6 +62,7 @@ export const MyTeam = () => {
                 <TeamName>
                   <Name>{teamName}</Name>
                   <ButtonTable disabled> {t`team.button.edit`}</ButtonTable>
+                  <ButtonTable onClick={() => navigateToMyTeamProjects(_id)}> {t`team.button.projects`}</ButtonTable>
                   <Modal
                     children={
                       <>

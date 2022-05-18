@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledInlineErrorMessage, Button} from "styles";
+import { StyledInlineErrorMessage, Button } from "styles";
 
 export const TeamForm = styled.div`
   display: flex;
@@ -47,10 +47,10 @@ export const ButtonForm = styled(Button)`
 `;
 
 export const ButtonTable = styled(Button)`
-height: 30px;
-width: 50px;
-font-size: 14px;
-margin: 10px 0px 5px 0px;
+  height: 30px;
+  width: 50px;
+  font-size: 14px;
+  margin: 10px 0px 5px 0px;
 `;
 
 export const ButtonInModal = styled(Button)`
