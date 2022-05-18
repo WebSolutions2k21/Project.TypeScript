@@ -172,8 +172,8 @@
       "mentor": "Wybierz mentora",
       "content": "Nazwa jest zbyt krótka",
       "contentReq": "Wpisz content",
-      "status": "Wybierz status projektu",
-      "success": "Udało się!",
+      "language": "Wybierz język(i) programowania",
+      "success": "Twój projekt został pomyślnie dodany",
       "validation": "Coś poszło nie tak. Spróbuj ponownie",
       "error": "Błąd"
     }
