@@ -38,3 +38,12 @@ export const deleteTeam = async (id: string) => {
     },
   });
 };
+
+export const getTeam = async (id: string) => {
+  return await axios(`/team/${id}`, {
+    method: "get",
+    headers: {
+      "x-auth-token": token,
+    },
+  });
+};

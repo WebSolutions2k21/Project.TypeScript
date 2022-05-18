@@ -6,15 +6,15 @@ import { useNavigate } from "react-router-dom";
 
 import { createTeamProject } from "services/project.service";
 import { getUserTeamProjects } from "services/userProjects.service";
+import { getTeam } from "services/team.service";
 import IAddNewTeamProject from "./AddNewTeamProject.interface";
 import { AddNewProjectSchema } from "../AddNewProject/validate";
-import { options } from "../../utils/languages";
+import { options } from "utils/languages";
 import { AddNewProjectForm } from "../AddNewProject/Form.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
 import { Input, StyledSelect, IconProject, IconPassword, IconText, Toast } from "styles";
 import { paths } from "config/paths";
 
-const mentor = localStorage.getItem("id") as string;
 
 export const AddNewTeamProject = () => {
   const navigate = useNavigate();
@@ -22,6 +22,17 @@ export const AddNewTeamProject = () => {
   const [lngs, setLngs] = useState([]);
   const [allTeam, setAllTeam] = useState<object[]>([]);
   const [team, setTeam] = useState<string>("");
+  const [mentor, setMentor] = useState("");
+
+  useEffect(() => {
+    getTeam(team)
+      .then((res) => {
+        setMentor(res.data.mentorId);
+      })
+      .catch((e: Error) => {
+        console.log(e);
+      });
+  }, [team]);
 
   useEffect(() => {
     getUserTeamProjects()
@@ -60,6 +71,7 @@ export const AddNewTeamProject = () => {
       onSubmit={(formValue: IAddNewTeamProject) => {
         formValue.language = lngs;
         formValue.teamId = team;
+        formValue.mentorId = mentor;
         const { name, mentorId = mentor, teamId = team, language = lngs, content, description } = formValue;
         createTeamProject(name, mentorId, teamId, language, content, description).then(
           () => {
