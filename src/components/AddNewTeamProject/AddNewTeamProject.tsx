@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import { createTeamProject } from "services/project.service";
-import { getUserTeamProjects } from "services/userProjects.service";
+import { getUserTeam } from "services/userProjects.service";
 import { getTeam } from "services/team.service";
 import IAddNewTeamProject from "./AddNewTeamProject.interface";
 import { AddNewProjectSchema } from "../AddNewProject/validate";
@@ -35,7 +35,7 @@ export const AddNewTeamProject = () => {
   }, [team]);
 
   useEffect(() => {
-    getUserTeamProjects()
+    getUserTeam()
       .then((res) => {
         setAllTeam(res.data);
       })
@@ -76,7 +76,7 @@ export const AddNewTeamProject = () => {
         createTeamProject(name, mentorId, teamId, language, content, description).then(
           () => {
             setTimeout(() => {
-              navigate(paths.myProjects, { replace: true });
+              navigate(paths.myTeamProjects, { replace: true });
             }, 3000);
             toast.success(t`addNewProject.validation.success`);
           },
