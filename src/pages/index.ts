@@ -20,3 +20,4 @@ export * from "./AddNewOpinionPage";
 export * from "./AddTeamPage";
 export * from "./MyTeamPage";
 export * from "./ChangePassword";
+export * from "./MyTeamProjectsPage";

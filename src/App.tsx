@@ -27,6 +27,7 @@ import {
   UserProfilePage,
   UserProjectPage,
   ChangeOldPassword,
+  MyTeamProjectsPage,
 } from "pages";
 import { paths } from "config/paths";
 import { PrivateRoute, PrivateRouteProps } from "config/PrivateRoute";
@@ -113,13 +114,11 @@ function App() {
           path={paths.mentorNotification}
           element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MentorNotificationsPage />} />}
         />
-               <Route
-          path={paths.addTeam}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddTeamPage />} />}
-        />
-               <Route
-          path={paths.myTeam}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamPage />} />}
+        <Route path={paths.addTeam} element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddTeamPage />} />} />
+        <Route path={paths.myTeam} element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamPage />} />} />
+        <Route
+          path={paths.myTeamProjects}
+          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamProjectsPage />} />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

@@ -47,3 +47,9 @@ export const getMentors = () => {
     return res;
   });
 };
+
+export const getAllProjects = async () => {
+  return await axios(`/project`, {
+    method: "get",
+  });
+};

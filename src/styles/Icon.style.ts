@@ -22,6 +22,7 @@ import page404 from "assets/page404.svg";
 import teacherSmall from "assets/teacherSmall.svg";
 import hatMainSmall from "assets/hatMainSmall.svg";
 import closeButton from "assets/closeButton.svg";
+import Trash from "assets/Trash.svg";
 
 export const IconText = styled.img.attrs({
   src: `${text}`,
@@ -103,4 +104,7 @@ export const HatMainSmall = styled.img.attrs({
 })``;
 export const CloseButton = styled.img.attrs({
   src: `${closeButton}`,
+})``;
+export const TrashButton = styled.img.attrs({
+  src: `${Trash}`,
 })``;
