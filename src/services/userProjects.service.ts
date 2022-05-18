@@ -13,7 +13,7 @@ export const getUserProjects = async () => {
   });
 };
 
-export const getUserTeamProjects = async () => {
+export const getUserTeam = async () => {
   return await axios(`/team/user-team`, {
     method: "get",
     headers: {
@@ -21,43 +21,6 @@ export const getUserTeamProjects = async () => {
     },
   });
 };
-
-// export const getOneProject = async (projectId: string) => {
-//   return await axios.get(`/project/${projectId}`, {
-//     headers: {
-//       "x-auth-token": token,
-//     },
-//   });
-// };
-
-// export const editUserProject = async (projectId: string) => {
-//   console.log("0.5");
-//   return await axios(`/project/${projectId}`, {
-//     method: "put",
-//     headers: {
-//       "x-auth-token": token,
-//     },
-//   });
-// };
-
-// export const editUserProject = async (
-//   projectId: string,
-//   // name: string,
-//   // content: string,
-//   // status: boolean,
-//   // language: [string],
-//   // description: string,
-// ) => {
-//   return await axios.put(
-//     `/project/${projectId}`,
-//     // { name, content, status, language, description },
-//     {
-//       headers: {
-//         "x-auth-token": token,
-//       },
-//     },
-//   );
-// };
 
 export const editUserProject = async (
   _id: string,
@@ -88,4 +51,12 @@ export const editUserProject = async (
       console.log("inside Then", res.data);
       return res.data;
     });
+};
+
+export const deleteProject = async (_id: string) => {
+  return await axios.delete(`/project/${_id}`, {
+    headers: {
+      "x-auth-token": token,
+    },
+  });
 };
