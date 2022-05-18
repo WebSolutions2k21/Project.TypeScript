@@ -88,7 +88,7 @@ export const Login = () => {
               <Input
                 type="email"
                 name="email"
-                onChange={e: Echange) => setName(e.target.value)}
+                onChange={(e: Echange) => setName(e.target.value)}
                 onBlur={handleBlur}
                 value={values.email}
                 placeholder={t`user.email.placeholder`}

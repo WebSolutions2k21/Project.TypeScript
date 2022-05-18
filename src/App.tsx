@@ -28,7 +28,6 @@ import {
   ChangeOldPassword,
 } from "pages";
 import { paths } from "config/paths";
-import { PrivateRoute, PrivateRouteProps } from "config/PrivateRoute";
 import { PublicRoute, PublicRouteProps } from "config/PublicRoute";
 // import { isUserLogged, logout } from "services/auth.service";
 import { useDispatch } from "react-redux";
