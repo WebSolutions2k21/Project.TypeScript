@@ -1,4 +1,4 @@
-export default interface IUserProjects {
+export default interface IMyTeamProjects {
   _id: any;
   name: any;
   content: string;

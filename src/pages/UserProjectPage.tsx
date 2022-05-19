@@ -1,6 +1,5 @@
-import { UserProjectsForm } from "components";
 import React from "react";
-import { Navbar } from "components";
+import { UserProjectsForm, Navbar } from "components";
 
 export const UserProjectPage = () => {
   return (

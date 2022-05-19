@@ -9,6 +9,19 @@ export const getUser = async (id: any) => {
   return await axios.get(`/users/${id}`);
 };
 
+// export const getUser= async () => {
+//   return await axios(`/project/user-projects`, {
+//     method: "get",
+//     headers: {
+//       "x-auth-token": token,
+//     },
+//   });
+// };
+
+export const getUserLangs = async () => {
+  return await axios.get(`users/lang`);
+}
+
 export const getOnlyUsers = async () => {
   return await axios.get(`/users/only-users`);
 };

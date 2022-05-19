@@ -31,6 +31,7 @@ export const StyledSelect = styled(Select)`
     color: ${({ theme }) => theme.colors.body || "#FFFFFF"};
     margin-bottom: -10px;
     margin-right: -7px;
+    z-index: -1;
   }
 
   .Select__indicator-separator {

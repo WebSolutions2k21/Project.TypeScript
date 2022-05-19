@@ -172,8 +172,8 @@
       "mentor": "Wybierz mentora",
       "content": "Nazwa jest zbyt krótka",
       "contentReq": "Wpisz content",
-      "status": "Wybierz status projektu",
-      "success": "Udało się!",
+      "language": "Wybierz język(i) programowania",
+      "success": "Twój projekt został pomyślnie dodany",
       "validation": "Coś poszło nie tak. Spróbuj ponownie",
       "error": "Błąd"
     }
@@ -224,7 +224,8 @@
       "addTeam": "Dodaj zespół",
       "add": "+",
       "delete": "Usuń",
-      "edit": "Edytuj"
+      "edit": "Edytuj",
+      "projects": "Projekty"
     }
   },
   "status": {
@@ -232,16 +233,23 @@
     "close": "zamknięty"
   },
   "project": {
+    "name": "Nazwa:",
+    "language": "Języki programowania:",
     "individual": "Indywidualne Projekty",
-    "TeamProjects": "Projekty Grupowe",
+    "Teams": "Grupy Projektowe",
     "description": "Opis:",
     "status": "Status:",
     "content": "Zawartość:",
     "button": {
       "view": "Pokaż",
       "addNew": "Dodaj nowy projekt",
-      "viewTeam": "Projekty grupowe",
-      "save": "Zapisz"
+      "viewTeam": "Wyświetl grupy",
+      "save": "ZAPISZ",
+      "edit": "Edytuj",
+      "delete": "Usuń!",
+      "close": "Zamknij",
+      "projects": "Projekty",
+      "addNewTeamProject": "Nowy Projekt"
     }
   },
   "setNewPassword": {

@@ -8,18 +8,30 @@ import axios from "axios/instanceAxios";
 import { ProfileSchema } from "./validate";
 import ProfileInterface from "./Profile.interface";
 // import ProgrammingLanguageInterface from "./ProgrammingLg.interface";
-import { ProfileForm, View, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton } from "./ProfileForm.style";
-import { IconPassword, IconText, Line, IconEye, IconEyeHide, Toast, Input } from "../../styles";
+import { ProfileForm, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton } from "./ProfileForm.style";
+import { IconText, Input } from "../../styles";
 import { LogoPageSmall } from "../../styles/LogoPage.style";
 import { paths } from "../../config/paths";
 import { getUserID } from "services/auth.service";
-import { getUser } from "services/user.service"
+import { getUser} from "services/user.service"
+import ReactChipInput from "react-chip-input";
 
 
 export const Profile = () => {
   const { t } = useTranslation();
   let navigate = useNavigate();
 
+  const [chips, setChips] = useState(["nana","nino", "nene"]);
+  const addChip = (value: string) => {
+    const newChips = chips.slice();
+    newChips.push(value);
+    setChips(newChips);
+  }
+  const removeChip = (index: number) => {
+    const newChips = chips.slice();
+    newChips.splice(index, 1);
+    setChips(newChips);
+  }
   // const [passShown, setPassShown] = useState(false);
   // const togglePass = () => {
   //   setPassShown((prev) => !prev);
@@ -30,6 +42,7 @@ export const Profile = () => {
   const [email, setEmail] = useState('');
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
+  // const [programmingLanguage, setProgrammingLanguage] = useState('');
   
   useEffect(() => {
     setID(getUserID());
@@ -44,6 +57,13 @@ export const Profile = () => {
         toast.error(t`profile.error`);
       });
   }, [email, firstname, id, lastname, t, username]);
+
+  // useEffect(() => {
+  //   getUserLangs().then((response: any) => {
+  //     console.log(response.data.programmingLanguage);
+  //     setProgrammingLanguage(response.data.programmingLanguage)
+  //   })
+  // },[programmingLanguage]);
 
   const initialValues: ProfileInterface = {
     username: username,
@@ -180,38 +200,14 @@ export const Profile = () => {
                   // value={values.programming_languages}
                   id="programming_language"
                 />
-               
-                {/* <ErrorMsg>
-                {errors.programming_language && touched.programming_language && errors.programming_language}
-                </ErrorMsg> */}
 
-              {/* <LabelStyle htmlFor="password">
-                <IconPassword />
-                {t`profile.password`}
-              </LabelStyle> */}
-            
-              {/* <View>
-                <Input
-                  type={passShown ? "text" : "password"}
-                  name="password"
-                  autoCapitalize="off"
-                  autoCorrect="off"
-                //   placeholder={t`registration.password.placeholder`}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  // value={password}
-                  id="password"
-                />
-                  {values.password.length > 0 ? (
-                    <>{passShown ? <IconEye onClick={togglePass} /> : <IconEyeHide onClick={togglePass} />} </>
-                  ) : (
-                    ""
-                  )}
-              </View>
-            
-              <ErrorMsg>
-                {errors.password && touched.password && errors.password}
-              </ErrorMsg> */}
+              <ReactChipInput
+                chip-color="blue"
+                classes="class1 class2 chipinput"
+                chips={chips}
+                onSubmit={(value: string) => addChip(value)}
+                onRemove={(index: number) => removeChip(index)}
+              />
               < EditButton type="submit" disabled={!isValid}>
               {t`profile.button`}
                 </ EditButton>
@@ -227,3 +223,36 @@ export const Profile = () => {
       </>
   );
 };
+
+
+// {/* <ErrorMsg>
+//                 {errors.programming_language && touched.programming_language && errors.programming_language}
+//                 </ErrorMsg> */}
+
+//               {/* <LabelStyle htmlFor="password">
+//                 <IconPassword />
+//                 {t`profile.password`}
+//               </LabelStyle> */}
+            
+//               {/* <View>
+//                 <Input
+//                   type={passShown ? "text" : "password"}
+//                   name="password"
+//                   autoCapitalize="off"
+//                   autoCorrect="off"
+//                 //   placeholder={t`registration.password.placeholder`}
+//                   onChange={handleChange}
+//                   onBlur={handleBlur}
+//                   // value={password}
+//                   id="password"
+//                 />
+//                   {values.password.length > 0 ? (
+//                     <>{passShown ? <IconEye onClick={togglePass} /> : <IconEyeHide onClick={togglePass} />} </>
+//                   ) : (
+//                     ""
+//                   )}
+//               </View>
+            
+//               <ErrorMsg>
+//                 {errors.password && touched.password && errors.password}
+//               </ErrorMsg> */}

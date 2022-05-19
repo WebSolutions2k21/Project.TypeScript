@@ -3,10 +3,8 @@ import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { editUserProject, getUserProjects, getUserTeam, deleteProject } from "services/userProjects.service";
+import { editUserProject, deleteProject } from "services/userProjects.service";
 import { IconText, TrashButton } from "styles";
-import IUserProjects from "./IUserProjects.interface";
-import ITeamProject from "components/Team/ITeamProject.interface";
 import { paths } from "config/paths";
 
 import {
@@ -19,12 +17,13 @@ import {
   ProjectForm,
   ProjectGroup,
   SubmitButton,
-} from "./UserProjects.style";
+} from "./MyTeamProjects.style";
 import { Modal } from "components";
+import { getAllProjects } from "services/project.service";
+import IMyTeamProjects from "./IMyTeamProjects.interface";
 
-export const UserProjectsForm = () => {
-  const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
-  const [userTeams, setUserTeams] = useState<Array<ITeamProject>>([]);
+export const MyTeamProjects = () => {
+  const [allProjects, setAllProjects] = useState<Array<IMyTeamProjects>>([]);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -32,40 +31,21 @@ export const UserProjectsForm = () => {
   const isMentor = localStorage.getItem("mentor") === "true";
 
   useEffect(() => {
-    getUserTeam()
+    getAllProjects()
       .then((response: any) => {
-        setUserTeams(response.data);
-      })
-      .catch((e: Error) => {
-        console.log("error in getUserTeamProjects", e);
-      });
-  }, []);
-
-  useEffect(() => {
-    getUserProjects()
-      .then((response: any) => {
-        setUserAllProjects(response.data);
+        setAllProjects(response.data);
       })
       .catch((e: Error) => {
         console.log("error in getUserProjects", e);
       });
   }, []);
 
-  const navigateToAddProject = () => {
-    navigate(paths.addProject);
+  const navigateToAddTeamProject = () => {
+    navigate(paths.addTeamProject);
   };
 
-  const navigateToAllTeamProjects = () => {
-    navigate(paths.teamProjects);
-  };
-
-  const navigateToMyTeamProjects = (project: any) => {
-    navigate(paths.myTeamProjects);
-    localStorage.setItem("teamProject", project);
-  };
-
-  const userIndividualProjects = userAllProjects.filter((project) => {
-    return project.isIndividual === true;
+  const allTeamProjects = allProjects.filter((project) => {
+    return project.isIndividual === false && project.teamId === localStorage.getItem("teamProject");
   });
 
   return (
@@ -75,17 +55,18 @@ export const UserProjectsForm = () => {
           <IconText />
           <div>{t`project.individual`}</div>
         </ProjectGroup>
-        {userIndividualProjects &&
-          userIndividualProjects.map((project, index) => (
+        {allTeamProjects &&
+          allTeamProjects.map((project, index) => (
             <Formik
               key={index}
               initialValues={{
                 _id: project._id,
                 name: project.name,
-                content: project.content,
                 status: project.status,
                 language: project.language,
                 description: project.description,
+                content: project.content,
+                teamId: project.teamId,
               }}
               onSubmit={({ _id, name, content, status, language, description }) => {
                 editUserProject(_id, name, content, status, language, description);
@@ -99,9 +80,9 @@ export const UserProjectsForm = () => {
                       <Name>{project.name}</Name>
                       <Modal
                         title={project.name}
-                        buttonText={!isMentor ? t`project.button.edit` : t`project.button.view`}
+                        buttonText={isMentor ? t`project.button.edit` : t`project.button.view`}
                         childrenButton={
-                          !isMentor ? (
+                          isMentor ? (
                             <ButtonInModal
                               onClick={() => {
                                 deleteProject(project._id);
@@ -157,7 +138,7 @@ export const UserProjectsForm = () => {
                             values={values.status}
                           />
                         </ModalContent>
-                        {!isMentor ? <SubmitButton type="submit">{t`project.button.save`}</SubmitButton> : ""}
+                        {isMentor ? <SubmitButton type="submit">{t`project.button.save`}</SubmitButton> : ""}
                       </Modal>
                     </ProjectCard>
                   </Form>
@@ -165,48 +146,8 @@ export const UserProjectsForm = () => {
               }}
             </Formik>
           ))}
-        {!isMentor ? <ButtonForm onClick={navigateToAddProject}>{t`project.button.addNew`}</ButtonForm> : ""}
+        <ButtonForm onClick={navigateToAddTeamProject}>{t`project.button.addNewTeamProject`}</ButtonForm>
       </ProjectForm>
-      {!isMentor ? (
-        <ProjectForm>
-          <ProjectGroup>
-            <IconText />
-            <div>{t`project.Teams`}</div>
-          </ProjectGroup>
-          {userTeams &&
-            userTeams.map((team, index) => (
-              <ProjectCard key={index}>
-                <Name>{team.teamName}</Name>
-                <Modal
-                  title={team.teamName}
-                  buttonText={t`project.button.view`}
-                  childrenButton={
-                    <ButtonInModal onClick={() => navigateToMyTeamProjects(team._id)}>
-                      {" "}
-                      {t`project.button.projects`}
-                    </ButtonInModal>
-                  }
-                >
-                  <ModalContent>
-                    {t`project.description`}
-                    {team.description}
-                  </ModalContent>
-                  <ModalContent>
-                    {t`project.status`}
-                    {team.status ? "open" : "close"}
-                  </ModalContent>
-                  <ModalContent>
-                    {t`project.language`}
-                    {team.programmingLanguage}
-                  </ModalContent>
-                </Modal>
-              </ProjectCard>
-            ))}
-          <ButtonForm onClick={navigateToAllTeamProjects}>{t`project.button.viewTeam`}</ButtonForm>
-        </ProjectForm>
-      ) : (
-        ""
-      )}
     </>
   );
 };
