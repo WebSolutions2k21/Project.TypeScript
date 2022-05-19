@@ -1,7 +1,14 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+
+import { Navbar, AddNewTeamProject } from "components";
 
 export const AddNewTeamProjectPage = () => {
+    const { t } = useTranslation();
     return (
-     <h1>AddNewTeamProjectPage</h1>
+      <>
+        <Navbar namePage={t("navbar.teamproject")} />
+        <AddNewTeamProject />
+      </>
     );
 };
