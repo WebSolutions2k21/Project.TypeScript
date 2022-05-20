@@ -42,11 +42,38 @@ export const createProject = (
     });
 };
 
-export const getMentors = () => {
-  return axios.get(URLMentors).then((res) => {
-    return res;
-  });
-};
+  export const getMentors = () => {
+    return axios.get(URLMentors)
+      .then((res) => {
+        return res;
+      })
+  };
+
+
+  export const createTeamProject = (
+    name: string,
+    mentorId: string,
+    teamId: string,
+    language: string[],
+    content: string,
+    description: string,
+  ) => {
+    return axios
+      .post(URL, { 
+        name,
+        mentorId,
+        teamId,
+        language,
+        content,
+        description
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
 export const getAllProjects = async () => {
   return await axios(`/project`, {
