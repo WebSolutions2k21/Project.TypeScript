@@ -13,10 +13,11 @@ export const login = (data: ILogin) => {
   });
 };
 
-export const logout = () => {
-  localStorage.removeItem("user");
-  localStorage.removeItem("mentor");
-  localStorage.removeItem("id");
+export const getCurrentUser = () => {
+  const userStr = localStorage.getItem("user");
+  if (userStr) return JSON.parse(userStr);
+
+  return null;
 };
 
 export const getCurrentUserToken = () => {

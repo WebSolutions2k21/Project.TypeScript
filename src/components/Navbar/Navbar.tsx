@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Spin as Hamburger } from "hamburger-react";
 import { paths } from "config/paths";
@@ -18,8 +18,12 @@ import {
   NavbarLogOutLink,
 } from "styles/Navbar.style";
 import { Navlink, Navline, UserAvatar } from "styles/Icon.style";
-import { isMentorLogged, isUserLogged, logout } from "services/auth.service";
-
+import { isMentorLogged, isUserLogged } from "services/auth.service";
+import { useAppDispatch } from "app/hooks";
+import { logout, setUser } from "features/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useLoginUserMutation } from "services/authApi";
 const lngs = {
   en: { nativeName: "English" },
   pl: { nativeName: "Polish" },
@@ -31,9 +35,70 @@ interface NPage {
 export const Navbar = ({ namePage }: NPage) => {
   const { t, i18n } = useTranslation();
   const [extendNavbar, setExtendNavbar] = useState(false);
-  const [isAuth, setIsAuth] = useState(isUserLogged());
-  const [isAuthMentor, setIsAuthMentor] = useState(isMentorLogged());
+  const [isAuth, setIsAuth] = useState(false);
+  const [isAuthMentor, setIsAuthMentor] = useState(false);
 
+
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // const [loginUser, { data: loginData, isSuccess: isLoginSuccess, isError: isLoginError, error: loginError }] =
+  // useLoginUserMutation();
+  
+  
+
+
+
+
+  console.log("navbar")
+  // const { user: currentUser } = useSelector((state: any) => state.authApi);
+
+ const [loginUser, { data, isLoading, error, isError, isSuccess }] =
+    useLoginUserMutation();
+  useEffect(() => {
+
+
+  console.log("Data", data.isMentor);
+  if (isError) {
+    // toast({
+    //   title: (error as any).data.message,
+    //   status: "error",
+    //   duration: 5000,
+    // });
+    // if ((error as any).data.message === "User not Verified") {
+    //   navigate("/send-verify-mail", {
+    //     state: { email },
+    //   });
+    // }
+  }
+  if (isSuccess) {
+    dispatch(setUser({ token: data.token, id: data.id, isMentor:data.isMentor }));
+    // navigate("/");
+    console.log("mentor", data.isMentor)
+    localStorage.setItem("mentor", data.isMentor);
+  }
+
+
+
+    // dispath(setUser(user));
+    // dispatch(setUser({ token: loginData.token, id: loginData.id, isMentor: loginData.isMentor }));
+    // console.log("is Mentor",  loginData.isMentor )
+    // if (currentUser) {
+    //   dispatch(currentUser)
+
+    //   setIsAuth(!currentUser.isMentor);
+    //   setIsAuthMentor(currentUser.isMentor);
+    // }
+  }, [dispatch]);
+
+  // console.log("currentUser login", user);
+
+  // const mapStateToProps = (state: any) => ({
+  //   authToken: state.loginUser && state.loginUser.token,
+
+  // });
+
+  // console.log("map", mapStateToProps);
   const handleCloseNavMenu = () => {
     setExtendNavbar(false);
   };
@@ -41,16 +106,32 @@ export const Navbar = ({ namePage }: NPage) => {
     setExtendNavbar(!extendNavbar);
   };
 
+
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     dispatch(currentUser);
+
+  //     // setShowModeratorBoard(currentUser.roles.includes("ROLE_MODERATOR"));
+  //     // setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
+  //     // setIsAuth(!currentUser.isMentor);
+  //     // setIsAuthMentor(currentUser.isMentor);
+  //   }
+  // }, [currentUser]);
+
   const logoutHandler = () => {
-    logout();
-    setIsAuth(false);
-    setIsAuthMentor(false);
+    // logout();
+    // setIsAuth(false);
+    // setIsAuthMentor(false);
+    dispatch(logout());
+    navigate(paths.login);
   };
 
   return (
     <NavbarContainer extendNavbar={extendNavbar} isAuth={isAuth}>
       <NavbarInnerContainer>
-        <LeftContainer>{namePage}</LeftContainer>
+        <LeftContainer>
+          {namePage} aaa
+        </LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>
             <NavbarLink to={paths.contact}>{t("navbar.contact")}</NavbarLink>

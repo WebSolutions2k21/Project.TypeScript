@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-import { login } from "services/auth.service";
 import { Input, IconEye, IconPassword, IconText, LogoPage, IconEyeHide, Toast, Line } from "styles";
 import {
   LoginForm,
@@ -20,15 +20,23 @@ import {
 import ILogin from "./Login.interface";
 import { paths } from "config/paths";
 import { Navbar } from "components";
+import { useLoginUserMutation } from "services/authApi";
+import { useAppDispatch } from "app/hooks";
+import { setUser } from "features/authSlice";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
+const [loginUser, { data: loginData, isSuccess: isLoginSuccess, isError: isLoginError, error: loginError }] =
+    useLoginUserMutation();  
 
   const togglePassword = () => {
     setPasswordShown((prev) => !prev);
   };
 
+  const dispath = useAppDispatch();
+
   const { t } = useTranslation();
+  let navigate = useNavigate();
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -42,30 +50,48 @@ export const Login = () => {
     password: "",
   };
 
+  useEffect(() => {
+    if (isLoginSuccess) {
+      toast.success(t`toast.login.success`);
+      dispath(setUser({ token: loginData.token, id: loginData.id, isMentor: loginData.isMentor }));
+      // console.log("ffff", loginData.result.isMentor);
+      navigate(paths.myProfile);
+    }
+  }, [isLoginSuccess]);
+
+  useEffect(() => {
+    // console.log("is login", isLoginError);
+    // console.log("oginError as any).data.message", (loginError as any).data.message)
+    if (isLoginError) {
+      toast.error((loginError as any).data.message);
+    }
+  }, [isLoginError]);
   return (
     <>
       <Navbar />
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
-        onSubmit={(values) => {
-          login(values).then(
-            () => {
-              toast.success(t`toast.login.success`);
-            },
-            (error) => {
-              switch (error.response.status) {
-                case 400:
-                  return toast.error(t`toast.login.validation`);
-                case 404:
-                  return toast.error(t`toast.login.notFound`);
-                case 423:
-                  return toast.error(t`toast.login.locked`);
-                default:
-                  return toast.error(t`toast.login.error`);
-              }
-            },
-          );
+        onSubmit={({ email, password }) => {
+          loginUser({ email, password });
+
+          // login(values).then(
+          //   () => {
+          //     toast.success(t`toast.login.success`);
+          //   },
+          //   (error) => {
+          //     switch (error.response.status) {
+          //       case 400:
+          //         return toast.error(t`toast.login.validation`);
+          //       case 404:
+          //         return toast.error(t`toast.login.notFound`);
+          //       case 423:
+          //         return toast.error(t`toast.login.locked`);
+          //       default:
+          //         return toast.error(t`toast.login.error`);
+          //     }
+          //   },
+          // );
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid, isSubmitting }) => (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
@@ -29,26 +29,44 @@ import {
   MyTeamProjectsPage,
 } from "pages";
 import { paths } from "config/paths";
-import { PrivateRoute, PrivateRouteProps } from "config/PrivateRoute";
+
 import { PublicRoute, PublicRouteProps } from "config/PublicRoute";
 import { isUserLogged } from "services/auth.service";
+import { useAppDispatch } from "app/hooks";
+import { setUser } from "features/authSlice";
+import PrivateRoute from "config/PrivateRoute";
 
 function App() {
-  const defaultPrivateRouteProps: Omit<PrivateRouteProps, "outlet"> = {
-    isAuthenticated: isUserLogged(),
-    authenticationPath: paths.login,
-  };
+  // const defaultPrivateRouteProps: Omit<PrivateRouteProps, "outlet"> = {
+  //   isAuthenticated: isUserLogged(),
+  //   authenticationPath: paths.login,
+  // };
 
-  const defaultPublicRouteProps: Omit<PublicRouteProps, "outlet"> = {
-    isAuthenticated: isUserLogged(),
-    authenticationPath: paths.myProfile,
-  };
+  // const defaultPublicRouteProps: Omit<PublicRouteProps, "outlet"> = {
+  //   isAuthenticated: isUserLogged(),
+  //   authenticationPath: paths.myProfile,
+  // };
 
+  const dispath = useAppDispatch();
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  useEffect(() => {
+    dispath(setUser(user));
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Routes>
-        <Route path={paths.home} element={<PublicRoute {...defaultPublicRouteProps} outlet={<HomePage />} />} />
+      <Route path={paths.login} element={<LoginPage />} />
+          <Route path={paths.login} element={<LoginPage />} />
+      <Route
+          path={paths.myProfile}
+          element={
+          <PrivateRoute>
+            <UserProfilePage />
+            </PrivateRoute>}
+        />
+        {/* <Route path={paths.home} element={<PublicRoute {...defaultPublicRouteProps} outlet={<HomePage />} />} />
 
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
         <Route path={paths.contact} element={<ContactPage />} />
@@ -113,7 +131,7 @@ function App() {
         <Route
           path={paths.myTeamProjects}
           element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamProjectsPage />} />}
-        />
+        /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
