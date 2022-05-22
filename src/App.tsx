@@ -48,7 +48,8 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      dispatch(authUser());
+      console.log("user")
+      // dispatch(authUser());
     } else {
       dispatch(logout());
     }

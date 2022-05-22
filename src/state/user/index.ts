@@ -5,9 +5,8 @@ import { RootState, AppThunk } from "state/store";
 
 interface UserData {
   Id: number;
-  UserName: string;
-  FullName: string;
-  ClientRoles: any;
+  email: string;
+
 }
 
 interface State {
