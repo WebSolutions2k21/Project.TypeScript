@@ -65,6 +65,7 @@ export const Login = () => {
     if (isLoginError) {
       toast.error((loginError as any).data.message);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoginError]);
   return (
     <>
