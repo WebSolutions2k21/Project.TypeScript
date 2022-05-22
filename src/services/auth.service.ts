@@ -1,17 +1,4 @@
 import axios from "axios/instanceAxios";
-import ILogin from "components/Login/Login.interface";
-
-export const login = (data: ILogin) => {
-  return axios.post("/login", data).then((res) => {
-    if (res.data.token) {
-      localStorage.setItem("user", res.data.token);
-      localStorage.setItem("mentor", res.data.mentor);
-      localStorage.setItem("id", res.data.id);
-      window.location.reload();
-    }
-    return res.data;
-  });
-};
 
 export const getCurrentUserToken = () => {
   if (localStorage.getItem("token")) {

@@ -52,21 +52,32 @@ export const Login = () => {
 
   useEffect(() => {
     if (isLoginSuccess) {
+      setTimeout(() => {
+        dispath(setUser({ token: loginData.token, id: loginData.id, mentor: loginData.mentor }));
+        loginData.mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
+      }, 1500);
+
       toast.success(t`toast.login.success`);
-      dispath(setUser({ token: loginData.token, id: loginData.id, mentor: loginData.mentor }));
-      loginData.mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoginSuccess]);
+  }, [dispath, isLoginSuccess, loginData?.id, loginData?.mentor, loginData?.token, navigate, t]);
 
   useEffect(() => {
-    // console.log("is login", isLoginError);
-    // console.log("oginError as any).data.message", (loginError as any).data.message)
     if (isLoginError) {
-      toast.error((loginError as any).data.message);
+      switch ((loginError as any).orginalStatus) {
+        case 400:
+          toast.error(t`toast.login.validation`);
+          break;
+        case 404:
+          toast.error(t`toast.login.notFound`);
+          break;
+        case 423:
+          toast.error(t`toast.login.locked`);
+          break;
+        default:
+          toast.error(t`toast.login.error`);
+      }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoginError]);
+  }, [isLoginError, loginError, t]);
   return (
     <>
       <Navbar />
@@ -75,24 +86,6 @@ export const Login = () => {
         initialValues={initialValues}
         onSubmit={({ email, password }) => {
           loginUser({ email, password });
-
-          // login(values).then(
-          //   () => {
-          //     toast.success(t`toast.login.success`);
-          //   },
-          //   (error) => {
-          //     switch (error.response.status) {
-          //       case 400:
-          //         return toast.error(t`toast.login.validation`);
-          //       case 404:
-          //         return toast.error(t`toast.login.notFound`);
-          //       case 423:
-          //         return toast.error(t`toast.login.locked`);
-          //       default:
-          //         return toast.error(t`toast.login.error`);
-          //     }
-          //   },
-          // );
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid, isSubmitting }) => (

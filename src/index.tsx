@@ -10,12 +10,13 @@ import { Provider } from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
-     <Provider store={store}>
-    <Suspense fallback="...is loading">
-      <Router>
-        <App />
-      </Router>
-    </Suspense></Provider>
+    <Provider store={store}>
+      <Suspense fallback="...is loading">
+        <Router>
+          <App />
+        </Router>
+      </Suspense>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root"),
 );
