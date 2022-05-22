@@ -19,6 +19,7 @@ import {
   MyTeamPage,
   NotFoundPage,
   OpinionsPage,
+  AddNewOpinionPage,
   SendNewPasswordPage,
   SetNewPasswordPage,
   SignUpPage,
@@ -96,6 +97,11 @@ function App() {
           path={paths.addTeamProject}
           element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddNewTeamProjectPage />} />}
         />
+
+        <Route path={paths.addOpinion} 
+        element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddNewOpinionPage />} /> }
+        />
+
         <Route
           path={paths.myOpinions}
           element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<OpinionsPage />} />}

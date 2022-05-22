@@ -1,3 +1,4 @@
+import { Opinions } from "components/Opinions";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Navbar } from "components";
@@ -7,7 +8,7 @@ export const OpinionsPage = () => {
   return (
     <>
       <Navbar namePage={t("navbar.opinions")} />
-      <h1>OpinionsPage</h1>
+      < Opinions />
     </>
   );
 };
