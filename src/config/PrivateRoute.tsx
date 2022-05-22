@@ -20,8 +20,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const PrivateRoute = ({ children }: { children: any }) => {
-  const {token} = useSelector(selectAuth);
-  return token ? children : <LoadingToRedirect/>;
+  const { token } = useSelector(selectAuth);
+  console.log("prywatny routing", token);
+  return token ? children : <LoadingToRedirect />;
 };
 
 export default PrivateRoute;

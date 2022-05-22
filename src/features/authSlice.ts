@@ -1,52 +1,3 @@
-// import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import { RootState } from "app/store";
-
-// export interface AuthState {
-  // id: string | null;
-  // token: string | null;
-  // isMentor: boolean | null;
-// }
-
-// const initialState: AuthState = {
-//   id: null,
-//   token: null,
-//   isMentor: null,
-// };
-
-// export const authSlice = createSlice({
-//   name: "auth",
-//   initialState,
-//   reducers: {
-//     setUser: (state: any, action: PayloadAction<{ id: string; token: string; isMentor: boolean  }>) => {
-//       localStorage.setItem(
-//         "user",
-//         JSON.stringify({
-//           token: action.payload.token,
-//           id: action.payload.id,
-//           isMentor: action.payload.isMentor,
-//         }),
-//       );
-//       localStorage.setItem("token", action.payload.token);
-
-//       localStorage.setItem("id", action.payload.id);
-//       localStorage.setItem("mentor", (JSON.stringify(action.payload.isMentor)));
-//       state.id = action.payload.id;
-//       state.token = action.payload.token;
-//       state.isMentor = action.payload.isMentor;
-//     },
-//     logout: (state: any) => {
-//       localStorage.clear();
-//       state.id = null;
-//       state.token = null;
-//       state.isMentor = null;
-//     },
-//   },
-// });
-
-// export const selectAuth = (state: RootState) => state.auth;
-// export const { setUser, logout } = authSlice.actions;
-// export default authSlice.reducer;
-
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
 
@@ -58,29 +9,78 @@ export interface AuthState {
 
 const initialState: AuthState = {
   id: null,
-    token: null,
-    mentor: null,
+  token: null,
+  mentor: null,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (
-      state: any,
-      action: PayloadAction<{ id: string; token: string; mentor: boolean  }>
-    ) => {
+    setUser: (state: any, action: PayloadAction<{ id: string; token: string; mentor: boolean }>) => {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          token: action.payload.token,
+          id: action.payload.id,
+          mentor: action.payload.mentor,
+        }),
+      );
+      localStorage.setItem("token", action.payload.token);
+
+      localStorage.setItem("id", action.payload.id);
+      localStorage.setItem("mentor", JSON.stringify(action.payload.mentor));
       state.id = action.payload.id;
       state.token = action.payload.token;
       state.mentor = action.payload.mentor;
     },
-    defaultState: (state:any) => {
-      state = initialState;
+    logoutUser: (state: any) => {
+      localStorage.clear();
+      state.id = null;
+      state.token = null;
+      state.mentor = null;
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { setUser, defaultState } = authSlice.actions;
- export const selectAuth = (state: RootState) => state.auth;
+export const selectAuth = (state: RootState) => state.auth;
+export const { setUser, logoutUser } = authSlice.actions;
 export default authSlice.reducer;
+
+// import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+// import { RootState } from "app/store";
+
+// export interface AuthState {
+//   id: string | null;
+//   token: string | null;
+//   mentor: boolean | null;
+// }
+
+// const initialState: AuthState = {
+//   id: null,
+//     token: null,
+//     mentor: null,
+// };
+
+// export const authSlice = createSlice({
+//   name: "auth",
+//   initialState,
+//   reducers: {
+//     setUser: (
+//       state: any,
+//       action: PayloadAction<{ id: string; token: string; mentor: boolean  }>
+//     ) => {
+//       state.id = action.payload.id;
+//       state.token = action.payload.token;
+//       state.mentor = action.payload.mentor;
+//     },
+//     defaultState: (state:any) => {
+//       state = initialState;
+//     },
+//   },
+// });
+
+// // Action creators are generated for each case reducer function
+// export const { setUser, defaultState } = authSlice.actions;
+//  export const selectAuth = (state: RootState) => state.auth;
+// export default authSlice.reducer;

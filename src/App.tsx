@@ -47,91 +47,162 @@ function App() {
   //   authenticationPath: paths.myProfile,
   // };
 
-  const dispath = useAppDispatch();
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-  useEffect(() => {
-    dispath(setUser(user));
-  }, []);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Routes>
-      <Route path={paths.login} element={<LoginPage />} />
-          <Route path={paths.login} element={<LoginPage />} />
-      <Route
+        <Route path={paths.login} element={<LoginPage />} />
+
+        <Route
           path={paths.myProfile}
           element={
-          <PrivateRoute>
-            <UserProfilePage />
-            </PrivateRoute>}
+            <PrivateRoute>
+              <UserProfilePage />
+            </PrivateRoute>
+          }
         />
-        {/* <Route path={paths.home} element={<PublicRoute {...defaultPublicRouteProps} outlet={<HomePage />} />} />
-
+        <Route
+          path={paths.home}
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
         <Route path={paths.contact} element={<ContactPage />} />
 
+        <Route path={paths.emailVerification} element={<EmailVerificationPage />} />
+        <Route path={paths.login} element={<LoginPage />} />
+        <Route path={paths.signUp} element={<SignUpPage />} />
+        <Route path={paths.sendNewPassword} element={<SendNewPasswordPage />} />
+   
         <Route
-          path={paths.emailVerification}
-          element={<PublicRoute {...defaultPublicRouteProps} outlet={<EmailVerificationPage />} />}
-        />
-        <Route path={paths.login} element={<PublicRoute {...defaultPublicRouteProps} outlet={<LoginPage />} />} />
-        <Route path={paths.signUp} element={<PublicRoute {...defaultPublicRouteProps} outlet={<SignUpPage />} />} />
-        <Route
-          path={paths.sendNewPassword}
-          element={<PublicRoute {...defaultPublicRouteProps} outlet={<SendNewPasswordPage />} />}
+          path={paths.setPassword}
+          element={
+            <PrivateRoute>
+              <SetNewPasswordPage />
+            </PrivateRoute>
+          }
         />
 
         <Route
-          path={paths.setPassword}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<SetNewPasswordPage />} />}
-        />
-        <Route
           path={paths.changePassword}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<ChangeOldPassword />} />}
+          element={
+            <PrivateRoute>
+              <ChangeOldPassword />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.myProfile}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<UserProfilePage />} />}
+          element={
+            <PrivateRoute>
+              <UserProfilePage />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.mentorProfile}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MentorProfilePage />} />}
+          element={
+            <PrivateRoute>
+              <MentorProfilePage />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.myProjects}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<UserProjectPage />} />}
+          element={
+            <PrivateRoute>
+              <UserProjectPage />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.addProject}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddNewProjectPage />} />}
+          element={
+            <PrivateRoute>
+              <AddNewProjectPage />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.teamProjects}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AllTeamProjectsPage />} />}
+          element={
+            <PrivateRoute>
+              <AllTeamProjectsPage />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.addTeamProject}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddNewTeamProjectPage />} />}
+          element={
+            <PrivateRoute>
+              <AddNewProjectPage />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.myOpinions}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<OpinionsPage />} />}
+          element={
+            <PrivateRoute>
+              <OpinionsPage />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.myNotifications}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<UserNotificationsPage />} />}
+          element={
+            <PrivateRoute>
+              <UserNotificationsPage />
+            </PrivateRoute>
+          }
         />
+
         <Route
           path={paths.mentorNotification}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MentorNotificationsPage />} />}
+          element={
+            <PrivateRoute>
+              <MentorNotificationsPage />
+            </PrivateRoute>
+          }
         />
-        <Route path={paths.addTeam} element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddTeamPage />} />} />
-        <Route path={paths.myTeam} element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamPage />} />} />
+
+        <Route
+          path={paths.addTeam}
+          element={
+            <PrivateRoute>
+              <AddTeamPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path={paths.myTeam}
+          element={
+            <PrivateRoute>
+              <MyTeamPage />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path={paths.myTeamProjects}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<MyTeamProjectsPage />} />}
-        /> */}
+          element={
+            <PrivateRoute>
+              <MyTeamProjectsPage />
+            </PrivateRoute>
+          }
+        />
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>

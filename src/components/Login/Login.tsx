@@ -26,14 +26,14 @@ import { setUser } from "features/authSlice";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
-  const [loginUser, { data, isLoading, error, isError, isSuccess }] =
-  useLoginUserMutation();
+const [loginUser, { data: loginData, isSuccess: isLoginSuccess, isError: isLoginError, error: loginError }] =
+    useLoginUserMutation();  
 
   const togglePassword = () => {
     setPasswordShown((prev) => !prev);
   };
 
-  const dispatch = useAppDispatch();
+  const dispath = useAppDispatch();
 
   const { t } = useTranslation();
   let navigate = useNavigate();
@@ -50,42 +50,22 @@ export const Login = () => {
     password: "",
   };
 
-  // useEffect(() => {
-  //   if (isLoginSuccess) {
-  //     toast.success(t`toast.login.success`);
-  //     dispath(setUser({ token: loginData.token, id: loginData.id, isMentor: loginData.isMentor }));
-  //     // console.log("ffff", loginData.result.isMentor);
-  //     navigate(paths.myProfile);
-  //   }
-  // }, [isLoginSuccess]);
-
-  // useEffect(() => {
-  //   // console.log("is login", isLoginError);
-  //   // console.log("oginError as any).data.message", (loginError as any).data.message)
-  //   if (isLoginError) {
-  //     toast.error((loginError as any).data.message);
-  //   }
-  // }, [isLoginError]);
-  console.log("Dane", data);
-  if (isError) {
-    toast({
-      title: (error as any).data.message,
-      status: "error",
-      duration: 5000,
-    });
-    if ((error as any).data.message === "User not Verified") {
-      navigate(paths.contact);
+  useEffect(() => {
+    if (isLoginSuccess) {
+      toast.success(t`toast.login.success`);
+      dispath(setUser({ token: loginData.token, id: loginData.id, mentor: loginData.mentor }));
+      // console.log("ffff", loginData.result.isMentor);
+      navigate(paths.myProfile);
     }
-  }
-  if (isSuccess) {
-    dispatch(setUser({ token: data.token, id: data.id, mentor: data.mentor }));
-    navigate(paths.myProfile);
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("id", data.id);
-    localStorage.setItem("mentor", data.mentor);
-  }
+  }, [isLoginSuccess]);
 
-
+  useEffect(() => {
+    // console.log("is login", isLoginError);
+    // console.log("oginError as any).data.message", (loginError as any).data.message)
+    if (isLoginError) {
+      toast.error((loginError as any).data.message);
+    }
+  }, [isLoginError]);
   return (
     <>
       <Navbar />
@@ -179,7 +159,3 @@ export const Login = () => {
     </>
   );
 };
-function loginUser(arg0: { email: string; password: string; }) {
-  throw new Error("Function not implemented.");
-}
-
