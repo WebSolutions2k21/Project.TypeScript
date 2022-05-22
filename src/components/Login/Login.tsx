@@ -26,8 +26,8 @@ import { setUser } from "features/authSlice";
 
 export const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
-const [loginUser, { data: loginData, isSuccess: isLoginSuccess, isError: isLoginError, error: loginError }] =
-    useLoginUserMutation();  
+  const [loginUser, { data: loginData, isSuccess: isLoginSuccess, isError: isLoginError, error: loginError }] =
+    useLoginUserMutation();
 
   const togglePassword = () => {
     setPasswordShown((prev) => !prev);
@@ -54,9 +54,9 @@ const [loginUser, { data: loginData, isSuccess: isLoginSuccess, isError: isLogin
     if (isLoginSuccess) {
       toast.success(t`toast.login.success`);
       dispath(setUser({ token: loginData.token, id: loginData.id, mentor: loginData.mentor }));
-      // console.log("ffff", loginData.result.isMentor);
-      navigate(paths.myProfile);
+      loginData.mentor ? navigate(paths.mentorProfile) : navigate(paths.myProfile);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoginSuccess]);
 
   useEffect(() => {

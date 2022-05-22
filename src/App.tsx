@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
@@ -30,22 +30,9 @@ import {
 } from "pages";
 import { paths } from "config/paths";
 
-import { PublicRoute, PublicRouteProps } from "config/PublicRoute";
-import { isUserLogged } from "services/auth.service";
-import { useAppDispatch } from "app/hooks";
-import { setUser } from "features/authSlice";
 import PrivateRoute from "config/PrivateRoute";
 
 function App() {
-  // const defaultPrivateRouteProps: Omit<PrivateRouteProps, "outlet"> = {
-  //   isAuthenticated: isUserLogged(),
-  //   authenticationPath: paths.login,
-  // };
-
-  // const defaultPublicRouteProps: Omit<PublicRouteProps, "outlet"> = {
-  //   isAuthenticated: isUserLogged(),
-  //   authenticationPath: paths.myProfile,
-  // };
 
   return (
     <ThemeProvider theme={theme}>
@@ -144,7 +131,7 @@ function App() {
           path={paths.addTeamProject}
           element={
             <PrivateRoute>
-              <AddNewProjectPage />
+              <AddNewTeamProjectPage />
             </PrivateRoute>
           }
         />

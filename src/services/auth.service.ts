@@ -13,16 +13,9 @@ export const login = (data: ILogin) => {
   });
 };
 
-export const getCurrentUser = () => {
-  const userStr = localStorage.getItem("user");
-  if (userStr) return JSON.parse(userStr);
-
-  return null;
-};
-
 export const getCurrentUserToken = () => {
-  if (localStorage.getItem("user")) {
-    return localStorage.getItem("user") as string;
+  if (localStorage.getItem("token")) {
+    return localStorage.getItem("token") as string;
   } else {
     console.error("Can't find User token");
     return "";
@@ -30,7 +23,7 @@ export const getCurrentUserToken = () => {
 };
 
 export const isUserLogged = (): boolean => {
-  return !!localStorage.getItem("user");
+  return !!localStorage.getItem("token");
 };
 
 export const isMentorLogged = (): boolean => {

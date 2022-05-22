@@ -13,7 +13,6 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     loginUser: builder.mutation({
       query: (body: { email: string; password: string }) => {
-          console.log("w fetch ", body)
         return {
           url: "/login",
           method: "post",

@@ -22,7 +22,7 @@ export const View = styled.div`
 
 export const TeamName = styled.div`
   display: grid;
-  grid-template-columns: 215px 70px 70px;
+  grid-template-columns: 185px 55px 55px 50px;
   justify-self: stretch;
   border: 1px solid ${({ theme }) => theme.colors.body || "#FFFFFF"};
   border-style: none none solid none;

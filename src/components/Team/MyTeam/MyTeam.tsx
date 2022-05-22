@@ -35,7 +35,7 @@ export const MyTeam = () => {
     deleteTeam(id)
       .then((response: any) => {
         setTimeout(() => {
-          window.location.reload();
+          navigate(paths.myTeam);
         }, 1500);
         toast.success(t`toast.team.successDelete`);
       })
