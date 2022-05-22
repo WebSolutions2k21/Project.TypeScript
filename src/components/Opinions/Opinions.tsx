@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
 import { RatingStar } from "rating-star";
 
-import { Modal } from "components";
+// import { Modal } from "components";
 import { getAllOpinions } from "services/opinion.service";
 // import { LabelStyle } from "components/Registration/RegForm.style";
 import IOpinions from "./Opinions.interface";
@@ -24,8 +24,8 @@ import {
   // ArrowIco,
   OpinionAuthor,
   OpinionText,
-  StarsBox,
-  StarsIcon,
+  // StarsBox,
+  // StarsIcon,
 } from "components/Opinions/Opinions.style";
 // import { Navbar } from "components";
 
@@ -64,7 +64,7 @@ export const Opinions = () => {
       <OpinionForm>
         <AddOpinionButton type="submit" onClick={navigateToAddOpinion}>{t`opinions.button.addNew`}</AddOpinionButton>
 
-        <Modal title="opinions" buttonText="+" childrenButton={""}>
+        {/* <Modal title="opinions" buttonText="+" childrenButton={""}>
           <input type="text" name="content" placeholder={t`addNewOpinion.contentPlaceholder`}></input>
           <RatingStar
             colors={{ mask: "#d9248f" }}
@@ -75,7 +75,7 @@ export const Opinions = () => {
             rating={rating}
             onRatingChange={onRatingChange}
           />
-        </Modal>
+        </Modal> */}
 
         {allUsersOpinions &&
           allUsersOpinions.map((opinion, index) => (
@@ -83,13 +83,15 @@ export const Opinions = () => {
               <CommentInfo>
                 <IconText />
                 <OpinionAuthor>{opinion.username}</OpinionAuthor>
-                <StarsBox>
-                  <StarsIcon />
-                  <StarsIcon />
-                  <StarsIcon />
-                  <StarsIcon />
-                  <StarsIcon />
-                </StarsBox>
+                <RatingStar
+                  colors={{ mask: "#d9248f" }}
+                  noBorder
+                  clickable
+                  maxScore={5}
+                  id="stars"
+                  rating={rating}
+                  onRatingChange={onRatingChange}
+                  />
               </CommentInfo>
               <OpinionText>{opinion.content}</OpinionText>
               <ButtonStyle type="submit" onClick={navigateToEditOpinion}>{t`opinions.button.edit`}</ButtonStyle>
