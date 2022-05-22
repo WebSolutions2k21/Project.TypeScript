@@ -15,11 +15,14 @@ export const paths = {
   myProfile: "/my-profile",
   mentorProfile: "/mentor-profile",
   myProjects: "/my-projects",
+  myOpinions: "/my-opinions",
+  addOpinion: "/add-opinion",
+  editOpinion: "/edit-opinion",
+
   addProject: "/add-project",
   teamProjects: "/all-team-projects",
   addTeamProject: "/add-team-project",
 
-  myOpinions: "/my-opinions",
   myNotifications: "/my-notifications",
   mentorNotification: "/mentor-notifications",
 

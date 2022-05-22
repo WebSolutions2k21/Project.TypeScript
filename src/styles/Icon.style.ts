@@ -9,6 +9,10 @@ import navlink from "assets/navLink.svg";
 import modalIcon from "assets/modalIcon.png";
 import project from "assets/project.png";
 import student from "assets/studentVector.svg";
+import star from "assets/star.png";
+import profilePic from "assets/profilePic.png";
+import arrow from "assets/arrow.png";
+import bin from "assets/bin.png";
 import lineNav from "assets/lineNav.svg";
 import userAvatar from "assets/userAvatar.svg";
 import hatMain from "assets/hatMain.svg";
@@ -56,6 +60,21 @@ export const IconStudent = styled.img.attrs({
   src: `${student}`,
 })``;
 
+export const Star = styled.img.attrs({
+  src: `${star}`,
+})``;
+
+export const ProfilePic = styled.img.attrs({
+  src: `${profilePic}`,
+})``;
+
+export const Arrow = styled.img.attrs({
+  src: `${arrow}`,
+})``;
+
+export const Bin = styled.img.attrs({
+  src: `${bin}`,
+})``;
 export const IconInModal = styled.img.attrs({
   src: `${modalIcon}`,
 })``;

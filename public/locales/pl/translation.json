@@ -261,5 +261,29 @@
     "success": "Twoje hasło zostało pomyślnie zmienione",
     "badRequest": "Stare hasło zostało wprowadzone niepoprawnie. Spróbuj ponownie!",
     "error": "Coś poszło nie tak. Spróbuj ponownie"
+  },
+  "opinions": {
+    "button": {
+      "addNew": "Dodaj Nową Opinię",
+      "edit": "Edytuj",
+      "save": "Zapisz"
+    }
+  },
+  "addNewOpinion": {
+    "mentor": "mentor",
+    "mentorPlaceholder": "Wybierz mentora",
+    "content": "opinia",
+    "contentPlaceholder": "Napisz swoją opinię",
+    "button": "DODAJ",
+    "validation": {
+      "name": "Nazwa użytkownika jest zbyt krótka",
+      "nameReq": "Wpisz nazwę użytkownika",
+      "mentor": "Wybierz mentora",
+      "content": "Opinia jest zbyt krótka",
+      "contentReq": "Napisz opinię",
+      "success": "Udało się!",
+      "validation": "Coś poszło nie tak. Spróbuj ponownie",
+      "error": "Błąd"
+    }
   }
 }
