@@ -1,10 +1,12 @@
-// import  ProgrammingLanguageInterface from "./ProgrammingLg.interface"
+import { IProgrammingLanguage } from "components/Team/IProgrammingLanguege";
 
 export default interface ProfileInterface {
   username: string,
-  email: string;
-  firstname: string;
-  lastname: string;
-  // password: string;
-  // programming_languages: Array<ProgrammingLanguageInterface>,
+  email: string,
+  firstname: string,
+  lastname: string,
+  programmingLanguage?: Array<IProgrammingLanguage>,
+  oldPassword: string,
+  newPassword: string,
+  confirmNewPassword: string,
 }

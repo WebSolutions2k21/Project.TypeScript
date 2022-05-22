@@ -1,5 +1,6 @@
 import axios from "axios/instanceAxios";
 import IForgotPassword from "components/ForgotPassword/IForgotPassword.interface";
+import { IProgrammingLanguage } from "components/Team/IProgrammingLanguege";
 
 export const sendEmail = async (data: IForgotPassword) => {
   return await axios.post("/users/resetpassword", data);
@@ -69,3 +70,47 @@ export const setNewPass = (newPassword: string, confirmNewPassword: string, toke
       return res.data;
     });
 };
+
+const USERSEDIT_URL = "/users/edit";
+
+export const updateUserData = (firstname: string, lastname: string) => {
+  const token = localStorage.getItem("user") as string;
+  return axios
+    .patch(
+      USERSEDIT_URL,
+      {
+        firstname,
+        lastname
+      },
+      {
+        headers: {
+          "x-auth-token": token,
+        },
+      },
+    )
+    .then((res) => {
+      return res.data;
+    });
+};
+
+const USERLANGEDIT_URL = "users/lang";
+
+export const updateUserLang = (programmingLanguage: any) => {
+  console.log(programmingLanguage);
+  const token = localStorage.getItem("user") as string;
+  return axios
+    .patch(
+      USERLANGEDIT_URL,
+      {
+        programmingLanguage
+      },
+      {
+        headers: {
+          "x-auth-token": token,
+        },
+      },
+    )
+    .then((res) => {
+      return res.data;
+    });
+}

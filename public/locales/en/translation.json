@@ -197,7 +197,8 @@
     "lastname": "Last Name",
     "password": "Password",
     "button": "Save",
-    "programming_language": "Programming language"
+    "programming_language": "Programming language",
+    "button_change_password":"Edit"
   },
   "team": {
     "status": "Status",

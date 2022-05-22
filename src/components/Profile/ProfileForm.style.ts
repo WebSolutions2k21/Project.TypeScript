@@ -39,15 +39,8 @@ export const EditButton = styled(Button)`
   margin-top: 20px;
 `;
 
-// export const InputStyle = styled.div`
-//   display: flex;
-//   align-items: flex-end;
-// `
 export const InputStyled = styled(Input)`
   &::placeholder {
   text-align: left;
   }
 `
-// export const InputRegular = styled(Input)`
-//     width: 245px;
-// `

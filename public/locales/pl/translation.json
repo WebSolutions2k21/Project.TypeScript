@@ -195,7 +195,8 @@
     "lastname": "Nazwisko",
     "password": "Hasło",
     "button": "Zapisz",
-    "programming_language": "Język programowania"
+    "programming_language": "Język programowania",
+    "button_change_password":"Edytuj"
   },
   "team": {
     "status": "Status",
