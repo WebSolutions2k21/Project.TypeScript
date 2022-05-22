@@ -67,8 +67,8 @@ export const Opinions = () => {
         <Modal title="opinions" buttonText="+" childrenButton={""}>
           <input type="text" name="content" placeholder={t`addNewOpinion.contentPlaceholder`}></input>
           <RatingStar
-            // colors={{ mask: "#d9248f" }}
-            // noBorder
+            colors={{ mask: "#d9248f" }}
+            noBorder
             clickable
             maxScore={5}
             id="stars"
