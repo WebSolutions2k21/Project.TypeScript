@@ -18,8 +18,8 @@ import { isMentorLogged, isUserLogged } from "services/auth.service";
 export const ContactForm = () => {
   const { t } = useTranslation();
   const [state, handleSubmit] = useForm("xqkngaqb");
-  const [isAuth, setIsAuth] = useState(isUserLogged());
-  const [isAuthMentor, setIsAuthMentor] = useState(isMentorLogged());
+  const [isAuth] = useState(isUserLogged());
+  const [isAuthMentor] = useState(isMentorLogged());
 
   if (state.succeeded) {
     return <Paragraf>{t`contactpage.text3`}</Paragraf>;

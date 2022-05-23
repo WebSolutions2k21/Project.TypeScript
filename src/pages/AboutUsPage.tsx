@@ -21,8 +21,8 @@ import { Navbar } from "components";
 import { isMentorLogged, isUserLogged } from "services/auth.service";
 
 export const AboutUsPage = () => {
-  const [isAuth, setIsAuth] = useState(isUserLogged());
-  const [isAuthMentor, setIsAuthMentor] = useState(isMentorLogged());
+  const [isAuth] = useState(isUserLogged());
+  const [isAuthMentor] = useState(isMentorLogged());
   const { t } = useTranslation();
   return (
     <>
