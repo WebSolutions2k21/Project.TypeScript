@@ -42,35 +42,32 @@ export const EditButton = styled(Button)`
 
 export const InputStyledElement = styled(Input)`
   color: black;
-  width: 290px;
   &::placeholder {
   text-align: left;
   color: #e1e1e1;
   border: 1px solid #e1e1e1;
   }
-`
+`;
 export const InputStyled = styled(Input)`
   &::placeholder {
   text-align: left;
   }
-`
+`;
 export const ButtonInPassModal = styled(Button)`
   display:flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-`
+  max-width: 100px;
+`;
 export const StyledDiv = styled.div `
   min-height: 130px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+`;
 export const StyleFromModalTeam = styled(StyledSelect)`
   .Select__placeholder {
     color: "#e1e1e1";
   }
-`
+`;
 export const ClosedButton = styled(CloseButton)`
   height: 12px;
   width: 12px;
@@ -80,7 +77,7 @@ export const LabelLang = styled(Label)`
   background: #fff;
   border-radius: 12px;
   padding: 3px 15px;
-`
+`;
 export const StyledLi = styled.li `
   margin-bottom: 10px;
-`
+`;

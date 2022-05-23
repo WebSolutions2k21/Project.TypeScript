@@ -7,7 +7,7 @@ import { Modal } from "components";
 import { ProfileSchema } from "./validate";
 import ProfileInterface from "./Profile.interface";
 import { ProfileForm, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton, ButtonInPassModal, InputStyledElement, StyledDiv, StyleFromModalTeam, ClosedButton, LabelLang, StyledLi } from "./ProfileForm.style";
-import { IconText, Input, Label, IconEye, IconEyeHide } from "../../styles";
+import { IconText, Input, IconEye, IconEyeHide } from "../../styles";
 import { LogoPageSmall } from "../../styles/LogoPage.style";
 import { paths } from "../../config/paths";
 import { getUserID } from "services/auth.service";
@@ -34,8 +34,8 @@ export const Profile = () => {
   const [currentNameLang, setCurrentNameLang] = useState();
   const [currentLevel, setCurrentLevel] = useState();
   const [programmingLanguage, setLanguages] = useState<Array<IProgrammingLanguage>>([]);
-  const [oldPassShown, setOldPassShown] = useState(false);
   const [userData, setUserData] = useState<Array<IProgrammingLanguage>>([]);
+  const [oldPassShown, setOldPassShown] = useState(false);
   const [passShown, setPassShown] = useState(false);
   const [conPassShown, setConPassShown] = useState(false);
   
@@ -216,6 +216,7 @@ export const Profile = () => {
                 children={
                 <StyledDiv>
                       <InputStyledElement
+                        type={passShown ? "text" : "password"}
                         name="oldPassword"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -229,6 +230,7 @@ export const Profile = () => {
                         ""
                       )}
                       <InputStyledElement
+                        type={passShown ? "text" : "password"}
                         name="newPassword"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -241,6 +243,7 @@ export const Profile = () => {
                         ""
                       )}
                       <InputStyledElement
+                        type={passShown ? "text" : "password"}
                         name="confirmNewPassword"
                         onChange={handleChange}
                         onBlur={handleBlur}
