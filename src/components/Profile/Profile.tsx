@@ -6,14 +6,14 @@ import { toast } from "react-toastify";
 import { Modal } from "components";
 import { ProfileSchema } from "./validate";
 import ProfileInterface from "./Profile.interface";
-import { ProfileForm, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton } from "./ProfileForm.style";
+import { ProfileForm, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton, ButtonInPassModal, InputStyledElement, StyledDiv, StyleFromModalTeam } from "./ProfileForm.style";
 import { IconText, Input, Label, IconEye, IconEyeHide, CloseButton } from "../../styles";
 import { LogoPageSmall } from "../../styles/LogoPage.style";
 import { paths } from "../../config/paths";
 import { getUserID } from "services/auth.service";
 import { getUser, updateUserData, updateUserLang, changePassword} from "services/user.service";
 import { IProgrammingLanguage } from "components/Team/IProgrammingLanguege";
-import { ButtonInModal, StyleFromModal } from "components/Team/AddTeam/AddTeam.style";
+import { ButtonInModal} from "components/Team/AddTeam/AddTeam.style";
 import { options } from "config/languages";
 import { level_profile } from "config/level_profile";
 
@@ -31,18 +31,22 @@ export const Profile = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const [request, setRequest] = useState(false);
-
+  const [currentNameLang, setCurrentNameLang] = useState();
+  const [currentLevel, setCurrentLevel] = useState();
+  const [programmingLanguage, setLanguages] = useState<Array<IProgrammingLanguage>>([]);
   const [oldPassShown, setOldPassShown] = useState(false);
+  const [userData, setUserData] = useState<Array<IProgrammingLanguage>>([]);
+  const [passShown, setPassShown] = useState(false);
+  const [conPassShown, setConPassShown] = useState(false);
+  
   const toggleOldPass = () => {
     setOldPassShown((prev) => !prev);
   };
 
-  const [passShown, setPassShown] = useState(false);
   const togglePass = () => {
     setPassShown((prev) => !prev);
   };
   
-  const [conPassShown, setConPassShown] = useState(false);
   const toggleConPass = () => {
     setConPassShown((prev) => !prev);
   };
@@ -55,24 +59,16 @@ export const Profile = () => {
         setEmail(response.data.email);
         setFirstName(response.data.firstname);
         setLastName(response.data.lastname);
+        setUserData(response.data.programmingLanguage);
       })
       .catch((e: Error) => {
         toast.error(t`profile.error`);
       });
   }, [email, firstname, id, lastname, t, username]);
 
-  const [currentNameLang, setCurrentNameLang] = useState();
-  const [currentLevel, setCurrentLevel] = useState();
-  const [state, setState] = useState<IProgrammingLanguage>({ nameLang: currentNameLang , level: currentLevel });
-  const [programmingLanguage, setLanguages] = useState<Array<IProgrammingLanguage>>([]);
-
   const handleClick = () => {
-    setState(() => ({
-      nameLang: currentNameLang,
-      level: currentLevel,
-    }));
-    setLanguages((prevState) => [...prevState, state]);
-    console.log(programmingLanguage);
+    setLanguages((prevState) => [{ nameLang: currentNameLang, level: currentLevel }, ...prevState]);
+
   };
 
   const initialValues: ProfileInterface = {
@@ -80,10 +76,11 @@ export const Profile = () => {
     email: email,
     firstname: firstname,
     lastname: lastname,
-    programmingLanguage: programmingLanguage,
+    programmingLanguage: userData,
     oldPassword: "",
     newPassword: "",
     confirmNewPassword: "",
+    userData: [],
   };
 
   const setPassword = () => {
@@ -93,14 +90,23 @@ export const Profile = () => {
     setConfirmNewPassword(confirmNewPassword);
   }
 
-  const deleteLanguage = (index: number) => {
-    programmingLanguage.splice(index,1);
-    console.log(programmingLanguage);
-    setLanguages(programmingLanguage);
+  const deleteLanguage = ( itemIndex: number) => {
+    if(itemIndex === 0 && programmingLanguage.length <= 1){
+      setLanguages([]);
+    } else {
+      setLanguages(programmingLanguage.splice(itemIndex, 1));
+    }
+  }
+
+  const deleteUserData = (itemIndex: number) => {
+    if(itemIndex === 0 && userData.length <= 1){
+      setUserData([]);
+    } else {
+      setUserData(userData.splice(itemIndex, 1));
+    }
   }
 
   return (
-    <>
     <Formik 
       initialValues={initialValues} 
       validationSchema={ProfileSchema()}
@@ -108,21 +114,14 @@ export const Profile = () => {
         values.firstname = firstname;
         values.lastname = lastname;
         values.programmingLanguage = programmingLanguage;
+        values.userData = userData;
         if(request){
           updateUserData(firstname, lastname);
           changePassword(values.oldPassword, values.newPassword, values.confirmNewPassword);
-          updateUserLang(programmingLanguage).then(
-            () => {
-                navigate(paths.myProfile);
-            }
-          );
-        } else {
+          updateUserLang(programmingLanguage, userData).then(() => navigate(paths.myProfile));
+          } else {
           updateUserData(firstname, lastname);
-          updateUserLang(programmingLanguage).then(
-            () => {
-                navigate(paths.myProfile);
-            }
-          );
+          updateUserLang(programmingLanguage, userData).then(() => navigate(paths.myProfile));
         }
       }}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
@@ -209,8 +208,8 @@ export const Profile = () => {
                 </LabelStyle>
                 <Modal
                 children={
-                <>
-                      <Input
+                <StyledDiv>
+                      <InputStyledElement
                         name="oldPassword"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -223,7 +222,7 @@ export const Profile = () => {
                       ) : (
                         ""
                       )}
-                      <Input
+                      <InputStyledElement
                         name="newPassword"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -235,7 +234,7 @@ export const Profile = () => {
                       ) : (
                         ""
                       )}
-                      <Input
+                      <InputStyledElement
                         name="confirmNewPassword"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -247,14 +246,14 @@ export const Profile = () => {
                       ) : (
                         ""
                       )}
-                  </>
+                  </StyledDiv>
                  }
                 title={t`setNewPassword.title2`} 
                 buttonText={t`profile.button_change_password`} 
                 childrenButton={ 
-                <ButtonInModal type="button" onClick={() => setPassword()}>
+                <ButtonInPassModal type="button" onClick={() => setPassword()}>
                 {t`setNewPassword.button2`}{" "}
-                </ButtonInModal>
+                </ButtonInPassModal>
                 }                  
               ></Modal>
 
@@ -262,12 +261,23 @@ export const Profile = () => {
                 <IconText />
                 {t`profile.programming_language`}
               </LabelStyle>
+              {userData ? (
+              <ul>
+                  {userData.length > 0 &&
+                    userData.map(({ nameLang, level }, index) => (
+                      <li key={index}>
+                        <Label htmlFor={`team-language-${index}`}>
+                          {nameLang} {level}
+                        </Label>
+                        <CloseButton onClick={() => deleteUserData(index)}/>
+                      </li>
+                      )
+                    )}
+              </ul> )
+              :("")}
               <ul>
                   {programmingLanguage.length > 0 &&
                     programmingLanguage.map(({ nameLang, level }, index) => (
-                      !nameLang && !level ? 
-                      (deleteLanguage(index))
-                      :(
                       <li key={index}>
                         <Label htmlFor={`team-language-${index}`}>
                           {nameLang} {level}
@@ -275,12 +285,12 @@ export const Profile = () => {
                         <CloseButton onClick={() => deleteLanguage(index)}/>
                       </li>
                       )
-                    ))}
+                    )}
                 </ul>
               <Modal
                   children={
-                    <>
-                      <StyleFromModal
+                    <StyledDiv>
+                      <StyleFromModalTeam
                         name="language"
                         options={options}
                         classNamePrefix={"Select"}
@@ -288,7 +298,7 @@ export const Profile = () => {
                         id="language"
                         onChange={(e: any) => setCurrentNameLang(e.value)}
                       />
-                      <StyleFromModal
+                      <StyleFromModalTeam
                         name="level"
                         options={level_profile}
                         classNamePrefix={"Select"}
@@ -296,7 +306,7 @@ export const Profile = () => {
                         id="level"
                         onChange={(e: any) => setCurrentLevel(e.value)}
                       />
-                    </>
+                    </StyledDiv>
                   }
                   childrenButton={
                     <ButtonInModal type="button" onClick={handleClick}>
@@ -318,6 +328,5 @@ export const Profile = () => {
           }
         }
       </Formik>
-      </>
   );
 };

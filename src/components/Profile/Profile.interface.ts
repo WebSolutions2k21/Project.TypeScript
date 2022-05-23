@@ -9,4 +9,5 @@ export default interface ProfileInterface {
   oldPassword: string,
   newPassword: string,
   confirmNewPassword: string,
+  userData?: Array<IProgrammingLanguage>,
 }

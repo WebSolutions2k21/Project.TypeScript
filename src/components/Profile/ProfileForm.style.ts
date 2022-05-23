@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Label, Foot, Button, Input } from "../../styles";
+import {StyleFromModal} from "../Team/AddTeam/AddTeam.style";
+import { StyledSelect} from "styles";
 
 export const ProfileForm = styled.div`
   display: flex;
@@ -39,8 +41,34 @@ export const EditButton = styled(Button)`
   margin-top: 20px;
 `;
 
+export const InputStyledElement = styled(Input)`
+  color: black;
+  width: 290px;
+  &::placeholder {
+  text-align: left;
+  color: #e1e1e1;
+  border: 1px solid #e1e1e1;
+  }
+`
 export const InputStyled = styled(Input)`
   &::placeholder {
   text-align: left;
+  }
+`
+export const ButtonInPassModal = styled(Button)`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+`
+export const StyledDiv = styled.div `
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+export const StyleFromModalTeam = styled(StyledSelect)`
+  .Select__placeholder {
+    color: "#e1e1e1";
   }
 `

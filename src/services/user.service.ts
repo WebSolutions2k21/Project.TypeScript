@@ -1,6 +1,5 @@
 import axios from "axios/instanceAxios";
 import IForgotPassword from "components/ForgotPassword/IForgotPassword.interface";
-import { IProgrammingLanguage } from "components/Team/IProgrammingLanguege";
 
 export const sendEmail = async (data: IForgotPassword) => {
   return await axios.post("/users/resetpassword", data);
@@ -9,15 +8,6 @@ export const sendEmail = async (data: IForgotPassword) => {
 export const getUser = async (id: any) => {
   return await axios.get(`/users/${id}`);
 };
-
-// export const getUser= async () => {
-//   return await axios(`/project/user-projects`, {
-//     method: "get",
-//     headers: {
-//       "x-auth-token": token,
-//     },
-//   });
-// };
 
 export const getUserLangs = async () => {
   return await axios.get(`users/lang`);
@@ -95,8 +85,8 @@ export const updateUserData = (firstname: string, lastname: string) => {
 
 const USERLANGEDIT_URL = "users/lang";
 
-export const updateUserLang = (programmingLanguage: any) => {
-  console.log(programmingLanguage);
+export const updateUserLang = (programmingLanguage: any, userData:any) => {
+  Array.prototype.push.apply(programmingLanguage, userData);
   const token = localStorage.getItem("user") as string;
   return axios
     .patch(

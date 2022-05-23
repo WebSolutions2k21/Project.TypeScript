@@ -10,6 +10,7 @@ export * from "./AddNewProject";
 export * from "./Navbar";
 export * from "./ChangePassword";
 export * from "./SetNewPassword";
+export * from "./AddNewOpinion";
 export * from "./ContactForm";
 export * from "./AddNewTeamProject";
 export * from "./InputDoubleClick";
