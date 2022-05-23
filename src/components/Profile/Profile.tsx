@@ -59,7 +59,8 @@ export const Profile = () => {
         setEmail(response.data.email);
         setFirstName(response.data.firstname);
         setLastName(response.data.lastname);
-        setUserData(response.data.programmingLanguage);
+        const data = response.data.programmingLanguage.filter((e:any) => delete e._id)
+        setUserData(data);
       })
       .catch((e: Error) => {
         toast.error(t`profile.error`);
@@ -99,6 +100,7 @@ export const Profile = () => {
   }
 
   const deleteUserData = (itemIndex: number) => {
+    console.log(itemIndex)
     if(itemIndex === 0 && userData.length <= 1){
       setUserData([]);
     } else {
