@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Label, Foot, Button, Input } from "../../styles";
-import {StyleFromModal} from "../Team/AddTeam/AddTeam.style";
+import { Label, Foot, Button, Input, CloseButton } from "../../styles";
 import { StyledSelect} from "styles";
 
 export const ProfileForm = styled.div`
@@ -30,7 +29,7 @@ export const View = styled.div`
 `;
 
 export const LabelStyle = styled(Label)`
-  margin: 20px auto 0 57px;
+  margin: 20px auto 10px 57px;
 `;
 
 export const Footer = styled(Foot)`
@@ -71,4 +70,17 @@ export const StyleFromModalTeam = styled(StyledSelect)`
   .Select__placeholder {
     color: "#e1e1e1";
   }
+`
+export const ClosedButton = styled(CloseButton)`
+  height: 12px;
+  width: 12px;
+  margin-left: 10px;
+`
+export const LabelLang = styled(Label)`
+  background: #fff;
+  border-radius: 12px;
+  padding: 3px 15px;
+`
+export const StyledLi = styled.li `
+  margin-bottom: 10px;
 `

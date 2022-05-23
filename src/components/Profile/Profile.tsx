@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 import { Modal } from "components";
 import { ProfileSchema } from "./validate";
 import ProfileInterface from "./Profile.interface";
-import { ProfileForm, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton, ButtonInPassModal, InputStyledElement, StyledDiv, StyleFromModalTeam } from "./ProfileForm.style";
-import { IconText, Input, Label, IconEye, IconEyeHide, CloseButton } from "../../styles";
+import { ProfileForm, LabelStyle, ErrorMsg, Footer, InputStyled,  EditButton, ButtonInPassModal, InputStyledElement, StyledDiv, StyleFromModalTeam, ClosedButton, LabelLang, StyledLi } from "./ProfileForm.style";
+import { IconText, Input, Label, IconEye, IconEyeHide } from "../../styles";
 import { LogoPageSmall } from "../../styles/LogoPage.style";
 import { paths } from "../../config/paths";
 import { getUserID } from "services/auth.service";
@@ -271,12 +271,12 @@ export const Profile = () => {
               <ul>
                   {userData.length > 0 &&
                     userData.map(({ nameLang, level }, index) => (
-                      <li key={index}>
-                        <Label htmlFor={`team-language-${index}`}>
-                          {nameLang} {level}
-                        </Label>
-                        <CloseButton onClick={() => deleteUserData(index)}/>
-                      </li>
+                      <StyledLi key={index}>
+                          <LabelLang htmlFor={`team-language-${index}`}>
+                            {nameLang} {level}
+                          </LabelLang>
+                          <ClosedButton onClick={() => deleteUserData(index)}/>
+                      </StyledLi>
                       )
                     )}
               </ul> )
@@ -284,12 +284,12 @@ export const Profile = () => {
               <ul>
                   {programmingLanguage.length > 0 &&
                     programmingLanguage.map(({ nameLang, level }, index) => (
-                      <li key={index}>
-                        <Label htmlFor={`team-language-${index}`}>
-                          {nameLang} {level}
-                        </Label>
-                        <CloseButton onClick={() => deleteLanguage(index)}/>
-                      </li>
+                      <StyledLi key={index}>
+                          <LabelLang htmlFor={`team-language-${index}`}>
+                           {nameLang} {level}
+                          </LabelLang>
+                          <ClosedButton onClick={() => deleteLanguage(index)}/>
+                      </StyledLi>
                       )
                     )}
                 </ul>
