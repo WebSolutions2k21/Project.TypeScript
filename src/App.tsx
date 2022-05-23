@@ -34,7 +34,6 @@ import { paths } from "config/paths";
 import PrivateRoute from "config/PrivateRoute";
 
 function App() {
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -49,14 +48,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path={paths.home}
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
-        />
+        <Route path={paths.home} element={<HomePage />} />
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
         <Route path={paths.contact} element={<ContactPage />} />
 
@@ -64,7 +56,7 @@ function App() {
         <Route path={paths.login} element={<LoginPage />} />
         <Route path={paths.signUp} element={<SignUpPage />} />
         <Route path={paths.sendNewPassword} element={<SendNewPasswordPage />} />
-   
+
         <Route
           path={paths.setPassword}
           element={
@@ -137,8 +129,13 @@ function App() {
           }
         />
 
-        <Route path={paths.addOpinion} 
-        element={<PrivateRoute><AddNewOpinionPage /></PrivateRoute> }
+        <Route
+          path={paths.addOpinion}
+          element={
+            <PrivateRoute>
+              <AddNewOpinionPage />
+            </PrivateRoute>
+          }
         />
 
         <Route
