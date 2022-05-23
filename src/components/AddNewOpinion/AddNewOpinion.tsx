@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Formik, Form } from "formik";
 
-// import { RatingStar } from "rating-star";
+import { RatingStar } from "rating-star";
 import { AddNewOpinionSchema } from "./validate";
 import { getMentors } from "../../services/opinion.service"; //+ createOpinion to import
 import { AddNewOpinionForm } from "./AddNewOpinion.style";
@@ -45,11 +45,11 @@ export const AddNewOpinion = () => {
     content: "",
   };
 
-  // const [rating, setRating] = React.useState(5);
+  const [rating, setRating] = React.useState(5);
 
-  // const onRatingChange = (score: React.SetStateAction<number>) => {
-  //   setRating(score);
-  // };
+  const onRatingChange = (score: React.SetStateAction<number>) => {
+    setRating(score);
+  };
   
 
   return (
@@ -117,7 +117,7 @@ export const AddNewOpinion = () => {
               />
               <ErrorMsg>{errors.content && touched.content && errors.content}</ErrorMsg>
 
-              {/* <RatingStar
+              <RatingStar
                 colors={{ mask: "#d9248f" }}
                 noBorder
                 clickable
@@ -125,7 +125,7 @@ export const AddNewOpinion = () => {
                 id="stars"
                 rating={rating}
                 onRatingChange={onRatingChange}
-              /> */}
+              />
 
               <ButtonForm type="submit" disabled={!isValid}>
                 {t`addNewOpinion.button`}
