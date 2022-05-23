@@ -7,6 +7,7 @@ export const TeamForm = styled.div`
   width: 375px;
   align-items: center;
   margin: auto;
+  align: center;
 `;
 
 export const View = styled.div`
@@ -22,7 +23,8 @@ export const View = styled.div`
 
 export const TeamName = styled.div`
   display: grid;
-  grid-template-columns: 185px 55px 55px 50px;
+  width: 80vw;
+  grid-template-columns: auto 55px 55px 50px;
   justify-self: stretch;
   border: 1px solid ${({ theme }) => theme.colors.body || "#FFFFFF"};
   border-style: none none solid none;
@@ -31,6 +33,7 @@ export const TeamName = styled.div`
     color: ${({ theme }) => theme.colors.primary};
   }
   margin: auto;
+  max-width: 750px;
 `;
 
 export const Name = styled.div`
