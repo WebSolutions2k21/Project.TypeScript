@@ -121,9 +121,13 @@ export const Profile = () => {
           updateUserData(firstname, lastname);
           changePassword(values.oldPassword, values.newPassword, values.confirmNewPassword);
           updateUserLang(programmingLanguage, userData).then(() => navigate(paths.myProfile));
+          setLanguages([]);
+          window.location.reload();
           } else {
           updateUserData(firstname, lastname);
           updateUserLang(programmingLanguage, userData).then(() => navigate(paths.myProfile));
+          setLanguages([]);
+          window.location.reload();
         }
       }}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
