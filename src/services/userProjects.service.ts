@@ -26,7 +26,7 @@ export const editUserProject = async (
   _id: string,
   name: string,
   content: string,
-  status: boolean,
+  status: string,
   language: [string],
   description: string,
 ) => {
