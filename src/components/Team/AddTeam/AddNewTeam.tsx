@@ -83,14 +83,9 @@ export const AddNewTeam = () => {
       }
       return ids;
     });
-    isEmptyPlace();
     checkCurrentPlaces();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idsAll, selectedPlaces]);
-
-  const isEmptyPlace = () => {
-    return ids.length !== selectedPlaces;
-  };
 
   const checkCurrentPlaces = () => ids.length >= selectedPlaces;
 
@@ -118,8 +113,6 @@ export const AddNewTeam = () => {
           values.mentorId = localStorage.getItem("id") as string;
           values.places = selectedPlaces;
           values.programmingLanguage = programmingLanguage;
-          // values.status = isEmptyPlace();
-          console.log("values", values);
           createTeam(values)
             .then((response: any) => {
               setTimeout(() => {
