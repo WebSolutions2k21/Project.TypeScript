@@ -1,13 +1,14 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { Profile } from "components";
 import { Navbar } from "components";
+import { useTranslation } from "react-i18next";
 
 export const MentorProfilePage = () => {
   const { t } = useTranslation();
   return (
     <>
-      <Navbar namePage={t("navbar.mentorprofile")} />
-      <h1>MentorProfilePage</h1>
-    </>
-  );
+        <Navbar />
+        <Profile/>
+        </>
+);
 };
