@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { editUserProject, getUserProjects, getUserTeam, deleteProject } from "services/userProjects.service";
-import { IconText, TrashButton } from "styles";
+import { IconText, StyledSelect, TrashButton } from "styles";
 import IUserProjects from "./IUserProjects.interface";
 import ITeamProject from "components/Team/ITeamProject.interface";
 import { paths } from "config/paths";
@@ -14,6 +14,7 @@ import {
   ButtonInModal,
   ModalContent,
   ModalInput,
+  MultiSelect,
   Name,
   ProjectCard,
   ProjectForm,
@@ -22,15 +23,23 @@ import {
   SubmitButton,
 } from "./UserProjects.style";
 import { Modal } from "components";
+import { options } from "config/languages";
 
 export const UserProjectsForm = () => {
   const [userAllProjects, setUserAllProjects] = useState<Array<IUserProjects>>([]);
   const [userTeams, setUserTeams] = useState<Array<ITeamProject>>([]);
+  const [lngs, setLngs] = useState<Array<string>>([]);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const isMentor = localStorage.getItem("mentor") === "true";
+
+  // const onChangeInputArray = (value: any, values: any) => {
+  //   setLngs(value.map((e: any) => e.value));
+  //   values.language = lngs;
+  //   return values.language;
+  // };
 
   useEffect(() => {
     getUserTeam()
@@ -89,7 +98,7 @@ export const UserProjectsForm = () => {
                 description: project.description,
               }}
               onSubmit={({ _id, name, content, status, language, description }) => {
-                editUserProject(_id, name, content, status, language, description);
+                editUserProject(_id, name, content, status, (language = lngs), description);
                 window.location.reload();
               }}
             >
@@ -142,17 +151,34 @@ export const UserProjectsForm = () => {
                             values={values.content}
                           />
                           {t`project.language`}
-                          <ModalInput
-                            type="text"
+                          <Name>
+                            {project.language.map((project) => {
+                              return <Name>{project}</Name>;
+                            })}
+                          </Name>
+                          <MultiSelect
+                            isMulti
                             name="language"
+                            options={options}
+                            classNamePrefix={"Select"}
+                            id="language"
+                            placeholder={`Select new Language`}
+                            onChange={(value: any) => {
+                              setLngs(value.map((e: any) => e.value));
+                              return values.language;
+                            }}
+                          />
+
+                          {t`project.status`}
+                          <SelectInput
+                            as="select"
+                            name="status"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            values={values.language}
-                          />
-                          {t`project.status`}
-                          <SelectInput as="select" name="status" onChange={handleChange} onBlur={handleBlur}>
-                            <option value="open">open</option>
-                            <option value="closed">closed</option>
+                            value={values.status}
+                          >
+                            <option value="open">OPEN</option>
+                            <option value="closed">CLOSED</option>
                           </SelectInput>
                         </ModalContent>
                         {!isMentor ? <SubmitButton type="submit">{t`project.button.save`}</SubmitButton> : ""}

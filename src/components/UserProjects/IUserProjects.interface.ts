@@ -3,7 +3,7 @@ export default interface IUserProjects {
   name: any;
   content: string;
   status: "open" | "closed";
-  language: [string];
+  language: string[];
   description: string;
   teamId: string;
   isIndividual: boolean;
