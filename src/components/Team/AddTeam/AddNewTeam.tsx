@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { createTeam } from "services/team.service";
 
 import ITeamProject from "../ITeamProject.interface";
-import { IconPassword, Label, StyledSelect, Toast, IconText, Input, IconProject } from "styles";
+import { IconPassword, StyledSelect, Toast, IconText, Input, IconProject } from "styles";
 import { TeamForm } from "../AllTeamProjectTeam/AllTeamProjectTeam.style";
 import {
   ButtonForm,
@@ -19,7 +19,7 @@ import {
   StyledDiv,
   StyledInlineErrorMessageForm,
   StyledLi,
-  StyleFromModal
+  StyleFromModal,
 } from "./AddTeam.style";
 
 import { options } from "config/languages";
@@ -54,10 +54,10 @@ export const AddNewTeam = () => {
       .then((response: any) => {
         setUsers(response.data);
       })
-      .catch((e: Error) => {
+      .catch(() => {
         toast.error(t`toast.team.errorUsers`);
       });
-  }, [t]);
+  }, [users, t]);
 
   const usernames = users.map(({ username, _id }) => ({
     label: username,
@@ -118,22 +118,21 @@ export const AddNewTeam = () => {
           values.mentorId = localStorage.getItem("id") as string;
           values.places = selectedPlaces;
           values.programmingLanguage = programmingLanguage;
-          values.status = isEmptyPlace();
+          // values.status = isEmptyPlace();
           console.log("values", values);
-          createTeam(values).then(
-            () => {
+          createTeam(values)
+            .then((response: any) => {
               setTimeout(() => {
                 navigate(paths.myTeam);
               }, 1500);
               toast.success(t`toast.team.successAdd`);
-            },
-            (error) => {
+            })
+            .catch((error) => {
               console.log("error", error.response.status);
               return error.response.status === 423
                 ? toast.error(t`toast.team.errorExist`)
                 : toast.error(t`toast.team.errorAdd`);
-            },
-          );
+            });
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => (
