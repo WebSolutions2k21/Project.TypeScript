@@ -32,30 +32,56 @@ import {
 import { paths } from "config/paths";
 
 import PrivateRoute from "config/PrivateRoute";
+import PublicRoute from "config/PublicRoute";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Routes>
-        <Route path={paths.login} element={<LoginPage />} />
-
         <Route
-          path={paths.myProfile}
+          path={paths.home}
           element={
-            <PrivateRoute>
-              <UserProfilePage />
-            </PrivateRoute>
+            <PublicRoute>
+              <HomePage />
+            </PublicRoute>
           }
         />
-        <Route path={paths.home} element={<HomePage />} />
         <Route path={paths.aboutUs} element={<AboutUsPage />} />
         <Route path={paths.contact} element={<ContactPage />} />
 
-        <Route path={paths.emailVerification} element={<EmailVerificationPage />} />
-        <Route path={paths.login} element={<LoginPage />} />
-        <Route path={paths.signUp} element={<SignUpPage />} />
-        <Route path={paths.sendNewPassword} element={<SendNewPasswordPage />} />
+        <Route
+          path={paths.emailVerification}
+          element={
+            <PublicRoute>
+              <EmailVerificationPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path={paths.login}
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path={paths.signUp}
+          element={
+            <PublicRoute>
+              <SignUpPage />{" "}
+            </PublicRoute>
+          }
+        />
+        <Route
+          path={paths.sendNewPassword}
+          element={
+            <PublicRoute>
+              <SendNewPasswordPage />
+            </PublicRoute>
+          }
+        />
 
         <Route
           path={paths.setPassword}

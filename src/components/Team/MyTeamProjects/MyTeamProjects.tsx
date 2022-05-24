@@ -12,18 +12,22 @@ import {
   ButtonInModal,
   ModalContent,
   ModalInput,
+  MultiSelect,
   Name,
   ProjectCard,
   ProjectForm,
   ProjectGroup,
+  SelectInput,
   SubmitButton,
 } from "./MyTeamProjects.style";
 import { Modal } from "components";
 import { getAllProjects } from "services/project.service";
 import IMyTeamProjects from "./IMyTeamProjects.interface";
+import { options } from "config/languages";
 
 export const MyTeamProjects = () => {
   const [allProjects, setAllProjects] = useState<Array<IMyTeamProjects>>([]);
+  const [lngs, setLngs] = useState<Array<string>>([]);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -69,7 +73,7 @@ export const MyTeamProjects = () => {
                 teamId: project.teamId,
               }}
               onSubmit={({ _id, name, content, status, language, description }) => {
-                editUserProject(_id, name, content, status, language, description);
+                editUserProject(_id, name, content, status, (language = lngs), description);
                 window.location.reload();
               }}
             >
@@ -122,21 +126,34 @@ export const MyTeamProjects = () => {
                             values={values.content}
                           />
                           {t`project.language`}
-                          <ModalInput
-                            type="text"
+                          <Name>
+                            {project.language.map((project) => {
+                              return <Name>{project}</Name>;
+                            })}
+                          </Name>
+                          <MultiSelect
+                            isMulti
                             name="language"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            values={values.language}
+                            options={options}
+                            classNamePrefix={"Select"}
+                            id="language"
+                            placeholder={`Select new Language`}
+                            onChange={(value: any) => {
+                              setLngs(value.map((e: any) => e.value));
+                              return values.language;
+                            }}
                           />
                           {t`project.status`}
-                          <ModalInput
-                            type="text"
+                          <SelectInput
+                            as="select"
                             name="status"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            values={values.status}
-                          />
+                            value={values.status}
+                          >
+                            <option value="open">OPEN</option>
+                            <option value="closed">CLOSED</option>
+                          </SelectInput>
                         </ModalContent>
                         {isMentor ? <SubmitButton type="submit">{t`project.button.save`}</SubmitButton> : ""}
                       </Modal>
