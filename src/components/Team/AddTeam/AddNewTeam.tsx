@@ -79,12 +79,10 @@ export const AddNewTeam = () => {
         newIds.push(val.value);
         setIds(newIds);
       }
-      //TODO display error
       return ids;
     });
     isEmptyPlace();
     checkCurrentPlaces();
-    // TODO only UI working on this
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idsAll, selectedPlaces]);
 
@@ -215,7 +213,7 @@ export const AddNewTeam = () => {
                       </li>
                     ))}
                 </ul>
-                {/* TODO fix when modal with button will be implement */}
+
                 <Modal
                   children={
                     <>

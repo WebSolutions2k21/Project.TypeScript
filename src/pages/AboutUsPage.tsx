@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
 
@@ -18,8 +18,11 @@ import {
 import { HatMainSmall, Line, LogoPageSmall, TeacherSmall } from "styles";
 
 import { Navbar } from "components";
+import { isMentorLogged, isUserLogged } from "services/auth.service";
 
 export const AboutUsPage = () => {
+  const [isAuth] = useState(isUserLogged());
+  const [isAuthMentor] = useState(isMentorLogged());
   const { t } = useTranslation();
   return (
     <>
@@ -45,6 +48,7 @@ export const AboutUsPage = () => {
           <ProfilDescText>{t("aboutus.text2")} </ProfilDescText>
         </WhiteCard>
       </AboutUsPageContainer>
+      {(!isAuth && !isAuthMentor) ?
       <Footer>
         <FooterWrapperLeft>
           <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
@@ -53,7 +57,7 @@ export const AboutUsPage = () => {
         <FooterWrapperRight>
           <LinkFooter to={paths.home}>{t`footer.homePage`}</LinkFooter>
         </FooterWrapperRight>
-      </Footer>
+      </Footer>: <Footer></Footer>}
     </>
   );
 };
