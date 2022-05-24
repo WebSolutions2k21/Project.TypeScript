@@ -27,9 +27,9 @@ export const MyTeam = () => {
         setMyTeam(response.data);
       })
       .catch((e: Error) => {
-        toast.error(t`toast.team.error`);
+        console.log("error in getUserProjects", e);
       });
-  }, [t]);
+  }, []);
 
   const deleteMentorTeam = (id: string) => {
     deleteTeam(id)
