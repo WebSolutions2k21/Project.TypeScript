@@ -26,8 +26,8 @@ export const editUserProject = async (
   _id: string,
   name: string,
   content: string,
-  status: boolean,
-  language: [string],
+  status: string,
+  language: string[],
   description: string,
 ) => {
   console.log("EditUserProject", content);

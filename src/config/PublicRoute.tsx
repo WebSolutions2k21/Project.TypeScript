@@ -1,16 +1,9 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import LoadingToRedirect from "components/LoadingToRedirect";
+import { paths } from "./paths";
 
-export type PublicRouteProps = {
-  isAuthenticated: boolean;
-  authenticationPath: string;
-  outlet: JSX.Element;
+const PublicRoute = ({ children }: { children: any }) => {
+  const token = localStorage.getItem("token");
+  return !token ? children : LoadingToRedirect(paths.myProfile);
 };
 
-export const PublicRoute = ({ isAuthenticated, authenticationPath, outlet }: PublicRouteProps) => {
-  if (!isAuthenticated) {
-    return outlet;
-  } else {
-    return <Navigate to={{ pathname: authenticationPath }} />;
-  }
-};
+export default PublicRoute;
