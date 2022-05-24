@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { editUserProject, getUserProjects, getUserTeam, deleteProject } from "services/userProjects.service";
-import { IconText, StyledSelect, TrashButton } from "styles";
+import { IconText, TrashButton } from "styles";
 import IUserProjects from "./IUserProjects.interface";
 import ITeamProject from "components/Team/ITeamProject.interface";
 import { paths } from "config/paths";
@@ -34,12 +34,6 @@ export const UserProjectsForm = () => {
   const { t } = useTranslation();
 
   const isMentor = localStorage.getItem("mentor") === "true";
-
-  // const onChangeInputArray = (value: any, values: any) => {
-  //   setLngs(value.map((e: any) => e.value));
-  //   values.language = lngs;
-  //   return values.language;
-  // };
 
   useEffect(() => {
     getUserTeam()

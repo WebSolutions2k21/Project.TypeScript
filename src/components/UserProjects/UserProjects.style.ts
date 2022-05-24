@@ -1,5 +1,4 @@
 import { Field } from "formik";
-import Select from "react-select";
 import styled from "styled-components";
 import { Button, Input, StyledSelect } from "styles";
 
