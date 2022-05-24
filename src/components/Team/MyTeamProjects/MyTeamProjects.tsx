@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -16,6 +16,7 @@ import {
   ProjectCard,
   ProjectForm,
   ProjectGroup,
+  SelectInput,
   SubmitButton,
 } from "./MyTeamProjects.style";
 import { Modal } from "components";
@@ -130,10 +131,10 @@ export const MyTeamProjects = () => {
                             values={values.language}
                           />
                           {t`project.status`}
-                          <Field as="select" name="status" onChange={handleChange} onBlur={handleBlur}>
+                          <SelectInput as="select" name="status" onChange={handleChange} onBlur={handleBlur}>
                             <option value="open">open</option>
                             <option value="closed">closed</option>
-                          </Field>
+                          </SelectInput>
                         </ModalContent>
                         {isMentor ? <SubmitButton type="submit">{t`project.button.save`}</SubmitButton> : ""}
                       </Modal>

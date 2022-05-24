@@ -1,3 +1,4 @@
+import { Field } from "formik";
 import styled from "styled-components";
 import { Button, Input } from "styles";
 
@@ -44,9 +45,9 @@ export const ButtonForm = styled(Button)`
 `;
 
 export const ModalContent = styled.div`
-  margin-left: 35px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0px 50px;
 `;
 
 export const ButtonInModal = styled(Button)`
@@ -73,5 +74,15 @@ export const SubmitButton = styled(Button)`
 export const ModalInput = styled(Input)`
   border: 1px solid ${({ theme }) => theme.colors.text || "#174C6F"};
   color: ${({ theme }) => theme.colors.text || "#174C6F"};
-  margin-bottom: 10px;
+  margin: 5px auto;
+`;
+
+export const SelectInput = styled(Field)`
+  border: 1px solid ${({ theme }) => theme.colors.text || "#174C6F"};
+  color: ${({ theme }) => theme.colors.text || "#174C6F"};
+  margin: 5px auto;
+  font-size: 14px;
+  width: 245px;
+  height: 30px;
+  background: none;
 `;
