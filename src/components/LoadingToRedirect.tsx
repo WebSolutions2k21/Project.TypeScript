@@ -1,9 +1,10 @@
-import { paths } from "config/paths";
+// import { paths } from "config/paths";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "./Loader";
 
-const LoadingToRedirect = () => {
+const LoadingToRedirect = (path: any) => {
   const [count, setCount] = useState(1);
   const navigate = useNavigate();
 
@@ -12,11 +13,11 @@ const LoadingToRedirect = () => {
       setCount((currentCount) => currentCount - 1);
     }, 1000);
 
-    count === 0 && navigate(paths.login);
+    count === 0 && navigate(path);
     return () => clearInterval(interval);
-  }, [count, navigate]);
+  }, [count, navigate, path]);
 
-  return <div>Redirect you in {count}</div>;
+  return <Loader />;
 };
 
 export default LoadingToRedirect;
