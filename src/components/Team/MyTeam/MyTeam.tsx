@@ -29,7 +29,7 @@ export const MyTeam = () => {
       .catch((e: Error) => {
         console.log("error in getUserProjects", e);
       });
-  }, []);
+  }, [myTeam]);
 
   const deleteMentorTeam = (id: string) => {
     deleteTeam(id)
@@ -61,7 +61,6 @@ export const MyTeam = () => {
               <View key={index}>
                 <TeamName>
                   <Name>{teamName}</Name>
-                  <ButtonTable disabled> {t`team.button.edit`}</ButtonTable>
                   <ButtonTable onClick={() => navigateToMyTeamProjects(_id)}> {t`team.button.projects`}</ButtonTable>
                   <Modal
                     children={
