@@ -11,7 +11,7 @@ export const getUser = async (id: any) => {
 
 export const getUserLangs = async () => {
   return await axios.get(`users/lang`);
-}
+};
 
 export const getOnlyUsers = async () => {
   return await axios.get(`/users/only-users`);
@@ -70,7 +70,7 @@ export const updateUserData = (firstname: string, lastname: string) => {
       USERSEDIT_URL,
       {
         firstname,
-        lastname
+        lastname,
       },
       {
         headers: {
@@ -85,14 +85,14 @@ export const updateUserData = (firstname: string, lastname: string) => {
 
 const USERLANGEDIT_URL = "users/lang";
 
-export const updateUserLang = (programmingLanguage: any, userData:any) => {
+export const updateUserLang = (programmingLanguage: any, userData: any) => {
   Array.prototype.push.apply(programmingLanguage, userData);
   const token = localStorage.getItem("user") as string;
   return axios
     .patch(
       USERLANGEDIT_URL,
       {
-        programmingLanguage
+        programmingLanguage,
       },
       {
         headers: {
@@ -103,4 +103,4 @@ export const updateUserLang = (programmingLanguage: any, userData:any) => {
     .then((res) => {
       return res.data;
     });
-}
+};

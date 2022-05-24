@@ -19,7 +19,7 @@ export const isMentorLogged = (): boolean => {
 
 export const getUserID = (): any => {
   return localStorage.getItem("id");
-}
+};
 
 const REGISTER_URL = "/users/register";
 

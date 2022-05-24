@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Label, Foot, Button, Input, CloseButton } from "../../styles";
-import { StyledSelect} from "styles";
+import { StyledSelect } from "styles";
 
 export const ProfileForm = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ export const ProfileForm = styled.div`
 `;
 
 export const ErrorMsg = styled.div`
-  color:${({ theme }) => theme.colors.warning || "#FF0000"} ;
+  color: ${({ theme }) => theme.colors.warning || "#FF0000"};
   align-self: flex-start;
   font-size: 12px;
   margin: 5px auto 0 60px;
@@ -25,7 +25,7 @@ export const View = styled.div`
     top: 25%;
     right: 3%;
     cursor: pointer;
-    }
+  }
 `;
 
 export const LabelStyle = styled(Label)`
@@ -33,7 +33,7 @@ export const LabelStyle = styled(Label)`
 `;
 
 export const Footer = styled(Foot)`
-    margin-top: 20px;
+  margin-top: 20px;
 `;
 
 export const EditButton = styled(Button)`
@@ -43,24 +43,24 @@ export const EditButton = styled(Button)`
 export const InputStyledElement = styled(Input)`
   color: black;
   &::placeholder {
-  text-align: left;
-  color: #e1e1e1;
-  border: 1px solid #e1e1e1;
+    text-align: left;
+    color: #e1e1e1;
+    border: 1px solid #e1e1e1;
   }
 `;
 export const InputStyled = styled(Input)`
   &::placeholder {
-  text-align: left;
+    text-align: left;
   }
 `;
 export const ButtonInPassModal = styled(Button)`
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
   max-width: 100px;
 `;
-export const StyledDiv = styled.div `
+export const StyledDiv = styled.div`
   min-height: 130px;
 `;
 export const StyleFromModalTeam = styled(StyledSelect)`
@@ -72,13 +72,13 @@ export const ClosedButton = styled(CloseButton)`
   height: 12px;
   width: 12px;
   margin-left: 10px;
-`
+`;
 export const LabelLang = styled(Label)`
   background: #fff;
   border-radius: 12px;
   padding: 3px 15px;
 `;
-export const StyledLi = styled.li `
+export const StyledLi = styled.li`
   margin-bottom: 10px;
 `;
 
@@ -86,7 +86,7 @@ export const StyledCheckbox = styled.div`
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: ${({ theme }) => theme.colors.primary}; 
+  background: ${({ theme }) => theme.colors.primary};
   border-radius: 3px;
   transition: all 150ms;
-`
+`;
