@@ -1,27 +1,8 @@
 import axios from "axios/instanceAxios";
-import ILogin from "components/Login/Login.interface";
-
-export const login = (data: ILogin) => {
-  return axios.post("/login", data).then((res) => {
-    if (res.data.token) {
-      localStorage.setItem("user", res.data.token);
-      localStorage.setItem("mentor", res.data.mentor);
-      localStorage.setItem("id", res.data.id);
-      window.location.reload();
-    }
-    return res.data;
-  });
-};
-
-export const logout = () => {
-  localStorage.removeItem("user");
-  localStorage.removeItem("mentor");
-  localStorage.removeItem("id");
-};
 
 export const getCurrentUserToken = () => {
-  if (localStorage.getItem("user")) {
-    return localStorage.getItem("user") as string;
+  if (localStorage.getItem("token")) {
+    return localStorage.getItem("token") as string;
   } else {
     console.error("Can't find User token");
     return "";
@@ -29,7 +10,7 @@ export const getCurrentUserToken = () => {
 };
 
 export const isUserLogged = (): boolean => {
-  return !!localStorage.getItem("user");
+  return !!localStorage.getItem("token");
 };
 
 export const isMentorLogged = (): boolean => {
