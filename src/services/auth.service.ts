@@ -17,6 +17,10 @@ export const isMentorLogged = (): boolean => {
   return isUserLogged() && localStorage.getItem("mentor") === "true";
 };
 
+export const getUserID = (): any => {
+  return localStorage.getItem("id");
+};
+
 const REGISTER_URL = "/users/register";
 
 export const register = (
