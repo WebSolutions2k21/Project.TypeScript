@@ -1,6 +1,7 @@
 export * from "./Registration";
 export * from "./Login";
 export * from "./ForgotPassword";
+export * from "./Profile";
 export * from "./Team";
 export * from "./UserProjects";
 export * from "./Modal";
