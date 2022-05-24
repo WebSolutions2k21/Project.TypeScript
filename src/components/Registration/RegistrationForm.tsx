@@ -49,10 +49,7 @@ export const RegistrationForm = () => {
               setTimeout(() => {
                 navigate(paths.login, { replace: true });
               }, 3000);
-              toast.success(t`toast.registration.success`);
             },
-            ({ response: { status } }) =>
-              toast.error(status === 400 ? t`toast.registration.validation` : t`toast.registration.error`),
           );
         }}
       >
