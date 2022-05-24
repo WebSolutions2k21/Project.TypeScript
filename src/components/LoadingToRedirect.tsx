@@ -2,6 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "./Loader";
 
 const LoadingToRedirect = (path: any) => {
   const [count, setCount] = useState(1);
@@ -16,7 +17,7 @@ const LoadingToRedirect = (path: any) => {
     return () => clearInterval(interval);
   }, [count, navigate, path]);
 
-  return <div>Redirect you in {count}</div>;
+  return <Loader />;
 };
 
 export default LoadingToRedirect;
