@@ -12,3 +12,4 @@ export * from "./AddNewOpinion";
 export * from "./ContactForm";
 export * from "./AddNewTeamProject";
 export * from "./InputDoubleClick";
+export * from "./Loader";

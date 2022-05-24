@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
@@ -13,10 +13,13 @@ import {
 } from "./ContactForm.style";
 import { Button, IconText, Line } from "styles";
 import { Footer, FooterWrapperLeft, FooterWrapperRight, LinkFooter } from "styles/stylesPages/HomePage.style";
+import { isMentorLogged, isUserLogged } from "services/auth.service";
 
 export const ContactForm = () => {
   const { t } = useTranslation();
   const [state, handleSubmit] = useForm("xqkngaqb");
+  const [isAuth] = useState(isUserLogged());
+  const [isAuthMentor] = useState(isMentorLogged());
 
   if (state.succeeded) {
     return <Paragraf>{t`contactpage.text3`}</Paragraf>;
@@ -49,6 +52,7 @@ export const ContactForm = () => {
             {t`contactpage.button`}
           </Button>
         </ContactFormContainer>
+        {(!isAuth && !isAuthMentor) ?
         <Footer>
           <FooterWrapperLeft>
             <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
@@ -57,7 +61,7 @@ export const ContactForm = () => {
           <FooterWrapperRight>
             <LinkFooter to={paths.home}>{t`footer.homePage`}</LinkFooter>
           </FooterWrapperRight>
-        </Footer>
+        </Footer> : <Footer></Footer>}
       </form>
     </>
   );
