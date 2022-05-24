@@ -81,3 +81,12 @@ export const LabelLang = styled(Label)`
 export const StyledLi = styled.li `
   margin-bottom: 10px;
 `;
+
+export const StyledCheckbox = styled.div`
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: ${({ theme }) => theme.colors.primary}; 
+  border-radius: 3px;
+  transition: all 150ms;
+`

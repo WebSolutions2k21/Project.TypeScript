@@ -91,21 +91,16 @@ export const Profile = () => {
     setConfirmNewPassword(confirmNewPassword);
   }
 
-  const deleteLanguage = ( itemIndex: number) => {
-    if(itemIndex === 0 && programmingLanguage.length <= 1){
-      setLanguages([]);
-    } else {
-      setLanguages(programmingLanguage.splice(itemIndex, 1));
+  const deleteLanguage = ( itemIndex: number, array: any) => {
+    let languages = array;
+    languages.splice(itemIndex, 1);
+    if(array === programmingLanguage) {
+      setLanguages([...languages]);
+    } else if(array === userData) {
+      setUserData([...languages]);
     }
-  }
+    
 
-  const deleteUserData = (itemIndex: number) => {
-    console.log(itemIndex)
-    if(itemIndex === 0 && userData.length <= 1){
-      setUserData([]);
-    } else {
-      setUserData(userData.splice(itemIndex, 1));
-    }
   }
 
   return (
@@ -278,7 +273,7 @@ export const Profile = () => {
                           <LabelLang htmlFor={`team-language-${index}`}>
                             {nameLang} {level}
                           </LabelLang>
-                          <ClosedButton onClick={() => deleteUserData(index)}/>
+                          <ClosedButton onClick={() => deleteLanguage(index, userData)}/>
                       </StyledLi>
                       )
                     )}
@@ -291,7 +286,7 @@ export const Profile = () => {
                           <LabelLang htmlFor={`team-language-${index}`}>
                            {nameLang} {level}
                           </LabelLang>
-                          <ClosedButton onClick={() => deleteLanguage(index)}/>
+                          <ClosedButton onClick={() => deleteLanguage(index, programmingLanguage)}/>
                       </StyledLi>
                       )
                     )}
