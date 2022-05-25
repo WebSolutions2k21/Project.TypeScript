@@ -1,6 +1,6 @@
 # CodersCamp2021 - Projekt TypeScript
 
-Czwarty projekt. Tworzenie strony wizualnej dla backendu stworzonego we wcześniejszym projekcie.
+Czwarty projekt. Tworzenie strony wizualnej dla backendu stworzonego we wcześniejszym projekcie - kontynuacja w 5 module.
 
 ## Zespół projektowy:
 
@@ -36,8 +36,6 @@ Zespół pracował w ramach kursu CodersCamp. Aplikację wykonali uczestnicy kur
 
 Celem projektu było stworzenie warstwy wizualnej strony z połączeniem do wcześniejszego wykonanego API. Na stronie możemy się zalogować jako użytkownik i poszukać swojego mentora. Możemy dodawać projekty, a także uczestniczyć w projektach grupowych.
 
-Aplikacja będzie rozwijana w dalszej części kursu.
-
 Aplikacja została wykonana według wymagań dostarczonych przez organizatorów CodersCamp.
 
 ## Kod startowy projektu
@@ -60,6 +58,11 @@ Aplikacja została wykonana według wymagań dostarczonych przez organizatorów 
 11. Formik
 12. Formspree
 13. i18next
+14. Redux
+15. Luxon
+16. Styled Components
+17. Formik
+18. Yup
 
 ## Narzędzia pomocnicze
 
