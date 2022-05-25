@@ -18,7 +18,9 @@ import {
   NavbarLogOutLink,
 } from "styles/Navbar.style";
 import { Navlink, Navline, UserAvatar } from "styles/Icon.style";
-import { isMentorLogged, isUserLogged, logout } from "services/auth.service";
+import { isMentorLogged, isUserLogged } from "services/auth.service";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "features/authSlice";
 
 const lngs = {
   en: { nativeName: "English" },
@@ -34,6 +36,7 @@ export const Navbar = ({ namePage }: NPage) => {
   const [isAuth, setIsAuth] = useState(isUserLogged());
   const [isAuthMentor, setIsAuthMentor] = useState(isMentorLogged());
 
+  const dispatch = useDispatch();
   const handleCloseNavMenu = () => {
     setExtendNavbar(false);
   };
@@ -42,7 +45,7 @@ export const Navbar = ({ namePage }: NPage) => {
   };
 
   const logoutHandler = () => {
-    logout();
+    dispatch(logoutUser());
     setIsAuth(false);
     setIsAuthMentor(false);
   };
@@ -55,9 +58,11 @@ export const Navbar = ({ namePage }: NPage) => {
           <NavbarLinkContainer>
             <NavbarLink to={paths.contact}>{t("navbar.contact")}</NavbarLink>
             <NavbarLink to={paths.aboutUs}>{t("navbar.aboutus")}</NavbarLink>
+
             {!isAuth && <NavbarLink to={paths.login}>{t("navbar.login")}</NavbarLink>}
+
             {!isAuth && <NavbarLink to={paths.signUp}>{t("navbar.signin")}</NavbarLink>}
-            <NavbarLink to={paths.home}>{t("navbar.home")}</NavbarLink>
+            {!isAuth && !isAuthMentor && <NavbarLink to={paths.home}>{t("navbar.home")}</NavbarLink>}
             {isAuth && !isAuthMentor && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.myProfile}>
                 {t("navbar.myprofile")}
