@@ -7,7 +7,6 @@ export const AddNewOpinionSchema = () =>
     //   .min(2, t`addNewOpinon.validation.username`)
     //   .required(t`addNewOpinon.validation.usernameReq`),
     content: Yup.string()
-      .min(2, t`addNewOpinion.validation.content`)
-      .required(t`addNewOpinion.validation.contentReq`),
+      .min(2, t`addNewOpinon.validation.content`)
+      .required(t`addNewOpinon.validation.contentReq`),
   });
- 

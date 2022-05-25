@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, Arrow, Bin } from "styles"; //+ ProfilePic
+import { Button, Arrow, Bin } from "styles";
 import { Card } from "styles/Card.style";
 
 export const OpinionForm = styled.div`
@@ -43,17 +43,6 @@ export const OpinionAuthor = styled.p`
   display: inline;
   color: #174c6f;
 `;
-
-// export const StarsBox = styled.div`
-//   display: inline;
-// `;
-
-// export const StarsIcon = styled(Star)`
-//   margin: 0 3px;
-//   @media (max-width: 576px) {
-//     width: 13px;
-//   }
-// `;
 
 export const OpinionText = styled.p`
   display: inline;

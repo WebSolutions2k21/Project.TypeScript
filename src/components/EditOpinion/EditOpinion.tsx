@@ -1,36 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Formik, Form } from "formik";
-import { toast } from "react-toastify";
 
 import { RatingStar } from "rating-star";
 import { AddNewOpinionSchema } from "./validate";
-import { createOpinion, getMentors } from "../../services/opinion.service";
-import { AddNewOpinionForm } from "./AddNewOpinion.style";
+import { getMentors } from "../../services/opinion.service"; //+ createOpinion to import
+import { EditOpinionForm } from "./EditOpinion.style";
 import { LabelStyle, ErrorMsg, ButtonForm } from "../Registration/RegForm.style";
-import { Input, StyledSelect, IconProject, IconText, Toast } from "styles";
-import IAddNewOpinion from "./AddNewOpinion.interface";
-import { paths } from "config/paths";
+import { Input, StyledSelect, IconProject, IconText, Toast, Button } from "styles";
+import { BinIco, ArrowIco } from "components/Opinions/Opinions.style"; //ButtonSave, BinButton, ArrowBtn
+import IEditOpinion from "./EditOpinion.interface";
 
-interface IMentors {
-  username: string;
-  _id: string;
-}
+const user = localStorage.getItem("user") as string;
 
-export const AddNewOpinion = () => {
-  const userId = localStorage.getItem("id") as string;
-  const navigate = useNavigate();
-  const [mntr, setMntr] = useState<string>("");
-  const [allMentors, setAllMentors] = useState<Array<IMentors>>([]);
-  const [rating, setRating] = React.useState(5);
+export const EditOpinion = () => {
+  // const navigate = useNavigate();
 
+  // TODO: wybor w react-select
+  // const [selectedValue, setSelectedValue] = useState("true");
+  // const selectChange = (obj: any) => {
+  //   setSelectedValue(obj.value);
+  // };
+  // TODO
+
+  const [allMentors, setAllMentors] = useState([]);
   const { t } = useTranslation();
 
   useEffect(() => {
     getMentors()
       .then((res) => {
-        console.log("mentors", res.data);
         setAllMentors(res.data);
       })
       .catch((e: Error) => {
@@ -38,17 +36,16 @@ export const AddNewOpinion = () => {
       });
   }, [t]);
 
-  const mentors = allMentors.map(({ username, _id }) => ({
-    label: username,
-    value: _id,
-  }));
+  const mentors = allMentors.map((e: any) => e.username);
 
-  const initialValues: IAddNewOpinion = {
-    stars: 5,
-    userId: userId,
+  const initialValues: IEditOpinion = {
+    username: "",
+    userId: user,
     mentorId: "",
     content: "",
   };
+
+  const [rating, setRating] = React.useState(5);
 
   const onRatingChange = (score: React.SetStateAction<number>) => {
     setRating(score);
@@ -58,26 +55,24 @@ export const AddNewOpinion = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={AddNewOpinionSchema()}
-      onSubmit={(values: IAddNewOpinion) => {
-        values.mentorId = mntr;
-        values.stars = rating;
-        createOpinion(values).then(
-          () => {
-            setTimeout(() => {
-              navigate(paths.myOpinions, { replace: true });
-            }, 1500);
-            toast.success(t`addNewOpinion.validation.success`);
-          },
-          ({ response: { status } }) =>
-            toast.error(status === 400 ? t`addNewOpinion.validation.validation` : t`addNewOpinion.validation.error`),
-        );
+      onSubmit={(formValue: IEditOpinion) => {
+        // TODO:
+        //    createOpinion(username, userId, mentorId, content).then(
+        //     () => {
+        //       setTimeout(() => {
+        //         navigate(paths.myOpinions, { replace: true });
+        //       }, 3000);
+        //       toast.success(t`addNewOpinion.validation.success`);
+        //     },
+        //     ({ response: { status } }) =>
+        //       toast.error(status === 400 ? t`addNewOpinion.validation.validation` : t`addNewOpinion.validation.error`),
+        //   );
       }}
     >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => {
         return (
           <Form noValidate onSubmit={handleSubmit}>
-            <AddNewOpinionForm>
-           {/* TODO to do usunięcia bo to username */}
+            <EditOpinionForm>
               {/* <LabelStyle htmlFor="username">
                 <IconText />
                 {t`addNewOpinion.username`}
@@ -100,14 +95,10 @@ export const AddNewOpinion = () => {
               </LabelStyle>
               <StyledSelect
                 name="mentor"
-                options={mentors}
+                options={mentors.map((e) => ({ label: e, value: e }))}
                 classNamePrefix={"Select"}
                 placeholder={t`addNewOpinion.mentorPlaceholder`}
                 id="mentor"
-                // onChange={onChangeInput}
-                onChange={(value: any) => {
-                  setMntr(value.value);
-                }}
               />
 
               <LabelStyle htmlFor="content">
@@ -125,6 +116,10 @@ export const AddNewOpinion = () => {
               />
               <ErrorMsg>{errors.content && touched.content && errors.content}</ErrorMsg>
 
+              <Button>
+                <ArrowIco />
+              </Button>
+
               <RatingStar
                 colors={{ mask: "#d9248f" }}
                 noBorder
@@ -135,12 +130,16 @@ export const AddNewOpinion = () => {
                 onRatingChange={onRatingChange}
               />
 
+              <Button>
+                <BinIco />
+              </Button>
+
               <ButtonForm type="submit" disabled={!isValid}>
                 {t`addNewOpinion.button`}
               </ButtonForm>
 
               <Toast />
-            </AddNewOpinionForm>
+            </EditOpinionForm>
           </Form>
         );
       }}

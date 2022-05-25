@@ -288,6 +288,8 @@
   "addNewOpinion": {
     "mentor": "mentor",
     "mentorPlaceholder": "Choose mentor",
+    "username": "username",
+    "usernamePlaceholder": "enter username",
     "content": "opinion",
     "contentPlaceholder": "Type your opinion",
     "button": "ADD",

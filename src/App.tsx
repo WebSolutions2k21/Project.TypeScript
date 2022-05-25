@@ -11,6 +11,7 @@ import {
   AddTeamPage,
   AllTeamProjectsPage,
   ContactPage,
+  EditOpinionPage,
   EmailVerificationPage,
   HomePage,
   LoginPage,
@@ -160,6 +161,13 @@ function App() {
           element={
             <PrivateRoute>
               <AddNewOpinionPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          element={
+            <PrivateRoute>
+              <EditOpinionPage />
             </PrivateRoute>
           }
         />
