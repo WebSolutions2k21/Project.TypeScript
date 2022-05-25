@@ -32,6 +32,10 @@ Zespół pracował w ramach kursu CodersCamp. Aplikację wykonali uczestnicy kur
 
 ### [WEJDŹ NA STRONĘ](https://brain-code.netlify.app/)
 
+Dodatkowo varcel:
+frontend: https://brain-code.vercel.app/
+backend: https://server-brain-code.vercel.app/
+
 ## Cel projektu
 
 Celem projektu było stworzenie warstwy wizualnej strony z połączeniem do wcześniejszego wykonanego API. Na stronie możemy się zalogować jako użytkownik i poszukać swojego mentora. Możemy dodawać projekty, a także uczestniczyć w projektach grupowych.
