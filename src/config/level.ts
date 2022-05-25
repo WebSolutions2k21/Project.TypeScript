@@ -1,5 +1,5 @@
 export const level = [
-    { value: "beginer", label: "beginer" },
-    { value: "advance", label: "advance" },
-    { value: "medium",label: "medium" },
+  { value: "junior", label: "junior" },
+  { value: "mid", label: "mid" },
+  { value: "senior",label: "senior" },
   ];

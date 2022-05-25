@@ -149,6 +149,9 @@
       "success": "Brawo dołączyłeś do zespołu!",
       "successAdd": "Brawo utworzyłeś zespół",
       "error": "Error spróbuj jeszcze raz",
+      "errorAdd": "Nie udało ci sie utworzyć zespołu",
+      "errorExist": "Error zespół o takiej nazwie istnieje",
+      "errorUsers": "Wystąpił problem z użytkownikami",
       "notFound": "Nie znaleziono usera bądź projektu",
       "locked": "Jesteś już zapisany do teamu",
       "successDelete": "Zespół został usunięty"
