@@ -5,9 +5,7 @@ import { useTranslation } from "react-i18next";
 import { paths } from "config/paths";
 import { RatingStar } from "rating-star";
 
-// import { Modal } from "components";
 import { getAllOpinions } from "services/opinion.service";
-// import { LabelStyle } from "components/Registration/RegForm.style";
 import IOpinions from "./Opinions.interface";
 
 import { IconText, Toast } from "styles"; //+ Button
@@ -17,15 +15,10 @@ import {
   CardBox,
   CommentInfo,
   ButtonStyle,
-  // ButtonSave,///
-  // BinButton,
-  // BinIco,
-  // ArrowBtn,
-  // ArrowIco,
+
   OpinionAuthor,
   OpinionText,
 } from "components/Opinions/Opinions.style";
-import { getUser } from "services/user.service";
 
 export const Opinions = () => {
   const [allUsersOpinions, setAllUsersOpinions] = useState<Array<IOpinions>>([]);
@@ -50,8 +43,7 @@ export const Opinions = () => {
   const navigateToEditOpinion = () => {
     navigate(paths.editOpinion);
   };
-
-
+    
 
   return (
     <>
@@ -64,8 +56,8 @@ export const Opinions = () => {
               <CommentInfo>
                 <IconText />
                 {/* //TODO zmienić uid na wyswietlanie username */}
-                {/* <OpinionAuthor>{opinion id}</OpinionAuthor> */}
-
+                <OpinionAuthor>{opinion.userId}</OpinionAuthor>
+         
                 <RatingStar
                   colors={{ mask: "#d9248f" }}
                   noBorder
