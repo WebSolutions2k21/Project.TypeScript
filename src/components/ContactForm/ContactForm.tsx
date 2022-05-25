@@ -52,16 +52,19 @@ export const ContactForm = () => {
             {t`contactpage.button`}
           </Button>
         </ContactFormContainer>
-        {(!isAuth && !isAuthMentor) ?
-        <Footer>
-          <FooterWrapperLeft>
-            <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
-          </FooterWrapperLeft>
-          <Line />
-          <FooterWrapperRight>
-            <LinkFooter to={paths.home}>{t`footer.homePage`}</LinkFooter>
-          </FooterWrapperRight>
-        </Footer> : <Footer></Footer>}
+        {!isAuth && !isAuthMentor ? (
+          <Footer>
+            <FooterWrapperLeft>
+              <LinkFooter to={paths.signUp}>{t`footer.createAccount`}</LinkFooter>
+            </FooterWrapperLeft>
+            <Line />
+            <FooterWrapperRight>
+              <LinkFooter to={paths.home}>{t`footer.homePage`}</LinkFooter>
+            </FooterWrapperRight>
+          </Footer>
+        ) : (
+          <Footer></Footer>
+        )}
       </form>
     </>
   );

@@ -89,16 +89,16 @@ export const Navbar = ({ namePage }: NPage) => {
                 {t("navbar.myopinions")}
               </NavbarLink>
             )}
-            {isAuth && !isAuthMentor && (
+            {/* TODO {isAuth && !isAuthMentor && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.myNotifications}>
                 {t("navbar.notifications")}
               </NavbarLink>
-            )}
-            {isAuthMentor && (
+            )} */}
+            {/* TODO {isAuthMentor && (
               <NavbarLink onClick={handleCloseNavMenu} to={paths.mentorNotification}>
                 {t("navbar.notifications")}
               </NavbarLink>
-            )}
+            )} */}
 
             {isAuth && !isAuthMentor && (
               <NavbarLogOutLink onClick={logoutHandler} to={paths.home}>
@@ -183,10 +183,10 @@ export const Navbar = ({ namePage }: NPage) => {
             <Navlink />
             {t("navbar.myopinions")}
           </NavbarLinkExtended>
-          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.mentorNotification}>
+          {/* TODO <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.mentorNotification}>
             <Navlink />
             {t("navbar.notifications")}
-          </NavbarLinkExtended>
+          </NavbarLinkExtended> */}
           <Navline />
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.contact}>
             <Navlink />
@@ -243,10 +243,10 @@ export const Navbar = ({ namePage }: NPage) => {
             <Navlink />
             {t("navbar.myopinions")}
           </NavbarLinkExtended>
-          <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myNotifications}>
+          {/* TODO <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.myNotifications}>
             <Navlink />
             {t("navbar.notifications")}
-          </NavbarLinkExtended>
+          </NavbarLinkExtended> */}
           <Navline />
           <NavbarLinkExtended onClick={handleCloseNavMenu} to={paths.contact}>
             <Navlink />

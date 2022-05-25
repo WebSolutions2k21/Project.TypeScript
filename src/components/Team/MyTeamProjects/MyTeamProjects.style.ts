@@ -29,6 +29,7 @@ export const Name = styled.div`
   display: inline-block;
   align-self: end;
   margin-right: 1vw;
+  font-weight: bold;
 `;
 
 export const ProjectGroup = styled.div`

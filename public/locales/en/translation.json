@@ -8,7 +8,7 @@
     "logout": "Log\u00a0Out",
     "myprofile": "My\u00a0profile",
     "mentorprofile": "Mentor\u00a0profile",
-    "myproject": "My\u00a0project",
+    "myproject": "User\u00a0project",
     "myopinions": "My\u00a0opinions",
     "notifications": "Notifications",
     "profile": "Profile",
@@ -201,7 +201,7 @@
     "password": "Password",
     "button": "Save",
     "programming_language": "Programming language",
-    "button_change_password":"Edit"
+    "button_change_password": "Edit"
   },
   "team": {
     "status": "Status",
@@ -236,7 +236,7 @@
       "add": "+",
       "delete": "Delete",
       "edit": "Edit",
-      "projects": "Projekty"
+      "projects": "Projects"
     }
   },
   "status": {
