@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+
 import { Modal } from "components";
 import { ProfileSchema } from "./validate";
 import ProfileInterface from "./Profile.interface";
@@ -66,18 +66,14 @@ export const Profile = () => {
 
   useEffect(() => {
     setID(getUserID());
-    getUser(id)
-      .then((response: any) => {
-        setUserName(response.data.username);
-        setEmail(response.data.email);
-        setFirstName(response.data.firstname);
-        setLastName(response.data.lastname);
-        const data = response.data.programmingLanguage.filter((e: any) => delete e._id);
-        setUserData(data);
-      })
-      .catch((e: Error) => {
-        toast.error(t`profile.error`);
-      });
+    getUser(id).then((response: any) => {
+      setUserName(response.data.username);
+      setEmail(response.data.email);
+      setFirstName(response.data.firstname);
+      setLastName(response.data.lastname);
+      const data = response.data.programmingLanguage.filter((e: any) => delete e._id);
+      setUserData(data);
+    });
   }, [email, firstname, id, lastname, t, username]);
 
   const handleClick = () => {
