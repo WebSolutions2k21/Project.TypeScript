@@ -20,7 +20,7 @@ export const getOnlyUsers = async () => {
 const CHANGEPASSWORD_URL = "/users/changepassword";
 
 export const changePassword = (oldPassword: string, newPassword: string, confirmNewPassword: string) => {
-  const token = localStorage.getItem("user") as string;
+  const token = localStorage.getItem("token") as string;
   return axios
     .put(
       CHANGEPASSWORD_URL,
@@ -64,7 +64,7 @@ export const setNewPass = (newPassword: string, confirmNewPassword: string, toke
 const USERSEDIT_URL = "/users/edit";
 
 export const updateUserData = (firstname: string, lastname: string) => {
-  const token = localStorage.getItem("user") as string;
+  const token = localStorage.getItem("token") as string;
   return axios
     .patch(
       USERSEDIT_URL,
@@ -87,7 +87,7 @@ const USERLANGEDIT_URL = "users/lang";
 
 export const updateUserLang = (programmingLanguage: any, userData: any) => {
   Array.prototype.push.apply(programmingLanguage, userData);
-  const token = localStorage.getItem("user") as string;
+  const token = localStorage.getItem("token") as string;
   return axios
     .patch(
       USERLANGEDIT_URL,
