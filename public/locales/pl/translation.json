@@ -191,6 +191,16 @@
     "verified": "Twój email został pomyślnie zweryfikowany",
     "canLog": "Teraz możesz się zalogować!"
   },
+  "profile": {
+    "username": "Nazwa użytkownika",
+    "useremail": "Email",
+    "firstname": "Imię",
+    "lastname": "Nazwisko",
+    "password": "Hasło",
+    "button": "Zapisz",
+    "programming_language": "Język programowania",
+    "button_change_password":"Edytuj"
+  },
   "team": {
     "status": "Status",
     "places": {

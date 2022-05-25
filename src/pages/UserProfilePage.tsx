@@ -1,14 +1,12 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
-
+import { Profile } from "components";
 import { Navbar } from "components";
 
 export const UserProfilePage = () => {
-  const { t } = useTranslation();
-  return (
-    <>
-      <Navbar namePage={t("navbar.profile")} />
-      <h1>UserProfilePage</h1>
-    </>
-  );
+    return (
+        <>
+            <Navbar />
+            <Profile/>
+            </>
+    );
 };
