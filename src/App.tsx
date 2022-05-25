@@ -158,20 +158,18 @@ function App() {
 
         <Route
           path={paths.addOpinion}
-<<<<<<< HEAD
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddNewOpinionPage />} />}
-        />
-
-        <Route
-          path={paths.editOpinion}
-          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<EditOpinionPage />} />}
-=======
           element={
             <PrivateRoute>
               <AddNewOpinionPage />
             </PrivateRoute>
           }
->>>>>>> f386fd761cc8afad88481edca49320f8c6a76b9e
+        />
+        <Route
+          element={
+            <PrivateRoute>
+              <EditOpinionPage />
+            </PrivateRoute>
+          }
         />
 
         <Route

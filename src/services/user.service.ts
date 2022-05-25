@@ -5,7 +5,7 @@ export const sendEmail = async (data: IForgotPassword) => {
   return await axios.post("/users/resetpassword", data);
 };
 
-export const getUser = async (id: any) => {
+export const getUser = async (id: string) => {
   return await axios.get(`/users/${id}`);
 };
 
@@ -16,7 +16,7 @@ export const getOnlyUsers = async () => {
 const CHANGEPASSWORD_URL = "/users/changepassword";
 
 export const changePassword = (oldPassword: string, newPassword: string, confirmNewPassword: string) => {
-  const token = localStorage.getItem("user") as string;
+  const token = localStorage.getItem("token") as string;
   return axios
     .put(
       CHANGEPASSWORD_URL,

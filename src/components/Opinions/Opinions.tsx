@@ -23,13 +23,13 @@ import {
   // ArrowBtn,
   // ArrowIco,
   OpinionAuthor,
-  OpinionText
+  OpinionText,
 } from "components/Opinions/Opinions.style";
-// import { Navbar } from "components";
+import { getUser } from "services/user.service";
 
 export const Opinions = () => {
   const [allUsersOpinions, setAllUsersOpinions] = useState<Array<IOpinions>>([]);
-
+  const [rating] = React.useState(5);
   let navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -51,45 +51,28 @@ export const Opinions = () => {
     navigate(paths.editOpinion);
   };
 
-  const [rating, setRating] = React.useState(5);
 
-  const onRatingChange = (score: React.SetStateAction<number>) => {
-    setRating(score);
-  };
 
   return (
     <>
       <OpinionForm>
         <AddOpinionButton type="submit" onClick={navigateToAddOpinion}>{t`opinions.button.addNew`}</AddOpinionButton>
 
-        {/* <Modal title="opinions" buttonText="+" childrenButton={""}>
-          <input type="text" name="content" placeholder={t`addNewOpinion.contentPlaceholder`}></input>
-          <RatingStar
-            colors={{ mask: "#d9248f" }}
-            noBorder
-            clickable
-            maxScore={5}
-            id="stars"
-            rating={rating}
-            onRatingChange={onRatingChange}
-          />
-        </Modal> */}
-
         {allUsersOpinions &&
           allUsersOpinions.map((opinion, index) => (
             <CardBox key={index}>
               <CommentInfo>
                 <IconText />
-                <OpinionAuthor>{opinion.username}</OpinionAuthor>
+                {/* //TODO zmienić uid na wyswietlanie username */}
+                {/* <OpinionAuthor>{opinion id}</OpinionAuthor> */}
+
                 <RatingStar
                   colors={{ mask: "#d9248f" }}
                   noBorder
-                  clickable
-                  maxScore={5}
+                  numberOfStar={opinion.stars}
                   id="stars"
                   rating={rating}
-                  onRatingChange={onRatingChange}
-                  />
+                />
               </CommentInfo>
               <OpinionText>{opinion.content}</OpinionText>
               <ButtonStyle type="submit" onClick={navigateToEditOpinion}>{t`opinions.button.edit`}</ButtonStyle>
