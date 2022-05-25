@@ -1,7 +1,6 @@
 import axios from "../axios/instanceAxios";
 import { getCurrentUserToken } from "./auth.service";
-import jwt_decode from "jwt-decode";
-import IOpinions from "components/Opinions/Opinions.interface";
+
 
 const token = getCurrentUserToken();
 
