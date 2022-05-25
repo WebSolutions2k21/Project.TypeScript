@@ -56,7 +56,7 @@ export const Opinions = () => {
               <CommentInfo>
                 <IconText />
                 {/* //TODO zmienić uid na wyswietlanie username */}
-                <OpinionAuthor>{opinion.userId}</OpinionAuthor>
+                <OpinionAuthor>anonim</OpinionAuthor>
          
                 <RatingStar
                   colors={{ mask: "#d9248f" }}
