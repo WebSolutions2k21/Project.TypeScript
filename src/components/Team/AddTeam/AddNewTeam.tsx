@@ -8,9 +8,19 @@ import { toast } from "react-toastify";
 import { createTeam } from "services/team.service";
 
 import ITeamProject from "../ITeamProject.interface";
-import { IconPassword, Label, StyledSelect, Toast, IconText, Input, IconProject } from "styles";
+import { IconPassword, StyledSelect, Toast, IconText, Input, IconProject } from "styles";
 import { TeamForm } from "../AllTeamProjectTeam/AllTeamProjectTeam.style";
-import { ButtonForm, ButtonInModal, LabelStyle, StyledInlineErrorMessageForm, StyleFromModal } from "./AddTeam.style";
+import {
+  ButtonForm,
+  ButtonInModal,
+  ClosedButton,
+  LabelLang,
+  LabelStyle,
+  StyledDiv,
+  StyledInlineErrorMessageForm,
+  StyledLi,
+  StyleFromModal,
+} from "./AddTeam.style";
 
 import { options } from "config/languages";
 import { getOnlyUsers } from "services/user.service";
@@ -30,32 +40,24 @@ export const AddNewTeam = () => {
   let navigate = useNavigate();
 
   const [selectedPlaces, setSelectedPlaces] = useState(0);
-  const [state, setState] = useState<IProgrammingLanguage>({ nameLang: "", level: "" });
 
   const [currentNameLang, setCurrentNameLang] = useState("");
   const [currentLevel, setCurrentLevel] = useState("");
 
-  const [allLanguage, setAllLanguage] = useState<Array<IProgrammingLanguage>>([]);
+  const [userData, setUserData] = useState<Array<IProgrammingLanguage>>([]);
+
+  const [programmingLanguage, setLanguages] = useState<Array<IProgrammingLanguage>>([]);
   const { t } = useTranslation();
-
-  const addLevelAndLang = () => {
-    setState(() => ({
-      nameLang: currentNameLang,
-      level: currentLevel,
-    }));
-
-    setAllLanguage((prevState) => [...prevState, state]);
-  };
 
   useEffect(() => {
     getOnlyUsers()
       .then((response: any) => {
         setUsers(response.data);
       })
-      .catch((e: Error) => {
-        toast.error(t`toast.team.error`);
+      .catch(() => {
+        toast.error(t`toast.team.errorUsers`);
       });
-  }, [t]);
+  }, [users, t]);
 
   const usernames = users.map(({ username, _id }) => ({
     label: username,
@@ -81,16 +83,25 @@ export const AddNewTeam = () => {
       }
       return ids;
     });
-    isEmptyPlace();
     checkCurrentPlaces();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idsAll, selectedPlaces]);
 
-  const isEmptyPlace = () => {
-    return ids.length !== selectedPlaces;
+  const checkCurrentPlaces = () => ids.length >= selectedPlaces;
+
+  const handleClick = () => {
+    setLanguages((prevState) => [{ nameLang: currentNameLang, level: currentLevel }, ...prevState]);
   };
 
-  const checkCurrentPlaces = () => ids.length >= selectedPlaces;
+  const deleteLanguage = (itemIndex: number, array: any) => {
+    let languages = array;
+    languages.splice(itemIndex, 1);
+    if (array === programmingLanguage) {
+      setLanguages([...languages]);
+    } else if (array === userData) {
+      setUserData([...languages]);
+    }
+  };
 
   return (
     <>
@@ -101,20 +112,20 @@ export const AddNewTeam = () => {
           values.usersIds = ids;
           values.mentorId = localStorage.getItem("id") as string;
           values.places = selectedPlaces;
-          values.programmingLanguage = allLanguage;
-          values.status = isEmptyPlace();
-
-          createTeam(values).then(
-            () => {
+          values.programmingLanguage = programmingLanguage;
+          createTeam(values)
+            .then((response: any) => {
               setTimeout(() => {
                 navigate(paths.myTeam);
               }, 1500);
               toast.success(t`toast.team.successAdd`);
-            },
-            () => {
-              return toast.error(t`toast.team.error`);
-            },
-          );
+            })
+            .catch((error) => {
+              console.log("error", error.response.status);
+              return error.response.status === 423
+                ? toast.error(t`toast.team.errorExist`)
+                : toast.error(t`toast.team.errorAdd`);
+            });
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid }) => (
@@ -203,20 +214,21 @@ export const AddNewTeam = () => {
                   <IconPassword />
                   {t`team.language`}
                 </LabelStyle>
+
                 <ul>
-                  {allLanguage.length > 0 &&
-                    allLanguage.map(({ nameLang, level }, index) => (
-                      <li key={index}>
-                        <Label htmlFor={`team-language-${index}`}>
+                  {programmingLanguage.length > 0 &&
+                    programmingLanguage.map(({ nameLang, level }, index) => (
+                      <StyledLi key={index}>
+                        <LabelLang htmlFor={`team-language-${index}`}>
                           {nameLang} {level}
-                        </Label>
-                      </li>
+                        </LabelLang>
+                        <ClosedButton onClick={() => deleteLanguage(index, programmingLanguage)} />
+                      </StyledLi>
                     ))}
                 </ul>
-
                 <Modal
                   children={
-                    <>
+                    <StyledDiv>
                       <StyleFromModal
                         name="language"
                         options={options}
@@ -233,11 +245,11 @@ export const AddNewTeam = () => {
                         id="level"
                         onChange={(e: any) => setCurrentLevel(e.value)}
                       />
-                    </>
+                    </StyledDiv>
                   }
                   childrenButton={
-                    <ButtonInModal type="button" onClick={() => addLevelAndLang()}>
-                      {t`team.button.add`}{" "}
+                    <ButtonInModal type="button" onClick={handleClick}>
+                      {t`team.button.add`}
                     </ButtonInModal>
                   }
                   title={t`team.languageName`}

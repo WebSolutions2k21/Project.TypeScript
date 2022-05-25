@@ -24,7 +24,7 @@ export const View = styled.div`
 export const TeamName = styled.div`
   display: grid;
   width: 80vw;
-  grid-template-columns: auto 55px 55px 50px;
+  grid-template-columns: auto  65px 50px;
   justify-self: stretch;
   border: 1px solid ${({ theme }) => theme.colors.body || "#FFFFFF"};
   border-style: none none solid none;
@@ -51,7 +51,7 @@ export const ButtonForm = styled(Button)`
 
 export const ButtonTable = styled(Button)`
   height: 30px;
-  width: 50px;
+  width: 60px;
   font-size: 14px;
   margin: 10px 0px 5px 0px;
 `;
