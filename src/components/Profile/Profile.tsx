@@ -66,18 +66,14 @@ export const Profile = () => {
 
   useEffect(() => {
     setID(getUserID());
-    getUser(id)
-      .then((response: any) => {
-        setUserName(response.data.username);
-        setEmail(response.data.email);
-        setFirstName(response.data.firstname);
-        setLastName(response.data.lastname);
-        const data = response.data.programmingLanguage.filter((e: any) => delete e._id);
-        setUserData(data);
-      })
-      .catch((e: Error) => {
-        toast.error(t`profile.error`);
-      });
+    getUser(id).then((response: any) => {
+      setUserName(response.data.username);
+      setEmail(response.data.email);
+      setFirstName(response.data.firstname);
+      setLastName(response.data.lastname);
+      const data = response.data.programmingLanguage.filter((e: any) => delete e._id);
+      setUserData(data);
+    });
   }, [email, firstname, id, lastname, t, username]);
 
   const handleClick = () => {
