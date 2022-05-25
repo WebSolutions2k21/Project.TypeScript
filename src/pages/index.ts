@@ -17,6 +17,7 @@ export * from "./UserProfilePage";
 export * from "./UserProjectPage";
 export * from "./EmailVerificationPage";
 export * from "./AddNewOpinionPage";
+export * from "./EditOpinionPage";
 export * from "./AddTeamPage";
 export * from "./MyTeamPage";
 export * from "./ChangePassword";

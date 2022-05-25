@@ -11,6 +11,7 @@ import {
   AddTeamPage,
   AllTeamProjectsPage,
   ContactPage,
+  EditOpinionPage,
   EmailVerificationPage,
   HomePage,
   LoginPage,
@@ -98,8 +99,14 @@ function App() {
           element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddNewTeamProjectPage />} />}
         />
 
-        <Route path={paths.addOpinion} 
-        element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddNewOpinionPage />} /> }
+        <Route
+          path={paths.addOpinion}
+          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<AddNewOpinionPage />} />}
+        />
+
+        <Route
+          path={paths.editOpinion}
+          element={<PrivateRoute {...defaultPrivateRouteProps} outlet={<EditOpinionPage />} />}
         />
 
         <Route

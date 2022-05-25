@@ -272,6 +272,8 @@
   "addNewOpinion": {
     "mentor": "mentor",
     "mentorPlaceholder": "Wybierz mentora",
+    "username":"nazwa użytkownika",
+    "usernamePlaceholder": "podaj nazwę użytkownika",
     "content": "opinia",
     "contentPlaceholder": "Napisz swoją opinię",
     "button": "DODAJ",

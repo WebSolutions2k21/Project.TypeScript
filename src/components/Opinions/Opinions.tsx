@@ -23,9 +23,7 @@ import {
   // ArrowBtn,
   // ArrowIco,
   OpinionAuthor,
-  OpinionText,
-  // StarsBox,
-  // StarsIcon,
+  OpinionText
 } from "components/Opinions/Opinions.style";
 // import { Navbar } from "components";
 
